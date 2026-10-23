@@ -1,0 +1,1406 @@
+[
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 160,
+    "side": 1,
+    "burn": [
+      0,
+      83,
+      81
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 160,
+    "side": 2,
+    "burn": [
+      0,
+      65,
+      64
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 170,
+    "side": 1,
+    "burn": [
+      0,
+      81,
+      79
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 170,
+    "side": 2,
+    "burn": [
+      0,
+      70,
+      68
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 200,
+    "side": 1,
+    "burn": [
+      0,
+      73,
+      71
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 200,
+    "side": 2,
+    "burn": [
+      0,
+      92,
+      90
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 210,
+    "side": 1,
+    "burn": [
+      0,
+      71,
+      69
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 210,
+    "side": 2,
+    "burn": [
+      0,
+      90,
+      88
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 240,
+    "side": 1,
+    "burn": [
+      0,
+      64,
+      63
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 240,
+    "side": 2,
+    "burn": [
+      0,
+      108,
+      105
+    ],
+    "decrement": 3,
+    "floorModel": 3
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 280,
+    "side": 1,
+    "burn": [
+      0,
+      150,
+      146
+    ],
+    "decrement": 4,
+    "floorModel": 4
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 280,
+    "side": 2,
+    "burn": [
+      0,
+      134,
+      130
+    ],
+    "decrement": 4,
+    "floorModel": 4
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 300,
+    "side": 1,
+    "burn": [
+      0,
+      142,
+      138
+    ],
+    "decrement": 4,
+    "floorModel": 4
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 300,
+    "side": 2,
+    "burn": [
+      0,
+      141,
+      137
+    ],
+    "decrement": 4,
+    "floorModel": 4
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 310,
+    "side": 1,
+    "burn": [
+      0,
+      138,
+      134
+    ],
+    "decrement": 4,
+    "floorModel": 4
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 310,
+    "side": 2,
+    "burn": [
+      0,
+      137,
+      133
+    ],
+    "decrement": 4,
+    "floorModel": 4
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 340,
+    "side": 1,
+    "burn": [
+      0,
+      126,
+      123
+    ],
+    "decrement": 3,
+    "floorModel": 3
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 340,
+    "side": 2,
+    "burn": [
+      0,
+      153,
+      149
+    ],
+    "decrement": 4,
+    "floorModel": 4
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 360,
+    "side": 1,
+    "burn": [
+      0,
+      118,
+      115
+    ],
+    "decrement": 3,
+    "floorModel": 3
+  },
+  {
+    "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+    "frame": 360,
+    "side": 2,
+    "burn": [
+      0,
+      161,
+      157
+    ],
+    "decrement": 4,
+    "floorModel": 4
+  },
+  {
+    "replay": "f78c0307afe4491e8fa461cee77e86a9.payload.mpack.gz",
+    "frame": 190,
+    "side": 2,
+    "burn": [
+      0,
+      41,
+      40
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "f78c0307afe4491e8fa461cee77e86a9.payload.mpack.gz",
+    "frame": 240,
+    "side": 2,
+    "burn": [
+      0,
+      55,
+      54
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "0dc9c3202fe349a6933d5e014d30a0a1.payload.mpack.gz",
+    "frame": 210,
+    "side": 1,
+    "burn": [
+      0,
+      96,
+      94
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "0dc9c3202fe349a6933d5e014d30a0a1.payload.mpack.gz",
+    "frame": 210,
+    "side": 2,
+    "burn": [
+      0,
+      43,
+      42
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "0dc9c3202fe349a6933d5e014d30a0a1.payload.mpack.gz",
+    "frame": 220,
+    "side": 1,
+    "burn": [
+      0,
+      94,
+      92
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "0dc9c3202fe349a6933d5e014d30a0a1.payload.mpack.gz",
+    "frame": 220,
+    "side": 2,
+    "burn": [
+      0,
+      42,
+      41
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "0dc9c3202fe349a6933d5e014d30a0a1.payload.mpack.gz",
+    "frame": 250,
+    "side": 1,
+    "burn": [
+      0,
+      131,
+      128
+    ],
+    "decrement": 3,
+    "floorModel": 3
+  },
+  {
+    "replay": "0dc9c3202fe349a6933d5e014d30a0a1.payload.mpack.gz",
+    "frame": 250,
+    "side": 2,
+    "burn": [
+      0,
+      56,
+      55
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "5682f3cdc669456ca0757bea0a58942f.payload.mpack.gz",
+    "frame": 230,
+    "side": 1,
+    "burn": [
+      0,
+      36,
+      35
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "5682f3cdc669456ca0757bea0a58942f.payload.mpack.gz",
+    "frame": 260,
+    "side": 1,
+    "burn": [
+      0,
+      34,
+      33
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "5682f3cdc669456ca0757bea0a58942f.payload.mpack.gz",
+    "frame": 290,
+    "side": 1,
+    "burn": [
+      0,
+      47,
+      46
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "bd7d569321d146b4a02cd225fd89dc63.payload.mpack.gz",
+    "frame": 100,
+    "side": 1,
+    "burn": [
+      0,
+      46,
+      45
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "bd7d569321d146b4a02cd225fd89dc63.payload.mpack.gz",
+    "frame": 110,
+    "side": 1,
+    "burn": [
+      0,
+      66,
+      65
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "bd7d569321d146b4a02cd225fd89dc63.payload.mpack.gz",
+    "frame": 120,
+    "side": 1,
+    "burn": [
+      0,
+      65,
+      64
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "bd7d569321d146b4a02cd225fd89dc63.payload.mpack.gz",
+    "frame": 140,
+    "side": 1,
+    "burn": [
+      0,
+      93,
+      91
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "bd7d569321d146b4a02cd225fd89dc63.payload.mpack.gz",
+    "frame": 150,
+    "side": 1,
+    "burn": [
+      0,
+      91,
+      89
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "bd7d569321d146b4a02cd225fd89dc63.payload.mpack.gz",
+    "frame": 170,
+    "side": 1,
+    "burn": [
+      0,
+      96,
+      94
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "bd7d569321d146b4a02cd225fd89dc63.payload.mpack.gz",
+    "frame": 180,
+    "side": 1,
+    "burn": [
+      0,
+      94,
+      92
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "7f5eca54a4df4113bf92a23cdc9ac51a.payload.mpack.gz",
+    "frame": 140,
+    "side": 2,
+    "burn": [
+      0,
+      36,
+      35
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fe264f917a00460b8b6e2c381c913959.payload.mpack.gz",
+    "frame": 150,
+    "side": 2,
+    "burn": [
+      0,
+      35,
+      34
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fe264f917a00460b8b6e2c381c913959.payload.mpack.gz",
+    "frame": 190,
+    "side": 1,
+    "burn": [
+      0,
+      50,
+      49
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fe264f917a00460b8b6e2c381c913959.payload.mpack.gz",
+    "frame": 190,
+    "side": 2,
+    "burn": [
+      0,
+      52,
+      51
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fe264f917a00460b8b6e2c381c913959.payload.mpack.gz",
+    "frame": 200,
+    "side": 1,
+    "burn": [
+      0,
+      49,
+      48
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fe264f917a00460b8b6e2c381c913959.payload.mpack.gz",
+    "frame": 200,
+    "side": 2,
+    "burn": [
+      0,
+      51,
+      50
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fe264f917a00460b8b6e2c381c913959.payload.mpack.gz",
+    "frame": 230,
+    "side": 1,
+    "burn": [
+      0,
+      71,
+      69
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "fe264f917a00460b8b6e2c381c913959.payload.mpack.gz",
+    "frame": 230,
+    "side": 2,
+    "burn": [
+      0,
+      65,
+      64
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "37e354f577424842b93f1aba5895011e.payload.mpack.gz",
+    "frame": 130,
+    "side": 1,
+    "burn": [
+      0,
+      95,
+      93
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "37e354f577424842b93f1aba5895011e.payload.mpack.gz",
+    "frame": 140,
+    "side": 1,
+    "burn": [
+      0,
+      93,
+      91
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "37e354f577424842b93f1aba5895011e.payload.mpack.gz",
+    "frame": 150,
+    "side": 1,
+    "burn": [
+      0,
+      91,
+      89
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "37e354f577424842b93f1aba5895011e.payload.mpack.gz",
+    "frame": 160,
+    "side": 1,
+    "burn": [
+      0,
+      89,
+      87
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "37e354f577424842b93f1aba5895011e.payload.mpack.gz",
+    "frame": 180,
+    "side": 1,
+    "burn": [
+      0,
+      85,
+      83
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "37e354f577424842b93f1aba5895011e.payload.mpack.gz",
+    "frame": 190,
+    "side": 1,
+    "burn": [
+      0,
+      83,
+      81
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "37e354f577424842b93f1aba5895011e.payload.mpack.gz",
+    "frame": 200,
+    "side": 1,
+    "burn": [
+      0,
+      81,
+      79
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "9e57ddcdc01d4d8285914db01c49467c.payload.mpack.gz",
+    "frame": 130,
+    "side": 1,
+    "burn": [
+      0,
+      55,
+      54
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "9e57ddcdc01d4d8285914db01c49467c.payload.mpack.gz",
+    "frame": 140,
+    "side": 1,
+    "burn": [
+      0,
+      54,
+      53
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "9e57ddcdc01d4d8285914db01c49467c.payload.mpack.gz",
+    "frame": 150,
+    "side": 1,
+    "burn": [
+      0,
+      52,
+      51
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 90,
+    "side": 2,
+    "burn": [
+      0,
+      111,
+      108
+    ],
+    "decrement": 3,
+    "floorModel": 3
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 100,
+    "side": 2,
+    "burn": [
+      0,
+      108,
+      105
+    ],
+    "decrement": 3,
+    "floorModel": 3
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 110,
+    "side": 2,
+    "burn": [
+      0,
+      105,
+      102
+    ],
+    "decrement": 3,
+    "floorModel": 3
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 130,
+    "side": 2,
+    "burn": [
+      0,
+      177,
+      172
+    ],
+    "decrement": 5,
+    "floorModel": 5
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 160,
+    "side": 2,
+    "burn": [
+      0,
+      185,
+      180
+    ],
+    "decrement": 5,
+    "floorModel": 5
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 170,
+    "side": 2,
+    "burn": [
+      0,
+      180,
+      175
+    ],
+    "decrement": 5,
+    "floorModel": 5
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 180,
+    "side": 2,
+    "burn": [
+      0,
+      204,
+      198
+    ],
+    "decrement": 6,
+    "floorModel": 6
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 200,
+    "side": 2,
+    "burn": [
+      0,
+      236,
+      229
+    ],
+    "decrement": 7,
+    "floorModel": 7
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 210,
+    "side": 2,
+    "burn": [
+      0,
+      229,
+      223
+    ],
+    "decrement": 6,
+    "floorModel": 6
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 230,
+    "side": 2,
+    "burn": [
+      0,
+      378,
+      367
+    ],
+    "decrement": 11,
+    "floorModel": 11
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 240,
+    "side": 2,
+    "burn": [
+      0,
+      367,
+      356
+    ],
+    "decrement": 11,
+    "floorModel": 11
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 260,
+    "side": 2,
+    "burn": [
+      0,
+      378,
+      367
+    ],
+    "decrement": 11,
+    "floorModel": 11
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 310,
+    "side": 2,
+    "burn": [
+      0,
+      456,
+      443
+    ],
+    "decrement": 13,
+    "floorModel": 13
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 320,
+    "side": 2,
+    "burn": [
+      0,
+      443,
+      430
+    ],
+    "decrement": 13,
+    "floorModel": 13
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 330,
+    "side": 2,
+    "burn": [
+      0,
+      430,
+      418
+    ],
+    "decrement": 12,
+    "floorModel": 12
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 340,
+    "side": 2,
+    "burn": [
+      0,
+      614,
+      596
+    ],
+    "decrement": 18,
+    "floorModel": 18
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 350,
+    "side": 2,
+    "burn": [
+      0,
+      636,
+      617
+    ],
+    "decrement": 19,
+    "floorModel": 19
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 360,
+    "side": 2,
+    "burn": [
+      0,
+      617,
+      599
+    ],
+    "decrement": 18,
+    "floorModel": 18
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 370,
+    "side": 2,
+    "burn": [
+      0,
+      599,
+      582
+    ],
+    "decrement": 17,
+    "floorModel": 17
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 390,
+    "side": 2,
+    "burn": [
+      0,
+      565,
+      549
+    ],
+    "decrement": 16,
+    "floorModel": 16
+  },
+  {
+    "replay": "e1bff287e0f64bff98bcc7d444c5d969.payload.mpack.gz",
+    "frame": 420,
+    "side": 2,
+    "burn": [
+      0,
+      635,
+      616
+    ],
+    "decrement": 19,
+    "floorModel": 19
+  },
+  {
+    "replay": "dbd44347ea174529a4ed9de9e9a675a0.payload.mpack.gz",
+    "frame": 220,
+    "side": 1,
+    "burn": [
+      0,
+      107,
+      104
+    ],
+    "decrement": 3,
+    "floorModel": 3
+  },
+  {
+    "replay": "dbd44347ea174529a4ed9de9e9a675a0.payload.mpack.gz",
+    "frame": 220,
+    "side": 2,
+    "burn": [
+      0,
+      303,
+      294
+    ],
+    "decrement": 9,
+    "floorModel": 9
+  },
+  {
+    "replay": "dbd44347ea174529a4ed9de9e9a675a0.payload.mpack.gz",
+    "frame": 280,
+    "side": 1,
+    "burn": [
+      0,
+      212,
+      206
+    ],
+    "decrement": 6,
+    "floorModel": 6
+  },
+  {
+    "replay": "dbd44347ea174529a4ed9de9e9a675a0.payload.mpack.gz",
+    "frame": 280,
+    "side": 2,
+    "burn": [
+      0,
+      335,
+      325
+    ],
+    "decrement": 10,
+    "floorModel": 10
+  },
+  {
+    "replay": "dbd44347ea174529a4ed9de9e9a675a0.payload.mpack.gz",
+    "frame": 360,
+    "side": 1,
+    "burn": [
+      0,
+      324,
+      315
+    ],
+    "decrement": 9,
+    "floorModel": 9
+  },
+  {
+    "replay": "dbd44347ea174529a4ed9de9e9a675a0.payload.mpack.gz",
+    "frame": 360,
+    "side": 2,
+    "burn": [
+      0,
+      601,
+      583
+    ],
+    "decrement": 18,
+    "floorModel": 18
+  },
+  {
+    "replay": "9d889f92acfb4145bd9bf42f0df7f6d2.payload.mpack.gz",
+    "frame": 130,
+    "side": 1,
+    "burn": [
+      0,
+      239,
+      232
+    ],
+    "decrement": 7,
+    "floorModel": 7
+  },
+  {
+    "replay": "9d889f92acfb4145bd9bf42f0df7f6d2.payload.mpack.gz",
+    "frame": 130,
+    "side": 2,
+    "burn": [
+      0,
+      129,
+      126
+    ],
+    "decrement": 3,
+    "floorModel": 3
+  },
+  {
+    "replay": "9d889f92acfb4145bd9bf42f0df7f6d2.payload.mpack.gz",
+    "frame": 140,
+    "side": 1,
+    "burn": [
+      0,
+      332,
+      323
+    ],
+    "decrement": 9,
+    "floorModel": 9
+  },
+  {
+    "replay": "9d889f92acfb4145bd9bf42f0df7f6d2.payload.mpack.gz",
+    "frame": 140,
+    "side": 2,
+    "burn": [
+      0,
+      126,
+      123
+    ],
+    "decrement": 3,
+    "floorModel": 3
+  },
+  {
+    "replay": "9d889f92acfb4145bd9bf42f0df7f6d2.payload.mpack.gz",
+    "frame": 160,
+    "side": 1,
+    "burn": [
+      0,
+      361,
+      351
+    ],
+    "decrement": 10,
+    "floorModel": 10
+  },
+  {
+    "replay": "9d889f92acfb4145bd9bf42f0df7f6d2.payload.mpack.gz",
+    "frame": 160,
+    "side": 2,
+    "burn": [
+      0,
+      175,
+      170
+    ],
+    "decrement": 5,
+    "floorModel": 5
+  },
+  {
+    "replay": "9d889f92acfb4145bd9bf42f0df7f6d2.payload.mpack.gz",
+    "frame": 170,
+    "side": 1,
+    "burn": [
+      0,
+      375,
+      364
+    ],
+    "decrement": 11,
+    "floorModel": 11
+  },
+  {
+    "replay": "9d889f92acfb4145bd9bf42f0df7f6d2.payload.mpack.gz",
+    "frame": 170,
+    "side": 2,
+    "burn": [
+      0,
+      189,
+      184
+    ],
+    "decrement": 5,
+    "floorModel": 5
+  },
+  {
+    "replay": "c72a2270af364213a01c675020443a50.payload.mpack.gz",
+    "frame": 140,
+    "side": 2,
+    "burn": [
+      0,
+      176,
+      171
+    ],
+    "decrement": 5,
+    "floorModel": 5
+  },
+  {
+    "replay": "c72a2270af364213a01c675020443a50.payload.mpack.gz",
+    "frame": 150,
+    "side": 2,
+    "burn": [
+      0,
+      171,
+      166
+    ],
+    "decrement": 5,
+    "floorModel": 5
+  },
+  {
+    "replay": "c72a2270af364213a01c675020443a50.payload.mpack.gz",
+    "frame": 170,
+    "side": 2,
+    "burn": [
+      0,
+      215,
+      209
+    ],
+    "decrement": 6,
+    "floorModel": 6
+  },
+  {
+    "replay": "c72a2270af364213a01c675020443a50.payload.mpack.gz",
+    "frame": 190,
+    "side": 2,
+    "burn": [
+      0,
+      249,
+      242
+    ],
+    "decrement": 7,
+    "floorModel": 7
+  },
+  {
+    "replay": "c72a2270af364213a01c675020443a50.payload.mpack.gz",
+    "frame": 200,
+    "side": 2,
+    "burn": [
+      0,
+      242,
+      235
+    ],
+    "decrement": 7,
+    "floorModel": 7
+  },
+  {
+    "replay": "c72a2270af364213a01c675020443a50.payload.mpack.gz",
+    "frame": 210,
+    "side": 2,
+    "burn": [
+      0,
+      254,
+      247
+    ],
+    "decrement": 7,
+    "floorModel": 7
+  },
+  {
+    "replay": "fd286ea4c67d4c46ac059a4076c7eba6.payload.mpack.gz",
+    "frame": 90,
+    "side": 1,
+    "burn": [
+      0,
+      38,
+      37
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fd286ea4c67d4c46ac059a4076c7eba6.payload.mpack.gz",
+    "frame": 110,
+    "side": 1,
+    "burn": [
+      0,
+      58,
+      57
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fd286ea4c67d4c46ac059a4076c7eba6.payload.mpack.gz",
+    "frame": 150,
+    "side": 1,
+    "burn": [
+      0,
+      61,
+      60
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fd286ea4c67d4c46ac059a4076c7eba6.payload.mpack.gz",
+    "frame": 150,
+    "side": 2,
+    "burn": [
+      0,
+      52,
+      51
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fd286ea4c67d4c46ac059a4076c7eba6.payload.mpack.gz",
+    "frame": 170,
+    "side": 1,
+    "burn": [
+      0,
+      67,
+      65
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "fd286ea4c67d4c46ac059a4076c7eba6.payload.mpack.gz",
+    "frame": 170,
+    "side": 2,
+    "burn": [
+      0,
+      52,
+      51
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "fd286ea4c67d4c46ac059a4076c7eba6.payload.mpack.gz",
+    "frame": 180,
+    "side": 1,
+    "burn": [
+      0,
+      74,
+      72
+    ],
+    "decrement": 2,
+    "floorModel": 2
+  },
+  {
+    "replay": "fd286ea4c67d4c46ac059a4076c7eba6.payload.mpack.gz",
+    "frame": 180,
+    "side": 2,
+    "burn": [
+      0,
+      51,
+      50
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "eb87c7f566d343db94b4bbfef14b77f8.payload.mpack.gz",
+    "frame": 90,
+    "side": 2,
+    "burn": [
+      0,
+      41,
+      40
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "eb87c7f566d343db94b4bbfef14b77f8.payload.mpack.gz",
+    "frame": 100,
+    "side": 2,
+    "burn": [
+      0,
+      40,
+      39
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "eb87c7f566d343db94b4bbfef14b77f8.payload.mpack.gz",
+    "frame": 110,
+    "side": 2,
+    "burn": [
+      0,
+      39,
+      38
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "eb87c7f566d343db94b4bbfef14b77f8.payload.mpack.gz",
+    "frame": 130,
+    "side": 2,
+    "burn": [
+      0,
+      35,
+      34
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "eb87c7f566d343db94b4bbfef14b77f8.payload.mpack.gz",
+    "frame": 150,
+    "side": 2,
+    "burn": [
+      0,
+      47,
+      46
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "eb87c7f566d343db94b4bbfef14b77f8.payload.mpack.gz",
+    "frame": 170,
+    "side": 2,
+    "burn": [
+      0,
+      63,
+      62
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "eb87c7f566d343db94b4bbfef14b77f8.payload.mpack.gz",
+    "frame": 180,
+    "side": 2,
+    "burn": [
+      0,
+      62,
+      61
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "eb87c7f566d343db94b4bbfef14b77f8.payload.mpack.gz",
+    "frame": 190,
+    "side": 2,
+    "burn": [
+      0,
+      61,
+      60
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "eb87c7f566d343db94b4bbfef14b77f8.payload.mpack.gz",
+    "frame": 200,
+    "side": 2,
+    "burn": [
+      0,
+      60,
+      59
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "eb87c7f566d343db94b4bbfef14b77f8.payload.mpack.gz",
+    "frame": 210,
+    "side": 2,
+    "burn": [
+      0,
+      59,
+      58
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "ebde20824cbe454191a459f66ddaac84.payload.mpack.gz",
+    "frame": 100,
+    "side": 1,
+    "burn": [
+      0,
+      34,
+      33
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  },
+  {
+    "replay": "ebde20824cbe454191a459f66ddaac84.payload.mpack.gz",
+    "frame": 120,
+    "side": 1,
+    "burn": [
+      0,
+      37,
+      36
+    ],
+    "decrement": 1,
+    "floorModel": 1
+  }
+]

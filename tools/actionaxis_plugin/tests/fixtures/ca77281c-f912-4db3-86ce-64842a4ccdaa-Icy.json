@@ -1,0 +1,65 @@
+{
+  "source": "GameData.db",
+  "templateId": "ca77281c-f912-4db3-86ce-64842a4ccdaa",
+  "version": "5.0.0",
+  "enchantment": "Icy",
+  "definition": {
+    "Attributes": {
+      "FreezeTargets": 1,
+      "FreezeAmount": 500
+    },
+    "Abilities": {
+      "e1": {
+        "Id": "e1",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardFreeze",
+          "Value": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardRandom",
+            "ExcludeSelf": false,
+            "TargetSection": "OpponentHand",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Icy Cog Ability",
+        "InternalDescription": "",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "b39ec067-0a71-4c90-a8e0-9ee6cbf206fd",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {},
+    "Tags": [],
+    "HiddenTags": [
+      "Freeze"
+    ],
+    "Localization": {
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "f6f1d79fce12b7683eb0976b36987c8a",
+            "Text": "Freeze an item {ability.e1} second(s)"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "HasAbilities": true,
+    "HasAuras": false
+  }
+}

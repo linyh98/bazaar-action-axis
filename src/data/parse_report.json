@@ -1,0 +1,17 @@
+{
+  "total": 3620,
+  "byParseStatus": {
+    "structured": 755,
+    "partial": 2861,
+    "text": 4
+  },
+  "byDataSource": {
+    "game-db": 3242,
+    "tooltip": 21,
+    "merged": 357
+  },
+  "uniqueGuidMatched": 925,
+  "guidIntersection": 1041,
+  "extraGameDbEntries": 752,
+  "extraGameDbGuids": 276
+}

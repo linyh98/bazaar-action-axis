@@ -1,0 +1,1083 @@
+{
+  "monster": {
+    "Id": "6d576bad-7b30-499a-9c67-ec5f9a0a96d7",
+    "Version": "5.0.0",
+    "InternalName": "Kyver Commander",
+    "Player": {
+      "Attributes": {
+        "Prestige": 50,
+        "HealthMax": 900,
+        "Level": 6
+      },
+      "Hand": {
+        "UnlockedSlots": 511,
+        "Items": [
+          {
+            "$type": "TCardInstanceItem",
+            "EnchantmentType": null,
+            "SocketId": "Socket_1",
+            "TemplateId": "4826832f-f3a5-4c40-b8fa-737f002074fa",
+            "TemplateVersion": "4.0.0",
+            "InstanceId": null,
+            "Tier": "Gold",
+            "Attributes": {}
+          },
+          {
+            "$type": "TCardInstanceItem",
+            "EnchantmentType": null,
+            "SocketId": "Socket_2",
+            "TemplateId": "f7241086-8b2d-4882-80c9-a0ddb46910ad",
+            "TemplateVersion": "4.0.0",
+            "InstanceId": null,
+            "Tier": "Silver",
+            "Attributes": {}
+          },
+          {
+            "$type": "TCardInstanceItem",
+            "EnchantmentType": "Obsidian",
+            "SocketId": "Socket_5",
+            "TemplateId": "94e28682-a012-4dd0-8ce8-7fe180aa6127",
+            "TemplateVersion": "4.0.0",
+            "InstanceId": null,
+            "Tier": "Diamond",
+            "Attributes": {}
+          },
+          {
+            "$type": "TCardInstanceItem",
+            "EnchantmentType": "Deadly",
+            "SocketId": "Socket_6",
+            "TemplateId": "94e28682-a012-4dd0-8ce8-7fe180aa6127",
+            "TemplateVersion": "4.0.0",
+            "InstanceId": null,
+            "Tier": "Diamond",
+            "Attributes": {}
+          },
+          {
+            "$type": "TCardInstanceItem",
+            "EnchantmentType": null,
+            "SocketId": "Socket_7",
+            "TemplateId": "618271c5-5721-40ac-b1c7-43aa06a02d07",
+            "TemplateVersion": "4.0.0",
+            "InstanceId": null,
+            "Tier": "Gold",
+            "Attributes": {}
+          },
+          {
+            "$type": "TCardInstanceItem",
+            "EnchantmentType": null,
+            "SocketId": "Socket_8",
+            "TemplateId": "4826832f-f3a5-4c40-b8fa-737f002074fa",
+            "TemplateVersion": "4.0.0",
+            "InstanceId": null,
+            "Tier": "Gold",
+            "Attributes": {}
+          }
+        ]
+      },
+      "Stash": {
+        "UnlockedSlots": 1023,
+        "Items": []
+      },
+      "Skills": [
+        {
+          "$type": "TCardInstanceSkill",
+          "TemplateId": "c5bff6ad-5d13-4cf3-9941-98f3cf913949",
+          "TemplateVersion": "4.0.0",
+          "InstanceId": null,
+          "Tier": "Silver",
+          "Attributes": {}
+        }
+      ],
+      "Socket": {
+        "Effects": []
+      },
+      "OtherArtKeys": [],
+      "Effects": []
+    }
+  },
+  "cards": {
+    "c5bff6ad-5d13-4cf3-9941-98f3cf913949": {
+      "$type": "TCardSkill",
+      "StartingTier": "Gold",
+      "Tiers": {
+        "Gold": {
+          "Attributes": {
+            "ChargeAmount": 1000,
+            "Custom_0": 0,
+            "Custom_1": 1
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "ChargeAmount": 2000
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        }
+      },
+      "Type": "Skill",
+      "Id": "c5bff6ad-5d13-4cf3-9941-98f3cf913949",
+      "Version": "5.0.0",
+      "InternalName": "Counterstrike",
+      "InternalDescription": "",
+      "Size": "Medium",
+      "Heroes": [
+        "Common"
+      ],
+      "Tags": [
+        "Weapon"
+      ],
+      "HiddenTags": [
+        "Charge"
+      ],
+      "ArtKey": "Icon_Skill_MON_Counterattack.png",
+      "SpawningEligibility": "Always",
+      "TranslationKey": "df11ca9c198147f49775d5db46ebfb96",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "29a81766bdb8f28b79da824853d9dabe",
+          "Text": "Counterstrike"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "1e36880f835f9b3ea2a37547a16109b8",
+              "Text": "The first time an enemy uses a Weapon, Charge your items {ability.0} second(s)"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnItemUsed",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "OpponentHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalTag",
+                "Tags": [
+                  "Weapon"
+                ],
+                "Operator": "Any"
+              }
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardCharge",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "CooldownMax",
+                "ComparisonOperator": "GreaterThan",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Custom_0",
+                  "ComparisonOperator": "LessThan",
+                  "ComparisonValue": {
+                    "$type": "TReferenceValueCardAttribute",
+                    "AttributeType": "Custom_1",
+                    "Target": {
+                      "$type": "TTargetCardSelf",
+                      "Conditions": null
+                    },
+                    "DefaultValue": 0.0,
+                    "Modifier": null
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Counterstrike 1",
+          "InternalDescription": "The first time an enemy uses a Weapon, Charge your items [--/--/1/2] second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "f98367e1845f4f1dbd43e8f6d138dc74",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnItemUsed",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "OpponentHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalTag",
+                "Tags": [
+                  "Weapon"
+                ],
+                "Operator": "Any"
+              }
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 1.0
+            },
+            "AttributeType": "Custom_0",
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Immediate",
+          "InternalName": "Counter Increment",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "addd58cb20c13b02b433940601a41d13",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {},
+      "Enchantments": {}
+    },
+    "94e28682-a012-4dd0-8ce8-7fe180aa6127": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 6000,
+            "BuyPrice": 0,
+            "SellPrice": 0,
+            "Multicast": 1,
+            "DamageAmount": 5
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "BuyPrice": 0,
+            "SellPrice": 0,
+            "DamageAmount": 10
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "BuyPrice": 0,
+            "SellPrice": 0,
+            "DamageAmount": 20
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Enchantments": {},
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "94e28682-a012-4dd0-8ce8-7fe180aa6127",
+      "Version": "5.0.0",
+      "InternalName": "Busy Bee",
+      "InternalDescription": "",
+      "StartingTier": "Silver",
+      "Size": "Small",
+      "Heroes": [
+        "Pygmalien"
+      ],
+      "Tags": [
+        "Weapon",
+        "Friend",
+        "Drone"
+      ],
+      "HiddenTags": [
+        "Damage",
+        "Flying"
+      ],
+      "ArtKey": "edb9b74ed12bd9e4aa25c2abffbede7c",
+      "SpawningEligibility": "GuidOnly",
+      "TranslationKey": "9070a0f4cb277f17952a8a8822ef2113",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "9070a0f4cb277f17952a8a8822ef2113",
+          "Text": "Busy Bee"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "0ea99a8936ef177d164655496d5a7a49",
+              "Text": "This starts Flying"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "0743e81e4b06ac799c62288fb5783d5f",
+              "Text": "Deal {ability.1} Damage"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardFlyingStart",
+            "Duration": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "Flying",
+                "ComparisonOperator": "Equal",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Highest",
+          "InternalName": "Busy Bee 3",
+          "InternalDescription": "This starts Flying",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "ad90e123cf41168c57bb13345ce03d7f",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerDamage",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Busy Bees 1",
+          "InternalDescription": "Deal {ability.0} Damage",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/Pierce/Projectile_Pierce_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "2eaba17429709dbe7ea09c617465306a",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    },
+    "f7241086-8b2d-4882-80c9-a0ddb46910ad": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 10000,
+            "Multicast": 1,
+            "DamageAmount": 0,
+            "Custom_0": 25,
+            "Custom_1": 25,
+            "Custom_2": 0
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "Custom_0": 50,
+            "Custom_1": 50
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "Custom_0": 100,
+            "Custom_1": 100
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "Custom_0": 200,
+            "Custom_1": 200
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0
+          ]
+        }
+      },
+      "Enchantments": {},
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "f7241086-8b2d-4882-80c9-a0ddb46910ad",
+      "Version": "5.0.0",
+      "InternalName": "Junkyard Lance",
+      "InternalDescription": "",
+      "StartingTier": "Bronze",
+      "Size": "Large",
+      "Heroes": [
+        "Common"
+      ],
+      "Tags": [
+        "Weapon"
+      ],
+      "HiddenTags": [
+        "Damage",
+        "DamageReference"
+      ],
+      "ArtKey": "a588fd9d8e7467f4ea4742803abf4fe2",
+      "SpawningEligibility": "Always",
+      "TranslationKey": "a6af5f7dfd8d3c65ea3ec67f1cff1efe",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "a6af5f7dfd8d3c65ea3ec67f1cff1efe",
+          "Text": "Junkyard Lance"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "0a6cd51cf9d3edeb86fab0863c8c4a9a",
+              "Text": "Deal {aura.9} Damage for each Small item you have (including Stash)"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerDamage",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Junkyard Lance",
+          "InternalDescription": "Deal {ability.0} Damage for each Small item you have",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/Slash/VFX_Slash_Tier1_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "a6af5f7dfd8d3c65ea3ec67f1cff1efe",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "1": {
+          "Id": "1",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "DamageAmount",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardCount",
+              "Target": {
+                "$type": "TTargetCardSection",
+                "TargetSection": "SelfHandAndStash",
+                "ExcludeSelf": false,
+                "Conditions": {
+                  "$type": "TCardConditionalSize",
+                  "Sizes": [
+                    "Small"
+                  ],
+                  "IsNot": false
+                }
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "Custom_0",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": null
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Junkyard Lance",
+          "InternalDescription": "Sets value of Junkyard Lance 1",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "93911bec96cb67bfcc317e7f7665af7b",
+          "WorksIn": "Anywhere"
+        },
+        "9": {
+          "Id": "9",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Custom_2",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_1",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Tooltip Handling",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "93911bec96cb67bfcc317e7f7665af7b",
+          "WorksIn": "Anywhere"
+        }
+      }
+    },
+    "618271c5-5721-40ac-b1c7-43aa06a02d07": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Multicast": 1,
+            "SlowAmount": 1000,
+            "SlowTargets": 1,
+            "RegenApplyAmount": 1
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "RegenApplyAmount": 2,
+            "SlowTargets": 2
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "RegenApplyAmount": 3,
+            "SlowTargets": 3
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "RegenApplyAmount": 4,
+            "SlowTargets": 4
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Enchantments": {},
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "618271c5-5721-40ac-b1c7-43aa06a02d07",
+      "Version": "5.0.0",
+      "InternalName": "Honeycomb",
+      "InternalDescription": "",
+      "StartingTier": "Bronze",
+      "Size": "Small",
+      "Heroes": [
+        "Jules"
+      ],
+      "Tags": [
+        "Food"
+      ],
+      "HiddenTags": [
+        "Slow",
+        "Regen"
+      ],
+      "ArtKey": "c19c19bf4ada41b488da85d3a37a1a70",
+      "SpawningEligibility": "Always",
+      "TranslationKey": "2815e498b71e465c80e19de1eb264619",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "2815e498b71e465c80e19de1eb264619",
+          "Text": "Honeycomb"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "b9c7517beb7d2ba21ca3a4388bdacb0c",
+              "Text": "Slow {ability.0.targets} item(s) {ability.0} second(s)"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "82c4ab82edc7689b44b940fa6c5c87fc",
+              "Text": "Regen {ability.1}"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardSlow",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": false,
+              "TargetSection": "OpponentHand",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "CooldownMax",
+                "ComparisonOperator": "GreaterThan",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Honeycomb",
+          "InternalDescription": "Slow [1/2/3/4] item(s) 1 second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "368ce9ab0f1089bd8c0c5dbeebf5a124",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerRegenApply",
+            "ReferenceValue": null,
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Honeycomb 2",
+          "InternalDescription": "Gain [2/4/6/8] Regen",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "9d4de575b2981475a83ac4194babcf3e",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    },
+    "4826832f-f3a5-4c40-b8fa-737f002074fa": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "Custom_0": 1
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "0"
+          ],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "Custom_0": 2
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "0"
+          ],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "Custom_0": 4
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "0"
+          ],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "Custom_0": 8
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "0"
+          ],
+          "TooltipIds": [
+            0
+          ]
+        }
+      },
+      "Enchantments": {},
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "4826832f-f3a5-4c40-b8fa-737f002074fa",
+      "Version": "5.0.0",
+      "InternalName": "Insect Wing",
+      "InternalDescription": "",
+      "StartingTier": "Bronze",
+      "Size": "Small",
+      "Heroes": [
+        "Common"
+      ],
+      "Tags": [
+        "Loot"
+      ],
+      "HiddenTags": [
+        "Cooldown"
+      ],
+      "ArtKey": "63d2c1a4e6f3dbf4885bc6fcf6f897cd",
+      "SpawningEligibility": "Always",
+      "TranslationKey": "64a43ddb303a971cd42fca3194e8dd0a",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "64a43ddb303a971cd42fca3194e8dd0a",
+          "Text": "Insect Wing"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "bc9a9600266c1f18d3678079fdb7c7f9",
+              "Text": "When you sell this, reduce your leftmost item's Cooldown by {ability.0}%"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardSold",
+            "Subject": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_0",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "AttributeType": "PercentCooldownReduction",
+            "Operation": "Add",
+            "Duration": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardXMost",
+              "TargetSection": "SelfHand",
+              "TargetMode": "LeftMostCard",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "CooldownMax",
+                "ComparisonOperator": "GreaterThan",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Insect Wing",
+          "InternalDescription": "When you sell this, reduce your leftmost item's Cooldown by +{ability.0}%",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "64a43ddb303a971cd42fca3194e8dd0a",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    }
+  }
+}

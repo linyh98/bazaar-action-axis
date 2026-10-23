@@ -1,0 +1,1 @@
+class MonsterTestsMain { static int Main() { BazaarActionAxis.Tests.TestHarness.Run("MonsterOpponent", BazaarActionAxis.Tests.MonsterOpponentTests.Run); return BazaarActionAxis.Tests.TestHarness.Finish(); } }

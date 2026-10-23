@@ -1,0 +1,1575 @@
+{
+  "source": "GameData.db read only, installed template Version 5.0.0",
+  "cards": {
+    "d4c0cf1e-7856-4e40-877f-c77b34f596ed": {
+      "Id": "d4c0cf1e-7856-4e40-877f-c77b34f596ed",
+      "Version": "5.0.0",
+      "InternalName": "RED-F1R3FLY",
+      "Tags": [
+        "Friend"
+      ],
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 8000,
+            "Multicast": 1,
+            "BurnApplyAmount": 6,
+            "ChargeAmount": 1000,
+            "ChargeTargets": 1
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 7000,
+            "BurnApplyAmount": 8
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 6000,
+            "BurnApplyAmount": 10
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "BurnApplyAmount": 12
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerBurnApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "RED-F1R3FLY 1",
+          "InternalDescription": "Burn",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "148818aec3bd5a93c27123c96e52b292",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOr",
+            "Triggers": [
+              {
+                "$type": "TTriggerOnCardPerformedSlow",
+                "Subject": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "Neighbor",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                },
+                "Target": null
+              },
+              {
+                "$type": "TTriggerOnCardPerformedHaste",
+                "Subject": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "Neighbor",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                },
+                "Target": null
+              }
+            ]
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardCharge",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "RED-F1R3FLY",
+          "InternalDescription": "When you use a Core, this is Hasted for {ability.1} second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "190d630f1523f336fb34ba5a3a08bb35",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    },
+    "ca77281c-f912-4db3-86ce-64842a4ccdaa": {
+      "Id": "ca77281c-f912-4db3-86ce-64842a4ccdaa",
+      "Version": "5.0.0",
+      "InternalName": "Cog",
+      "Tags": [
+        "Relic"
+      ],
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 4000,
+            "Multicast": 1,
+            "HasteAmount": 1000,
+            "HasteTargets": 1
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "HasteAmount": 2000
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "HasteAmount": 3000
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "HasteAmount": 4000
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardHaste",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": false,
+              "TargetSection": "SelfNeighbors",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "CooldownMax",
+                "ComparisonOperator": "GreaterThan",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "High",
+          "InternalName": "Cog 1",
+          "InternalDescription": "Haste an adjacent item {ability.0} second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "0fa9ecacdd5b2ca505fa87ffe3427a27",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {},
+      "Icy": {
+        "Attributes": {
+          "FreezeTargets": 1,
+          "FreezeAmount": 500
+        },
+        "Abilities": {
+          "e1": {
+            "Id": "e1",
+            "Trigger": {
+              "$type": "TTriggerOnCardFired"
+            },
+            "ActiveIn": "HandOnly",
+            "Action": {
+              "$type": "TActionCardFreeze",
+              "Value": null,
+              "TargetCount": null,
+              "Target": {
+                "$type": "TTargetCardRandom",
+                "ExcludeSelf": false,
+                "TargetSection": "OpponentHand",
+                "Conditions": null
+              },
+              "Cost": null
+            },
+            "Prerequisites": null,
+            "Priority": "Medium",
+            "InternalName": "Icy Cog Ability",
+            "InternalDescription": "",
+            "MigrationData": "",
+            "VFXConfig": {
+              "VFXOverrideKey": null,
+              "VFXShouldPlay": true,
+              "VFXIsTakeover": false
+            },
+            "TranslationKey": "b39ec067-0a71-4c90-a8e0-9ee6cbf206fd",
+            "WorksIn": "Anywhere"
+          }
+        },
+        "Auras": {},
+        "Tags": [],
+        "HiddenTags": [
+          "Freeze"
+        ],
+        "Localization": {
+          "Tooltips": [
+            {
+              "Content": {
+                "Key": "f6f1d79fce12b7683eb0976b36987c8a",
+                "Text": "Freeze an item {ability.e1} second(s)"
+              },
+              "TooltipType": "Active",
+              "TooltipCondition": null,
+              "Prerequisites": null
+            }
+          ]
+        },
+        "HasAbilities": true,
+        "HasAuras": false
+      }
+    },
+    "9fafc0a5-6675-4e17-9457-590f13354a39": {
+      "Id": "9fafc0a5-6675-4e17-9457-590f13354a39",
+      "Version": "5.0.0",
+      "InternalName": "Launcher Core",
+      "Tags": [
+        "Core",
+        "Tech"
+      ],
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 6000,
+            "Multicast": 1,
+            "FlyingTargets": 2,
+            "ChargeAmount": 1000
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "FlyingTargets": 3
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "FlyingTargets": 4
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardFlyingStart",
+            "Duration": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": true,
+              "TargetSection": "SelfHand",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "Flying",
+                "ComparisonOperator": "Equal",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Launcher Core 1",
+          "InternalDescription": "[2/3/4] other items start Flying",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "846e8e7afaf45608603ea0cb19c2e4be",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardCharge",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": true,
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "Flying",
+                "ComparisonOperator": "Equal",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                }
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Launcher Core 2",
+          "InternalDescription": "Charge your Flying items 1 second",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "78d5e8670d88516a486726c28e6a37f1",
+          "WorksIn": "Anywhere"
+        },
+        "2": {
+          "Id": "2",
+          "Trigger": {
+            "$type": "TTriggerOnItemUsed",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": true,
+              "Conditions": {
+                "$type": "TCardConditionalOr",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  },
+                  {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "Flying",
+                    "ComparisonOperator": "Equal",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardCharge",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Launcher Core 3",
+          "InternalDescription": "When you use a Friend or Flying item, Charge this 1 second",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "78d5e8670d88516a486726c28e6a37f1",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    },
+    "014d9c98-e823-443c-98a3-6367ab81c956": {
+      "Id": "014d9c98-e823-443c-98a3-6367ab81c956",
+      "Version": "5.0.0",
+      "InternalName": "Trained Spider",
+      "Tags": [
+        "Friend"
+      ],
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 6000,
+            "Multicast": 1,
+            "PoisonApplyAmount": 1,
+            "Custom_0": 1
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "PoisonApplyAmount": 2,
+            "Custom_0": 2
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "PoisonApplyAmount": 3,
+            "Custom_0": 3
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "PoisonApplyAmount": 4,
+            "Custom_0": 4
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerPoisonApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Trained Spider 1",
+          "InternalDescription": "Poison {ability.0}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "3d2d9cbd1629c661821d270b483c4e63",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardSold",
+            "Subject": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_0",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "AttributeType": "PoisonApplyAmount",
+            "Operation": "Add",
+            "Duration": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardXMost",
+              "TargetSection": "SelfHand",
+              "TargetMode": "LeftMostCard",
+              "ExcludeSelf": true,
+              "Conditions": {
+                "$type": "TCardConditionalHiddenTag",
+                "Tags": [
+                  "Poison"
+                ],
+                "Operator": "Any"
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Trained Spider 2",
+          "InternalDescription": "When you sell this, your leftmost Poison item permanently gains {ability.1}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1dd36380b1e26efcbcefaf1cfab2aeb5",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    },
+    "666f4084-48cc-4558-b678-a46ba18c1bf2": {
+      "Id": "666f4084-48cc-4558-b678-a46ba18c1bf2",
+      "Version": "5.0.0",
+      "InternalName": "Soldering Gun",
+      "Tags": [
+        "Tool"
+      ],
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 6000,
+            "Multicast": 1,
+            "BurnApplyAmount": 1
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1",
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "BurnApplyAmount": 2
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1",
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "BurnApplyAmount": 3
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1",
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "BurnApplyAmount": 4
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1",
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerBurnApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Soldering Gun 1",
+          "InternalDescription": "Burn {ability.0}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "4783f8f78a1be53a9f52985ba68786ea",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "1": {
+          "Id": "1",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Multicast",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 1.0
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardPositional",
+                "Origin": "Self",
+                "TargetMode": "Neighbor",
+                "IncludeOrigin": false,
+                "Conditions": {
+                  "$type": "TCardConditionalTag",
+                  "Tags": [
+                    "Friend"
+                  ],
+                  "Operator": "Any"
+                }
+              },
+              "Comparison": "GreaterThanOrEqual",
+              "Amount": 1
+            }
+          ],
+          "InternalName": "Soldering Gun 2",
+          "InternalDescription": "This has +{aura.1} Multicast if it is adjacent to a Friend",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "d0703f79c7bbb899c68bc81dcbe86e89",
+          "WorksIn": "Anywhere"
+        },
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Multicast",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 1.0
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardPositional",
+                "Origin": "Self",
+                "TargetMode": "Neighbor",
+                "IncludeOrigin": false,
+                "Conditions": {
+                  "$type": "TCardConditionalTag",
+                  "Tags": [
+                    "Tool"
+                  ],
+                  "Operator": "Any"
+                }
+              },
+              "Comparison": "GreaterThanOrEqual",
+              "Amount": 1
+            }
+          ],
+          "InternalName": "Soldering Gun 3",
+          "InternalDescription": "This has +{aura.2} Multicast if it is adjacent to a Tool",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "5182e908b08ca61520c95777806062ba",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Toxic": {
+        "Attributes": {
+          "PoisonApplyAmount": 0
+        },
+        "Abilities": {
+          "e1": {
+            "Id": "e1",
+            "Trigger": {
+              "$type": "TTriggerOnCardFired"
+            },
+            "ActiveIn": "HandOnly",
+            "Action": {
+              "$type": "TActionPlayerPoisonApply",
+              "ReferenceValue": null,
+              "Target": {
+                "$type": "TTargetPlayerRelative",
+                "TargetMode": "Opponent",
+                "Conditions": null
+              },
+              "Cost": null
+            },
+            "Prerequisites": null,
+            "Priority": "Medium",
+            "InternalName": "Toxic Soldering Gun Ability",
+            "InternalDescription": "",
+            "MigrationData": "",
+            "VFXConfig": {
+              "VFXOverrideKey": null,
+              "VFXShouldPlay": true,
+              "VFXIsTakeover": false
+            },
+            "TranslationKey": "b6f17c55-95ff-4c96-af77-0683e87e0fce",
+            "WorksIn": "Anywhere"
+          }
+        },
+        "Auras": {
+          "e2": {
+            "Id": "e2",
+            "ActiveIn": "HandAndStash",
+            "Action": {
+              "$type": "TAuraActionCardModifyAttribute",
+              "AttributeType": "PoisonApplyAmount",
+              "Operation": "Add",
+              "Value": {
+                "$type": "TReferenceValueCardAttribute",
+                "AttributeType": "BurnApplyAmount",
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "DefaultValue": 0.0,
+                "Modifier": {
+                  "ModifyMode": "Multiply",
+                  "Value": {
+                    "$type": "TFixedValue",
+                    "Value": 1.0
+                  },
+                  "ShouldRound": true
+                }
+              },
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              }
+            },
+            "Prerequisites": null,
+            "InternalName": "Toxic Soldering Gun Aura",
+            "InternalDescription": "Sets the value of Poison",
+            "MigrationData": "",
+            "VFXConfig": {
+              "VFXOverrideKey": null,
+              "VFXShouldPlay": true,
+              "VFXIsTakeover": false
+            },
+            "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+            "WorksIn": "Anywhere"
+          }
+        },
+        "Tags": [],
+        "HiddenTags": [
+          "Poison"
+        ],
+        "Localization": {
+          "Tooltips": [
+            {
+              "Content": {
+                "Key": "0b8e08e8da2b05a0ce270b2781e1e59f",
+                "Text": "Poison equal to this item's Burn"
+              },
+              "TooltipType": "Active",
+              "TooltipCondition": null,
+              "Prerequisites": null
+            }
+          ]
+        },
+        "HasAbilities": true,
+        "HasAuras": true
+      }
+    },
+    "d5a56d21-6892-4a08-b57a-1af53687ff37": {
+      "Id": "d5a56d21-6892-4a08-b57a-1af53687ff37",
+      "Version": "5.0.0",
+      "InternalName": "Aludel",
+      "Tags": [
+        "Tool"
+      ],
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 6000,
+            "Multicast": 1,
+            "PoisonApplyAmount": 4
+          },
+          "AbilityIds": [
+            "0",
+            "2"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "PoisonApplyAmount": 8
+          },
+          "AbilityIds": [
+            "0",
+            "2"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "PoisonApplyAmount": 12
+          },
+          "AbilityIds": [
+            "0",
+            "2"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "PoisonApplyAmount": 16
+          },
+          "AbilityIds": [
+            "0",
+            "2"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerPoisonApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Aludel 1",
+          "InternalDescription": "Poison [6/8/10/12]",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PrivateHotSprings/Variants/Projectile_PrivateHotSrpings_Poison_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "92491ca9384c7e461517e4bab99ca043",
+          "WorksIn": "Anywhere"
+        },
+        "2": {
+          "Id": "2",
+          "Trigger": {
+            "$type": "TTriggerOnDayStarted"
+          },
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TActionGameSpawnCards",
+            "TargetPlayer": {
+              "$type": "TTargetPlayerAbsolute",
+              "TargetMode": "Player",
+              "Conditions": null
+            },
+            "SpawnContext": {
+              "$type": "TSpawnContextQuery",
+              "Groups": [
+                {
+                  "$type": "TSpawnGroup",
+                  "Filters": [
+                    {
+                      "$type": "TSpawnFilterIdList",
+                      "Ids": [
+                        "694a08fe-e8ff-4a45-9693-4c68f11a1f8b"
+                      ]
+                    }
+                  ],
+                  "SelectionMethod": "Random",
+                  "Limit": null,
+                  "Prerequisites": null,
+                  "RandomWeight": 0,
+                  "Behaviors": null
+                }
+              ],
+              "SelectionMethod": "Sequential",
+              "Limit": {
+                "$type": "TFixedValue",
+                "Value": 1.0
+              },
+              "Behaviors": [
+                {
+                  "$type": "TSpawnBehaviorAllowDuplicates",
+                  "AllowDuplicates": true
+                },
+                {
+                  "$type": "TSpawnBehaviorIgnoreHero",
+                  "IgnoreHero": true
+                },
+                {
+                  "$type": "TSpawnBehaviorInheritEnchantment",
+                  "Inherits": false
+                },
+                {
+                  "$type": "TSpawnBehaviorInheritTier",
+                  "Inherits": true
+                }
+              ]
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Alembic 3",
+          "InternalDescription": "At the start of each day, get a Catalyst",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "e6716b57dcfab3e8567b75a45bdfaba1",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "1": {
+          "Id": "1",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Multicast",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardCount",
+              "Target": {
+                "$type": "TTargetCardPositional",
+                "Origin": "Self",
+                "TargetMode": "Neighbor",
+                "IncludeOrigin": false,
+                "Conditions": {
+                  "$type": "TCardConditionalTag",
+                  "Tags": [
+                    "Potion",
+                    "Reagent"
+                  ],
+                  "Operator": "Any"
+                }
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Aludel 2",
+          "InternalDescription": "This has +1 Multicast for each adjacent Potion or Reagent",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "9ed8516049000a0e1a90054e0aab06ce",
+          "WorksIn": "Anywhere"
+        }
+      }
+    },
+    "a655fb50-b9e1-41ec-b658-07459014f96c": {
+      "Id": "a655fb50-b9e1-41ec-b658-07459014f96c",
+      "Version": "5.0.0",
+      "InternalName": "Drowsdrop",
+      "Tags": [
+        "Potion"
+      ],
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Multicast": 1,
+            "AmmoMax": 1,
+            "PoisonApplyAmount": 4,
+            "SlowAmount": 1000,
+            "SlowTargets": 1,
+            "ReloadAmount": 99,
+            "ReloadTargets": 1
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "PoisonApplyAmount": 8,
+            "SlowTargets": 2
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "PoisonApplyAmount": 12,
+            "SlowTargets": 3
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "PoisonApplyAmount": 16,
+            "SlowTargets": 4
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerPoisonApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Drowsdrop 1",
+          "InternalDescription": "Poison {ability.0}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PotionsThrowing/Poison/Projectile_PotionsThrowing_Poison_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "f81e2a52bd8a45e8ba22e5ed65b179ad",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardSlow",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": false,
+              "TargetSection": "OpponentHand",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "CooldownMax",
+                "ComparisonOperator": "GreaterThan",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "3769133992f9bd90cef8f0f5a57b0bf4",
+          "WorksIn": "Anywhere"
+        },
+        "2": {
+          "Id": "2",
+          "Trigger": {
+            "$type": "TTriggerOnCardPerformedSlow",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfBoard",
+              "ExcludeSelf": false,
+              "Conditions": null
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardReload",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Hunter's Blind 3",
+          "InternalDescription": "When you Slow this, reload it",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1e28737efff81bd95f11ba802c62a374",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    },
+    "edceffa1-9a9f-4ab3-b6a9-8a899b5726e3": {
+      "Id": "edceffa1-9a9f-4ab3-b6a9-8a899b5726e3",
+      "Version": "5.0.0",
+      "InternalName": "Aviators",
+      "Tags": [
+        "Apparel"
+      ],
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Multicast": 1,
+            "ShieldApplyAmount": 20,
+            "ChargeAmount": 1000,
+            "ChargeTargets": 1
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "ShieldApplyAmount": 40
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "ShieldApplyAmount": 80
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "ShieldApplyAmount": 160
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerShieldApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Aviators 1",
+          "InternalDescription": "Shield {ability.0}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "f4f6f70d4b232f0d143c9334f4ed44a3",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOr",
+            "Triggers": [
+              {
+                "$type": "TTriggerOnCardPerformedBurn",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfBoard",
+                  "ExcludeSelf": false,
+                  "Conditions": null
+                },
+                "Target": null
+              },
+              {
+                "$type": "TTriggerOnCardPerformedDestruction",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfBoard",
+                  "ExcludeSelf": false,
+                  "Conditions": null
+                },
+                "Target": null
+              }
+            ]
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardCharge",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Aviator 2",
+          "InternalDescription": "When you Burn, Charge this {ability.1} second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "539bb22296309d26ebdb2e2970d589bb",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    }
+  }
+}

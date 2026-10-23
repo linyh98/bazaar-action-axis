@@ -1,0 +1,2790 @@
+[
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Bronze": {
+        "Attributes": {
+          "CooldownMax": 6000,
+          "Multicast": 1,
+          "PoisonApplyAmount": 1,
+          "Custom_0": 1
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Silver": {
+        "Attributes": {
+          "PoisonApplyAmount": 2,
+          "Custom_0": 2
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "PoisonApplyAmount": 3,
+          "Custom_0": 3
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "PoisonApplyAmount": 4,
+          "Custom_0": 4
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "014d9c98-e823-443c-98a3-6367ab81c956",
+    "Version": "5.0.0",
+    "InternalName": "Trained Spider",
+    "InternalDescription": "",
+    "StartingTier": "Bronze",
+    "Size": "Small",
+    "Heroes": [
+      "Common"
+    ],
+    "Tags": [
+      "Friend"
+    ],
+    "HiddenTags": [
+      "Poison",
+      "PoisonReference"
+    ],
+    "ArtKey": "1e4df0d48639a704e903a678087f48d8",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "d31676c6f990425a0e8470ab52a1cb00",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "d31676c6f990425a0e8470ab52a1cb00",
+        "Text": "Trained Spider"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "1d253ebff415eba7833e3eb9d8ce7258",
+            "Text": "Poison {ability.0}"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "42dd7c97a2b8d99b7372aaa6006024ad",
+            "Text": "When you sell this, your leftmost Poison item permanently gains {ability.1}"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionPlayerPoisonApply",
+          "ReferenceValue": null,
+          "Target": {
+            "$type": "TTargetPlayerRelative",
+            "TargetMode": "Opponent",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Trained Spider 1",
+        "InternalDescription": "Poison {ability.0}",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "3d2d9cbd1629c661821d270b483c4e63",
+        "WorksIn": "Anywhere"
+      },
+      "1": {
+        "Id": "1",
+        "Trigger": {
+          "$type": "TTriggerOnCardSold",
+          "Subject": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          }
+        },
+        "ActiveIn": "HandAndStash",
+        "Action": {
+          "$type": "TActionCardModifyAttribute",
+          "Value": {
+            "$type": "TReferenceValueCardAttribute",
+            "AttributeType": "Custom_0",
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "DefaultValue": 0.0,
+            "Modifier": {
+              "ModifyMode": "Multiply",
+              "Value": {
+                "$type": "TFixedValue",
+                "Value": 1.0
+              },
+              "ShouldRound": true
+            }
+          },
+          "AttributeType": "PoisonApplyAmount",
+          "Operation": "Add",
+          "Duration": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardXMost",
+            "TargetSection": "SelfHand",
+            "TargetMode": "LeftMostCard",
+            "ExcludeSelf": true,
+            "Conditions": {
+              "$type": "TCardConditionalHiddenTag",
+              "Tags": [
+                "Poison"
+              ],
+              "Operator": "Any"
+            }
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Low",
+        "InternalName": "Trained Spider 2",
+        "InternalDescription": "When you sell this, your leftmost Poison item permanently gains {ability.1}",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "1dd36380b1e26efcbcefaf1cfab2aeb5",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {}
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Bronze": {
+        "Attributes": {
+          "Custom_0": 1
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "0"
+        ],
+        "TooltipIds": [
+          0
+        ]
+      },
+      "Silver": {
+        "Attributes": {
+          "Custom_0": 2
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "0"
+        ],
+        "TooltipIds": [
+          0
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "Custom_0": 4
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "0"
+        ],
+        "TooltipIds": [
+          0
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "Custom_0": 8
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "0"
+        ],
+        "TooltipIds": [
+          0
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "4826832f-f3a5-4c40-b8fa-737f002074fa",
+    "Version": "5.0.0",
+    "InternalName": "Insect Wing",
+    "InternalDescription": "",
+    "StartingTier": "Bronze",
+    "Size": "Small",
+    "Heroes": [
+      "Common"
+    ],
+    "Tags": [
+      "Loot"
+    ],
+    "HiddenTags": [
+      "Cooldown"
+    ],
+    "ArtKey": "63d2c1a4e6f3dbf4885bc6fcf6f897cd",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "64a43ddb303a971cd42fca3194e8dd0a",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "64a43ddb303a971cd42fca3194e8dd0a",
+        "Text": "Insect Wing"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "bc9a9600266c1f18d3678079fdb7c7f9",
+            "Text": "When you sell this, reduce your leftmost item's Cooldown by {ability.0}%"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardSold",
+          "Subject": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          }
+        },
+        "ActiveIn": "HandAndStash",
+        "Action": {
+          "$type": "TActionCardModifyAttribute",
+          "Value": {
+            "$type": "TReferenceValueCardAttribute",
+            "AttributeType": "Custom_0",
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "DefaultValue": 0.0,
+            "Modifier": {
+              "ModifyMode": "Multiply",
+              "Value": {
+                "$type": "TFixedValue",
+                "Value": 1.0
+              },
+              "ShouldRound": true
+            }
+          },
+          "AttributeType": "PercentCooldownReduction",
+          "Operation": "Add",
+          "Duration": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardXMost",
+            "TargetSection": "SelfHand",
+            "TargetMode": "LeftMostCard",
+            "ExcludeSelf": false,
+            "Conditions": {
+              "$type": "TCardConditionalAttribute",
+              "Attribute": "CooldownMax",
+              "ComparisonOperator": "GreaterThan",
+              "ComparisonValue": {
+                "$type": "TFixedValue",
+                "Value": 0.0
+              }
+            }
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Low",
+        "InternalName": "Insect Wing",
+        "InternalDescription": "When you sell this, reduce your leftmost item's Cooldown by +{ability.0}%",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "64a43ddb303a971cd42fca3194e8dd0a",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {}
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Bronze": {
+        "Attributes": {
+          "CooldownMax": 5000,
+          "Multicast": 1,
+          "SlowAmount": 1000,
+          "SlowTargets": 1,
+          "RegenApplyAmount": 1
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Silver": {
+        "Attributes": {
+          "RegenApplyAmount": 2,
+          "SlowTargets": 2
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "RegenApplyAmount": 3,
+          "SlowTargets": 3
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "RegenApplyAmount": 4,
+          "SlowTargets": 4
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "618271c5-5721-40ac-b1c7-43aa06a02d07",
+    "Version": "5.0.0",
+    "InternalName": "Honeycomb",
+    "InternalDescription": "",
+    "StartingTier": "Bronze",
+    "Size": "Small",
+    "Heroes": [
+      "Jules"
+    ],
+    "Tags": [
+      "Food"
+    ],
+    "HiddenTags": [
+      "Slow",
+      "Regen"
+    ],
+    "ArtKey": "c19c19bf4ada41b488da85d3a37a1a70",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "2815e498b71e465c80e19de1eb264619",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "2815e498b71e465c80e19de1eb264619",
+        "Text": "Honeycomb"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "b9c7517beb7d2ba21ca3a4388bdacb0c",
+            "Text": "Slow {ability.0.targets} item(s) {ability.0} second(s)"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "82c4ab82edc7689b44b940fa6c5c87fc",
+            "Text": "Regen {ability.1}"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardSlow",
+          "Value": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardRandom",
+            "ExcludeSelf": false,
+            "TargetSection": "OpponentHand",
+            "Conditions": {
+              "$type": "TCardConditionalAttribute",
+              "Attribute": "CooldownMax",
+              "ComparisonOperator": "GreaterThan",
+              "ComparisonValue": {
+                "$type": "TFixedValue",
+                "Value": 0.0
+              }
+            }
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Honeycomb",
+        "InternalDescription": "Slow [1/2/3/4] item(s) 1 second(s)",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "368ce9ab0f1089bd8c0c5dbeebf5a124",
+        "WorksIn": "Anywhere"
+      },
+      "1": {
+        "Id": "1",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionPlayerRegenApply",
+          "ReferenceValue": null,
+          "Duration": {
+            "$type": "TDeterminantDuration",
+            "DurationType": "UntilEndOfCombat"
+          },
+          "Target": {
+            "$type": "TTargetPlayerRelative",
+            "TargetMode": "Self",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Low",
+        "InternalName": "Honeycomb 2",
+        "InternalDescription": "Gain [2/4/6/8] Regen",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "9d4de575b2981475a83ac4194babcf3e",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {}
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Bronze": {
+        "Attributes": {
+          "CooldownMax": 6000,
+          "Multicast": 1,
+          "BurnApplyAmount": 1
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "1",
+          "2"
+        ],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Silver": {
+        "Attributes": {
+          "BurnApplyAmount": 2
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "1",
+          "2"
+        ],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "BurnApplyAmount": 3
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "1",
+          "2"
+        ],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "BurnApplyAmount": 4
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "1",
+          "2"
+        ],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "666f4084-48cc-4558-b678-a46ba18c1bf2",
+    "Version": "5.0.0",
+    "InternalName": "Soldering Gun",
+    "InternalDescription": "",
+    "StartingTier": "Bronze",
+    "Size": "Small",
+    "Heroes": [
+      "Dooley"
+    ],
+    "Tags": [
+      "Tool"
+    ],
+    "HiddenTags": [
+      "Burn"
+    ],
+    "ArtKey": "548e7d6aada38d84598b7452de850162",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "11cbe710354fab6b951ba8a7b03b1f3b",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "11cbe710354fab6b951ba8a7b03b1f3b",
+        "Text": "Soldering Gun"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "b0ce312b82dce3ae97fe4d5378d306f8",
+            "Text": "Burn {ability.0}"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "2cd068237f07b0a6f72b5223cf6ed783",
+            "Text": "This has +{aura.1} Multicast if it is adjacent to a Friend"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "b01b8a0792ed00d8919f717b99dea306",
+            "Text": "This has +{aura.2} Multicast if it is adjacent to a Tool"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionPlayerBurnApply",
+          "ReferenceValue": null,
+          "Target": {
+            "$type": "TTargetPlayerRelative",
+            "TargetMode": "Opponent",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Soldering Gun 1",
+        "InternalDescription": "Burn {ability.0}",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "4783f8f78a1be53a9f52985ba68786ea",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {
+      "1": {
+        "Id": "1",
+        "ActiveIn": "HandAndStash",
+        "Action": {
+          "$type": "TAuraActionCardModifyAttribute",
+          "AttributeType": "Multicast",
+          "Operation": "Add",
+          "Value": {
+            "$type": "TFixedValue",
+            "Value": 1.0
+          },
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          }
+        },
+        "Prerequisites": [
+          {
+            "$type": "TPrerequisiteCardCount",
+            "Subject": {
+              "$type": "TTargetCardPositional",
+              "Origin": "Self",
+              "TargetMode": "Neighbor",
+              "IncludeOrigin": false,
+              "Conditions": {
+                "$type": "TCardConditionalTag",
+                "Tags": [
+                  "Friend"
+                ],
+                "Operator": "Any"
+              }
+            },
+            "Comparison": "GreaterThanOrEqual",
+            "Amount": 1
+          }
+        ],
+        "InternalName": "Soldering Gun 2",
+        "InternalDescription": "This has +{aura.1} Multicast if it is adjacent to a Friend",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "d0703f79c7bbb899c68bc81dcbe86e89",
+        "WorksIn": "Anywhere"
+      },
+      "2": {
+        "Id": "2",
+        "ActiveIn": "HandAndStash",
+        "Action": {
+          "$type": "TAuraActionCardModifyAttribute",
+          "AttributeType": "Multicast",
+          "Operation": "Add",
+          "Value": {
+            "$type": "TFixedValue",
+            "Value": 1.0
+          },
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          }
+        },
+        "Prerequisites": [
+          {
+            "$type": "TPrerequisiteCardCount",
+            "Subject": {
+              "$type": "TTargetCardPositional",
+              "Origin": "Self",
+              "TargetMode": "Neighbor",
+              "IncludeOrigin": false,
+              "Conditions": {
+                "$type": "TCardConditionalTag",
+                "Tags": [
+                  "Tool"
+                ],
+                "Operator": "Any"
+              }
+            },
+            "Comparison": "GreaterThanOrEqual",
+            "Amount": 1
+          }
+        ],
+        "InternalName": "Soldering Gun 3",
+        "InternalDescription": "This has +{aura.2} Multicast if it is adjacent to a Tool",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "5182e908b08ca61520c95777806062ba",
+        "WorksIn": "Anywhere"
+      }
+    }
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Silver": {
+        "Attributes": {
+          "CooldownMax": 6000,
+          "BuyPrice": 0,
+          "SellPrice": 0,
+          "Multicast": 1,
+          "DamageAmount": 5
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "BuyPrice": 0,
+          "SellPrice": 0,
+          "DamageAmount": 10
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "BuyPrice": 0,
+          "SellPrice": 0,
+          "DamageAmount": 20
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "94e28682-a012-4dd0-8ce8-7fe180aa6127",
+    "Version": "5.0.0",
+    "InternalName": "Busy Bee",
+    "InternalDescription": "",
+    "StartingTier": "Silver",
+    "Size": "Small",
+    "Heroes": [
+      "Pygmalien"
+    ],
+    "Tags": [
+      "Weapon",
+      "Friend",
+      "Drone"
+    ],
+    "HiddenTags": [
+      "Damage",
+      "Flying"
+    ],
+    "ArtKey": "edb9b74ed12bd9e4aa25c2abffbede7c",
+    "SpawningEligibility": "GuidOnly",
+    "TranslationKey": "9070a0f4cb277f17952a8a8822ef2113",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "9070a0f4cb277f17952a8a8822ef2113",
+        "Text": "Busy Bee"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "0ea99a8936ef177d164655496d5a7a49",
+            "Text": "This starts Flying"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "0743e81e4b06ac799c62288fb5783d5f",
+            "Text": "Deal {ability.1} Damage"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardFlyingStart",
+          "Duration": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": {
+              "$type": "TCardConditionalAttribute",
+              "Attribute": "Flying",
+              "ComparisonOperator": "Equal",
+              "ComparisonValue": {
+                "$type": "TFixedValue",
+                "Value": 0.0
+              }
+            }
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Highest",
+        "InternalName": "Busy Bee 3",
+        "InternalDescription": "This starts Flying",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "ad90e123cf41168c57bb13345ce03d7f",
+        "WorksIn": "Anywhere"
+      },
+      "1": {
+        "Id": "1",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionPlayerDamage",
+          "ReferenceValue": null,
+          "Target": {
+            "$type": "TTargetPlayerRelative",
+            "TargetMode": "Opponent",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Busy Bees 1",
+        "InternalDescription": "Deal {ability.0} Damage",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": "Assets/TheBazaar/Projectiles/Pierce/Projectile_Pierce_PV.prefab",
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "2eaba17429709dbe7ea09c617465306a",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {}
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Silver": {
+        "Attributes": {
+          "CooldownMax": 6000,
+          "Multicast": 1,
+          "FlyingTargets": 2,
+          "ChargeAmount": 1000
+        },
+        "AbilityIds": [
+          "0",
+          "1",
+          "2"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "FlyingTargets": 3
+        },
+        "AbilityIds": [
+          "0",
+          "1",
+          "2"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "FlyingTargets": 4
+        },
+        "AbilityIds": [
+          "0",
+          "1",
+          "2"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "9fafc0a5-6675-4e17-9457-590f13354a39",
+    "Version": "5.0.0",
+    "InternalName": "Launcher Core",
+    "InternalDescription": "",
+    "StartingTier": "Silver",
+    "Size": "Medium",
+    "Heroes": [
+      "Dooley"
+    ],
+    "Tags": [
+      "Core",
+      "Tech"
+    ],
+    "HiddenTags": [
+      "Flying",
+      "FlyingReference",
+      "Charge"
+    ],
+    "ArtKey": "efd0e9686853a884691cd727c796855d",
+    "SpawningEligibility": "GuidOnly",
+    "TranslationKey": "74178f71b1d6612922138bbe09cc0981",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "a893a5722e08be47476e2f35a41d2221",
+        "Text": "Launcher Core"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "4ded640d1d1d58ffdaa5deb2b51afd14",
+            "Text": "{ability.0.targets} other items start Flying"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "d52c5162f7eb86454c80ad6a82e2924b",
+            "Text": "Charge your other Flying items {ability.1} second"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "7645da9b2a6e3d36e57c8f15d814bbd7",
+            "Text": "When you use another Friend or Flying item, Charge this {ability.2} second"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardFlyingStart",
+          "Duration": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardRandom",
+            "ExcludeSelf": true,
+            "TargetSection": "SelfHand",
+            "Conditions": {
+              "$type": "TCardConditionalAttribute",
+              "Attribute": "Flying",
+              "ComparisonOperator": "Equal",
+              "ComparisonValue": {
+                "$type": "TFixedValue",
+                "Value": 0.0
+              }
+            }
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Launcher Core 1",
+        "InternalDescription": "[2/3/4] other items start Flying",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "846e8e7afaf45608603ea0cb19c2e4be",
+        "WorksIn": "Anywhere"
+      },
+      "1": {
+        "Id": "1",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardCharge",
+          "Value": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardSection",
+            "TargetSection": "SelfHand",
+            "ExcludeSelf": true,
+            "Conditions": {
+              "$type": "TCardConditionalAttribute",
+              "Attribute": "Flying",
+              "ComparisonOperator": "Equal",
+              "ComparisonValue": {
+                "$type": "TFixedValue",
+                "Value": 1.0
+              }
+            }
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Launcher Core 2",
+        "InternalDescription": "Charge your Flying items 1 second",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "78d5e8670d88516a486726c28e6a37f1",
+        "WorksIn": "Anywhere"
+      },
+      "2": {
+        "Id": "2",
+        "Trigger": {
+          "$type": "TTriggerOnItemUsed",
+          "Subject": {
+            "$type": "TTargetCardSection",
+            "TargetSection": "SelfHand",
+            "ExcludeSelf": true,
+            "Conditions": {
+              "$type": "TCardConditionalOr",
+              "Conditions": [
+                {
+                  "$type": "TCardConditionalTag",
+                  "Tags": [
+                    "Friend"
+                  ],
+                  "Operator": "Any"
+                },
+                {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Flying",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 1.0
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardCharge",
+          "Value": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Launcher Core 3",
+        "InternalDescription": "When you use a Friend or Flying item, Charge this 1 second",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "78d5e8670d88516a486726c28e6a37f1",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {}
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Bronze": {
+        "Attributes": {
+          "CooldownMax": 5000,
+          "Multicast": 1,
+          "AmmoMax": 1,
+          "PoisonApplyAmount": 4,
+          "SlowAmount": 1000,
+          "SlowTargets": 1,
+          "ReloadAmount": 99,
+          "ReloadTargets": 1
+        },
+        "AbilityIds": [
+          "0",
+          "1",
+          "2"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Silver": {
+        "Attributes": {
+          "PoisonApplyAmount": 8,
+          "SlowTargets": 2
+        },
+        "AbilityIds": [
+          "0",
+          "1",
+          "2"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "PoisonApplyAmount": 12,
+          "SlowTargets": 3
+        },
+        "AbilityIds": [
+          "0",
+          "1",
+          "2"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "PoisonApplyAmount": 16,
+          "SlowTargets": 4
+        },
+        "AbilityIds": [
+          "0",
+          "1",
+          "2"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "a655fb50-b9e1-41ec-b658-07459014f96c",
+    "Version": "5.0.0",
+    "InternalName": "Drowsdrop",
+    "InternalDescription": "",
+    "StartingTier": "Bronze",
+    "Size": "Small",
+    "Heroes": [
+      "Karnok"
+    ],
+    "Tags": [
+      "Potion"
+    ],
+    "HiddenTags": [
+      "Poison",
+      "Slow",
+      "Ammo",
+      "SlowReference"
+    ],
+    "ArtKey": "ddcd7f0620b02144f92dfd73d06963c3",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "787f5c373817e1971d07917bf29556dd",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "792820faa8de8bc7ead304527adf7a52",
+        "Text": "Drowsdrop"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "1d253ebff415eba7833e3eb9d8ce7258",
+            "Text": "Poison {ability.0}"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "7eedb6f3538d7784e40fd7c6899381da",
+            "Text": "Slow {ability.1.targets} item(s) {ability.1} second(s)"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "2e88ba982fbcf051295c7d495f3a1188",
+            "Text": "When you Slow this, Reload it"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionPlayerPoisonApply",
+          "ReferenceValue": null,
+          "Target": {
+            "$type": "TTargetPlayerRelative",
+            "TargetMode": "Opponent",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Drowsdrop 1",
+        "InternalDescription": "Poison {ability.0}",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PotionsThrowing/Poison/Projectile_PotionsThrowing_Poison_PV.prefab",
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "f81e2a52bd8a45e8ba22e5ed65b179ad",
+        "WorksIn": "Anywhere"
+      },
+      "1": {
+        "Id": "1",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardSlow",
+          "Value": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardRandom",
+            "ExcludeSelf": false,
+            "TargetSection": "OpponentHand",
+            "Conditions": {
+              "$type": "TCardConditionalAttribute",
+              "Attribute": "CooldownMax",
+              "ComparisonOperator": "GreaterThan",
+              "ComparisonValue": {
+                "$type": "TFixedValue",
+                "Value": 0.0
+              }
+            }
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "",
+        "InternalDescription": "",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "3769133992f9bd90cef8f0f5a57b0bf4",
+        "WorksIn": "Anywhere"
+      },
+      "2": {
+        "Id": "2",
+        "Trigger": {
+          "$type": "TTriggerOnCardPerformedSlow",
+          "Subject": {
+            "$type": "TTargetCardSection",
+            "TargetSection": "SelfBoard",
+            "ExcludeSelf": false,
+            "Conditions": null
+          },
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          }
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardReload",
+          "Value": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Low",
+        "InternalName": "Hunter's Blind 3",
+        "InternalDescription": "When you Slow this, reload it",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "1e28737efff81bd95f11ba802c62a374",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {}
+  },
+  {
+    "$type": "TCardSkill",
+    "StartingTier": "Gold",
+    "Tiers": {
+      "Gold": {
+        "Attributes": {
+          "ChargeAmount": 1000,
+          "Custom_0": 0,
+          "Custom_1": 1
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "ChargeAmount": 2000
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0
+        ]
+      }
+    },
+    "Type": "Skill",
+    "Id": "c5bff6ad-5d13-4cf3-9941-98f3cf913949",
+    "Version": "5.0.0",
+    "InternalName": "Counterstrike",
+    "InternalDescription": "",
+    "Size": "Medium",
+    "Heroes": [
+      "Common"
+    ],
+    "Tags": [
+      "Weapon"
+    ],
+    "HiddenTags": [
+      "Charge"
+    ],
+    "ArtKey": "Icon_Skill_MON_Counterattack.png",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "df11ca9c198147f49775d5db46ebfb96",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "29a81766bdb8f28b79da824853d9dabe",
+        "Text": "Counterstrike"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "1e36880f835f9b3ea2a37547a16109b8",
+            "Text": "The first time an enemy uses a Weapon, Charge your items {ability.0} second(s)"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnItemUsed",
+          "Subject": {
+            "$type": "TTargetCardSection",
+            "TargetSection": "OpponentHand",
+            "ExcludeSelf": false,
+            "Conditions": {
+              "$type": "TCardConditionalTag",
+              "Tags": [
+                "Weapon"
+              ],
+              "Operator": "Any"
+            }
+          }
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardCharge",
+          "Value": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardSection",
+            "TargetSection": "SelfHand",
+            "ExcludeSelf": false,
+            "Conditions": {
+              "$type": "TCardConditionalAttribute",
+              "Attribute": "CooldownMax",
+              "ComparisonOperator": "GreaterThan",
+              "ComparisonValue": {
+                "$type": "TFixedValue",
+                "Value": 0.0
+              }
+            }
+          },
+          "Cost": null
+        },
+        "Prerequisites": [
+          {
+            "$type": "TPrerequisiteCardCount",
+            "Subject": {
+              "$type": "TTargetCardSelf",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "Custom_0",
+                "ComparisonOperator": "LessThan",
+                "ComparisonValue": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "Custom_1",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": null
+                }
+              }
+            },
+            "Comparison": "Equal",
+            "Amount": 1
+          }
+        ],
+        "Priority": "Medium",
+        "InternalName": "Counterstrike 1",
+        "InternalDescription": "The first time an enemy uses a Weapon, Charge your items [--/--/1/2] second(s)",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "f98367e1845f4f1dbd43e8f6d138dc74",
+        "WorksIn": "Anywhere"
+      },
+      "1": {
+        "Id": "1",
+        "Trigger": {
+          "$type": "TTriggerOnItemUsed",
+          "Subject": {
+            "$type": "TTargetCardSection",
+            "TargetSection": "OpponentHand",
+            "ExcludeSelf": false,
+            "Conditions": {
+              "$type": "TCardConditionalTag",
+              "Tags": [
+                "Weapon"
+              ],
+              "Operator": "Any"
+            }
+          }
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardModifyAttribute",
+          "Value": {
+            "$type": "TFixedValue",
+            "Value": 1.0
+          },
+          "AttributeType": "Custom_0",
+          "Operation": "Add",
+          "Duration": {
+            "$type": "TDeterminantDuration",
+            "DurationType": "UntilEndOfCombat"
+          },
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Immediate",
+        "InternalName": "Counter Increment",
+        "InternalDescription": "",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "addd58cb20c13b02b433940601a41d13",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {}
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Bronze": {
+        "Attributes": {
+          "CooldownMax": 4000,
+          "Multicast": 1,
+          "HasteAmount": 1000,
+          "HasteTargets": 1
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0
+        ]
+      },
+      "Silver": {
+        "Attributes": {
+          "HasteAmount": 2000
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "HasteAmount": 3000
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "HasteAmount": 4000
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "ca77281c-f912-4db3-86ce-64842a4ccdaa",
+    "Version": "5.0.0",
+    "InternalName": "Cog",
+    "InternalDescription": "",
+    "StartingTier": "Bronze",
+    "Size": "Small",
+    "Heroes": [
+      "Dooley"
+    ],
+    "Tags": [
+      "Relic"
+    ],
+    "HiddenTags": [
+      "Haste"
+    ],
+    "ArtKey": "7f932a90904c01d4ebe7d6502ac8f44b",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "6d5c6fcfde82eb131e35fb1cf1cd8143",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "6d5c6fcfde82eb131e35fb1cf1cd8143",
+        "Text": "Cog"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "3b354ce3915b7b9fa50357a11b0a0fc6",
+            "Text": "Haste an adjacent item {ability.0} second(s)"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardHaste",
+          "Value": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardRandom",
+            "ExcludeSelf": false,
+            "TargetSection": "SelfNeighbors",
+            "Conditions": {
+              "$type": "TCardConditionalAttribute",
+              "Attribute": "CooldownMax",
+              "ComparisonOperator": "GreaterThan",
+              "ComparisonValue": {
+                "$type": "TFixedValue",
+                "Value": 0.0
+              }
+            }
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "High",
+        "InternalName": "Cog 1",
+        "InternalDescription": "Haste an adjacent item {ability.0} second(s)",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "0fa9ecacdd5b2ca505fa87ffe3427a27",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {}
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Bronze": {
+        "Attributes": {
+          "CooldownMax": 8000,
+          "Multicast": 1,
+          "BurnApplyAmount": 6,
+          "ChargeAmount": 1000,
+          "ChargeTargets": 1
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Silver": {
+        "Attributes": {
+          "CooldownMax": 7000,
+          "BurnApplyAmount": 8
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "CooldownMax": 6000,
+          "BurnApplyAmount": 10
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "CooldownMax": 5000,
+          "BurnApplyAmount": 12
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "d4c0cf1e-7856-4e40-877f-c77b34f596ed",
+    "Version": "5.0.0",
+    "InternalName": "RED-F1R3FLY",
+    "InternalDescription": "",
+    "StartingTier": "Bronze",
+    "Size": "Small",
+    "Heroes": [
+      "Dooley"
+    ],
+    "Tags": [
+      "Friend"
+    ],
+    "HiddenTags": [
+      "Burn",
+      "HasteReference",
+      "SlowReference"
+    ],
+    "ArtKey": "bcae90a48eff69b40b1f6c0371a1ac7a",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "16f0f46c4236f3400b48d5311ee55a46",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "ac7c5cf937a8db1233d174324ccf84a0",
+        "Text": "RED-F1R3FLY"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "b0ce312b82dce3ae97fe4d5378d306f8",
+            "Text": "Burn {ability.0}"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "8e5bb1a6554c3a9eaf8333087b52fa5f",
+            "Text": "When an adjacent item Hastes or Slows, Charge this {ability.1} second(s)"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionPlayerBurnApply",
+          "ReferenceValue": null,
+          "Target": {
+            "$type": "TTargetPlayerRelative",
+            "TargetMode": "Opponent",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "RED-F1R3FLY 1",
+        "InternalDescription": "Burn",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "148818aec3bd5a93c27123c96e52b292",
+        "WorksIn": "Anywhere"
+      },
+      "1": {
+        "Id": "1",
+        "Trigger": {
+          "$type": "TTriggerOr",
+          "Triggers": [
+            {
+              "$type": "TTriggerOnCardPerformedSlow",
+              "Subject": {
+                "$type": "TTargetCardPositional",
+                "Origin": "Self",
+                "TargetMode": "Neighbor",
+                "IncludeOrigin": false,
+                "Conditions": null
+              },
+              "Target": null
+            },
+            {
+              "$type": "TTriggerOnCardPerformedHaste",
+              "Subject": {
+                "$type": "TTargetCardPositional",
+                "Origin": "Self",
+                "TargetMode": "Neighbor",
+                "IncludeOrigin": false,
+                "Conditions": null
+              },
+              "Target": null
+            }
+          ]
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardCharge",
+          "Value": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Low",
+        "InternalName": "RED-F1R3FLY",
+        "InternalDescription": "When you use a Core, this is Hasted for {ability.1} second(s)",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "190d630f1523f336fb34ba5a3a08bb35",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {}
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Bronze": {
+        "Attributes": {
+          "CooldownMax": 6000,
+          "Multicast": 1,
+          "PoisonApplyAmount": 4
+        },
+        "AbilityIds": [
+          "0",
+          "2"
+        ],
+        "AuraIds": [
+          "1"
+        ],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Silver": {
+        "Attributes": {
+          "PoisonApplyAmount": 8
+        },
+        "AbilityIds": [
+          "0",
+          "2"
+        ],
+        "AuraIds": [
+          "1"
+        ],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "PoisonApplyAmount": 12
+        },
+        "AbilityIds": [
+          "0",
+          "2"
+        ],
+        "AuraIds": [
+          "1"
+        ],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "PoisonApplyAmount": 16
+        },
+        "AbilityIds": [
+          "0",
+          "2"
+        ],
+        "AuraIds": [
+          "1"
+        ],
+        "TooltipIds": [
+          0,
+          1,
+          2
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "d5a56d21-6892-4a08-b57a-1af53687ff37",
+    "Version": "5.0.0",
+    "InternalName": "Aludel",
+    "InternalDescription": "",
+    "StartingTier": "Bronze",
+    "Size": "Medium",
+    "Heroes": [
+      "Mak"
+    ],
+    "Tags": [
+      "Tool"
+    ],
+    "HiddenTags": [
+      "PotionReference",
+      "Poison"
+    ],
+    "ArtKey": "646d637227345374ba61155d50d44ff5",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "b5944825e0aac9dbbf70417011c35f20",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "b5944825e0aac9dbbf70417011c35f20",
+        "Text": "Aludel"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "1d253ebff415eba7833e3eb9d8ce7258",
+            "Text": "Poison {ability.0}"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "0b44d0e80f3f2493994df99b0c63e516",
+            "Text": "This has +{aura.1.mod} Multicast for each adjacent Potion or Reagent"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "44adc70c135fd38e3cbffd0181c67234",
+            "Text": "At the start of each day, get a Catalyst"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionPlayerPoisonApply",
+          "ReferenceValue": null,
+          "Target": {
+            "$type": "TTargetPlayerRelative",
+            "TargetMode": "Opponent",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Aludel 1",
+        "InternalDescription": "Poison [6/8/10/12]",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PrivateHotSprings/Variants/Projectile_PrivateHotSrpings_Poison_PV.prefab",
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "92491ca9384c7e461517e4bab99ca043",
+        "WorksIn": "Anywhere"
+      },
+      "2": {
+        "Id": "2",
+        "Trigger": {
+          "$type": "TTriggerOnDayStarted"
+        },
+        "ActiveIn": "HandAndStash",
+        "Action": {
+          "$type": "TActionGameSpawnCards",
+          "TargetPlayer": {
+            "$type": "TTargetPlayerAbsolute",
+            "TargetMode": "Player",
+            "Conditions": null
+          },
+          "SpawnContext": {
+            "$type": "TSpawnContextQuery",
+            "Groups": [
+              {
+                "$type": "TSpawnGroup",
+                "Filters": [
+                  {
+                    "$type": "TSpawnFilterIdList",
+                    "Ids": [
+                      "694a08fe-e8ff-4a45-9693-4c68f11a1f8b"
+                    ]
+                  }
+                ],
+                "SelectionMethod": "Random",
+                "Limit": null,
+                "Prerequisites": null,
+                "RandomWeight": 0,
+                "Behaviors": null
+              }
+            ],
+            "SelectionMethod": "Sequential",
+            "Limit": {
+              "$type": "TFixedValue",
+              "Value": 1.0
+            },
+            "Behaviors": [
+              {
+                "$type": "TSpawnBehaviorAllowDuplicates",
+                "AllowDuplicates": true
+              },
+              {
+                "$type": "TSpawnBehaviorIgnoreHero",
+                "IgnoreHero": true
+              },
+              {
+                "$type": "TSpawnBehaviorInheritEnchantment",
+                "Inherits": false
+              },
+              {
+                "$type": "TSpawnBehaviorInheritTier",
+                "Inherits": true
+              }
+            ]
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Alembic 3",
+        "InternalDescription": "At the start of each day, get a Catalyst",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "e6716b57dcfab3e8567b75a45bdfaba1",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {
+      "1": {
+        "Id": "1",
+        "ActiveIn": "HandAndStash",
+        "Action": {
+          "$type": "TAuraActionCardModifyAttribute",
+          "AttributeType": "Multicast",
+          "Operation": "Add",
+          "Value": {
+            "$type": "TReferenceValueCardCount",
+            "Target": {
+              "$type": "TTargetCardPositional",
+              "Origin": "Self",
+              "TargetMode": "Neighbor",
+              "IncludeOrigin": false,
+              "Conditions": {
+                "$type": "TCardConditionalTag",
+                "Tags": [
+                  "Potion",
+                  "Reagent"
+                ],
+                "Operator": "Any"
+              }
+            },
+            "DefaultValue": 0.0,
+            "Modifier": {
+              "ModifyMode": "Multiply",
+              "Value": {
+                "$type": "TFixedValue",
+                "Value": 1.0
+              },
+              "ShouldRound": true
+            }
+          },
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          }
+        },
+        "Prerequisites": null,
+        "InternalName": "Aludel 2",
+        "InternalDescription": "This has +1 Multicast for each adjacent Potion or Reagent",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "9ed8516049000a0e1a90054e0aab06ce",
+        "WorksIn": "Anywhere"
+      }
+    }
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Bronze": {
+        "Attributes": {
+          "CooldownMax": 5000,
+          "Multicast": 1,
+          "ShieldApplyAmount": 20,
+          "ChargeAmount": 1000,
+          "ChargeTargets": 1
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Silver": {
+        "Attributes": {
+          "ShieldApplyAmount": 40
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "ShieldApplyAmount": 80
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "ShieldApplyAmount": 160
+        },
+        "AbilityIds": [
+          "0",
+          "1"
+        ],
+        "AuraIds": [],
+        "TooltipIds": [
+          0,
+          1
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "edceffa1-9a9f-4ab3-b6a9-8a899b5726e3",
+    "Version": "5.0.0",
+    "InternalName": "Aviators",
+    "InternalDescription": "",
+    "StartingTier": "Bronze",
+    "Size": "Small",
+    "Heroes": [
+      "Stelle"
+    ],
+    "Tags": [
+      "Apparel"
+    ],
+    "HiddenTags": [
+      "Shield",
+      "BurnReference"
+    ],
+    "ArtKey": "c59c4e9884bd85a4787e1056668278a4",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "6c8d63ed669db67e7b454160c0fd45c5",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "6c8d63ed669db67e7b454160c0fd45c5",
+        "Text": "Aviators"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "888ac69c05cc780657312790310f00c0",
+            "Text": "Shield {ability.0}"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        },
+        {
+          "Content": {
+            "Key": "84d7876af7a4311241a7094f7fe123e4",
+            "Text": "When you Burn or Destroy an item, Charge this {ability.1} second(s)"
+          },
+          "TooltipType": "Passive",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionPlayerShieldApply",
+          "ReferenceValue": null,
+          "Target": {
+            "$type": "TTargetPlayerRelative",
+            "TargetMode": "Self",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Aviators 1",
+        "InternalDescription": "Shield {ability.0}",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "f4f6f70d4b232f0d143c9334f4ed44a3",
+        "WorksIn": "Anywhere"
+      },
+      "1": {
+        "Id": "1",
+        "Trigger": {
+          "$type": "TTriggerOr",
+          "Triggers": [
+            {
+              "$type": "TTriggerOnCardPerformedBurn",
+              "Subject": {
+                "$type": "TTargetCardSection",
+                "TargetSection": "SelfBoard",
+                "ExcludeSelf": false,
+                "Conditions": null
+              },
+              "Target": null
+            },
+            {
+              "$type": "TTriggerOnCardPerformedDestruction",
+              "Subject": {
+                "$type": "TTargetCardSection",
+                "TargetSection": "SelfBoard",
+                "ExcludeSelf": false,
+                "Conditions": null
+              },
+              "Target": null
+            }
+          ]
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionCardCharge",
+          "Value": null,
+          "TargetCount": null,
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Low",
+        "InternalName": "Aviator 2",
+        "InternalDescription": "When you Burn, Charge this {ability.1} second(s)",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "539bb22296309d26ebdb2e2970d589bb",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {}
+  },
+  {
+    "$type": "TCardItem",
+    "Tiers": {
+      "Bronze": {
+        "Attributes": {
+          "CooldownMax": 10000,
+          "Multicast": 1,
+          "DamageAmount": 0,
+          "Custom_0": 25,
+          "Custom_1": 25,
+          "Custom_2": 0
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "1"
+        ],
+        "TooltipIds": [
+          0
+        ]
+      },
+      "Silver": {
+        "Attributes": {
+          "Custom_0": 50,
+          "Custom_1": 50
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "1"
+        ],
+        "TooltipIds": [
+          0
+        ]
+      },
+      "Gold": {
+        "Attributes": {
+          "Custom_0": 100,
+          "Custom_1": 100
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "1"
+        ],
+        "TooltipIds": [
+          0
+        ]
+      },
+      "Diamond": {
+        "Attributes": {
+          "Custom_0": 200,
+          "Custom_1": 200
+        },
+        "AbilityIds": [
+          "0"
+        ],
+        "AuraIds": [
+          "1"
+        ],
+        "TooltipIds": [
+          0
+        ]
+      }
+    },
+    "Transform": null,
+    "Quests": null,
+    "Type": "Item",
+    "Id": "f7241086-8b2d-4882-80c9-a0ddb46910ad",
+    "Version": "5.0.0",
+    "InternalName": "Junkyard Lance",
+    "InternalDescription": "",
+    "StartingTier": "Bronze",
+    "Size": "Large",
+    "Heroes": [
+      "Common"
+    ],
+    "Tags": [
+      "Weapon"
+    ],
+    "HiddenTags": [
+      "Damage",
+      "DamageReference"
+    ],
+    "ArtKey": "a588fd9d8e7467f4ea4742803abf4fe2",
+    "SpawningEligibility": "Always",
+    "TranslationKey": "a6af5f7dfd8d3c65ea3ec67f1cff1efe",
+    "AudioKey": "",
+    "Localization": {
+      "Title": {
+        "Key": "a6af5f7dfd8d3c65ea3ec67f1cff1efe",
+        "Text": "Junkyard Lance"
+      },
+      "Description": null,
+      "FlavorText": null,
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "0a6cd51cf9d3edeb86fab0863c8c4a9a",
+            "Text": "Deal {aura.9} Damage for each Small item you have (including Stash)"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "Abilities": {
+      "0": {
+        "Id": "0",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionPlayerDamage",
+          "ReferenceValue": null,
+          "Target": {
+            "$type": "TTargetPlayerRelative",
+            "TargetMode": "Opponent",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Junkyard Lance",
+        "InternalDescription": "Deal {ability.0} Damage for each Small item you have",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": "Assets/TheBazaar/Projectiles/Slash/VFX_Slash_Tier1_PV.prefab",
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "a6af5f7dfd8d3c65ea3ec67f1cff1efe",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {
+      "1": {
+        "Id": "1",
+        "ActiveIn": "HandAndStash",
+        "Action": {
+          "$type": "TAuraActionCardModifyAttribute",
+          "AttributeType": "DamageAmount",
+          "Operation": "Add",
+          "Value": {
+            "$type": "TReferenceValueCardCount",
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHandAndStash",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalSize",
+                "Sizes": [
+                  "Small"
+                ],
+                "IsNot": false
+              }
+            },
+            "DefaultValue": 0.0,
+            "Modifier": {
+              "ModifyMode": "Multiply",
+              "Value": {
+                "$type": "TReferenceValueCardAttribute",
+                "AttributeType": "Custom_0",
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "DefaultValue": 0.0,
+                "Modifier": null
+              },
+              "ShouldRound": true
+            }
+          },
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          }
+        },
+        "Prerequisites": null,
+        "InternalName": "Junkyard Lance",
+        "InternalDescription": "Sets value of Junkyard Lance 1",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "93911bec96cb67bfcc317e7f7665af7b",
+        "WorksIn": "Anywhere"
+      },
+      "9": {
+        "Id": "9",
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TAuraActionCardModifyAttribute",
+          "AttributeType": "Custom_2",
+          "Operation": "Add",
+          "Value": {
+            "$type": "TReferenceValueCardAttribute",
+            "AttributeType": "Custom_1",
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "DefaultValue": 0.0,
+            "Modifier": {
+              "ModifyMode": "Multiply",
+              "Value": {
+                "$type": "TFixedValue",
+                "Value": 1.0
+              },
+              "ShouldRound": true
+            }
+          },
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          }
+        },
+        "Prerequisites": null,
+        "InternalName": "Tooltip Handling",
+        "InternalDescription": "",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "93911bec96cb67bfcc317e7f7665af7b",
+        "WorksIn": "Anywhere"
+      }
+    }
+  }
+]

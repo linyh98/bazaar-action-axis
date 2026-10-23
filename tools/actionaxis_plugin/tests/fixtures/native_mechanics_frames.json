@@ -1,0 +1,637 @@
+{
+  "sourceReplay": "9bbabba4a216484d83d068a149811259.payload.mpack.gz",
+  "frameMilliseconds": 50,
+  "gameMode": {
+    "CombatSimEffectDelay": 250,
+    "BurnDecrementByAsPercentage": 3
+  },
+  "gunInstance": "itm_dz4JQQf",
+  "frames": [
+    {
+      "index": 0,
+      "gunEvents": [],
+      "gunCooldownChange": [
+        4,
+        6000,
+        5950
+      ],
+      "opponentUpdate": null
+    },
+    {
+      "index": 119,
+      "gunEvents": [],
+      "gunCooldownChange": [
+        4,
+        50,
+        6000
+      ],
+      "opponentUpdate": null
+    },
+    {
+      "index": 120,
+      "gunEvents": [
+        [
+          5,
+          [
+            "jur",
+            "0",
+            22,
+            null,
+            [
+              "itm_dz4JQQf"
+            ],
+            [
+              "itm_dz4JQQf"
+            ],
+            [
+              2,
+              [
+                1
+              ]
+            ]
+          ]
+        ]
+      ],
+      "gunCooldownChange": [
+        4,
+        6000,
+        5950
+      ],
+      "opponentUpdate": [
+        false,
+        [
+          [
+            2,
+            0,
+            -6,
+            false,
+            false
+          ],
+          [
+            1,
+            2,
+            -3,
+            false,
+            true
+          ]
+        ],
+        {
+          "10": [
+            10,
+            1687,
+            1681
+          ],
+          "19": [
+            19,
+            8,
+            5
+          ],
+          "0": [
+            0,
+            7,
+            7
+          ],
+          "16": [
+            16,
+            6,
+            11
+          ]
+        },
+        null
+      ]
+    },
+    {
+      "index": 125,
+      "gunEvents": [
+        [
+          5,
+          [
+            "aoy",
+            "0",
+            22,
+            null,
+            [
+              "itm_dz4JQQf"
+            ],
+            [
+              "itm_dz4JQQf"
+            ],
+            [
+              2,
+              [
+                1
+              ]
+            ]
+          ]
+        ]
+      ],
+      "gunCooldownChange": [
+        4,
+        5750,
+        5700
+      ],
+      "opponentUpdate": [
+        false,
+        [],
+        {
+          "0": [
+            0,
+            7,
+            8
+          ],
+          "16": [
+            16,
+            11,
+            16
+          ]
+        },
+        null
+      ]
+    },
+    {
+      "index": 130,
+      "gunEvents": [
+        [
+          5,
+          [
+            "X8m",
+            "0",
+            22,
+            null,
+            [
+              "itm_dz4JQQf"
+            ],
+            [
+              "itm_dz4JQQf"
+            ],
+            [
+              2,
+              [
+                1
+              ]
+            ]
+          ]
+        ]
+      ],
+      "gunCooldownChange": [
+        4,
+        5500,
+        5450
+      ],
+      "opponentUpdate": [
+        false,
+        [
+          [
+            1,
+            2,
+            -4,
+            false,
+            true
+          ]
+        ],
+        {
+          "19": [
+            19,
+            5,
+            1
+          ],
+          "0": [
+            0,
+            8,
+            8
+          ],
+          "16": [
+            16,
+            16,
+            17
+          ]
+        },
+        null
+      ]
+    },
+    {
+      "index": 140,
+      "gunEvents": [],
+      "gunCooldownChange": [
+        4,
+        5000,
+        4950
+      ],
+      "opponentUpdate": [
+        false,
+        [
+          [
+            2,
+            0,
+            -17,
+            false,
+            false
+          ],
+          [
+            1,
+            0,
+            -6,
+            false,
+            false
+          ],
+          [
+            1,
+            2,
+            -1,
+            false,
+            false
+          ]
+        ],
+        {
+          "10": [
+            10,
+            1681,
+            1658
+          ],
+          "19": [
+            19,
+            1,
+            0
+          ],
+          "0": [
+            0,
+            8,
+            7
+          ]
+        },
+        null
+      ]
+    },
+    {
+      "index": 240,
+      "gunEvents": [],
+      "gunCooldownChange": [
+        4,
+        4000,
+        3950
+      ],
+      "opponentUpdate": [
+        false,
+        [
+          [
+            2,
+            0,
+            -30,
+            false,
+            false
+          ],
+          [
+            1,
+            2,
+            -4,
+            false,
+            true
+          ]
+        ],
+        {
+          "10": [
+            10,
+            1568,
+            1538
+          ],
+          "19": [
+            19,
+            4,
+            0
+          ],
+          "0": [
+            0,
+            9,
+            8
+          ]
+        },
+        null
+      ]
+    }
+  ],
+  "passiveFrames": [
+    {
+      "index": 80,
+      "events": [
+        [
+          5,
+          [
+            "_wJ",
+            "0",
+            9,
+            null,
+            [
+              "itm_HovRhhj"
+            ],
+            [
+              "itm_HovRhhj"
+            ],
+            [
+              1,
+              [
+                [
+                  "itm_2b_4ltr"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          5,
+          [
+            "eUJ",
+            "0",
+            24,
+            0,
+            [
+              "0x9CSCQ"
+            ],
+            [
+              "0x9CSCQ"
+            ],
+            [
+              2,
+              [
+                0
+              ]
+            ]
+          ]
+        ],
+        [
+          5,
+          [
+            "-Fo",
+            "e1",
+            36,
+            null,
+            [
+              "0x9CSCQ"
+            ],
+            [
+              "0x9CSCQ"
+            ],
+            [
+              2,
+              [
+                1
+              ]
+            ]
+          ]
+        ],
+        [
+          5,
+          [
+            "a_N",
+            "e1",
+            8,
+            null,
+            [
+              "itm_HovRhhj"
+            ],
+            [
+              "itm_HovRhhj"
+            ],
+            [
+              1,
+              [
+                [
+                  "0x9CSCQ"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          5,
+          [
+            "9rv",
+            "1",
+            31,
+            1,
+            [
+              "yi6v_VX"
+            ],
+            [
+              "yi6v_VX"
+            ],
+            [
+              2,
+              [
+                1
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 81,
+      "events": [
+        [
+          5,
+          [
+            "-Qc",
+            "2",
+            10,
+            null,
+            [
+              "yi6v_VX"
+            ],
+            null,
+            [
+              1,
+              [
+                [
+                  "0x9CSCQ"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          5,
+          [
+            "B9d",
+            "1",
+            4,
+            null,
+            [
+              "itm_dKjPbmj"
+            ],
+            [
+              "itm_HovRhhj"
+            ],
+            [
+              1,
+              [
+                [
+                  "itm_dKjPbmj"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 102,
+      "events": [
+        [
+          5,
+          [
+            "VqV",
+            "0",
+            22,
+            null,
+            [
+              "itm_dKjPbmj"
+            ],
+            [
+              "itm_dKjPbmj"
+            ],
+            [
+              2,
+              [
+                1
+              ]
+            ]
+          ]
+        ],
+        [
+          5,
+          [
+            "7EV",
+            "0",
+            32,
+            null,
+            [
+              "itm_hg9MRKT"
+            ],
+            [
+              "itm_hg9MRKT"
+            ],
+            [
+              2,
+              [
+                1
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 103,
+      "events": [
+        [
+          5,
+          [
+            "7JQ",
+            "2",
+            4,
+            null,
+            [
+              "itm_2b_4ltr"
+            ],
+            [
+              "itm_dKjPbmj"
+            ],
+            [
+              1,
+              [
+                [
+                  "itm_2b_4ltr"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          5,
+          [
+            "Cwn",
+            "1",
+            4,
+            null,
+            [
+              "itm_6RCE47j"
+            ],
+            [
+              "itm_dKjPbmj"
+            ],
+            [
+              1,
+              [
+                [
+                  "itm_6RCE47j"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    }
+  ],
+  "isolatedBurnDecayFrames": [
+    {
+      "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+      "frame": 160,
+      "side": 1,
+      "burn": [
+        0,
+        83,
+        81
+      ],
+      "decrement": 2,
+      "floorModel": 2
+    },
+    {
+      "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+      "frame": 160,
+      "side": 2,
+      "burn": [
+        0,
+        65,
+        64
+      ],
+      "decrement": 1,
+      "floorModel": 1
+    },
+    {
+      "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+      "frame": 240,
+      "side": 2,
+      "burn": [
+        0,
+        108,
+        105
+      ],
+      "decrement": 3,
+      "floorModel": 3
+    },
+    {
+      "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+      "frame": 280,
+      "side": 1,
+      "burn": [
+        0,
+        150,
+        146
+      ],
+      "decrement": 4,
+      "floorModel": 4
+    },
+    {
+      "replay": "c548575f413c4deebb1fa5429749e5ef.payload.mpack.gz",
+      "frame": 280,
+      "side": 2,
+      "burn": [
+        0,
+        134,
+        130
+      ],
+      "decrement": 4,
+      "floorModel": 4
+    }
+  ]
+}

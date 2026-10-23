@@ -1,0 +1,19 @@
+node_modules/
+dist/
+plugin-manager/out/
+plugin-manager/release/
+plugin-manager/.vite/
+vendor/
+__pycache__/
+*.pyc
+*.log
+*.tsbuildinfo
+.superpowers/
+.DS_Store
+Thumbs.db
+
+# LiveCardsDump / OCR 运行时输出
+captures/live_cards_bpp.json
+captures/live_cards_bpp.error.txt
+captures/live_loadout.json
+captures/live/

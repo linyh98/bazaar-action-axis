@@ -1,0 +1,34 @@
+appId: com.bazaarsim.pluginmanager
+productName: Bazaar Plugin Manager
+copyright: Bazaar Plus
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**
+  - package.json
+  - node_modules/adm-zip/**
+extraResources:
+  - from: ../tools/actionaxis_plugin/build
+    to: builtin/actionaxis
+    filter:
+      - ActionAxisPlugin.dll
+      - ActionAxisEngine.dll
+  - from: ../tools/livecards_plugin
+    to: builtin/livecards
+    filter:
+      - LiveCardsDump.dll
+  - from: ../src/data/cards.json
+    to: builtin/data/cards.json
+  - from: ../data/skills.json
+    to: builtin/data/skills.json
+  - from: ../captures/card_icons
+    to: builtin/data/icons
+    filter:
+      - "*.png"
+win:
+  target:
+    - portable
+  artifactName: ${productName}-${version}-portable.exe
+portable:
+  artifactName: ${productName}-${version}-portable.exe

@@ -1,0 +1,1 @@
+namespace BazaarActionAxis.Tests { public static class DockLayoutTestMain { public static int Main() { TestHarness.Run("DockButtonLayout", DockButtonLayoutTests.Run); return TestHarness.Finish(); } } }

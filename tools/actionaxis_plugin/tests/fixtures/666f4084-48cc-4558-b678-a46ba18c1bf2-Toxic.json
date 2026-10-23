@@ -1,0 +1,104 @@
+{
+  "source": "GameData.db",
+  "templateId": "666f4084-48cc-4558-b678-a46ba18c1bf2",
+  "version": "5.0.0",
+  "enchantment": "Toxic",
+  "definition": {
+    "Attributes": {
+      "PoisonApplyAmount": 0
+    },
+    "Abilities": {
+      "e1": {
+        "Id": "e1",
+        "Trigger": {
+          "$type": "TTriggerOnCardFired"
+        },
+        "ActiveIn": "HandOnly",
+        "Action": {
+          "$type": "TActionPlayerPoisonApply",
+          "ReferenceValue": null,
+          "Target": {
+            "$type": "TTargetPlayerRelative",
+            "TargetMode": "Opponent",
+            "Conditions": null
+          },
+          "Cost": null
+        },
+        "Prerequisites": null,
+        "Priority": "Medium",
+        "InternalName": "Toxic Soldering Gun Ability",
+        "InternalDescription": "",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "b6f17c55-95ff-4c96-af77-0683e87e0fce",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Auras": {
+      "e2": {
+        "Id": "e2",
+        "ActiveIn": "HandAndStash",
+        "Action": {
+          "$type": "TAuraActionCardModifyAttribute",
+          "AttributeType": "PoisonApplyAmount",
+          "Operation": "Add",
+          "Value": {
+            "$type": "TReferenceValueCardAttribute",
+            "AttributeType": "BurnApplyAmount",
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "DefaultValue": 0.0,
+            "Modifier": {
+              "ModifyMode": "Multiply",
+              "Value": {
+                "$type": "TFixedValue",
+                "Value": 1.0
+              },
+              "ShouldRound": true
+            }
+          },
+          "Target": {
+            "$type": "TTargetCardSelf",
+            "Conditions": null
+          }
+        },
+        "Prerequisites": null,
+        "InternalName": "Toxic Soldering Gun Aura",
+        "InternalDescription": "Sets the value of Poison",
+        "MigrationData": "",
+        "VFXConfig": {
+          "VFXOverrideKey": null,
+          "VFXShouldPlay": true,
+          "VFXIsTakeover": false
+        },
+        "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+        "WorksIn": "Anywhere"
+      }
+    },
+    "Tags": [],
+    "HiddenTags": [
+      "Poison"
+    ],
+    "Localization": {
+      "Tooltips": [
+        {
+          "Content": {
+            "Key": "0b8e08e8da2b05a0ce270b2781e1e59f",
+            "Text": "Poison equal to this item's Burn"
+          },
+          "TooltipType": "Active",
+          "TooltipCondition": null,
+          "Prerequisites": null
+        }
+      ]
+    },
+    "HasAbilities": true,
+    "HasAuras": true
+  }
+}
