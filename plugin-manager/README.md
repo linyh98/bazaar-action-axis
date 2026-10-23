@@ -7,7 +7,7 @@
 - **启动自动检测游戏目录**：读取 Steam 注册表、所有 Steam 库的 `libraryfolders.vdf`、`appmanifest_1617400.acf`，并扫描各磁盘的常见 Steam 安装位置；找不到时可手动选择包含 `TheBazaar.exe` 的目录。
 - **插件识别**：扫描 `BepInEx/plugins`，把 BPP 的主 DLL / 依赖 DLL / 版本文件归为一个插件，识别 Bazaar Action Axis（DLL + 数据目录）与 LiveCardsDump，其余目录或 DLL 作为外部插件展示。
 - **安装插件**：
-  - 一键部署本仓库内置的 Action Axis 与 LiveCardsDump（含 cards.json、skills.json、卡图）。
+  - 一键部署本仓库内置的 Action Axis 与 LiveCardsDump（含 cards.json、skills.json；已有卡图时一并部署）。
   - 安装本地 ZIP：支持 `BepInEx/plugins/...` 结构、单插件文件夹，或根目录 DLL。
   - 从 URL 安装：支持 `.zip` 与单个 `.dll` 直链，最大 200 MB。
 - **卸载插件**：先备份到管理器数据目录，再从 `BepInEx/plugins` 删除。
@@ -40,7 +40,7 @@ npm run package
 | `../tools/actionaxis_plugin/build/ActionAxisPlugin.dll`、`ActionAxisEngine.dll` | 内置 Action Axis |
 | `../tools/livecards_plugin/LiveCardsDump.dll` | 内置 LiveCardsDump |
 | `../src/data/cards.json`、`../data/skills.json` | 行动轴卡牌与技能数据 |
-| `../captures/card_icons/*.png` | 行动轴初始卡图（已有文件不覆盖） |
+| `../captures/card_icons/*.png` | 行动轴初始卡图（若存在；已有文件不覆盖） |
 
 构建产物缺失时，对应的「安装」按钮会显示为不可用，但应用本身仍可管理已安装插件和数据。
 

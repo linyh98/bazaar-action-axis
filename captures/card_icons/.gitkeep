@@ -1,0 +1,2 @@
+# 卡图缓存目录
+# 运行 python tools/build_card_icons.py 或游戏内行动轴采集后，PNG 会出现在这里。

@@ -88,7 +88,7 @@ bash tools/build_actionaxis_plugin.sh --test
 - **自动读取游戏目录**：上次记录 → Steam 注册表 → `libraryfolders.vdf` → `appmanifest_1617400.acf` → 多磁盘常见路径，逐级回退；检测结果写回管理器配置。
 - **识别已装插件**：把 BPP 主 DLL、依赖 DLL、版本与历史数据库文件归为一个插件；识别 Bazaar Action Axis（DLL + 数据目录）与 LiveCardsDump；其余目录 / 顶层 DLL 作为外部插件。
 - **安装插件**：
-  - 一键部署本仓库内置的 Action Axis（含 `cards.json`、`skills.json`、卡图）与 LiveCardsDump；
+  - 一键部署本仓库内置的 Action Axis（含 `cards.json`、`skills.json`，若已生成卡图会一并部署）与 LiveCardsDump；
   - 本地 ZIP：支持 `BepInEx/plugins/...` 结构、单插件文件夹或根目录 DLL；
   - URL：支持 `.zip` 与 `.dll` 直链，最大 200 MB，120 秒超时。
 - **卸载插件**：先把文件备份到管理器数据目录，再删除 `BepInEx/plugins` 中的对应文件。
@@ -301,7 +301,7 @@ plugin-manager/      Electron 桌面管理器：自动定位游戏、安装 / �
 tools/               数据提取、OCR、插件源码与构建脚本
 data/                图鉴与游戏库的中间数据
 docs/                规格、实现计划与 README 横幅
-captures/            Action Axis 卡图资源与规则诊断样本
+captures/            规则诊断样本（卡图可用 tools/build_card_icons.py 生成）
 vendor/              本地第三方参考（不随仓库分发）
 ```
 
