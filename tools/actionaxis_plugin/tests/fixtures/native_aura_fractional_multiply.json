@@ -1,0 +1,532 @@
+{
+  "source": {
+    "replay": "fc2cb9ab26014376854b289ebbd595e3.payload.mpack.gz",
+    "replaySha256": "a97fcc845d999e633b6625c62f38e9aadc6c98c15a5beb86abf8064c6043f327",
+    "frameMilliseconds": 50,
+    "cachePath": "C:\\Users\\42552\\AppData\\LocalLow\\Tempo Storm\\The Bazaar\\prod\\cache\\GameData.db",
+    "cardAttributeKeys": {
+      "DamageAmount": 27,
+      "Heated": 90
+    },
+    "scope": "Native raw replay updates establish positive Multiply result truncation for this 1.5x damage aura. Templates are current cache definitions; captured opening stats take precedence over template base stats. The captured Dishwasher instance tier enum is Diamond, but the replay explicitly executes aura id 3 (1.5x); do not reselect aura id 4 from the current cache tier when replaying this isolated historical observation."
+  },
+  "templates": {
+    "dishwasher": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 7000,
+            "Multicast": 1,
+            "Custom_0": 1,
+            "Custom_1": 1,
+            "Custom_2": 3,
+            "Custom_3": 0,
+            "Custom_4": 50,
+            "HasteAmount": 3000
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "3"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "Custom_4": 100
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "4"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Type": "Item",
+      "Id": "027ef534-d047-4e18-8496-d9fd4773e15d",
+      "Version": "5.0.0",
+      "InternalName": "Dishwasher",
+      "Size": "Large",
+      "Tags": [
+        "Tool"
+      ],
+      "HiddenTags": [
+        "Haste",
+        "HeatedReference",
+        "DamageReference"
+      ],
+      "Auras": {
+        "3": {
+          "Id": "3",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "DamageAmount",
+            "Operation": "Multiply",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 1.5
+            },
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalAnd",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "Heated",
+                    "ComparisonOperator": "NotEqual",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  },
+                  {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Weapon"
+                    ],
+                    "Operator": "Any"
+                  }
+                ]
+              }
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Dishwasher 1",
+          "InternalDescription": "Your Heated Weapons have double damage",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "6c2934b996c6098dfa6eea9556a1e1a1",
+          "WorksIn": "Anywhere"
+        }
+      }
+    },
+    "giantLollipop": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 6000,
+            "Multicast": 1,
+            "DamageAmount": 50,
+            "SlowAmount": 1000,
+            "SlowTargets": 1
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "DamageAmount": 100,
+            "SlowTargets": 2
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "DamageAmount": 200,
+            "SlowTargets": 3
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Type": "Item",
+      "Id": "b0f345cb-a769-487d-9fd4-fa5fe130f8b9",
+      "Version": "5.0.0",
+      "InternalName": "Giant Lollipop",
+      "Size": "Large",
+      "Tags": [
+        "Food",
+        "Weapon"
+      ],
+      "HiddenTags": [
+        "Damage",
+        "Slow",
+        "Quest",
+        "HeatedReference"
+      ]
+    }
+  },
+  "opening": {
+    "targetInstanceId": "MNVi5Gy",
+    "sourceInstanceId": "sBARmBg",
+    "targetTier": "Diamond",
+    "sourceTier": "Diamond",
+    "damage": 257,
+    "heated": 0,
+    "multiplier": 1.5,
+    "observedAuraId": "3"
+  },
+  "nativeFrames": [
+    {
+      "index": 111,
+      "time": 5.55,
+      "damageBefore": 257,
+      "damageAfter": 385,
+      "heatedBefore": 0,
+      "heatedAfter": 1,
+      "rawTargetCardUpdate": [
+        [
+          "MNVi5Gy"
+        ],
+        {
+          "9": [
+            9,
+            1950,
+            4900
+          ],
+          "4": [
+            4,
+            3199,
+            3099
+          ],
+          "90": [
+            90,
+            0,
+            1
+          ],
+          "27": [
+            27,
+            257,
+            385
+          ]
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rawDishwasherAuraExecuted": [
+        [
+          "nu9",
+          "3",
+          [
+            "sBARmBg"
+          ],
+          null,
+          [
+            [
+              1,
+              [
+                [
+                  "MNVi5Gy"
+                ]
+              ]
+            ]
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "index": 171,
+      "time": 8.55,
+      "damageBefore": 385,
+      "damageAfter": 257,
+      "heatedBefore": 1,
+      "heatedAfter": 0,
+      "rawTargetCardUpdate": [
+        [
+          "MNVi5Gy"
+        ],
+        {
+          "90": [
+            90,
+            1,
+            0
+          ],
+          "27": [
+            27,
+            385,
+            257
+          ],
+          "9": [
+            9,
+            9950,
+            9900
+          ],
+          "4": [
+            4,
+            1500,
+            1400
+          ]
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rawDishwasherAuraExecuted": [
+        [
+          "OA4",
+          "3",
+          [
+            "sBARmBg"
+          ],
+          null,
+          [],
+          [
+            [
+              1,
+              [
+                [
+                  "MNVi5Gy"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 181,
+      "time": 9.05,
+      "damageBefore": 257,
+      "damageAfter": 385,
+      "heatedBefore": 0,
+      "heatedAfter": 1,
+      "rawTargetCardUpdate": [
+        [
+          "MNVi5Gy"
+        ],
+        {
+          "9": [
+            9,
+            9450,
+            12400
+          ],
+          "4": [
+            4,
+            4099,
+            3999
+          ],
+          "90": [
+            90,
+            0,
+            1
+          ],
+          "27": [
+            27,
+            257,
+            385
+          ]
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rawDishwasherAuraExecuted": [
+        [
+          "ldd",
+          "3",
+          [
+            "sBARmBg"
+          ],
+          null,
+          [
+            [
+              1,
+              [
+                [
+                  "MNVi5Gy"
+                ]
+              ]
+            ]
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "index": 241,
+      "time": 12.05,
+      "damageBefore": 385,
+      "damageAfter": 257,
+      "heatedBefore": 1,
+      "heatedAfter": 0,
+      "rawTargetCardUpdate": [
+        [
+          "MNVi5Gy"
+        ],
+        {
+          "90": [
+            90,
+            1,
+            0
+          ],
+          "27": [
+            27,
+            385,
+            257
+          ],
+          "9": [
+            9,
+            13450,
+            13400
+          ],
+          "4": [
+            4,
+            1300,
+            1200
+          ]
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rawDishwasherAuraExecuted": [
+        [
+          "Fca",
+          "3",
+          [
+            "sBARmBg"
+          ],
+          null,
+          [],
+          [
+            [
+              1,
+              [
+                [
+                  "MNVi5Gy"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "index": 251,
+      "time": 12.55,
+      "damageBefore": 257,
+      "damageAfter": 385,
+      "heatedBefore": 0,
+      "heatedAfter": 1,
+      "rawTargetCardUpdate": [
+        [
+          "MNVi5Gy"
+        ],
+        {
+          "9": [
+            9,
+            12950,
+            15900
+          ],
+          "4": [
+            4,
+            300,
+            200
+          ],
+          "90": [
+            90,
+            0,
+            1
+          ],
+          "27": [
+            27,
+            257,
+            385
+          ]
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "rawDishwasherAuraExecuted": [
+        [
+          "7xz",
+          "3",
+          [
+            "sBARmBg"
+          ],
+          null,
+          [
+            [
+              1,
+              [
+                [
+                  "MNVi5Gy"
+                ]
+              ]
+            ]
+          ],
+          []
+        ]
+      ]
+    }
+  ],
+  "conclusion": {
+    "whenActive": "truncate(257 * 1.5) = 385",
+    "whenInactive": "385 -> 257",
+    "roundToNearestWouldBe": 386,
+    "observedActiveDamage": 385
+  }
+}

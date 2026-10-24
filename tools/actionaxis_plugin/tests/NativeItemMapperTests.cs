@@ -14,6 +14,35 @@ namespace BazaarActionAxis.Tests
             MappingDoesNotMutateLegacyCatalog();
             NativePassivesWaitForFollowingFrame();
             MidReplayFlyingResistanceDoesNotLeakIntoOpening();
+            CorePassiveIsOncePerFriendlyUseOnBothSides();
+        }
+
+        private static void CorePassiveIsOncePerFriendlyUseOnBothSides()
+        {
+            BattleConfig config = Config();
+            foreach (Side side in new[] { Side.Player, Side.Enemy })
+            {
+                Add(config, NativeItemMapper.LauncherCore, 0, "Silver", side);
+                Add(config, NativeItemMapper.Spider, 2, "Silver", side);
+            }
+            NativeItemMapper.Apply(config);
+            BattleContext ctx = BattleEngine.InitBattle(config);
+            InternalItem playerCore = Item(ctx, NativeItemMapper.LauncherCore, Side.Player);
+            InternalItem enemyCore = Item(ctx, NativeItemMapper.LauncherCore, Side.Enemy);
+            playerCore.Cooldown = enemyCore.Cooldown = 6;
+            foreach (Side side in new[] { Side.Player, Side.Enemy })
+            {
+                InternalItem friend = Item(ctx, NativeItemMapper.Spider, side);
+                friend.Flying = true;
+                // 同时为伙伴和飞行物品，只触发一次；不能给另一方核心充能。
+                Trigger(ctx, "onUse", friend, null);
+            }
+            Assert.Near(5, playerCore.Cooldown);
+            Assert.Near(5, enemyCore.Cooldown);
+            playerCore.Flying = true;
+            Trigger(ctx, "onUse", playerCore, null);
+            Assert.Near(5, playerCore.Cooldown);
+            Assert.Equal(2, ctx.Events.FindAll(delegate(BattleEvent ev) { return ev.Kind == "charge"; }).Count);
         }
 
         private static BattleConfig Config()
@@ -197,9 +226,13 @@ namespace BazaarActionAxis.Tests
             Triggers.Enqueue(ctx, new TriggerPayload { Event = "onUse", SourceSide = Side.Player, SourceItemId = source.Id });
             Triggers.DrainNativeFrame(ctx, 1);
             Assert.Near(7, firefly.Cooldown);
-            Assert.Equal(1, ctx.TriggerQueue.Count);
+            // onHaste 之外还发 onCardAttributeChanged(Haste)，两者都留到下一帧。
+            Assert.Equal(2, ctx.TriggerQueue.Count);
             Triggers.DrainNativeFrame(ctx, 1.05);
             Assert.Near(6, firefly.Cooldown);
+            // 充能现在会发 onCharge，按原生约定留到下一帧。
+            Assert.Equal(1, ctx.TriggerQueue.Count);
+            Triggers.DrainNativeFrame(ctx, 1.1);
             Assert.Equal(0, ctx.TriggerQueue.Count);
             BattleEvent last = ctx.Events[ctx.Events.Count - 1];
             Assert.Equal("charge", last.Kind);

@@ -21,6 +21,7 @@ namespace BazaarActionAxis.Plugin.Ui
         private string _status = "";
         private List<TileModel> _tiles = new List<TileModel>();
         private List<SkillRowModel> _skills = new List<SkillRowModel>();
+        private readonly List<string> _warnings = new List<string>();
         private Vector2 _skillScroll;
         private string _skillReadError;
         private List<TileModel> _enemyTiles = new List<TileModel>();
@@ -66,6 +67,8 @@ namespace BazaarActionAxis.Plugin.Ui
             _damageSeries = null;
             _monsterNames.Clear();
             _opponentName = "木桩";
+            _simulationEndTime = 30;
+            _winner = null;
         }
 
         public void SetOpponentSimulation(BattleDamageSeries damage, string name,
@@ -78,6 +81,14 @@ namespace BazaarActionAxis.Plugin.Ui
             _monsterIndex = selected;
             _simulationEndTime = endTime;
             _winner = winner;
+        }
+
+        public void SetWarnings(IEnumerable<string> warnings)
+        {
+            _warnings.Clear();
+            if (warnings == null) return;
+            foreach (string warning in warnings)
+                if (!string.IsNullOrEmpty(warning) && !_warnings.Contains(warning)) _warnings.Add(warning);
         }
 
         public void SetStatus(string status) { _status = status ?? ""; }
@@ -157,7 +168,8 @@ namespace BazaarActionAxis.Plugin.Ui
             BattleDamageSnapshot sample = _damageSeries == null ? null : _damageSeries.At(_playhead);
             double damage = sample != null ? sample.OutputDamage : _damageAt == null ? 0 : _damageAt(_playhead);
             double effective = _effectiveDamageAt == null ? 0 : _effectiveDamageAt(_playhead);
-            double dps = _playhead > 0 ? damage / _playhead : 0;
+            double dps = _damageSeries != null ? _damageSeries.DpsAt(_playhead) :
+                _playhead > 0 ? damage / _playhead : 0;
             Theme.Fill(rect, Theme.Tile);
             Theme.Outline(rect, Theme.FrameDim, s);
             GUI.Label(new Rect(rect.x + 12f * s, rect.y + 7f * s, 255f * s, 28f * s),
@@ -249,10 +261,11 @@ namespace BazaarActionAxis.Plugin.Ui
             int enemyCount = _skills.FindAll(delegate(SkillRowModel row) { return row.Enemy; }).Count;
             string title = "技能槽 · 我方 " + (_skills.Count - enemyCount) + (enemyCount > 0 ? " / 怪物 " + enemyCount : " 个技能");
             if (!string.IsNullOrEmpty(_skillReadError)) title += " · 读取不完整";
+            if (_warnings.Count > 0) title += " · " + _warnings.Count + " 条模拟提示（向下滚动查看）";
             GUI.Label(new Rect(rect.x, rect.y, rect.width, 21f * s), title, Theme.LabelStyle);
             Rect viewport = new Rect(rect.x, rect.y + 25f * s, rect.width, rect.height - 25f * s);
             Theme.Fill(viewport, Theme.Track);
-            if (_skills.Count == 0)
+            if (_skills.Count == 0 && _warnings.Count == 0)
             {
                 GUI.Label(viewport, string.IsNullOrEmpty(_skillReadError)
                     ? "当前没有已获得的技能" : _skillReadError, Theme.SmallStyle);
@@ -260,8 +273,19 @@ namespace BazaarActionAxis.Plugin.Ui
             }
             float rowHeight = 24f * s;
             float innerWidth = viewport.width - 22f * s;
+            GUIStyle warningStyle = new GUIStyle(Theme.SmallStyle);
+            warningStyle.wordWrap = true;
+            warningStyle.normal.textColor = new Color(0.92f, 0.73f, 0.43f);
+            List<float> warningHeights = new List<float>();
+            float totalHeight = _skills.Count * rowHeight;
+            foreach (string warning in _warnings)
+            {
+                float height = Math.Max(rowHeight, warningStyle.CalcHeight(new GUIContent("提示 · " + warning), innerWidth - 16f * s) + 8f * s);
+                warningHeights.Add(height);
+                totalHeight += height;
+            }
             _skillScroll = GUI.BeginScrollView(viewport, _skillScroll,
-                new Rect(0, 0, innerWidth, Math.Max(viewport.height, _skills.Count * rowHeight)));
+                new Rect(0, 0, innerWidth, Math.Max(viewport.height, totalHeight)));
             foreach (SkillRowModel row in _skills)
             {
                 int index = _skills.IndexOf(row);
@@ -272,10 +296,10 @@ namespace BazaarActionAxis.Plugin.Ui
                     Theme.TierColor(row.Skill.Tier));
                 GUI.Label(new Rect(8f * s, y, 230f * s, rowHeight),
                     (row.Enemy ? "敌 · " : "") + row.Skill.Name, Theme.LabelStyle);
-                string status = StatusText(row.Skill.Status);
+                string status = row.Skill.NativeTierHasNoEffects ? "当前品质无效果" : StatusText(row.Skill.Status);
                 GUI.Label(new Rect(242f * s, y, 165f * s, rowHeight), status, Theme.SmallStyle);
                 string effects = row.Skill.Reason;
-                if (row.Skill.RawTooltips.Count > 0 && row.Skill.Status != "unsupported" &&
+                if (!row.Skill.NativeTierHasNoEffects && row.Skill.RawTooltips.Count > 0 && row.Skill.Status != "unsupported" &&
                     row.Skill.Status != "missing-template")
                     effects = PlainDescription(string.Join(" ", row.Skill.RawTooltips.ToArray()));
                 if (row.Series != null)
@@ -289,6 +313,13 @@ namespace BazaarActionAxis.Plugin.Ui
                 }
                 GUI.Label(new Rect(410f * s, y, innerWidth - 418f * s, rowHeight),
                     effects ?? "", Theme.SmallStyle);
+            }
+            float warningY = _skills.Count * rowHeight;
+            for (int index = 0; index < _warnings.Count; index++)
+            {
+                GUI.Label(new Rect(8f * s, warningY + 4f * s, innerWidth - 16f * s, warningHeights[index] - 8f * s),
+                    "提示 · " + _warnings[index], warningStyle);
+                warningY += warningHeights[index];
             }
             GUI.EndScrollView();
         }

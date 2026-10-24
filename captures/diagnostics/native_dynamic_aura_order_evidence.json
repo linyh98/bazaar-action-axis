@@ -1,0 +1,1028 @@
+{
+  "source": {
+    "replayPath": "D:\\Program Files (x86)\\Steam\\steamapps\\common\\The Bazaar\\BazaarPlusPlusV5\\CombatReplays\\bb30d9e9d76c426b89d28e4fc9ea35d3.payload.mpack.gz",
+    "replaySha256": "698fba023f6973967a31ef894ade108e5c2b50836cc48674aacdcdae64fb5ac7",
+    "cachePath": "C:\\Users\\42552\\AppData\\LocalLow\\Tempo Storm\\The Bazaar\\prod\\cache\\GameData.db",
+    "frameMilliseconds": 50,
+    "cardAttributeKeys": {
+      "ShieldApplyAmount": 34,
+      "SellPrice": 38,
+      "Custom_2": 42
+    },
+    "scope": "Raw replay values establish aura order; current cached templates define the two aura operations. Captured live instance Custom_2=20 differs from the current Diamond default 25 and must not be replaced with the current default."
+  },
+  "instances": {
+    "piggles": "Lc0Yir6",
+    "landscraper": "YGUiI5e"
+  },
+  "rawOpeningCardUpdates": {
+    "piggles": [
+      "Lc0Yir6",
+      {
+        "0": [
+          0,
+          0
+        ],
+        "4": [
+          0,
+          4000
+        ],
+        "5": [
+          0,
+          4000
+        ],
+        "9": [
+          0,
+          0
+        ],
+        "15": [
+          0,
+          0
+        ],
+        "12": [
+          0,
+          0
+        ],
+        "63": [
+          0,
+          0
+        ],
+        "1": [
+          0,
+          0
+        ],
+        "24": [
+          0,
+          1
+        ],
+        "69": [
+          0,
+          0
+        ],
+        "25": [
+          0,
+          0
+        ],
+        "26": [
+          0,
+          0
+        ],
+        "28": [
+          0,
+          0
+        ],
+        "30": [
+          0,
+          0
+        ],
+        "36": [
+          0,
+          0
+        ],
+        "53": [
+          0,
+          0
+        ],
+        "54": [
+          0,
+          0
+        ],
+        "60": [
+          0,
+          0
+        ],
+        "61": [
+          0,
+          0
+        ],
+        "65": [
+          0,
+          0
+        ],
+        "66": [
+          0,
+          0
+        ],
+        "67": [
+          0,
+          0
+        ],
+        "68": [
+          0,
+          0
+        ],
+        "90": [
+          0,
+          0
+        ],
+        "91": [
+          0,
+          0
+        ],
+        "100": [
+          0,
+          0
+        ],
+        "34": [
+          0,
+          56
+        ],
+        "11": [
+          0,
+          1
+        ],
+        "10": [
+          0,
+          2000
+        ],
+        "37": [
+          0,
+          4
+        ],
+        "38": [
+          0,
+          2
+        ]
+      },
+      14,
+      [
+        1
+      ],
+      [
+        8,
+        59,
+        20
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      1,
+      [
+        18,
+        7,
+        15
+      ],
+      1,
+      0
+    ],
+    "landscraper": [
+      "YGUiI5e",
+      {
+        "0": [
+          0,
+          0
+        ],
+        "4": [
+          0,
+          4000
+        ],
+        "5": [
+          0,
+          4000
+        ],
+        "9": [
+          0,
+          0
+        ],
+        "15": [
+          0,
+          0
+        ],
+        "12": [
+          0,
+          0
+        ],
+        "63": [
+          0,
+          0
+        ],
+        "1": [
+          0,
+          0
+        ],
+        "24": [
+          0,
+          1
+        ],
+        "69": [
+          0,
+          0
+        ],
+        "25": [
+          0,
+          0
+        ],
+        "26": [
+          0,
+          0
+        ],
+        "28": [
+          0,
+          0
+        ],
+        "30": [
+          0,
+          0
+        ],
+        "36": [
+          0,
+          0
+        ],
+        "53": [
+          0,
+          0
+        ],
+        "54": [
+          0,
+          0
+        ],
+        "60": [
+          0,
+          0
+        ],
+        "61": [
+          0,
+          0
+        ],
+        "65": [
+          0,
+          0
+        ],
+        "66": [
+          0,
+          0
+        ],
+        "67": [
+          0,
+          0
+        ],
+        "68": [
+          0,
+          0
+        ],
+        "90": [
+          0,
+          0
+        ],
+        "91": [
+          0,
+          0
+        ],
+        "100": [
+          0,
+          0
+        ],
+        "34": [
+          0,
+          218
+        ],
+        "42": [
+          0,
+          20
+        ],
+        "37": [
+          0,
+          24
+        ],
+        "38": [
+          0,
+          18
+        ]
+      },
+      null,
+      [
+        1
+      ],
+      [
+        8,
+        65,
+        66,
+        59
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      3,
+      [
+        1
+      ],
+      2,
+      0
+    ]
+  },
+  "rawSpawnAuraExecutedInRecordedOrder": [
+    [
+      "XBp",
+      "1",
+      [
+        "Lc0Yir6"
+      ],
+      null,
+      [
+        [
+          1,
+          [
+            [
+              "Lc0Yir6"
+            ]
+          ]
+        ]
+      ],
+      []
+    ],
+    [
+      "e_y",
+      "2",
+      [
+        "YGUiI5e"
+      ],
+      null,
+      [
+        [
+          1,
+          [
+            [
+              "Lc0Yir6"
+            ]
+          ]
+        ],
+        [
+          1,
+          [
+            [
+              "YGUiI5e"
+            ]
+          ]
+        ]
+      ],
+      []
+    ],
+    [
+      "lbS",
+      "2",
+      [
+        "YGUiI5e"
+      ],
+      null,
+      [
+        [
+          1,
+          [
+            [
+              "LQro-wc"
+            ]
+          ]
+        ]
+      ],
+      []
+    ],
+    [
+      "_lO",
+      "2",
+      [
+        "YGUiI5e"
+      ],
+      null,
+      [
+        [
+          1,
+          [
+            [
+              "05Tsp4r"
+            ]
+          ]
+        ]
+      ],
+      []
+    ],
+    [
+      "N-n",
+      "2",
+      [
+        "YGUiI5e"
+      ],
+      null,
+      [
+        [
+          1,
+          [
+            [
+              "O8iuzQx"
+            ]
+          ]
+        ]
+      ],
+      []
+    ]
+  ],
+  "frames": [
+    {
+      "index": 80,
+      "time": 4.0,
+      "rawCardUpdates": {
+        "Lc0Yir6": [
+          [
+            "Lc0Yir6"
+          ],
+          {
+            "4": [
+              4,
+              4000,
+              3950
+            ],
+            "34": [
+              34,
+              56,
+              96
+            ]
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "YGUiI5e": [
+          [
+            "YGUiI5e"
+          ],
+          {
+            "4": [
+              4,
+              4000,
+              3950
+            ],
+            "9": [
+              9,
+              0,
+              2000
+            ],
+            "38": [
+              38,
+              18,
+              38
+            ],
+            "34": [
+              34,
+              218,
+              238
+            ]
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "rawLandscraperAuraExecuted": [
+        [
+          "qq5",
+          "2",
+          [
+            "YGUiI5e"
+          ],
+          null,
+          [
+            [
+              1,
+              [
+                [
+                  "Lc0Yir6"
+                ]
+              ]
+            ],
+            [
+              1,
+              [
+                [
+                  "YGUiI5e"
+                ]
+              ]
+            ],
+            [
+              1,
+              [
+                [
+                  "LQro-wc"
+                ]
+              ]
+            ],
+            [
+              1,
+              [
+                [
+                  "05Tsp4r"
+                ]
+              ]
+            ],
+            [
+              1,
+              [
+                [
+                  "O8iuzQx"
+                ]
+              ]
+            ]
+          ],
+          []
+        ]
+      ]
+    },
+    {
+      "index": 91,
+      "time": 4.55,
+      "rawCardUpdates": {
+        "Lc0Yir6": [
+          [
+            "Lc0Yir6"
+          ],
+          {
+            "4": [
+              4,
+              3450,
+              3400
+            ],
+            "34": [
+              34,
+              96,
+              98
+            ]
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "YGUiI5e": [
+          [
+            "YGUiI5e"
+          ],
+          {
+            "9": [
+              9,
+              1500,
+              1450
+            ],
+            "4": [
+              4,
+              2950,
+              2850
+            ],
+            "38": [
+              38,
+              38,
+              39
+            ],
+            "34": [
+              34,
+              238,
+              239
+            ]
+          },
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "rawLandscraperAuraExecuted": [
+        [
+          "5FU",
+          "2",
+          [
+            "YGUiI5e"
+          ],
+          null,
+          [
+            [
+              1,
+              [
+                [
+                  "Lc0Yir6"
+                ]
+              ]
+            ],
+            [
+              1,
+              [
+                [
+                  "YGUiI5e"
+                ]
+              ]
+            ],
+            [
+              1,
+              [
+                [
+                  "LQro-wc"
+                ]
+              ]
+            ],
+            [
+              1,
+              [
+                [
+                  "05Tsp4r"
+                ]
+              ]
+            ],
+            [
+              1,
+              [
+                [
+                  "O8iuzQx"
+                ]
+              ]
+            ]
+          ],
+          []
+        ]
+      ]
+    }
+  ],
+  "nativeTemplates": {
+    "piggles": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 4000,
+            "Multicast": 1,
+            "ShieldApplyAmount": 5
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "ShieldApplyAmount": 10
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "ShieldApplyAmount": 20
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "ShieldApplyAmount": 40
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "StartingTier": "Bronze",
+      "Type": "Item",
+      "Id": "4997b886-940a-4882-92f2-e5c8042749df",
+      "Version": "5.0.0",
+      "InternalName": "Piggles Protectors",
+      "Size": "Small",
+      "Tags": [
+        "Toy"
+      ],
+      "HiddenTags": [
+        "Shield",
+        "ShieldReference"
+      ],
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerShieldApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Piggles Protectors 1",
+          "InternalDescription": "Shield [5/10/15/20]",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "b26e1ae0-ccdc-40ae-bdf3-26b850284b58",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "1": {
+          "Id": "1",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Multiply",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 2.0
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Piggles Protectors 2",
+          "InternalDescription": "This has double Shield",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+          "WorksIn": "Anywhere"
+        }
+      }
+    },
+    "landscraper": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Multicast": 1,
+            "ShieldApplyAmount": 200,
+            "Custom_2": 15
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 4000,
+            "Custom_2": 20
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "CooldownMax": 3000,
+            "Custom_2": 25
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "StartingTier": "Silver",
+      "Type": "Item",
+      "Id": "530b642b-4a31-4cc4-a7ae-ea22d607ad4d",
+      "Version": "5.0.0",
+      "InternalName": "Landscraper",
+      "Size": "Large",
+      "Tags": [
+        "Property"
+      ],
+      "HiddenTags": [
+        "Shield",
+        "Value",
+        "EconomyReference",
+        "ShieldReference"
+      ],
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerShieldApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Landscraper 1",
+          "InternalDescription": "Shield {ability.0}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/Skyscraper/Projectile_Skyscraper_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "06fe4684e576e50e5245f0cb0b73051c",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_2",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": null
+            },
+            "AttributeType": "SellPrice",
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "SellPrice",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalHiddenTag",
+                "Tags": [
+                  "Shield"
+                ],
+                "Operator": "Any"
+              }
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Landscraper",
+          "InternalDescription": "Your items have +Shield",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "ffa8ed6ca046bddccf500487e55f2f28",
+          "WorksIn": "Anywhere"
+        }
+      }
+    }
+  },
+  "conclusion": {
+    "calculation": "(base Shield + Landscraper SellPrice) * Piggles factor",
+    "observedShield": [
+      56,
+      96,
+      98
+    ],
+    "observedLandscraperSellPrice": [
+      18,
+      38,
+      39
+    ],
+    "inferredBaseShield": 10,
+    "pigglesFactor": 2,
+    "sequentialMultiplyThenAddWouldBe": [
+      38,
+      58,
+      59
+    ],
+    "limitation": "These observations directly establish Add-before-Multiply for the two native card auras. They do not establish semantics of AdditiveMultiply, Set, or every other operation."
+  }
+}

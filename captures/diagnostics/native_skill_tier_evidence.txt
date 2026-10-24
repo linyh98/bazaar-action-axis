@@ -1,0 +1,447 @@
+## Native Counterstrike tier probe
+Monster skill tier: Silver
+Monster skill TemplateVersion: 4.0.0
+Template Version: 5.0.0
+StartingTier: Gold; actual Tiers keys: Gold, Diamond
+Bronze: exists=False; abilities=0; auras=0; ChargeAmount=<null>
+Silver: exists=False; abilities=0; auras=0; ChargeAmount=<null>
+Gold: exists=True; abilities=2; auras=0; ChargeAmount=1000
+Diamond: exists=True; abilities=2; auras=0; ChargeAmount=2000
+Legendary: exists=True; abilities=2; auras=0; ChargeAmount=2000
+## BazaarGameClient.dll SHA256=31632CE5CBD6D5A4FADEA8DF72A50E96070C629F33197F8A6F30B7875070D4E6
+### System.Void BazaarGameClient.Domain.Models.Cards.Card::set_Tier(BazaarGameShared.Domain.Core.Types.ETier)
+IL_0000: ldarg.0
+IL_0001: ldarg.1
+IL_0002: stfld BazaarGameShared.Domain.Core.Types.ETier BazaarGameClient.Domain.Models.Cards.Card::<Tier>k__BackingField
+IL_0007: ret
+### System.Boolean BazaarGameClient.Domain.Models.Cards.Card::<GetAbilitiesByTier>g__TryGetTierTemplate|67_0(BazaarGameShared.Domain.Cards.TCardTier&,BazaarGameClient.Domain.Models.Cards.Card/<>c__DisplayClass67_0&)
+IL_0000: nop
+IL_0001: ldarg.1
+IL_0002: ldfld BazaarGameShared.Domain.Core.Types.ETier BazaarGameClient.Domain.Models.Cards.Card/<>c__DisplayClass67_0::tier
+IL_0007: ldc.i4.4
+IL_0008: beq.s IL_0012
+IL_000a: ldarg.1
+IL_000b: ldfld BazaarGameShared.Domain.Core.Types.ETier BazaarGameClient.Domain.Models.Cards.Card/<>c__DisplayClass67_0::tier
+IL_0010: br.s IL_0013
+IL_0012: ldc.i4.3
+IL_0013: stloc.0
+IL_0014: ldarg.1
+IL_0015: ldfld BazaarGameShared.Domain.Cards.Interfaces.IHasTierData BazaarGameClient.Domain.Models.Cards.Card/<>c__DisplayClass67_0::data
+IL_001a: callvirt System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.ETier,BazaarGameShared.Domain.Cards.TCardTier> BazaarGameShared.Domain.Cards.Interfaces.IHasTierData::get_Tiers()
+IL_001f: ldloc.0
+IL_0020: ldarg.0
+IL_0021: callvirt System.Boolean System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.ETier,BazaarGameShared.Domain.Cards.TCardTier>::TryGetValue(!0,!1&)
+IL_0026: stloc.1
+IL_0027: br.s IL_0029
+IL_0029: ldloc.1
+IL_002a: ret
+### System.Boolean BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::MoveNext()
+IL_0000: ldarg.0
+IL_0001: ldfld System.Int32 BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>1__state
+IL_0006: stloc.1
+IL_0007: ldloc.1
+IL_0008: brfalse.s IL_0012
+IL_000a: br.s IL_000c
+IL_000c: ldloc.1
+IL_000d: ldc.i4.1
+IL_000e: beq.s IL_0014
+IL_0010: br.s IL_0019
+IL_0012: br.s IL_0020
+IL_0014: br IL_00ee
+IL_0019: ldc.i4.0
+IL_001a: stloc.0
+IL_001b: leave IL_0132
+IL_0020: ldarg.0
+IL_0021: ldc.i4.m1
+IL_0022: stfld System.Int32 BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>1__state
+IL_0027: ldarg.0
+IL_0028: ldflda BazaarGameClient.Domain.Models.Cards.Card/<>c__DisplayClass67_0 BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>8__1
+IL_002d: ldarg.0
+IL_002e: ldfld BazaarGameShared.Domain.Core.Types.ETier BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::tier
+IL_0033: stfld BazaarGameShared.Domain.Core.Types.ETier BazaarGameClient.Domain.Models.Cards.Card/<>c__DisplayClass67_0::tier
+IL_0038: ldarg.0
+IL_0039: ldflda BazaarGameClient.Domain.Models.Cards.Card/<>c__DisplayClass67_0 BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>8__1
+IL_003e: ldarg.0
+IL_003f: ldfld BazaarGameShared.Domain.Cards.Interfaces.IHasTierData BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::data
+IL_0044: stfld BazaarGameShared.Domain.Cards.Interfaces.IHasTierData BazaarGameClient.Domain.Models.Cards.Card/<>c__DisplayClass67_0::data
+IL_0049: nop
+IL_004a: ldarg.0
+IL_004b: ldflda BazaarGameShared.Domain.Cards.TCardTier BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<template>5__2
+IL_0050: ldarg.0
+IL_0051: ldflda BazaarGameClient.Domain.Models.Cards.Card/<>c__DisplayClass67_0 BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>8__1
+IL_0056: call System.Boolean BazaarGameClient.Domain.Models.Cards.Card::<GetAbilitiesByTier>g__TryGetTierTemplate|67_0(BazaarGameShared.Domain.Cards.TCardTier&,BazaarGameClient.Domain.Models.Cards.Card/<>c__DisplayClass67_0&)
+IL_005b: brfalse.s IL_0068
+IL_005d: ldarg.0
+IL_005e: ldfld BazaarGameShared.Domain.Cards.TCardTier BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<template>5__2
+IL_0063: ldnull
+IL_0064: ceq
+IL_0066: br.s IL_0069
+IL_0068: ldc.i4.1
+IL_0069: stloc.2
+IL_006a: ldloc.2
+IL_006b: brfalse.s IL_0075
+IL_006d: nop
+IL_006e: ldc.i4.0
+IL_006f: stloc.0
+IL_0070: leave IL_0132
+IL_0075: nop
+IL_0076: ldarg.0
+IL_0077: ldarg.0
+IL_0078: ldfld BazaarGameShared.Domain.Cards.TCardTier BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<template>5__2
+IL_007d: callvirt System.Collections.Generic.HashSet`1<System.String> BazaarGameShared.Domain.Cards.TCardTier::get_AbilityIds()
+IL_0082: callvirt System.Collections.Generic.HashSet`1/Enumerator<!0> System.Collections.Generic.HashSet`1<System.String>::GetEnumerator()
+IL_0087: stfld System.Collections.Generic.HashSet`1/Enumerator<System.String> BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>s__3
+IL_008c: ldarg.0
+IL_008d: ldc.i4.s -3
+IL_008f: stfld System.Int32 BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>1__state
+IL_0094: br.s IL_0106
+IL_0096: ldarg.0
+IL_0097: ldarg.0
+IL_0098: ldflda System.Collections.Generic.HashSet`1/Enumerator<System.String> BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>s__3
+IL_009d: call !0 System.Collections.Generic.HashSet`1/Enumerator<System.String>::get_Current()
+IL_00a2: stfld System.String BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<id>5__4
+IL_00a7: nop
+IL_00a8: ldarg.0
+IL_00a9: ldfld BazaarGameShared.Domain.Cards.TCardBase BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::card
+IL_00ae: callvirt System.Collections.Generic.Dictionary`2<System.String,BazaarGameShared.Domain.Effect.TCardAbility> BazaarGameShared.Domain.Cards.TCardBase::get_Abilities()
+IL_00b3: ldarg.0
+IL_00b4: ldfld System.String BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<id>5__4
+IL_00b9: ldarg.0
+IL_00ba: ldflda BazaarGameShared.Domain.Effect.TCardAbility BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<ability>5__5
+IL_00bf: callvirt System.Boolean System.Collections.Generic.Dictionary`2<System.String,BazaarGameShared.Domain.Effect.TCardAbility>::TryGetValue(!0,!1&)
+IL_00c4: brfalse.s IL_00d1
+IL_00c6: ldarg.0
+IL_00c7: ldfld BazaarGameShared.Domain.Effect.TCardAbility BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<ability>5__5
+IL_00cc: ldnull
+IL_00cd: cgt.un
+IL_00cf: br.s IL_00d2
+IL_00d1: ldc.i4.0
+IL_00d2: stloc.3
+IL_00d3: ldloc.3
+IL_00d4: brfalse.s IL_00f7
+IL_00d6: nop
+IL_00d7: ldarg.0
+IL_00d8: ldarg.0
+IL_00d9: ldfld BazaarGameShared.Domain.Effect.TCardAbility BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<ability>5__5
+IL_00de: stfld BazaarGameShared.Domain.Effect.TCardAbility BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>2__current
+IL_00e3: ldarg.0
+IL_00e4: ldc.i4.1
+IL_00e5: stfld System.Int32 BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>1__state
+IL_00ea: ldc.i4.1
+IL_00eb: stloc.0
+IL_00ec: leave.s IL_0132
+IL_00ee: ldarg.0
+IL_00ef: ldc.i4.s -3
+IL_00f1: stfld System.Int32 BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>1__state
+IL_00f6: nop
+IL_00f7: nop
+IL_00f8: ldarg.0
+IL_00f9: ldnull
+IL_00fa: stfld BazaarGameShared.Domain.Effect.TCardAbility BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<ability>5__5
+IL_00ff: ldarg.0
+IL_0100: ldnull
+IL_0101: stfld System.String BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<id>5__4
+IL_0106: ldarg.0
+IL_0107: ldflda System.Collections.Generic.HashSet`1/Enumerator<System.String> BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>s__3
+IL_010c: call System.Boolean System.Collections.Generic.HashSet`1/Enumerator<System.String>::MoveNext()
+IL_0111: brtrue.s IL_0096
+IL_0113: ldarg.0
+IL_0114: call System.Void BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>m__Finally1()
+IL_0119: nop
+IL_011a: ldarg.0
+IL_011b: ldflda System.Collections.Generic.HashSet`1/Enumerator<System.String> BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::<>s__3
+IL_0120: initobj System.Collections.Generic.HashSet`1/Enumerator<System.String>
+IL_0126: ldc.i4.0
+IL_0127: stloc.0
+IL_0128: leave.s IL_0132
+IL_012a: ldarg.0
+IL_012b: call System.Void BazaarGameClient.Domain.Models.Cards.Card/<GetAbilitiesByTier>d__67::System.IDisposable.Dispose()
+IL_0130: nop
+IL_0131: endfinally
+IL_0132: ldloc.0
+IL_0133: ret
+## BazaarGameShared.dll SHA256=C51716EA3EC8C43009EF244A84767F88C14D836EFEA565B85459E420223A8947
+### System.Void BazaarGameShared.Infra.Serialization.BazaarJsonSerializerSettingsClient::.ctor()
+IL_0000: ldarg.0
+IL_0001: call System.Void Newtonsoft.Json.JsonSerializerSettings::.ctor()
+IL_0006: nop
+IL_0007: nop
+IL_0008: ldarg.0
+IL_0009: call System.Collections.Generic.IList`1<Newtonsoft.Json.JsonConverter> Newtonsoft.Json.JsonSerializerSettings::get_Converters()
+IL_000e: newobj System.Void Newtonsoft.Json.Converters.StringEnumConverter::.ctor()
+IL_0013: callvirt System.Void System.Collections.Generic.ICollection`1<Newtonsoft.Json.JsonConverter>::Add(!0)
+IL_0018: nop
+IL_0019: ldarg.0
+IL_001a: call System.Collections.Generic.IList`1<Newtonsoft.Json.JsonConverter> Newtonsoft.Json.JsonSerializerSettings::get_Converters()
+IL_001f: ldc.i4.1
+IL_0020: ldc.i4.0
+IL_0021: newobj System.Void BazaarGameShared.Infra.Serialization.BazaarJsonDerivedTypeConverter::.ctor(System.Boolean,System.Boolean)
+IL_0026: callvirt System.Void System.Collections.Generic.ICollection`1<Newtonsoft.Json.JsonConverter>::Add(!0)
+IL_002b: nop
+IL_002c: ldarg.0
+IL_002d: ldc.i4.1
+IL_002e: call System.Void Newtonsoft.Json.JsonSerializerSettings::set_DateTimeZoneHandling(Newtonsoft.Json.DateTimeZoneHandling)
+IL_0033: nop
+IL_0034: ret
+### System.Boolean BazaarGameShared.Domain.Cards.Skill.TCardSkill::TryGetTierTemplate(BazaarGameShared.Domain.Core.Types.ETier,BazaarGameShared.Domain.Cards.TCardTier&)
+IL_0000: ldarg.0
+IL_0001: call System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.ETier,BazaarGameShared.Domain.Cards.TCardTier> BazaarGameShared.Domain.Cards.Skill.TCardSkill::get_Tiers()
+IL_0006: ldarg.1
+IL_0007: ldc.i4.4
+IL_0008: beq.s IL_000d
+IL_000a: ldarg.1
+IL_000b: br.s IL_000e
+IL_000d: ldc.i4.3
+IL_000e: ldarg.2
+IL_000f: callvirt System.Boolean System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.ETier,BazaarGameShared.Domain.Cards.TCardTier>::TryGetValue(!0,!1&)
+IL_0014: ret
+### System.Nullable`1<System.Int32> BazaarGameShared.Domain.Cards.Skill.TCardSkill::GetAttributeBaseValueAtTier(BazaarGameShared.Domain.Core.Types.ECardAttributeType,BazaarGameShared.Domain.Core.Types.ETier)
+IL_0000: nop
+IL_0001: br.s IL_004b
+IL_0003: nop
+IL_0004: ldarg.0
+IL_0005: ldarg.2
+IL_0006: ldloca.s V_0
+IL_0008: call System.Boolean BazaarGameShared.Domain.Cards.Skill.TCardSkill::TryGetTierTemplate(BazaarGameShared.Domain.Core.Types.ETier,BazaarGameShared.Domain.Cards.TCardTier&)
+IL_000d: brfalse.s IL_0015
+IL_000f: ldloc.0
+IL_0010: ldnull
+IL_0011: ceq
+IL_0013: br.s IL_0016
+IL_0015: ldc.i4.1
+IL_0016: stloc.2
+IL_0017: ldloc.2
+IL_0018: brfalse.s IL_0027
+IL_001a: ldloca.s V_3
+IL_001c: initobj System.Nullable`1<System.Int32>
+IL_0022: ldloc.3
+IL_0023: stloc.s V_4
+IL_0025: br.s IL_006a
+IL_0027: ldloc.0
+IL_0028: callvirt System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.ECardAttributeType,System.Int32> BazaarGameShared.Domain.Cards.TCardTier::get_Attributes()
+IL_002d: ldarg.1
+IL_002e: ldloca.s V_1
+IL_0030: callvirt System.Boolean System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.ECardAttributeType,System.Int32>::TryGetValue(!0,!1&)
+IL_0035: stloc.s V_5
+IL_0037: ldloc.s V_5
+IL_0039: brfalse.s IL_0045
+IL_003b: ldloc.1
+IL_003c: newobj System.Void System.Nullable`1<System.Int32>::.ctor(!0)
+IL_0041: stloc.s V_4
+IL_0043: br.s IL_006a
+IL_0045: ldarg.2
+IL_0046: ldc.i4.1
+IL_0047: sub
+IL_0048: starg.s lookupTier
+IL_004a: nop
+IL_004b: ldarg.2
+IL_004c: ldarg.0
+IL_004d: callvirt BazaarGameShared.Domain.Core.Types.ETier BazaarGameShared.Domain.Cards.TCardBase::get_StartingTier()
+IL_0052: clt
+IL_0054: ldc.i4.0
+IL_0055: ceq
+IL_0057: stloc.s V_6
+IL_0059: ldloc.s V_6
+IL_005b: brtrue.s IL_0003
+IL_005d: ldloca.s V_3
+IL_005f: initobj System.Nullable`1<System.Int32>
+IL_0065: ldloc.3
+IL_0066: stloc.s V_4
+IL_0068: br.s IL_006a
+IL_006a: ldloc.s V_4
+IL_006c: ret
+### System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Effect.TCardAbility> BazaarGameShared.Domain.Cards.Skill.TCardSkill::GetAbilityTemplatesByTier(BazaarGameShared.Domain.Core.Types.ETier)
+IL_0000: nop
+IL_0001: ldarg.0
+IL_0002: ldarg.1
+IL_0003: ldloca.s V_0
+IL_0005: call System.Boolean BazaarGameShared.Domain.Cards.Skill.TCardSkill::TryGetTierTemplate(BazaarGameShared.Domain.Core.Types.ETier,BazaarGameShared.Domain.Cards.TCardTier&)
+IL_000a: brfalse.s IL_0012
+IL_000c: ldloc.0
+IL_000d: ldnull
+IL_000e: ceq
+IL_0010: br.s IL_0013
+IL_0012: ldc.i4.1
+IL_0013: stloc.2
+IL_0014: ldloc.2
+IL_0015: brfalse.s IL_001f
+IL_0017: newobj System.Void System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Effect.TCardAbility>::.ctor()
+IL_001c: stloc.3
+IL_001d: br.s IL_0088
+IL_001f: newobj System.Void System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Effect.TCardAbility>::.ctor()
+IL_0024: stloc.1
+IL_0025: nop
+IL_0026: ldloc.0
+IL_0027: callvirt System.Collections.Generic.HashSet`1<System.String> BazaarGameShared.Domain.Cards.TCardTier::get_AbilityIds()
+IL_002c: callvirt System.Collections.Generic.HashSet`1/Enumerator<!0> System.Collections.Generic.HashSet`1<System.String>::GetEnumerator()
+IL_0031: stloc.s V_4
+IL_0033: br.s IL_006a
+IL_0035: ldloca.s V_4
+IL_0037: call !0 System.Collections.Generic.HashSet`1/Enumerator<System.String>::get_Current()
+IL_003c: stloc.s V_5
+IL_003e: nop
+IL_003f: ldarg.0
+IL_0040: call System.Collections.Generic.Dictionary`2<System.String,BazaarGameShared.Domain.Effect.TCardAbility> BazaarGameShared.Domain.Cards.TCardBase::get_Abilities()
+IL_0045: ldloc.s V_5
+IL_0047: ldloca.s V_6
+IL_0049: callvirt System.Boolean System.Collections.Generic.Dictionary`2<System.String,BazaarGameShared.Domain.Effect.TCardAbility>::TryGetValue(!0,!1&)
+IL_004e: brfalse.s IL_0057
+IL_0050: ldloc.s V_6
+IL_0052: ldnull
+IL_0053: ceq
+IL_0055: br.s IL_0058
+IL_0057: ldc.i4.1
+IL_0058: stloc.s V_7
+IL_005a: ldloc.s V_7
+IL_005c: brfalse.s IL_0060
+IL_005e: br.s IL_006a
+IL_0060: ldloc.1
+IL_0061: ldloc.s V_6
+IL_0063: callvirt System.Boolean System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Effect.TCardAbility>::Add(!0)
+IL_0068: pop
+IL_0069: nop
+IL_006a: ldloca.s V_4
+IL_006c: call System.Boolean System.Collections.Generic.HashSet`1/Enumerator<System.String>::MoveNext()
+IL_0071: brtrue.s IL_0035
+IL_0073: leave.s IL_0084
+IL_0075: ldloca.s V_4
+IL_0077: constrained. System.Collections.Generic.HashSet`1/Enumerator<System.String>
+IL_007d: callvirt System.Void System.IDisposable::Dispose()
+IL_0082: nop
+IL_0083: endfinally
+IL_0084: ldloc.1
+IL_0085: stloc.3
+IL_0086: br.s IL_0088
+IL_0088: ldloc.3
+IL_0089: ret
+### System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Effect.TCardAura> BazaarGameShared.Domain.Cards.Skill.TCardSkill::GetAuraTemplatesByTier(BazaarGameShared.Domain.Core.Types.ETier)
+IL_0000: nop
+IL_0001: ldarg.0
+IL_0002: ldarg.1
+IL_0003: ldloca.s V_0
+IL_0005: call System.Boolean BazaarGameShared.Domain.Cards.Skill.TCardSkill::TryGetTierTemplate(BazaarGameShared.Domain.Core.Types.ETier,BazaarGameShared.Domain.Cards.TCardTier&)
+IL_000a: brfalse.s IL_0012
+IL_000c: ldloc.0
+IL_000d: ldnull
+IL_000e: ceq
+IL_0010: br.s IL_0013
+IL_0012: ldc.i4.1
+IL_0013: stloc.2
+IL_0014: ldloc.2
+IL_0015: brfalse.s IL_001f
+IL_0017: newobj System.Void System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Effect.TCardAura>::.ctor()
+IL_001c: stloc.3
+IL_001d: br.s IL_0088
+IL_001f: newobj System.Void System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Effect.TCardAura>::.ctor()
+IL_0024: stloc.1
+IL_0025: nop
+IL_0026: ldloc.0
+IL_0027: callvirt System.Collections.Generic.HashSet`1<System.String> BazaarGameShared.Domain.Cards.TCardTier::get_AuraIds()
+IL_002c: callvirt System.Collections.Generic.HashSet`1/Enumerator<!0> System.Collections.Generic.HashSet`1<System.String>::GetEnumerator()
+IL_0031: stloc.s V_4
+IL_0033: br.s IL_006a
+IL_0035: ldloca.s V_4
+IL_0037: call !0 System.Collections.Generic.HashSet`1/Enumerator<System.String>::get_Current()
+IL_003c: stloc.s V_5
+IL_003e: nop
+IL_003f: ldarg.0
+IL_0040: call System.Collections.Generic.Dictionary`2<System.String,BazaarGameShared.Domain.Effect.TCardAura> BazaarGameShared.Domain.Cards.TCardBase::get_Auras()
+IL_0045: ldloc.s V_5
+IL_0047: ldloca.s V_6
+IL_0049: callvirt System.Boolean System.Collections.Generic.Dictionary`2<System.String,BazaarGameShared.Domain.Effect.TCardAura>::TryGetValue(!0,!1&)
+IL_004e: brfalse.s IL_0057
+IL_0050: ldloc.s V_6
+IL_0052: ldnull
+IL_0053: ceq
+IL_0055: br.s IL_0058
+IL_0057: ldc.i4.1
+IL_0058: stloc.s V_7
+IL_005a: ldloc.s V_7
+IL_005c: brfalse.s IL_0060
+IL_005e: br.s IL_006a
+IL_0060: ldloc.1
+IL_0061: ldloc.s V_6
+IL_0063: callvirt System.Boolean System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Effect.TCardAura>::Add(!0)
+IL_0068: pop
+IL_0069: nop
+IL_006a: ldloca.s V_4
+IL_006c: call System.Boolean System.Collections.Generic.HashSet`1/Enumerator<System.String>::MoveNext()
+IL_0071: brtrue.s IL_0035
+IL_0073: leave.s IL_0084
+IL_0075: ldloca.s V_4
+IL_0077: constrained. System.Collections.Generic.HashSet`1/Enumerator<System.String>
+IL_007d: callvirt System.Void System.IDisposable::Dispose()
+IL_0082: nop
+IL_0083: endfinally
+IL_0084: ldloc.1
+IL_0085: stloc.3
+IL_0086: br.s IL_0088
+IL_0088: ldloc.3
+IL_0089: ret
+## TheBazaarRuntime.dll SHA256=F9AB344D18572B981D877A59EA7A76B1D379418FF3B1BF1553BD67A24ECBE434
+### System.Void TheBazaar.DTOUtils::PopulateTemplateAsync(BazaarGameClient.Domain.Models.Cards.Card)
+IL_0000: ldarg.0
+IL_0001: callvirt System.Guid BazaarGameClient.Domain.Models.Cards.Card::get_TemplateId()
+IL_0006: call System.Boolean TheBazaar.Utilities.TempoExtensions::IsGuidNullOrEmpty(System.Guid)
+IL_000b: brtrue.s IL_0025
+IL_000d: call TheBazaar.DataManagement.Json.JsonGameDataManager TheBazaar.Data::GetStatic()
+IL_0012: stloc.0
+IL_0013: ldarg.0
+IL_0014: ldloc.0
+IL_0015: ldarg.0
+IL_0016: callvirt System.Guid BazaarGameClient.Domain.Models.Cards.Card::get_TemplateId()
+IL_001b: callvirt BazaarGameShared.Domain.Cards.ITCard TheBazaar.DataManagement.Json.JsonGameDataManager::GetCardById(System.Guid)
+IL_0020: callvirt System.Void BazaarGameClient.Domain.Models.Cards.Card::set_Template(BazaarGameShared.Domain.Cards.ITCard)
+IL_0025: ret
+### BazaarGameShared.Domain.Cards.ITCard TheBazaar.DataManagement.Json.JsonGameDataManager::GetCardById(System.Guid)
+IL_0000: ldarg.0
+IL_0001: ldfld System.Collections.Generic.Dictionary`2<System.Guid,BazaarGameShared.Domain.Cards.ITCard> TheBazaar.DataManagement.Json.JsonGameDataManager::_cards
+IL_0006: ldarg.1
+IL_0007: ldloca.s V_0
+IL_0009: callvirt System.Boolean System.Collections.Generic.Dictionary`2<System.Guid,BazaarGameShared.Domain.Cards.ITCard>::TryGetValue(!0,!1&)
+IL_000e: brfalse.s IL_0012
+IL_0010: ldloc.0
+IL_0011: ret
+IL_0012: ldarg.0
+IL_0013: ldfld System.String TheBazaar.DataManagement.Json.JsonGameDataManager::_dbPath
+IL_0018: call SQLite.SQLiteConnection TheBazaar.DataManagement.Json.JsonGameDataManager::Open(System.String)
+IL_001d: stloc.1
+IL_001e: ldstr "SELECT Data FROM cards WHERE Id = ?"
+IL_0023: stloc.2
+IL_0024: ldloc.1
+IL_0025: ldloc.2
+IL_0026: ldc.i4.1
+IL_0027: newarr System.Object
+IL_002c: dup
+IL_002d: ldc.i4.0
+IL_002e: ldarg.1
+IL_002f: box System.Guid
+IL_0034: stelem.ref
+IL_0035: callvirt System.Collections.Generic.List`1<!!0> SQLite.SQLiteConnection::Query<TheBazaar.DataManagement.Json.JsonGameDataManager/BlobRow>(System.String,System.Object[])
+IL_003a: call !!0 System.Linq.Enumerable::SingleOrDefault<TheBazaar.DataManagement.Json.JsonGameDataManager/BlobRow>(System.Collections.Generic.IEnumerable`1<!!0>)
+IL_003f: stloc.3
+IL_0040: ldloc.3
+IL_0041: brtrue.s IL_0048
+IL_0043: ldnull
+IL_0044: stloc.s V_5
+IL_0046: leave.s IL_0078
+IL_0048: call Newtonsoft.Json.JsonSerializer TheBazaar.DataManagement.Json.JsonGameDataManager::get_CardSerializer()
+IL_004d: ldloc.3
+IL_004e: callvirt System.Byte[] TheBazaar.DataManagement.Json.JsonGameDataManager/BlobRow::get_Data()
+IL_0053: call TValue TheBazaar.DataManagement.Json.JsonGameDataManager::Deserialize<BazaarGameShared.Domain.Cards.ITCard>(Newtonsoft.Json.JsonSerializer,System.Byte[])
+IL_0058: stloc.s V_4
+IL_005a: ldarg.0
+IL_005b: ldfld System.Collections.Generic.Dictionary`2<System.Guid,BazaarGameShared.Domain.Cards.ITCard> TheBazaar.DataManagement.Json.JsonGameDataManager::_cards
+IL_0060: ldarg.1
+IL_0061: ldloc.s V_4
+IL_0063: callvirt System.Void System.Collections.Generic.Dictionary`2<System.Guid,BazaarGameShared.Domain.Cards.ITCard>::set_Item(!0,!1)
+IL_0068: ldloc.s V_4
+IL_006a: stloc.s V_5
+IL_006c: leave.s IL_0078
+IL_006e: ldloc.1
+IL_006f: brfalse.s IL_0077
+IL_0071: ldloc.1
+IL_0072: callvirt System.Void System.IDisposable::Dispose()
+IL_0077: endfinally
+IL_0078: ldloc.s V_5
+IL_007a: ret

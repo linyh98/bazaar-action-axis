@@ -1,0 +1,380 @@
+{
+  "sourceReplay": "bb30d9e9d76c426b89d28e4fc9ea35d3.payload.mpack.gz",
+  "sourceSha256": "698fba023f6973967a31ef894ade108e5c2b50836cc48674aacdcdae64fb5ac7",
+  "frameMilliseconds": 50,
+  "templates": {
+    "piggles": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 4000,
+            "Multicast": 1,
+            "ShieldApplyAmount": 5
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "ShieldApplyAmount": 10
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "ShieldApplyAmount": 20
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "ShieldApplyAmount": 40
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "StartingTier": "Bronze",
+      "Type": "Item",
+      "Id": "4997b886-940a-4882-92f2-e5c8042749df",
+      "Version": "5.0.0",
+      "InternalName": "Piggles Protectors",
+      "Size": "Small",
+      "Tags": [
+        "Toy"
+      ],
+      "HiddenTags": [
+        "Shield",
+        "ShieldReference"
+      ],
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerShieldApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Piggles Protectors 1",
+          "InternalDescription": "Shield [5/10/15/20]",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "b26e1ae0-ccdc-40ae-bdf3-26b850284b58",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "1": {
+          "Id": "1",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Multiply",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 2.0
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Piggles Protectors 2",
+          "InternalDescription": "This has double Shield",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+          "WorksIn": "Anywhere"
+        }
+      }
+    },
+    "landscraper": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Multicast": 1,
+            "ShieldApplyAmount": 200,
+            "Custom_2": 15
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 4000,
+            "Custom_2": 20
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "CooldownMax": 3000,
+            "Custom_2": 25
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "StartingTier": "Silver",
+      "Type": "Item",
+      "Id": "530b642b-4a31-4cc4-a7ae-ea22d607ad4d",
+      "Version": "5.0.0",
+      "InternalName": "Landscraper",
+      "Size": "Large",
+      "Tags": [
+        "Property"
+      ],
+      "HiddenTags": [
+        "Shield",
+        "Value",
+        "EconomyReference",
+        "ShieldReference"
+      ],
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerShieldApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Landscraper 1",
+          "InternalDescription": "Shield {ability.0}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/Skyscraper/Projectile_Skyscraper_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "06fe4684e576e50e5245f0cb0b73051c",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_2",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": null
+            },
+            "AttributeType": "SellPrice",
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "SellPrice",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalHiddenTag",
+                "Tags": [
+                  "Shield"
+                ],
+                "Operator": "Any"
+              }
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Landscraper",
+          "InternalDescription": "Your items have +Shield",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "ffa8ed6ca046bddccf500487e55f2f28",
+          "WorksIn": "Anywhere"
+        }
+      }
+    }
+  },
+  "opening": {
+    "piggles": {
+      "instanceId": "Lc0Yir6",
+      "tier": "Silver",
+      "rawBaseShield": 10,
+      "capturedShield": 56
+    },
+    "landscraper": {
+      "instanceId": "YGUiI5e",
+      "tier": "Diamond",
+      "capturedSellPrice": 18,
+      "capturedCustom2": 20
+    }
+  },
+  "nativeFrames": [
+    {
+      "index": 80,
+      "sellPriceBefore": 18,
+      "sellPriceAfter": 38,
+      "shieldBefore": 56,
+      "shieldAfter": 96
+    },
+    {
+      "index": 91,
+      "sellPriceBefore": 38,
+      "sellPriceAfter": 39,
+      "shieldBefore": 96,
+      "shieldAfter": 98
+    }
+  ]
+}

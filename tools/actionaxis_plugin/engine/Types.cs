@@ -37,6 +37,18 @@ namespace BazaarActionAxis.Engine
         public string Stack;
         public double Per;
         public string Tag;
+        // 运行时引用：映射期只记录结构，结算时按当时属性求值。
+        public string Attribute;
+        public string TargetKind;
+        public string Side;
+        public JsonValue Condition;
+        public bool Distinct;
+        public bool Exclude;
+        public double Min;
+        public double Max;
+        public NumExpr Modifier;
+        public string ModifyMode;
+        public bool ShouldRound;
     }
 
     public sealed class Target
@@ -62,6 +74,16 @@ namespace BazaarActionAxis.Engine
         public double Chance;
         public double Percent;
         public bool Crit;
+        // TActionAnd 展开后的子动作；其余效果为空。
+        public List<Effect> Effects;
+        // 运行时改属性 / 加标签使用。
+        public string Attribute;
+        public string Operation;
+        public List<string> Tags;
+        // TActionCardAddTagsBySource 的标签来源。
+        public Target SourceTarget;
+        // 主动能力自带的前提（例如计数器达到 N 才能出手）。
+        public JsonValue Prerequisites;
     }
 
     public sealed class TriggerFilter
@@ -82,6 +104,9 @@ namespace BazaarActionAxis.Engine
         public double? EverySeconds;
         public List<Effect> Effects = new List<Effect>();
         public NativeSkillRule SkillRule;
+        // TTriggerOnCardAttributeChanged / PlayerAttributeChanged 的属性与增减方向。
+        public string AttributeFilter;
+        public string ChangeType;
     }
 
     public sealed class CardDef
@@ -93,10 +118,16 @@ namespace BazaarActionAxis.Engine
         public string Image;
         public string Size = "Small";
         public string Tier = "Bronze";
+        // 原生附魔枚举名；未附魔为 null。用于 TCardConditionalHasEnchantment。
+        public string EnchantmentName;
         public double Cooldown;
         public List<Effect> Effects = new List<Effect>();
         public List<TriggerDef> Triggers = new List<TriggerDef>();
         public List<string> Tags = new List<string>();
+        // 原生 HiddenTags：用于 TCardConditionalHiddenTag。
+        public List<string> HiddenTags = new List<string>();
+        // 原生 Heroes：卡牌所属英雄（Common 表示全英雄通用）。
+        public List<string> Heroes = new List<string>();
         public int? AmmoMax;
         public bool StartReady;
         public bool Passive;
@@ -113,6 +144,11 @@ namespace BazaarActionAxis.Engine
         public JsonValue NativeEnchantment;
         public bool NativeAttributesAreLive = true;
         public bool NativeAurasApplied;
+        // Card attribute auras are evaluated again when combat state changes.
+        public List<JsonValue> NativeRuntimeAuras = new List<JsonValue>();
+        // Before native card auras: pure templates contain raw stats; live boards
+        // contain already evaluated stats, normalized once by NativeDynamicAuras.
+        public Dictionary<string, int> NativeAuraSeedAttributes;
 
         public string DisplayName()
         {
@@ -145,10 +181,13 @@ namespace BazaarActionAxis.Engine
             copy.Image = Image;
             copy.Size = Size;
             copy.Tier = Tier;
+            copy.EnchantmentName = EnchantmentName;
             copy.Cooldown = Cooldown;
             copy.Effects = Effects;
             copy.Triggers = Triggers;
             copy.Tags = Tags;
+            copy.HiddenTags = HiddenTags;
+            copy.Heroes = Heroes;
             copy.AmmoMax = AmmoMax;
             copy.StartReady = StartReady;
             copy.Passive = Passive;
@@ -165,6 +204,8 @@ namespace BazaarActionAxis.Engine
             copy.NativeEnchantment = NativeEnchantment;
             copy.NativeAttributesAreLive = NativeAttributesAreLive;
             copy.NativeAurasApplied = NativeAurasApplied;
+            copy.NativeRuntimeAuras = new List<JsonValue>(NativeRuntimeAuras);
+            copy.NativeAuraSeedAttributes = NativeAuraSeedAttributes == null ? null : new Dictionary<string, int>(NativeAuraSeedAttributes);
             return copy;
         }
     }
@@ -317,11 +358,20 @@ namespace BazaarActionAxis.Engine
         public double? EnemyStartHp;
         public double EnemyStartShield;
         public double EnemyStartRegen;
+        // 原生怪物模板的 Player.Attributes 默认值：RageMax 100，暴怒 5000 ms。
+        public double PlayerRageMax = 100;
+        public double EnemyRageMax = 100;
+        public double PlayerEnragedDurationMs = 5000;
+        public double EnemyEnragedDurationMs = 5000;
         // Random enemy cards remain valid targets and retain their board tags,
         // but a training dummy never activates cards or their passive triggers.
         public bool EnemyIsTrainingDummy;
         // Keep historical fixture semantics unless the live plugin opts into current game rules.
         public bool NativeMechanics;
+        // 玩家/对手的英雄身份（原生 EHero 枚举名，如 Vanessa）。
+        // 未读取到时保留 null，TCardConditionalPlayerHero 按不匹配处理并警告。
+        public string PlayerHero;
+        public string EnemyHero;
         public double Seed = 1;
         public RuleOverrides Rules = new RuleOverrides();
         public double MaxTime = 60;

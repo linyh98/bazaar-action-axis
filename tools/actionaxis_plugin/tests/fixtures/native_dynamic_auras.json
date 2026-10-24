@@ -1,0 +1,1480 @@
+{
+  "source": "Installed GameData.db read only; Version 5.0.0; exact native selected base-card fields; no edited mechanics",
+  "cards": [
+    {
+      "$type": "TCardItem",
+      "Id": "17fe0a7a-6432-49ec-a931-9237482bc8f2",
+      "Version": "5.0.0",
+      "InternalName": "Windbreaker",
+      "StartingTier": "Silver",
+      "Size": "Medium",
+      "Tags": [
+        "Apparel"
+      ],
+      "HiddenTags": [
+        "Shield",
+        "FlyingReference",
+        "ShieldReference"
+      ],
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Multicast": 1,
+            "ShieldApplyAmount": 25,
+            "Custom_0": 25
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "Custom_0": 50
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "Custom_0": 100
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerShieldApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Windbreaker 1",
+          "InternalDescription": "Shield 25",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "919fd2f18448b36e38f2f6fee87a36ec",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardStartedFlying",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": null
+            },
+            "Source": null
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_0",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": null
+            },
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Windbreaker 2",
+          "InternalDescription": "When your items start Flying, this gains +[--/25/50/75] Shield",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "919fd2f18448b36e38f2f6fee87a36ec",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Multiply",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 2.0
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Flying",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 1.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            }
+          ],
+          "InternalName": "Windbreaker 3",
+          "InternalDescription": "While this is Flying, this has double Shield",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "919fd2f18448b36e38f2f6fee87a36ec",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Localization": {
+        "Title": {
+          "Key": "ca6515e9766714c645dcbad8e52aa271",
+          "Text": "Windbreaker"
+        },
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "888ac69c05cc780657312790310f00c0",
+              "Text": "Shield {ability.0}"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "1227624433fe5102c335cb08b53c9fcf",
+              "Text": "When your items start Flying, this gains {ability.1}"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "159c5715e81557cc581d82b4bf254922",
+              "Text": "While this is Flying, this has double Shield"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      }
+    },
+    {
+      "$type": "TCardItem",
+      "Id": "27e2ea0b-4e39-4826-be29-9f5505d5938a",
+      "Version": "5.0.0",
+      "InternalName": "Wrench",
+      "StartingTier": "Gold",
+      "Size": "Small",
+      "Tags": [
+        "Weapon",
+        "Tool"
+      ],
+      "HiddenTags": [
+        "Damage",
+        "FlyingReference",
+        "DamageReference"
+      ],
+      "Tiers": {
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 4000,
+            "Multicast": 1,
+            "UpgradeTargets": 1,
+            "DamageAmount": 10,
+            "Custom_3": 0
+          },
+          "AbilityIds": [
+            "0",
+            "7",
+            "1",
+            "8"
+          ],
+          "AuraIds": [
+            "3"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "DamageAmount": 20
+          },
+          "AbilityIds": [
+            "0",
+            "7",
+            "2",
+            "8"
+          ],
+          "AuraIds": [
+            "3"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerDamage",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Wrench 1",
+          "InternalDescription": "Deal {ability.0} Damage",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Projectile_Blunt_PV",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "df4deb2bd5e8a36dfc66eb5bae98e5ea",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnDayStarted"
+          },
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TActionCardUpgrade",
+            "UpgradeToTier": null,
+            "TargetCount": null,
+            "InheritEnchantment": false,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": true,
+              "TargetSection": "SelfHandAndStash",
+              "Conditions": {
+                "$type": "TCardConditionalAnd",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalTier",
+                    "Tiers": [
+                      "Bronze",
+                      "Silver"
+                    ],
+                    "IsNot": false
+                  },
+                  {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Tool"
+                    ],
+                    "Operator": "Any"
+                  }
+                ]
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Wrench Gold",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "5c4c334140219eba63b9c2cc1e2032d9",
+          "WorksIn": "Anywhere"
+        },
+        "7": {
+          "Id": "7",
+          "Trigger": {
+            "$type": "TTriggerOnDayStarted"
+          },
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 1.0
+            },
+            "AttributeType": "Custom_3",
+            "Operation": "Add",
+            "Duration": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Immediate",
+          "InternalName": "Wrench - Enchantment Queue",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+          "WorksIn": "Anywhere"
+        },
+        "2": {
+          "Id": "2",
+          "Trigger": {
+            "$type": "TTriggerOnDayStarted"
+          },
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TActionCardUpgrade",
+            "UpgradeToTier": null,
+            "TargetCount": null,
+            "InheritEnchantment": false,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": true,
+              "TargetSection": "SelfHandAndStash",
+              "Conditions": {
+                "$type": "TCardConditionalAnd",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalTier",
+                    "Tiers": [
+                      "Bronze",
+                      "Silver",
+                      "Gold"
+                    ],
+                    "IsNot": false
+                  },
+                  {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Tool"
+                    ],
+                    "Operator": "Any"
+                  }
+                ]
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Wrench Diamond",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "5c4c334140219eba63b9c2cc1e2032d9",
+          "WorksIn": "Anywhere"
+        },
+        "8": {
+          "Id": "8",
+          "Trigger": {
+            "$type": "TTriggerOnCardPurchased",
+            "Subject": {
+              "$type": "TTargetCardTriggerSource",
+              "ExcludeSelf": true,
+              "Conditions": {
+                "$type": "TCardConditionalType",
+                "CardType": "Item",
+                "IsNot": false
+              }
+            }
+          },
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_3",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "AttributeType": "Custom_3",
+            "Operation": "Subtract",
+            "Duration": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Immediate",
+          "InternalName": "Wrench - Enchantment Queue",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "3": {
+          "Id": "3",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "DamageAmount",
+            "Operation": "Multiply",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 2.0
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Flying",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 1.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            }
+          ],
+          "InternalName": "Wrench 3",
+          "InternalDescription": "While this is Flying, this has double Damage",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "919fd2f18448b36e38f2f6fee87a36ec",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Localization": {
+        "Title": {
+          "Key": "d0e410ca11db8103b87c4f66e2659067",
+          "Text": "Wrench"
+        },
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "fb7589d26e5b92206a673082abb89581",
+              "Text": "Deal {ability.0} Damage"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "755010082b5fae58f5824e3046d0c7a8",
+              "Text": "At the start of each day, upgrade a Tool of a lower tier"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "01870b5829594dcd70cd5c0bc99e079b",
+              "Text": "While this is Flying, this has double Damage"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      }
+    },
+    {
+      "$type": "TCardItem",
+      "Id": "37bff6ae-a219-4be0-be1c-a1065ef094ca",
+      "Version": "5.0.0",
+      "InternalName": "Red Lantern",
+      "StartingTier": "Silver",
+      "Size": "Small",
+      "Tags": [],
+      "HiddenTags": [
+        "Crit",
+        "FlyingReference",
+        "CritReference"
+      ],
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "Custom_0": 20
+          },
+          "AbilityIds": [],
+          "AuraIds": [
+            "0",
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "Custom_0": 30
+          },
+          "AbilityIds": [],
+          "AuraIds": [
+            "0",
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "Custom_0": 40
+          },
+          "AbilityIds": [],
+          "AuraIds": [
+            "0",
+            "1"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Abilities": {},
+      "Auras": {
+        "0": {
+          "Id": "0",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "CritChance",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_0",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": null
+            },
+            "Target": {
+              "$type": "TTargetCardPositional",
+              "Origin": "Self",
+              "TargetMode": "Neighbor",
+              "IncludeOrigin": false,
+              "Conditions": {
+                "$type": "TCardConditionalCanCrit",
+                "IsNot": false
+              }
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Red Lantern 1",
+          "InternalDescription": "Adjacent items have +[10/15/20/25]% Crit Chance",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "c5a1a207-36aa-4b28-8de9-2b6ee868dcc3",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Custom_0",
+            "Operation": "Multiply",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 2.0
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Flying",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 1.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            }
+          ],
+          "InternalName": "Red Lantern 2",
+          "InternalDescription": "While this is Flying, this has double Crit Bonus",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "919fd2f18448b36e38f2f6fee87a36ec",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Localization": {
+        "Title": {
+          "Key": "ed850d7bf36158a94748dbdd3d57c423",
+          "Text": "Red Lantern"
+        },
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "abae8e1bc1d510c4cc7b8cb544e96099",
+              "Text": "Adjacent items have +{aura.0}% Crit Chance"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "fe3de602fcb1139e43a5f37f478c40f9",
+              "Text": "While this is Flying, this has double Crit Chance bonus"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      }
+    },
+    {
+      "$type": "TCardItem",
+      "Id": "39f47d29-2ef3-4057-bb60-33acd3dd12a2",
+      "Version": "5.0.0",
+      "InternalName": "Cosmic Amulet",
+      "StartingTier": "Silver",
+      "Size": "Small",
+      "Tags": [
+        "Relic"
+      ],
+      "HiddenTags": [
+        "Haste",
+        "Flying",
+        "CritReference",
+        "FlyingReference"
+      ],
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Multicast": 1,
+            "HasteAmount": 1000,
+            "HasteTargets": 1
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "HasteAmount": 2000
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "HasteAmount": 3000
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardHaste",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": false,
+              "TargetSection": "SelfHand",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "CooldownMax",
+                "ComparisonOperator": "GreaterThan",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Cosmic Amulet",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "3b73604d-828a-47c5-8210-fa8a22dca33f",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardCritted",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardFlyingStart",
+            "Duration": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "Flying",
+                "ComparisonOperator": "Equal",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Cosmic Amulet 2",
+          "InternalDescription": "When you Crit, this starts Flying",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "3aa135e73bb3ca7b51728a57b46ba740",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Multicast",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 1.0
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Flying",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 1.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            }
+          ],
+          "InternalName": "Aerial Turret 2",
+          "InternalDescription": "While this is Flying, this has +1 Multicast",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "9d3e14af-24e5-44b9-8607-b5b3e76701ea",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Localization": {
+        "Title": {
+          "Key": "e4786e4bcba6bb45c9d59cd97e89d236",
+          "Text": "Cosmic Amulet"
+        },
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "5bf1660de10bb7af8e2997fcfc51705d",
+              "Text": "Haste an item {ability.0} second(s)"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "761b548ff88e9690c26f2424ed70fa4e",
+              "Text": "When you Crit, this starts Flying"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "74b178c6bd04245787a23c2d9526a72e",
+              "Text": "While this is Flying, it has +{aura.2} Multicast"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      }
+    },
+    {
+      "$type": "TCardItem",
+      "Id": "3a9f3d16-9022-4709-9903-8b08b1f918dc",
+      "Version": "5.0.0",
+      "InternalName": "Skyliner",
+      "StartingTier": "Gold",
+      "Size": "Large",
+      "Tags": [
+        "Vehicle",
+        "Weapon"
+      ],
+      "HiddenTags": [
+        "Damage",
+        "Burn",
+        "FlyingReference"
+      ],
+      "Tiers": {
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 10000,
+            "Multicast": 1,
+            "DamageAmount": 150,
+            "BurnApplyAmount": 25
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "CooldownMax": 8000,
+            "DamageAmount": 300,
+            "BurnApplyAmount": 50
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerDamage",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Skyliner 1",
+          "InternalDescription": "Deal [--/--/100/200] Damage",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/Cannonball/Projectile_Cannonball_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1f1cda7a9139b1191ef6c8cfee3db4bd",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerBurnApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Skyliner 2",
+          "InternalDescription": "Burn [--/--/20/40]",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "b102b9b4-c3e3-4e33-8fcc-736ce5ecc4d9",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Multicast",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardCount",
+              "Target": {
+                "$type": "TTargetCardSection",
+                "TargetSection": "SelfHand",
+                "ExcludeSelf": false,
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Flying",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 1.0
+                  }
+                }
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Skyliner 3",
+          "InternalDescription": "This has +1 Multicast for each Flying item you have",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "93911bec96cb67bfcc317e7f7665af7b",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Localization": {
+        "Title": {
+          "Key": "5be385f9102476f0596286ea54412403",
+          "Text": "Skyliner"
+        },
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "fb7589d26e5b92206a673082abb89581",
+              "Text": "Deal {ability.0} Damage"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "eff8e0e2357d6821841aa587b7bae9f3",
+              "Text": "Burn {ability.1}"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "e0885cd10cf26fe8a099d328ae689180",
+              "Text": "This has +1 Multicast for each Flying item you have"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      }
+    },
+    {
+      "$type": "TCardItem",
+      "Id": "4b94516a-bdf7-4c9a-8317-17ac52ff2870",
+      "Version": "5.0.0",
+      "InternalName": "Party Float",
+      "StartingTier": "Gold",
+      "Size": "Large",
+      "Tags": [
+        "Vehicle",
+        "Tech"
+      ],
+      "HiddenTags": [
+        "Flying",
+        "FlyingReference",
+        "Cooldown",
+        "Shield"
+      ],
+      "Tiers": {
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 4000,
+            "Multicast": 1,
+            "Custom_0": 10,
+            "ShieldApplyAmount": 50,
+            "FlyingTargets": 2
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "Custom_0": 20,
+            "ShieldApplyAmount": 100
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardFlyingStart",
+            "Duration": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": false,
+              "TargetSection": "SelfHand",
+              "Conditions": {
+                "$type": "TCardConditionalAnd",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "Flying",
+                    "ComparisonOperator": "Equal",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                ]
+              }
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Party Float 1",
+          "InternalDescription": "2 items start Flying",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "846e8e7afaf45608603ea0cb19c2e4be",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnItemUsed",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "Flying",
+                "ComparisonOperator": "Equal",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                }
+              }
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerShieldApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "Cost": null
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Party Float 2",
+          "InternalDescription": "When you use a Flying item, Shield [50/75/100]",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "6add5e1c5c9c390626c5e3823dc1b9b4",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "PercentCooldownReduction",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_0",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalAnd",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "Flying",
+                    "ComparisonOperator": "Equal",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    }
+                  },
+                  {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Party Float 3",
+          "InternalDescription": "Your Flying items' Cooldowns are reduced by [--/10/15/20]%",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "300721d125d0a418658c169947235577",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Localization": {
+        "Title": {
+          "Key": "0cc78dd11b495094a4d49cb53f9e7dbf",
+          "Text": "Party Float"
+        },
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "0b08905ffcfc8acb56fca7896751714a",
+              "Text": "2 items start Flying"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "26e56144f07f7e2f11f6f1598c378a55",
+              "Text": "When you use a Flying item, Shield {ability.1}"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "6539aed0af2d8fb5609121ff4be6def7",
+              "Text": "Your Flying items' Cooldowns are reduced by {aura.2}%"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -57,9 +57,14 @@ deploy() {
   if [ -f "$ROOT/data/skills.json" ]; then
     cp -f "$ROOT/data/skills.json" "$GAME/BepInEx/plugins/BazaarActionAxis/skills.json"
   fi
-  if [ -d "$ROOT/captures/card_icons" ] && [ -n "$(ls -A "$ROOT/captures/card_icons" 2>/dev/null || true)" ]; then
+  local icons=()
+  local file
+  for file in "$ROOT"/captures/card_icons/*.png; do
+    if [ -f "$file" ]; then icons+=("$file"); fi
+  done
+  if [ "${#icons[@]}" -gt 0 ]; then
     # Preserve artwork captured in game or supplied manually on earlier runs.
-    cp -n "$ROOT"/captures/card_icons/*.png "$GAME/BepInEx/plugins/BazaarActionAxis/icons/"
+    cp -n "${icons[@]}" "$GAME/BepInEx/plugins/BazaarActionAxis/icons/"
   else
     echo "卡图缺失时显示名称；打开行动轴会尝试从游戏补全并缓存，已有卡图保留。"
   fi

@@ -14,6 +14,23 @@ namespace BazaarActionAxis.Tests
             DummyPreservesTargetsWithoutEnemyActions();
             RandomBoardFitsAndRepeatsWithSeed();
             OutputExcludesHealingSelfDamageMitigationAndOverkill();
+            DpsStopsAtBattleEnd();
+        }
+
+        private static void DpsStopsAtBattleEnd()
+        {
+            BattleResult result = new BattleResult { EnemyStartHp = 100, EndTime = 5 };
+            result.Events.Add(Event(2, "damage", 40, 60, 0, null));
+            result.Events.Add(Event(3, "heal", 20, 80, 0, null));
+            result.Events.Add(Event(5, "damage", 80, 0, 0, null));
+            BattleDamageSeries series = Aggregator.BuildDamage(result, 100);
+            Assert.Near(40, series.At(3).OutputDamage);
+            Assert.Near(20, series.At(3).EnemyHealing);
+            Assert.Near(120, series.At(30).OutputDamage);
+            Assert.Near(24, series.DpsAt(5));
+            Assert.Near(24, series.DpsAt(30));
+            Assert.Near(20, series.DpsAt(2));
+            Assert.Near(0, series.DpsAt(0));
         }
 
         private static void OutputExcludesHealingSelfDamageMitigationAndOverkill()

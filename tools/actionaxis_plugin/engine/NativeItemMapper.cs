@@ -154,7 +154,9 @@ namespace BazaarActionAxis.Engine
 
         private static double Tier(CardDef card, double bronze, double silver, double gold, double diamond)
         {
-            return card.Tier == "Diamond" ? diamond : card.Tier == "Gold" ? gold : card.Tier == "Silver" ? silver : bronze;
+            // Native TCardItem.TryGetTierTemplate uses Diamond rules for Legendary.
+            // Only the lookup changes; keep the instance's displayed Tier intact.
+            return card.Tier == "Diamond" || card.Tier == "Legendary" ? diamond : card.Tier == "Gold" ? gold : card.Tier == "Silver" ? silver : bronze;
         }
     }
 }

@@ -1,0 +1,2104 @@
+{
+  "totals": {
+    "items": 2211,
+    "skills": 498,
+    "other": 127,
+    "monsters": 166
+  },
+  "rules": [
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionCardEnchant",
+      "count": 12
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionCardForceUse",
+      "count": 10
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionCardFreeze",
+      "count": 954
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionCardHaste",
+      "count": 921
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionCardModifyAttribute",
+      "count": 813
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionCardSlow",
+      "count": 929
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionGameSpawnCards",
+      "count": 53
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionPlayerBurnApply",
+      "count": 825
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionPlayerDamage",
+      "count": 612
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionPlayerHeal",
+      "count": 904
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionPlayerModifyAttribute",
+      "count": 7
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionPlayerPoisonApply",
+      "count": 896
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionPlayerRegenApply",
+      "count": 894
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TActionPlayerShieldApply",
+      "count": 826
+    },
+    {
+      "source": "enchantments",
+      "role": "action",
+      "type": "TSpawnContextQuery",
+      "count": 53
+    },
+    {
+      "source": "enchantments",
+      "role": "aura_action",
+      "type": "TAuraActionCardAddTagsList",
+      "count": 1
+    },
+    {
+      "source": "enchantments",
+      "role": "aura_action",
+      "type": "TAuraActionCardModifyAttribute",
+      "count": 7746
+    },
+    {
+      "source": "enchantments",
+      "role": "aura_action",
+      "type": "TAuraActionPlayerModifyAttribute",
+      "count": 2
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalAnd",
+      "count": 508
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalAttribute",
+      "count": 2264
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalAttributeHighest",
+      "count": 3
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalAttributeLowest",
+      "count": 5
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalCanCrit",
+      "count": 409
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalHasEnchantment",
+      "count": 64
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalHiddenTag",
+      "count": 647
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalId",
+      "count": 2
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalOr",
+      "count": 114
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalPlayerHero",
+      "count": 12
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalSize",
+      "count": 11
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalTag",
+      "count": 793
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalTier",
+      "count": 28
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TCardConditionalType",
+      "count": 3
+    },
+    {
+      "source": "enchantments",
+      "role": "condition",
+      "type": "TPlayerConditionalAttribute",
+      "count": 70
+    },
+    {
+      "source": "enchantments",
+      "role": "duration",
+      "type": "TCombatDuration",
+      "count": 6
+    },
+    {
+      "source": "enchantments",
+      "role": "duration",
+      "type": "TDeterminantDuration",
+      "count": 1271
+    },
+    {
+      "source": "enchantments",
+      "role": "prerequisite",
+      "type": "TPrerequisiteCardCount",
+      "count": 183
+    },
+    {
+      "source": "enchantments",
+      "role": "prerequisite",
+      "type": "TPrerequisitePlayer",
+      "count": 70
+    },
+    {
+      "source": "enchantments",
+      "role": "target",
+      "type": "TTargetCardPositional",
+      "count": 976
+    },
+    {
+      "source": "enchantments",
+      "role": "target",
+      "type": "TTargetCardRandom",
+      "count": 2769
+    },
+    {
+      "source": "enchantments",
+      "role": "target",
+      "type": "TTargetCardSection",
+      "count": 1665
+    },
+    {
+      "source": "enchantments",
+      "role": "target",
+      "type": "TTargetCardSelf",
+      "count": 11236
+    },
+    {
+      "source": "enchantments",
+      "role": "target",
+      "type": "TTargetCardTriggerSource",
+      "count": 42
+    },
+    {
+      "source": "enchantments",
+      "role": "target",
+      "type": "TTargetCardXMost",
+      "count": 472
+    },
+    {
+      "source": "enchantments",
+      "role": "target",
+      "type": "TTargetPlayerAbsolute",
+      "count": 59
+    },
+    {
+      "source": "enchantments",
+      "role": "target",
+      "type": "TTargetPlayerRelative",
+      "count": 5474
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnBeforeCardDestroyed",
+      "count": 71
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnBeforeItemUsed",
+      "count": 65
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardAttributeChanged",
+      "count": 54
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardCritted",
+      "count": 183
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardFired",
+      "count": 6236
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedBurn",
+      "count": 16
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedDamage",
+      "count": 8
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedDestruction",
+      "count": 9
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedFreeze",
+      "count": 61
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedHaste",
+      "count": 11
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedHeal",
+      "count": 10
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedPoison",
+      "count": 13
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedRegen",
+      "count": 13
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedShield",
+      "count": 7
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedSlow",
+      "count": 91
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardPurchased",
+      "count": 1
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardRepaired",
+      "count": 8
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardSold",
+      "count": 440
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardStartedFlying",
+      "count": 44
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardStoppedFlying",
+      "count": 48
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnCardTransformed",
+      "count": 12
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnDayStarted",
+      "count": 48
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnFightStarted",
+      "count": 55
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnHourStarted",
+      "count": 1
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnItemUsed",
+      "count": 916
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerAttributeChanged",
+      "count": 74
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerDied",
+      "count": 36
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerEnrageEnded",
+      "count": 8
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerEnraged",
+      "count": 136
+    },
+    {
+      "source": "enchantments",
+      "role": "trigger",
+      "type": "TTriggerOr",
+      "count": 27
+    },
+    {
+      "source": "enchantments",
+      "role": "value",
+      "type": "TFixedValue",
+      "count": 10908
+    },
+    {
+      "source": "enchantments",
+      "role": "value",
+      "type": "TReferenceValueCardAttribute",
+      "count": 3461
+    },
+    {
+      "source": "enchantments",
+      "role": "value",
+      "type": "TReferenceValueCardAttributeUnscaled",
+      "count": 4
+    },
+    {
+      "source": "enchantments",
+      "role": "value",
+      "type": "TReferenceValueCardCount",
+      "count": 19
+    },
+    {
+      "source": "enchantments",
+      "role": "value",
+      "type": "TReferenceValueCardTagCount",
+      "count": 7
+    },
+    {
+      "source": "enchantments",
+      "role": "value",
+      "type": "TReferenceValuePlayerAttribute",
+      "count": 177
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionAnd",
+      "count": 9
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardAddTagsBySource",
+      "count": 2
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardAddTagsList",
+      "count": 18
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardAddTagsRandom",
+      "count": 1
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardBeginSandstorm",
+      "count": 2
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardCharge",
+      "count": 237
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardDestroy",
+      "count": 18
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardDisable",
+      "count": 51
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardEnchant",
+      "count": 39
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardEnchantRandom",
+      "count": 21
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardEnchantRemove",
+      "count": 1
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardFlyingStart",
+      "count": 69
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardFlyingStop",
+      "count": 12
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardFlyingToggle",
+      "count": 11
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardForceUse",
+      "count": 17
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardFreeze",
+      "count": 65
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardHaste",
+      "count": 107
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardModifyAttribute",
+      "count": 835
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardReload",
+      "count": 24
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardRepair",
+      "count": 11
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardSlow",
+      "count": 88
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardTransform",
+      "count": 38
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardTransformDestroyed",
+      "count": 4
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionCardUpgrade",
+      "count": 61
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionExitReplacementSet",
+      "count": 9
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionGameDealCards",
+      "count": 168
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionGameReroll",
+      "count": 6
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionGameSpawnCards",
+      "count": 170
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerBurnApply",
+      "count": 138
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerBurnRemove",
+      "count": 6
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerDamage",
+      "count": 352
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerHeal",
+      "count": 56
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerModifyAttribute",
+      "count": 289
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerPoisonApply",
+      "count": 74
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerPoisonRemove",
+      "count": 2
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerPortraitNext",
+      "count": 1
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerPortraitReset",
+      "count": 1
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerRageApply",
+      "count": 29
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerRegenApply",
+      "count": 65
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerReviveHeal",
+      "count": 4
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TActionPlayerShieldApply",
+      "count": 141
+    },
+    {
+      "source": "items",
+      "role": "action",
+      "type": "TSpawnContextQuery",
+      "count": 380
+    },
+    {
+      "source": "items",
+      "role": "aura_action",
+      "type": "TAuraActionCardAddTagsBySource",
+      "count": 5
+    },
+    {
+      "source": "items",
+      "role": "aura_action",
+      "type": "TAuraActionCardAddTagsList",
+      "count": 9
+    },
+    {
+      "source": "items",
+      "role": "aura_action",
+      "type": "TAuraActionCardModifyAttribute",
+      "count": 674
+    },
+    {
+      "source": "items",
+      "role": "aura_action",
+      "type": "TAuraActionPlayerModifyAttribute",
+      "count": 27
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalAnd",
+      "count": 430
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalAttribute",
+      "count": 764
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalAttributeHighest",
+      "count": 5
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalAttributeLowest",
+      "count": 2
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalCanCrit",
+      "count": 81
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalEnchantmentEligible",
+      "count": 87
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalHasEnchantment",
+      "count": 74
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalHiddenTag",
+      "count": 201
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalId",
+      "count": 206
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalOr",
+      "count": 68
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalPlayerHero",
+      "count": 8
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalSize",
+      "count": 107
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalSizeLargest",
+      "count": 2
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalSizeSmallest",
+      "count": 1
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalTag",
+      "count": 658
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalTier",
+      "count": 102
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalTriggerSource",
+      "count": 11
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TCardConditionalType",
+      "count": 33
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TPlayerConditionalAttribute",
+      "count": 65
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TRunConditionalCurrentDay",
+      "count": 48
+    },
+    {
+      "source": "items",
+      "role": "condition",
+      "type": "TRunConditionalCurrentHour",
+      "count": 1
+    },
+    {
+      "source": "items",
+      "role": "duration",
+      "type": "TCombatDuration",
+      "count": 25
+    },
+    {
+      "source": "items",
+      "role": "duration",
+      "type": "TDeterminantDuration",
+      "count": 555
+    },
+    {
+      "source": "items",
+      "role": "prerequisite",
+      "type": "TPrerequisiteCardAttributeComparator",
+      "count": 3
+    },
+    {
+      "source": "items",
+      "role": "prerequisite",
+      "type": "TPrerequisiteCardCount",
+      "count": 392
+    },
+    {
+      "source": "items",
+      "role": "prerequisite",
+      "type": "TPrerequisitePlayer",
+      "count": 67
+    },
+    {
+      "source": "items",
+      "role": "prerequisite",
+      "type": "TPrerequisiteRun",
+      "count": 49
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetCardOccupying",
+      "count": 2
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetCardPositional",
+      "count": 411
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetCardRandom",
+      "count": 371
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetCardSection",
+      "count": 1161
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetCardSelf",
+      "count": 2698
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetCardTriggerSource",
+      "count": 117
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetCardTriggerTarget",
+      "count": 12
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetCardXMost",
+      "count": 144
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetPlayer",
+      "count": 3
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetPlayerAbsolute",
+      "count": 475
+    },
+    {
+      "source": "items",
+      "role": "target",
+      "type": "TTargetPlayerRelative",
+      "count": 1275
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnBeforeCardDestroyed",
+      "count": 41
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnBeforeItemUsed",
+      "count": 29
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardAttributeChanged",
+      "count": 44
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardCritted",
+      "count": 42
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardFired",
+      "count": 1321
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedBurn",
+      "count": 38
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedDamage",
+      "count": 2
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedDestruction",
+      "count": 9
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedFreeze",
+      "count": 38
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedHaste",
+      "count": 46
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedHeal",
+      "count": 11
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedPoison",
+      "count": 26
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedRegen",
+      "count": 8
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedReload",
+      "count": 4
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedShield",
+      "count": 8
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedSlow",
+      "count": 62
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardPurchased",
+      "count": 42
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardQuestCompleted",
+      "count": 2
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardRepaired",
+      "count": 1
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardSelected",
+      "count": 621
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardSold",
+      "count": 137
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardStartedFlying",
+      "count": 23
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardStartsFlying",
+      "count": 1
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardStoppedFlying",
+      "count": 17
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardTransformed",
+      "count": 4
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnCardUpgraded",
+      "count": 10
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnDayStarted",
+      "count": 59
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnEncounterCardsDealt",
+      "count": 180
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnEncounterEntered",
+      "count": 3
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnEncounterExited",
+      "count": 3
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnEncounterSelected",
+      "count": 41
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnFightEnded",
+      "count": 35
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnFightStarted",
+      "count": 26
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnHourStarted",
+      "count": 11
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnItemUsed",
+      "count": 274
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerAttributeChanged",
+      "count": 54
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerDied",
+      "count": 17
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerEnrageEnded",
+      "count": 7
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerEnraged",
+      "count": 47
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOnSandstorm",
+      "count": 2
+    },
+    {
+      "source": "items",
+      "role": "trigger",
+      "type": "TTriggerOr",
+      "count": 36
+    },
+    {
+      "source": "items",
+      "role": "value",
+      "type": "TFixedValue",
+      "count": 3113
+    },
+    {
+      "source": "items",
+      "role": "value",
+      "type": "TRangeValue",
+      "count": 78
+    },
+    {
+      "source": "items",
+      "role": "value",
+      "type": "TReferenceValueAttributeChange",
+      "count": 11
+    },
+    {
+      "source": "items",
+      "role": "value",
+      "type": "TReferenceValueCardAttribute",
+      "count": 1007
+    },
+    {
+      "source": "items",
+      "role": "value",
+      "type": "TReferenceValueCardAttributeAggregate",
+      "count": 11
+    },
+    {
+      "source": "items",
+      "role": "value",
+      "type": "TReferenceValueCardAttributeUnscaled",
+      "count": 13
+    },
+    {
+      "source": "items",
+      "role": "value",
+      "type": "TReferenceValueCardCount",
+      "count": 74
+    },
+    {
+      "source": "items",
+      "role": "value",
+      "type": "TReferenceValueCardTagCount",
+      "count": 14
+    },
+    {
+      "source": "items",
+      "role": "value",
+      "type": "TReferenceValuePlayerAttribute",
+      "count": 183
+    },
+    {
+      "source": "items",
+      "role": "value",
+      "type": "TReferenceValuePlayerAttributeUnscaled",
+      "count": 19
+    },
+    {
+      "source": "other",
+      "role": "condition",
+      "type": "TCardConditionalAnd",
+      "count": 15
+    },
+    {
+      "source": "other",
+      "role": "condition",
+      "type": "TCardConditionalAttribute",
+      "count": 4
+    },
+    {
+      "source": "other",
+      "role": "condition",
+      "type": "TCardConditionalHiddenTag",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "condition",
+      "type": "TCardConditionalSize",
+      "count": 6
+    },
+    {
+      "source": "other",
+      "role": "condition",
+      "type": "TCardConditionalTag",
+      "count": 3
+    },
+    {
+      "source": "other",
+      "role": "condition",
+      "type": "TCardConditionalTier",
+      "count": 8
+    },
+    {
+      "source": "other",
+      "role": "condition",
+      "type": "TCardConditionalType",
+      "count": 19
+    },
+    {
+      "source": "other",
+      "role": "target",
+      "type": "TTargetCardSection",
+      "count": 8
+    },
+    {
+      "source": "other",
+      "role": "target",
+      "type": "TTargetCardSelf",
+      "count": 18
+    },
+    {
+      "source": "other",
+      "role": "target",
+      "type": "TTargetCardTriggerSource",
+      "count": 18
+    },
+    {
+      "source": "other",
+      "role": "target",
+      "type": "TTargetPlayerAbsolute",
+      "count": 9
+    },
+    {
+      "source": "other",
+      "role": "target",
+      "type": "TTargetPlayerRelative",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardEnchanted",
+      "count": 3
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedBurn",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedCharge",
+      "count": 2
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedDamage",
+      "count": 2
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedFreeze",
+      "count": 2
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedHaste",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedHeal",
+      "count": 2
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedPoison",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedSlow",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardPurchased",
+      "count": 15
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardSold",
+      "count": 3
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnCardUpgraded",
+      "count": 5
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnDayStarted",
+      "count": 3
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnEncounterSelected",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnFightEnded",
+      "count": 7
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnHourStarted",
+      "count": 2
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnItemUsed",
+      "count": 6
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerAttributeChanged",
+      "count": 6
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerDamaged",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerLeveledUp",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerLifeStealed",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerShielded",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "trigger",
+      "type": "TTriggerOnRunCompleted",
+      "count": 1
+    },
+    {
+      "source": "other",
+      "role": "value",
+      "type": "TFixedValue",
+      "count": 5
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardCharge",
+      "count": 48
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardDisable",
+      "count": 5
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardEnchant",
+      "count": 1
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardEnchantRandom",
+      "count": 5
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardFlyingStart",
+      "count": 8
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardFlyingStop",
+      "count": 1
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardForceUse",
+      "count": 3
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardFreeze",
+      "count": 16
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardHaste",
+      "count": 31
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardModifyAttribute",
+      "count": 236
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardReload",
+      "count": 5
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardRepair",
+      "count": 2
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardSlow",
+      "count": 14
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionCardUpgrade",
+      "count": 8
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionGameSpawnCards",
+      "count": 10
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerBurnApply",
+      "count": 14
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerBurnRemove",
+      "count": 4
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerDamage",
+      "count": 5
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerHeal",
+      "count": 6
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerModifyAttribute",
+      "count": 13
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerPoisonApply",
+      "count": 14
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerPoisonRemove",
+      "count": 4
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerRageApply",
+      "count": 9
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerRegenApply",
+      "count": 14
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerReviveHeal",
+      "count": 2
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TActionPlayerShieldApply",
+      "count": 8
+    },
+    {
+      "source": "skills",
+      "role": "action",
+      "type": "TSpawnContextQuery",
+      "count": 10
+    },
+    {
+      "source": "skills",
+      "role": "aura_action",
+      "type": "TAuraActionCardAddTagsList",
+      "count": 14
+    },
+    {
+      "source": "skills",
+      "role": "aura_action",
+      "type": "TAuraActionCardModifyAttribute",
+      "count": 360
+    },
+    {
+      "source": "skills",
+      "role": "aura_action",
+      "type": "TAuraActionPlayerModifyAttribute",
+      "count": 33
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalAnd",
+      "count": 145
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalAttribute",
+      "count": 332
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalAttributeHighest",
+      "count": 11
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalAttributeLowest",
+      "count": 2
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalCanCrit",
+      "count": 46
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalHasEnchantment",
+      "count": 6
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalHiddenTag",
+      "count": 119
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalOr",
+      "count": 12
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalPlayerHero",
+      "count": 1
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalSize",
+      "count": 84
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalTag",
+      "count": 347
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalTier",
+      "count": 10
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalTriggerSource",
+      "count": 2
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TCardConditionalType",
+      "count": 10
+    },
+    {
+      "source": "skills",
+      "role": "condition",
+      "type": "TPlayerConditionalAttribute",
+      "count": 81
+    },
+    {
+      "source": "skills",
+      "role": "duration",
+      "type": "TDeterminantDuration",
+      "count": 251
+    },
+    {
+      "source": "skills",
+      "role": "prerequisite",
+      "type": "TPrerequisiteCardCount",
+      "count": 199
+    },
+    {
+      "source": "skills",
+      "role": "prerequisite",
+      "type": "TPrerequisitePlayer",
+      "count": 84
+    },
+    {
+      "source": "skills",
+      "role": "target",
+      "type": "TTargetCardPositional",
+      "count": 17
+    },
+    {
+      "source": "skills",
+      "role": "target",
+      "type": "TTargetCardRandom",
+      "count": 122
+    },
+    {
+      "source": "skills",
+      "role": "target",
+      "type": "TTargetCardSection",
+      "count": 669
+    },
+    {
+      "source": "skills",
+      "role": "target",
+      "type": "TTargetCardSelf",
+      "count": 952
+    },
+    {
+      "source": "skills",
+      "role": "target",
+      "type": "TTargetCardTriggerSource",
+      "count": 25
+    },
+    {
+      "source": "skills",
+      "role": "target",
+      "type": "TTargetCardTriggerTarget",
+      "count": 6
+    },
+    {
+      "source": "skills",
+      "role": "target",
+      "type": "TTargetCardXMost",
+      "count": 80
+    },
+    {
+      "source": "skills",
+      "role": "target",
+      "type": "TTargetPlayerAbsolute",
+      "count": 17
+    },
+    {
+      "source": "skills",
+      "role": "target",
+      "type": "TTargetPlayerRelative",
+      "count": 414
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnBeforeCardDestroyed",
+      "count": 3
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnBeforeItemUsed",
+      "count": 1
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardAttributeChanged",
+      "count": 3
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardCritted",
+      "count": 11
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardDisabled",
+      "count": 3
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardFired",
+      "count": 3
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedBurn",
+      "count": 17
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedDestruction",
+      "count": 2
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedFreeze",
+      "count": 12
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedHaste",
+      "count": 13
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedHeal",
+      "count": 5
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedOverHeal",
+      "count": 2
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedPoison",
+      "count": 11
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedRegen",
+      "count": 6
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedShield",
+      "count": 5
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPerformedSlow",
+      "count": 23
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardPurchased",
+      "count": 4
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardSelected",
+      "count": 4
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardSold",
+      "count": 6
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardStartedFlying",
+      "count": 2
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnCardUpgraded",
+      "count": 4
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnDayStarted",
+      "count": 3
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnEncounterSelected",
+      "count": 2
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnFightEnded",
+      "count": 2
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnFightStarted",
+      "count": 17
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnHourStarted",
+      "count": 2
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnItemUsed",
+      "count": 227
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerAttributeChanged",
+      "count": 75
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerDied",
+      "count": 9
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerEnrageEnded",
+      "count": 4
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnPlayerEnraged",
+      "count": 9
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOnSandstorm",
+      "count": 1
+    },
+    {
+      "source": "skills",
+      "role": "trigger",
+      "type": "TTriggerOr",
+      "count": 9
+    },
+    {
+      "source": "skills",
+      "role": "value",
+      "type": "TFixedValue",
+      "count": 807
+    },
+    {
+      "source": "skills",
+      "role": "value",
+      "type": "TReferenceValueAttributeChange",
+      "count": 1
+    },
+    {
+      "source": "skills",
+      "role": "value",
+      "type": "TReferenceValueCardAttribute",
+      "count": 512
+    },
+    {
+      "source": "skills",
+      "role": "value",
+      "type": "TReferenceValueCardAttributeAggregate",
+      "count": 3
+    },
+    {
+      "source": "skills",
+      "role": "value",
+      "type": "TReferenceValueCardAttributeUnscaled",
+      "count": 1
+    },
+    {
+      "source": "skills",
+      "role": "value",
+      "type": "TReferenceValueCardCount",
+      "count": 36
+    },
+    {
+      "source": "skills",
+      "role": "value",
+      "type": "TReferenceValuePlayerAttribute",
+      "count": 114
+    }
+  ]
+}

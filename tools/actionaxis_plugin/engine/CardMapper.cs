@@ -78,7 +78,39 @@ namespace BazaarActionAxis.Engine
                     ? new Dictionary<string, int>(entry.Attributes) : new Dictionary<string, int>();
                 live.NativeTemplate = entry.Template;
                 live.NativeEnchantment = entry.EnchantmentDefinition;
+                live.EnchantmentName = string.IsNullOrEmpty(entry.Enchantment) || entry.Enchantment == "None"
+                    ? null : entry.Enchantment;
                 live.NativeAttributesAreLive = entry.AttributesAreLive;
+                // 技能光环先于物品规则映射执行，必须在此提供原生标签、名称与品质。
+                if (!NativeSkillSupport.Empty(entry.Template))
+                {
+                    if (!string.IsNullOrEmpty(entry.Tier)) live.Tier = entry.Tier;
+                    if (unknown)
+                    {
+                        live.Name = NativeSkillSupport.Text(entry.Template, "InternalName");
+                        JsonValue localization = entry.Template["Localization"];
+                        live.NameCn = (localization.Kind == JsonKind.Object ?
+                            NativeSkillSupport.Text(localization["Title"], "Text") : null) ?? live.Name ?? live.NameCn;
+                    }
+                    if (entry.Template["Tags"].Kind == JsonKind.Array)
+                    {
+                        live.Tags = new List<string>();
+                        foreach (JsonValue tag in entry.Template["Tags"].AsArray()) live.Tags.Add(tag.AsString());
+                        if (!NativeSkillSupport.Empty(entry.EnchantmentDefinition))
+                            foreach (JsonValue tag in entry.EnchantmentDefinition["Tags"].AsArray())
+                                if (!live.Tags.Contains(tag.AsString())) live.Tags.Add(tag.AsString());
+                    }
+                    if (entry.Template["HiddenTags"].Kind == JsonKind.Array)
+                    {
+                        live.HiddenTags = new List<string>();
+                        foreach (JsonValue tag in entry.Template["HiddenTags"].AsArray()) live.HiddenTags.Add(tag.AsString());
+                    }
+                    if (entry.Template["Heroes"].Kind == JsonKind.Array)
+                    {
+                        live.Heroes = new List<string>();
+                        foreach (JsonValue hero in entry.Template["Heroes"].AsArray()) live.Heroes.Add(hero.AsString());
+                    }
+                }
                 if (entry.Size == "Small" || entry.Size == "Medium" || entry.Size == "Large")
                     live.Size = entry.Size;
                 string uniqueId = card.Id + "#" + index;

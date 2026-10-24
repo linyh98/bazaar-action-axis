@@ -12,7 +12,7 @@ namespace BazaarActionAxis.Tests
             if (!EqualityComparer<T>.Default.Equals(expected, actual))
             {
                 Failures++;
-                Console.WriteLine("  expected <" + Format(expected) + "> but was <" + Format(actual) + ">");
+                Console.WriteLine("  expected <" + Format(expected) + "> but was <" + Format(actual) + ">" + Where());
             }
         }
 
@@ -21,7 +21,7 @@ namespace BazaarActionAxis.Tests
             if (double.IsNaN(actual) || Math.Abs(expected - actual) > tolerance)
             {
                 Failures++;
-                Console.WriteLine("  expected near <" + expected.ToString("R") + "> but was <" + actual.ToString("R") + ">");
+                Console.WriteLine("  expected near <" + expected.ToString("R") + "> but was <" + actual.ToString("R") + ">" + Where());
             }
         }
 
@@ -30,8 +30,22 @@ namespace BazaarActionAxis.Tests
             if (!condition)
             {
                 Failures++;
-                Console.WriteLine("  expected true but was false");
+                Console.WriteLine("  expected true but was false" + Where());
             }
+        }
+
+        // 失败时给出调用位置，避免逐组加打印。
+        private static string Where()
+        {
+            System.Diagnostics.StackTrace trace = new System.Diagnostics.StackTrace(true);
+            for (int i = 1; i < trace.FrameCount; i++)
+            {
+                System.Diagnostics.StackFrame frame = trace.GetFrame(i);
+                string name = frame.GetMethod() == null ? null : frame.GetMethod().DeclaringType == null ? null : frame.GetMethod().DeclaringType.Name;
+                if (name == null || name == "Assert" || name == "TestHarness") continue;
+                return " @ " + name + "." + frame.GetMethod().Name + ":" + frame.GetFileLineNumber();
+            }
+            return "";
         }
 
         public static void False(bool condition)
@@ -52,12 +66,12 @@ namespace BazaarActionAxis.Tests
             catch (Exception error)
             {
                 Failures++;
-                Console.WriteLine("  expected " + typeof(T).Name + " but got " + error.GetType().Name);
+                Console.WriteLine("  expected " + typeof(T).Name + " but got " + error.GetType().Name + Where());
                 return;
             }
 
             Failures++;
-            Console.WriteLine("  expected " + typeof(T).Name + " but nothing was thrown");
+            Console.WriteLine("  expected " + typeof(T).Name + " but nothing was thrown" + Where());
         }
 
         private static string Format(object value)

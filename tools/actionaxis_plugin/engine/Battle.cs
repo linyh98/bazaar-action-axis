@@ -43,6 +43,10 @@ namespace BazaarActionAxis.Engine
             ctx.Enemy.MaxHp = config.EnemyMaxHp;
             ctx.Enemy.Shield = Math.Max(0, config.EnemyStartShield);
             ctx.Enemy.Regen = Math.Max(0, config.EnemyStartRegen);
+            ctx.Player.RageMax = config.PlayerRageMax;
+            ctx.Player.EnragedDurationMs = config.PlayerEnragedDurationMs;
+            ctx.Enemy.RageMax = config.EnemyRageMax;
+            ctx.Enemy.EnragedDurationMs = config.EnemyEnragedDurationMs;
 
             Dictionary<string, int> cardCounts = new Dictionary<string, int>();
             foreach (Side side in new[] { Side.Player, Side.Enemy })
@@ -82,6 +86,7 @@ namespace BazaarActionAxis.Engine
                     item.Side = side;
                     item.Slot = entry.Slot;
                     item.Cooldown = startReady ? 0 : card.Cooldown;
+                    item.CooldownMax = card.Cooldown;
                     item.Ammo = card.AmmoMax.HasValue ? card.AmmoMax.Value : 0;
                     item.AmmoMax = card.AmmoMax;
                     ApplyStaticEffects(item);
@@ -99,9 +104,11 @@ namespace BazaarActionAxis.Engine
                     skill.Card = card;
                     skill.Side = side;
                     skill.Slot = -1;
+                    skill.IsSkill = true;
                     ctx.Skills.Add(skill);
                 }
             }
+            NativeDynamicAuras.Initialize(ctx);
             return ctx;
         }
 
@@ -135,6 +142,14 @@ namespace BazaarActionAxis.Engine
                 : staticMulticast;
         }
 
+        public static void FlushPendingItems(BattleContext ctx)
+        {
+            if (ctx.PendingItems.Count == 0) return;
+            ctx.Items.AddRange(ctx.PendingItems);
+            ctx.PendingItems.Clear();
+            NativeDynamicAuras.Refresh(ctx);
+        }
+
         private static void AdvanceCooldowns(BattleContext ctx, double t)
         {
             foreach (InternalItem item in ctx.Items)
@@ -146,7 +161,7 @@ namespace BazaarActionAxis.Engine
 
         private static double CooldownRate(BattleContext ctx, InternalItem item, double t)
         {
-            if (ctx.IsTrainingDummySource(item.Side)) return 0;
+            if (ctx.IsTrainingDummySource(item.Side) || item.Disabled || item.Destroyed) return 0;
             bool frozen = StatusActive(ctx, item.FrozenUntil, t);
             bool hasted = StatusActive(ctx, item.HasteUntil, t);
             bool slowed = StatusActive(ctx, item.SlowUntil, t);
@@ -173,12 +188,13 @@ namespace BazaarActionAxis.Engine
             }
             foreach (InternalItem item in ctx.Items)
             {
+                if (item.Destroyed) continue;
                 ItemSnapshot snapshot = new ItemSnapshot();
                 snapshot.Time = t;
                 snapshot.ItemId = item.Id;
                 snapshot.CooldownRemaining = item.Cooldown;
-                snapshot.CooldownMax = item.Card.Cooldown;
-                snapshot.HasCooldown = !ctx.IsTrainingDummySource(item.Side) && !item.Card.Passive && item.Card.Cooldown > 0;
+                snapshot.CooldownMax = item.CooldownMax;
+                snapshot.HasCooldown = !ctx.IsTrainingDummySource(item.Side) && !item.Card.Passive && item.CooldownMax > 0;
                 snapshot.Activated = activated.Contains(item.Id);
                 // The next interval uses the same status-expiry boundary as AdvanceCooldowns.
                 snapshot.CooldownRate = CooldownRate(ctx, item, t + ctx.Rules.Dt);
@@ -193,8 +209,8 @@ namespace BazaarActionAxis.Engine
             List<InternalItem> ready = new List<InternalItem>();
             foreach (InternalItem item in ctx.Items)
             {
-                if (ctx.IsTrainingDummySource(item.Side)) continue;
-                if (!item.Card.Passive && item.Card.Cooldown > 0 && item.Cooldown <= 1e-9)
+                if (ctx.IsTrainingDummySource(item.Side) || item.Disabled || item.Destroyed) continue;
+                if (!item.Card.Passive && item.CooldownMax > 0 && item.Cooldown <= 1e-9)
                     ready.Add(item);
             }
 
@@ -206,12 +222,12 @@ namespace BazaarActionAxis.Engine
 
         private static void Activate(BattleContext ctx, InternalItem item, double t)
         {
-            if (StatusActive(ctx, item.FrozenUntil, t)) return;
+            if (StatusActive(ctx, item.FrozenUntil, t) || item.Disabled || item.Destroyed) return;
             if (item.AmmoMax.HasValue && item.Ammo <= 0) return;
 
             int chainId = ctx.NextChainId++;
             int casts = 1 + item.MulticastBonus;
-            item.Cooldown = item.Card.Cooldown;
+            item.Cooldown = item.CooldownMax;
 
             for (int cast = 0; cast < casts; cast++)
             {
@@ -228,12 +244,18 @@ namespace BazaarActionAxis.Engine
                 activate.Depth = 0;
                 ctx.Events.Add(Effects.FinishEvent(ctx, activate));
 
+                // 使用前的被动必须先结算，否则本回合的加成本回合不生效。
+                TriggerPayload beforeUse = new TriggerPayload { Event = "onBeforeUse", SourceSide = item.Side, SourceItemId = item.Id, ChainId = chainId, Depth = 0 };
+                Triggers.Enqueue(ctx, beforeUse);
+                Triggers.DrainEvent(ctx, t, "onBeforeUse");
+
                 foreach (Effect effect in item.Card.Effects)
                 {
                     if (effect.Kind == "multicast" ||
                         effect.Kind == "crit" ||
                         effect.Kind == "lifesteal")
                         continue;
+                    if (!EffectReady(ctx, item, effect)) continue;
 
                     Effects.ResolveEffect(ctx, effect, item, t, 0, chainId);
                     if (ctx.Ended) break;
@@ -255,12 +277,19 @@ namespace BazaarActionAxis.Engine
             }
         }
 
+        private static bool EffectReady(BattleContext ctx, InternalItem item, Effect effect)
+        {
+            if (effect.Prerequisites == null) return true;
+            NativeSkillRule rule = new NativeSkillRule { Prerequisites = effect.Prerequisites };
+            return NativeSkillSupport.PrerequisitesMatch(ctx, item, rule);
+        }
+
         private static void ScheduleNativeCasts(BattleContext ctx, InternalItem item, double t, List<ScheduledCast> pending)
         {
-            if (StatusActive(ctx, item.FrozenUntil, t)) return;
+            if (StatusActive(ctx, item.FrozenUntil, t) || item.Disabled || item.Destroyed) return;
             if (item.AmmoMax.HasValue && item.Ammo <= 0) return;
             int chainId = ctx.NextChainId++;
-            item.Cooldown = item.Card.Cooldown;
+            item.Cooldown = item.CooldownMax;
             int casts = 1 + item.MulticastBonus;
             for (int cast = 0; cast < casts; cast++)
                 pending.Add(new ScheduledCast { Item = item, Time = JsMath.RoundTo6(t + ctx.Rules.Dt + cast * 0.25), ChainId = chainId });
@@ -277,9 +306,13 @@ namespace BazaarActionAxis.Engine
                 if (item.AmmoMax.HasValue && item.Ammo <= 0) continue;
                 BattleEvent activate = new BattleEvent { Time = t, Side = item.Side, SourceItemId = item.Id, SourceCardId = item.CardId, Kind = "activate", ChainId = cast.ChainId };
                 ctx.Events.Add(Effects.FinishEvent(ctx, activate));
+                TriggerPayload beforeUse = new TriggerPayload { Event = "onBeforeUse", SourceSide = item.Side, SourceItemId = item.Id, ChainId = cast.ChainId, Depth = 0 };
+                Triggers.Enqueue(ctx, beforeUse);
+                Triggers.DrainEvent(ctx, t, "onBeforeUse");
                 foreach (Effect effect in item.Card.Effects)
                 {
                     if (effect.Kind == "multicast" || effect.Kind == "crit" || effect.Kind == "lifesteal") continue;
+                    if (!EffectReady(ctx, item, effect)) continue;
                     Effects.ResolveEffect(ctx, effect, item, t, 0, cast.ChainId);
                     if (ctx.Ended) break;
                 }
@@ -296,6 +329,21 @@ namespace BazaarActionAxis.Engine
 
             bool playerDead = ctx.Player.Hp <= 0;
             bool enemyDead = ctx.Enemy.Hp <= 0;
+            if (!playerDead && !enemyDead) return;
+
+            // 死亡触发允许复活/回血；每方只尝试一次，避免无限循环。
+            if (playerDead && !ctx.PlayerReviveUsed)
+            {
+                ctx.PlayerReviveUsed = true;
+                FirePlayerDied(ctx, Side.Player, t);
+                playerDead = ctx.Player.Hp <= 0;
+            }
+            if (enemyDead && !ctx.EnemyReviveUsed)
+            {
+                ctx.EnemyReviveUsed = true;
+                FirePlayerDied(ctx, Side.Enemy, t);
+                enemyDead = ctx.Enemy.Hp <= 0;
+            }
             if (!playerDead && !enemyDead) return;
 
             ctx.Ended = true;
@@ -317,7 +365,7 @@ namespace BazaarActionAxis.Engine
                 int killChain = ctx.NextChainId++;
                 foreach (InternalItem item in ctx.Items)
                 {
-                    if (item.Side != killerSide) continue;
+                    if (item.Side != killerSide || item.Destroyed) continue;
                     if (ctx.IsTrainingDummySource(item.Side)) continue;
                     foreach (TriggerDef trigger in item.Card.Triggers)
                     {
@@ -326,6 +374,49 @@ namespace BazaarActionAxis.Engine
                             Effects.ResolveEffect(ctx, effect, item, t, 1, killChain);
                     }
                 }
+            }
+        }
+
+        private static void FirePlayerDied(BattleContext ctx, Side side, double t)
+        {
+            ctx.TriggerQueue.Enqueue(new TriggerPayload { Event = "onPlayerDied", SourceSide = side, ChainId = ctx.NextChainId++, Depth = 0 });
+            Triggers.DrainWhileDead(ctx, t);
+        }
+
+        // 被强制使用的卡不重置冷却、不消耗弹药，只执行一次完整使用流程。
+        public static void ForceUse(BattleContext ctx, InternalItem item, double t, int depth)
+        {
+            if (item == null || item.Destroyed || ctx.Ended) return;
+            int chainId = ctx.NextChainId++;
+            BattleEvent activate = new BattleEvent { Time = t, Side = item.Side, SourceItemId = item.Id, SourceCardId = item.CardId, Kind = "activate", ChainId = chainId, Depth = depth };
+            ctx.Events.Add(Effects.FinishEvent(ctx, activate));
+            Triggers.Enqueue(ctx, new TriggerPayload { Event = "onBeforeUse", SourceSide = item.Side, SourceItemId = item.Id, ChainId = chainId, Depth = depth });
+            Triggers.DrainEvent(ctx, t, "onBeforeUse");
+            foreach (Effect effect in item.Card.Effects)
+            {
+                if (effect.Kind == "multicast" || effect.Kind == "crit" || effect.Kind == "lifesteal") continue;
+                if (!EffectReady(ctx, item, effect)) continue;
+                Effects.ResolveEffect(ctx, effect, item, t, depth, chainId);
+                if (ctx.Ended) return;
+            }
+            Triggers.Enqueue(ctx, new TriggerPayload { Event = "onUse", SourceSide = item.Side, SourceItemId = item.Id, ChainId = chainId, Depth = depth });
+            Triggers.Drain(ctx, t);
+            FlushPendingItems(ctx);
+            if (ctx.Player.Hp <= 0 || ctx.Enemy.Hp <= 0) CheckDeath(ctx, t);
+        }
+
+        private static void TickEnrage(BattleContext ctx, double t)
+        {
+            foreach (Side side in new[] { Side.Player, Side.Enemy })
+            {
+                InternalHero hero = ctx.Hero(side);
+                if (hero.EnragedUntil <= 0 || t < hero.EnragedUntil - 1e-9) continue;
+                hero.EnragedUntil = -1;
+                ctx.TriggerQueue.Enqueue(new TriggerPayload { Event = "onPlayerEnrageEnded", SourceSide = side, ChainId = ctx.NextChainId++, Depth = 0 });
+                BattleEvent ev = new BattleEvent { Time = t, Side = side, TargetSide = side, Kind = "enrageEnd", Value = 0, ChainId = ctx.NextChainId++, Depth = 0 };
+                ctx.Events.Add(Effects.FinishEvent(ctx, ev));
+                // 若暴怒期间又积满了怒火，结束后立即重新进入。
+                Effects.TryEnrage(ctx, hero, t, 0, null);
             }
         }
 
@@ -494,11 +585,16 @@ namespace BazaarActionAxis.Engine
             {
                 double t = JsMath.RoundTo6(step * dt);
                 ctx.EventsThisTick = 0;
+                FlushPendingItems(ctx);
                 // Native replay frame 0 already advances cooldowns by 50 ms.
                 // The first 6 s card is readied on frame 119 and acts on frame
                 // 120 (6.0 s); subsequent multicast casts are 5 frames apart.
                 if (step > 0 || config.NativeMechanics) AdvanceCooldowns(ctx, t);
+                ItemAttributes.Expire(ctx, t);
+                NativeDynamicAuras.Refresh(ctx);
+                TickEnrage(ctx, t);
                 if (config.NativeMechanics) Triggers.DrainNativeFrame(ctx, t);
+                FlushPendingItems(ctx);
 
                 double previous = (step - 1) * dt;
                 bool crossedSecond = step > 0 &&
@@ -536,6 +632,7 @@ namespace BazaarActionAxis.Engine
                 // An action can charge another item to ready on this frame;
                 // native then schedules that item's action for the next frame.
                 if (config.NativeMechanics) ExecuteNativeCasts(ctx, t, pendingCasts);
+                FlushPendingItems(ctx);
 
                 List<InternalItem> ready = CollectReady(ctx);
                 foreach (InternalItem item in ready)
@@ -546,6 +643,7 @@ namespace BazaarActionAxis.Engine
                 }
 
                 if (!config.NativeMechanics) Triggers.Drain(ctx, t);
+                FlushPendingItems(ctx);
                 CheckDeath(ctx, t);
 
                 CaptureItemSnapshots(ctx, t);
@@ -569,6 +667,7 @@ namespace BazaarActionAxis.Engine
             result.EnemyStartShield = config.EnemyStartShield;
             foreach (InternalItem item in ctx.Items)
             {
+                if (item.Destroyed) continue;
                 BattleItemView view = new BattleItemView();
                 view.Id = item.Id;
                 view.CardId = item.CardId;

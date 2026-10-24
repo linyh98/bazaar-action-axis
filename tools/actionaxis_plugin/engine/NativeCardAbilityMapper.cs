@@ -23,8 +23,22 @@ namespace BazaarActionAxis.Engine
                     CardDef card = old.Clone();
                     card.Tags = new List<string>();
                     foreach (JsonValue tag in card.NativeTemplate["Tags"].AsArray()) card.Tags.Add(tag.AsString());
+                    card.HiddenTags = new List<string>();
+                    foreach (JsonValue tag in card.NativeTemplate["HiddenTags"].AsArray()) card.HiddenTags.Add(tag.AsString());
                     if (!NativeSkillSupport.Empty(card.NativeEnchantment))
                         foreach (JsonValue tag in card.NativeEnchantment["Tags"].AsArray()) if (!card.Tags.Contains(tag.AsString())) card.Tags.Add(tag.AsString());
+                    // 光环/条件可能引用其他卡的原生属性。先把整侧模板属性铺好，
+                    // 否则先映射的卡会把尚未映射的邻居看成 0。实时覆盖值优先。
+                    Dictionary<string, int> native = MonsterTemplateExtractor.TierAttributes(card.NativeTemplate, card.Tier);
+                    foreach (KeyValuePair<string, int> attr in old.LiveAttributes) native[attr.Key] = attr.Value;
+                    card.LiveAttributes = native;
+                    if (card.NativeAuraSeedAttributes == null) card.NativeAuraSeedAttributes = new Dictionary<string, int>(native);
+                    int cooldown;
+                    if (native.TryGetValue("CooldownMax", out cooldown))
+                    {
+                        card.Cooldown = cooldown / 1000.0;
+                        card.Passive = card.Cooldown <= 0;
+                    }
                     config.Cards[item.CardId] = card;
                 }
             List<KeyValuePair<Side, string>> valid = new List<KeyValuePair<Side, string>>();
@@ -34,12 +48,18 @@ namespace BazaarActionAxis.Engine
                 foreach (LoadoutItem item in Board(config, side).Items)
                 {
                     CardDef original;
-                    if (!config.Cards.TryGetValue(item.CardId, out original) || NativeSkillSupport.Empty(original.NativeTemplate) || IsCalibrated(original.BaseItemId) && original.NativeAttributesAreLive) continue;
+                    if (!config.Cards.TryGetValue(item.CardId, out original) || NativeSkillSupport.Empty(original.NativeTemplate)) continue;
                     Dictionary<string, CardDef> before = new Dictionary<string, CardDef>(config.Cards);
                     double hpPlayer = config.PlayerMaxHp, hpEnemy = config.EnemyMaxHp, regen = config.EnemyStartRegen;
                     double? start = config.EnemyStartHp;
                     try { Map(config, original, side, false); valid.Add(new KeyValuePair<Side, string>(side, item.CardId)); }
-                    catch (Exception error) { warnings.Add(original.DisplayName() + "：原生战斗规则未完整模拟（" + error.Message + "）"); }
+                    catch (Exception error)
+                    {
+                        warnings.Add(original.DisplayName() + "：原生战斗规则未完整模拟（" + error.Message + "）");
+                        CardDef partial = before[item.CardId].Clone();
+                        partial.ParseStatus = "partial";
+                        before[item.CardId] = partial;
+                    }
                     finally { config.Cards = before; config.PlayerMaxHp = hpPlayer; config.EnemyMaxHp = hpEnemy; config.EnemyStartRegen = regen; config.EnemyStartHp = start; }
                 }
             }
@@ -72,6 +92,7 @@ namespace BazaarActionAxis.Engine
             Dictionary<string, double> attrs = new Dictionary<string, double>();
             JsonValue abilityIds = JsonValue.Null, auraIds = JsonValue.Null;
             bool found = false;
+            string lookupTier = original.Tier == "Legendary" ? "Diamond" : original.Tier;
             foreach (string tier in Tiers)
             {
                 JsonValue row = template["Tiers"].Has(tier) ? template["Tiers"][tier] : JsonValue.Null;
@@ -81,7 +102,7 @@ namespace BazaarActionAxis.Engine
                     if (row["AbilityIds"].Kind == JsonKind.Array) abilityIds = row["AbilityIds"];
                     if (row["AuraIds"].Kind == JsonKind.Array) auraIds = row["AuraIds"];
                 }
-                if (tier == original.Tier) { found = true; break; }
+                if (tier == lookupTier) { found = true; break; }
             }
             if (!found || abilityIds.Kind != JsonKind.Array || auraIds.Kind != JsonKind.Array) throw new FormatException("品质定义不完整");
             foreach (KeyValuePair<string, int> attr in original.LiveAttributes) attrs[attr.Key] = attr.Value;
@@ -118,10 +139,24 @@ namespace BazaarActionAxis.Engine
                 if (aurasOnly) { config.Cards[card.Id] = card; return; }
                 if (IsCalibrated(card.BaseItemId))
                 {
-                    // Use the established effect ordering and passive filters of
-                    // the eight calibrated items; only fill their unevaluated
-                    // monster attributes here before NativeItemMapper runs.
-                    card = LiveItemOverrides.Apply(card, card.LiveAttributes);
+                    // 主动效果从原生模板读取；被动过滤和特殊顺序交由 NativeItemMapper 校准。
+                    // 纯模板怪物不能依赖本地卡库的主动效果；缺卡或卡库过期也应能出手。
+                    card.Effects = new List<Effect>();
+                    card.Triggers = new List<TriggerDef>();
+                    foreach (JsonValue id in abilityIds.AsArray())
+                    {
+                        if (!template["Abilities"].Has(id.AsString())) throw new FormatException("能力定义缺失");
+                        JsonValue ability = template["Abilities"][id.AsString()];
+                        if (NativeSkillSupport.Type(ability["Trigger"]) == "TTriggerOnCardFired")
+                            AddAbility(card, ability, attrs);
+                    }
+                    if (!NativeSkillSupport.Empty(card.NativeEnchantment))
+                        foreach (KeyValuePair<string, JsonValue> ability in card.NativeEnchantment["Abilities"].AsObject())
+                        {
+                            if (NativeSkillSupport.Type(ability.Value["Trigger"]) != "TTriggerOnCardFired")
+                                throw new FormatException("已校准物品的附魔被动待支持");
+                            AddAbility(card, ability.Value, attrs);
+                        }
                     RefreshAttributes(card);
                     config.Cards[card.Id] = card;
                     return;
@@ -166,9 +201,14 @@ namespace BazaarActionAxis.Engine
             CheckArea(raw);
             if (!NativeSkillSupport.PrerequisitesSupported(raw["Prerequisites"])) throw new FormatException("未知触发条件或次数限制");
             Effect effect = MapAction(raw["Action"], attrs);
+            // 原生模板不携带“复制哪张卡”的引用；未校准的变形必须整卡回退。
+            if (effect.Kind == "transform" && NativeTransform.DonorRule(card) == null)
+                throw new FormatException("变形供体未校准");
             if (NativeSkillSupport.Type(trigger) == "TTriggerOnCardFired")
             {
-                if (raw["Prerequisites"].AsArray().Count > 0) throw new FormatException("主动能力的条件待支持");
+                // 主动能力的前提（计数器/相邻数量）在出手时判定，而不是直接放弃整张卡。
+                if (raw["Prerequisites"].Kind == JsonKind.Array && raw["Prerequisites"].Count > 0)
+                    effect.Prerequisites = raw["Prerequisites"];
                 card.Effects.Add(effect);
                 return;
             }
@@ -182,14 +222,6 @@ namespace BazaarActionAxis.Engine
 
         private static Effect MapAction(JsonValue raw, Dictionary<string, double> attrs)
         {
-            string type = NativeSkillSupport.Type(raw);
-            if (type == "TActionCardFlyingStart")
-            {
-                if (!NativeSkillSupport.Empty(raw["Cost"]) || !NativeSkillSupport.Empty(raw["Duration"])) throw new FormatException("限时飞行或行动代价");
-                Target target = SkillMapper.MapCardTarget(raw["Target"]);
-                return new Effect { Kind = "fly", Target = target, Count = NativeSkillSupport.Empty(raw["TargetCount"]) && target.Kind == "selfItem" ? 1 :
-                    (int)SkillMapper.ReadValue(raw["TargetCount"], attrs, "FlyingTargets") };
-            }
             return SkillMapper.MapAction(raw, attrs);
         }
 
@@ -203,34 +235,7 @@ namespace BazaarActionAxis.Engine
                 foreach (JsonValue child in raw["Triggers"].AsArray()) result.AddRange(MapTriggers(child));
                 return result;
             }
-            if (type == "TTriggerOnFightStarted") { result.Add(SkillMapper.MapTrigger(raw)); return result; }
-            Dictionary<string, string> events = new Dictionary<string, string> {
-                { "TTriggerOnItemUsed", "onUse" }, { "TTriggerOnCardPerformedHaste", "onHaste" },
-                { "TTriggerOnCardPerformedSlow", "onSlow" }, { "TTriggerOnCardPerformedFreeze", "onFreeze" },
-                { "TTriggerOnCardPerformedBurn", "onBurnApplied" }, { "TTriggerOnCardPerformedPoison", "onPoisonApplied" },
-                { "TTriggerOnCardPerformedShield", "onShield" }, { "TTriggerOnCardPerformedHeal", "onHeal" },
-                { "TTriggerOnCardPerformedRegen", "onRegen" }, { "TTriggerOnCardCritted", "onCrit" }
-            };
-            string ev;
-            if (!events.TryGetValue(type, out ev)) throw new FormatException("未知触发器 " + type);
-            if (raw.Has("Target") && !NativeSkillSupport.Empty(raw["Target"])) throw new FormatException("指定行动受体的被动待支持");
-            JsonValue subject = raw["Subject"];
-            NativeSkillRule rule = new NativeSkillRule { SourceCondition = subject["Conditions"] };
-            string subjectType = NativeSkillSupport.Type(subject);
-            if (subjectType == "TTargetCardSelf") { rule.SourceOwner = "self"; rule.SourceSelf = true; }
-            else if (subjectType == "TTargetCardSection")
-            {
-                string section = NativeSkillSupport.Text(subject, "TargetSection");
-                if (section == "SelfHand" || section == "SelfBoard") rule.SourceOwner = "self";
-                else if (section == "OpponentHand" || section == "OpponentBoard") rule.SourceOwner = "enemy";
-                else throw new FormatException("未知触发区域 " + section);
-                rule.SourceOther = subject["ExcludeSelf"].AsBool();
-            }
-            else if (subjectType == "TTargetCardPositional" && NativeSkillSupport.Text(subject, "Origin") == "Self" && NativeSkillSupport.Text(subject, "TargetMode") == "Neighbor")
-            { rule.SourceOwner = "self"; rule.SourceAdjacent = true; }
-            else throw new FormatException("未知触发主体 " + subjectType);
-            if (!NativeSkillSupport.ConditionSupported(rule.SourceCondition)) throw new FormatException("未知触发主体条件");
-            result.Add(new TriggerDef { Event = ev, SkillRule = rule });
+            result.Add(NativeSkillSupport.MapTrigger(raw));
             return result;
         }
 
@@ -262,39 +267,82 @@ namespace BazaarActionAxis.Engine
             Dictionary<string, CardDef> changed = new Dictionary<string, CardDef>();
             double maxHp = side == Side.Player ? config.PlayerMaxHp : config.EnemyMaxHp;
             double regen = config.EnemyStartRegen;
+            double rageMax = side == Side.Player ? config.PlayerRageMax : config.EnemyRageMax;
+            double enragedMs = side == Side.Player ? config.PlayerEnragedDurationMs : config.EnemyEnragedDurationMs;
+            List<JsonValue> runtime = new List<JsonValue>();
             foreach (JsonValue aura in auras)
             {
                 CheckArea(aura);
                 if (!NativeSkillSupport.PrerequisitesSupported(aura["Prerequisites"])) throw new FormatException("动态光环条件");
+                bool dynamic = NativeSkillSupport.HasPlayerPrerequisite(aura["Prerequisites"]);
+                JsonValue auraAction = aura["Action"];
+                if (dynamic && NativeSkillSupport.Type(auraAction) != "TAuraActionCardModifyAttribute")
+                    throw new FormatException("动态人物条件光环待支持");
+                JsonValue action = aura["Action"], target = action["Target"];
+                string type = NativeSkillSupport.Type(action), attribute = NativeSkillSupport.Text(action, "AttributeType");
+                string operation = NativeSkillSupport.Text(action, "Operation");
+                if (type == "TAuraActionCardModifyAttribute")
+                {
+                    NativeDynamicAuras.Validate(aura);
+                    runtime.Add(aura);
+                    // 人物条件在战斗中会反复开关：不能算成开场固定加成。
+                    if (dynamic) continue;
+                }
                 BattleContext ctx = BattleEngine.InitBattle(config);
                 InternalItem sourceItem = ctx.Items.Find(delegate(InternalItem item) { return item.CardId == source.Id && item.Side == side; });
                 if (sourceItem == null) sourceItem = new InternalItem { Id = source.Id, Card = source, Side = side, Slot = -1 };
                 if (!NativeSkillSupport.PrerequisitesMatch(ctx, sourceItem, new NativeSkillRule { Prerequisites = aura["Prerequisites"] })) continue;
-                JsonValue action = aura["Action"], target = action["Target"];
-                string type = NativeSkillSupport.Type(action), attribute = NativeSkillSupport.Text(action, "AttributeType");
-                string operation = NativeSkillSupport.Text(action, "Operation");
                 if (operation != "Add" && operation != "Set" && operation != "Multiply") throw new FormatException("未知光环操作");
                 if (type == "TAuraActionPlayerModifyAttribute")
                 {
                     if (NativeSkillSupport.Type(target) != "TTargetPlayerRelative" || NativeSkillSupport.Text(target, "TargetMode") != "Self" || !NativeSkillSupport.Empty(target["Conditions"]) ||
-                        attribute != "HealthMax" && attribute != "HealthRegen") throw new FormatException("未知人物光环 " + attribute);
-                    double value = StaticValue(config, source, side, action["Value"], attrs);
-                    if (!alreadyLive)
+                        attribute != "HealthMax" && attribute != "HealthRegen" && attribute != "RageMax" && attribute != "EnragedDurationMax")
+                        throw new FormatException("未知人物光环 " + attribute);
+                    double value = StaticValue(config, source, side, action["Value"], attrs, ctx);
+                    if (attribute == "HealthMax") maxHp = Operate(maxHp, value, operation);
+                    else if (attribute == "HealthRegen") regen = Operate(regen, value, operation);
+                    else if (attribute == "RageMax") rageMax = Operate(rageMax, value, operation);
+                    else enragedMs = Operate(enragedMs, value, operation);
+                }
+                else if (type == "TAuraActionCardAddTagsList" || type == "TAuraActionCardAddTagsBySource")
+                {
+                    List<string> tags = new List<string>();
+                    if (type == "TAuraActionCardAddTagsList")
                     {
-                        if (attribute == "HealthMax") maxHp = Operate(maxHp, value, operation);
-                        else if (side == Side.Enemy) regen = Operate(regen, value, operation);
-                        else throw new FormatException("纯模板我方再生初始化未支持");
+                        if (action["Tags"].Kind != JsonKind.Array || action["Tags"].Count == 0) throw new FormatException("光环标签为空");
+                        foreach (JsonValue tag in action["Tags"].AsArray()) tags.Add(tag.AsString());
+                    }
+                    else
+                    {
+                        foreach (LoadoutItem other in Board(config, side).Items)
+                        {
+                            CardDef origin = config.Cards[other.CardId];
+                            if (!StaticTargetMatches(config, origin, source, action["Source"], side, ctx)) continue;
+                            foreach (string tag in origin.Tags) if (!tags.Contains(tag)) tags.Add(tag);
+                        }
+                        if (tags.Count == 0) continue;
+                    }
+                    foreach (LoadoutItem loadout in Board(config, side).Items)
+                    {
+                        CardDef card;
+                        if (!changed.TryGetValue(loadout.CardId, out card)) card = config.Cards[loadout.CardId].Clone();
+                        if (!StaticTargetMatches(config, card, source, target, side, ctx)) continue;
+                        card.Tags = new List<string>(card.Tags);
+                        foreach (string tag in tags) if (!card.Tags.Contains(tag)) card.Tags.Add(tag);
+                        changed[card.Id] = card;
                     }
                 }
                 else if (type == "TAuraActionCardModifyAttribute")
                 {
                     if (!AuraAttribute(attribute)) throw new FormatException("未知卡牌光环属性 " + attribute);
-                    double value = StaticValue(config, source, side, action["Value"], attrs);
+                    double value = StaticValue(config, source, side, action["Value"], attrs, ctx);
                     foreach (LoadoutItem loadout in Board(config, side).Items)
                     {
                         CardDef card;
                         if (!changed.TryGetValue(loadout.CardId, out card)) card = config.Cards[loadout.CardId].Clone();
-                        if (!StaticTargetMatches(config, card, source, target, side)) continue;
+                        if (!StaticTargetMatches(config, card, source, target, side, ctx)) continue;
+                        if (card.NativeAuraSeedAttributes == null) card.NativeAuraSeedAttributes = new Dictionary<string, int>(card.LiveAttributes);
+                        changed[card.Id] = card;
                         if (!alreadyLive)
                         {
                             int current; card.LiveAttributes.TryGetValue(attribute, out current);
@@ -306,10 +354,19 @@ namespace BazaarActionAxis.Engine
                 }
                 else throw new FormatException("未知光环 " + type);
             }
+            source.NativeRuntimeAuras = runtime;
+            CardDef updatedSource;
+            if (changed.TryGetValue(source.Id, out updatedSource)) updatedSource.NativeRuntimeAuras = runtime;
             foreach (KeyValuePair<string, CardDef> pair in changed) config.Cards[pair.Key] = pair.Value;
             if (!alreadyLive)
             {
-                if (side == Side.Player) config.PlayerMaxHp = maxHp;
+                maxHp = Math.Max(1, maxHp);
+                if (side == Side.Player)
+                {
+                    config.PlayerMaxHp = maxHp;
+                    config.PlayerRageMax = Math.Max(0, rageMax);
+                    config.PlayerEnragedDurationMs = Math.Max(0, enragedMs);
+                }
                 else
                 {
                     if (config.EnemyStartHp.HasValue)
@@ -319,48 +376,100 @@ namespace BazaarActionAxis.Engine
                     }
                     config.EnemyMaxHp = maxHp;
                     config.EnemyStartRegen = regen;
+                    config.EnemyRageMax = Math.Max(0, rageMax);
+                    config.EnemyEnragedDurationMs = Math.Max(0, enragedMs);
                 }
             }
         }
 
         private static bool AuraAttribute(string attr)
         {
-            string[] attrs = { "DamageAmount", "HealAmount", "ShieldApplyAmount", "BurnApplyAmount", "PoisonApplyAmount", "RegenApplyAmount", "CritChance", "Lifesteal", "LifestealPercentage", "CooldownMax", "AmmoMax", "Multicast", "HasteAmount", "HasteTargets", "SlowAmount", "SlowTargets", "FreezeAmount", "FreezeTargets", "ChargeAmount", "ChargeTargets", "PercentCooldownReduction", "Custom_0", "Custom_1", "Custom_2" };
-            return Array.IndexOf(attrs, attr) >= 0;
+            string[] attrs = { "DamageAmount", "HealAmount", "ShieldApplyAmount", "BurnApplyAmount", "PoisonApplyAmount", "RegenApplyAmount", "CritChance", "Lifesteal", "LifestealPercentage", "CooldownMax", "AmmoMax", "Multicast", "HasteAmount", "HasteTargets", "SlowAmount", "SlowTargets", "FreezeAmount", "FreezeTargets", "ChargeAmount", "ChargeTargets", "PercentCooldownReduction", "FlatCooldownReduction", "CooldownDisabled" };
+            // 原生计数器类属性（Custom_N）是卡的内部状态，允许光环直接修改。
+            return Array.IndexOf(attrs, attr) >= 0 || !string.IsNullOrEmpty(attr) && attr.StartsWith("Custom_", StringComparison.Ordinal);
         }
 
-        private static bool StaticTargetMatches(BattleConfig config, CardDef card, CardDef source, JsonValue target, Side side)
+        private static bool StaticTargetMatches(BattleConfig config, CardDef card, CardDef source, JsonValue target, Side side, BattleContext ctx)
         {
             string type = NativeSkillSupport.Type(target);
             if (!NativeSkillSupport.ConditionSupported(target["Conditions"])) throw new FormatException("光环目标条件未支持");
-            if (type == "TTargetCardSelf") return card.Id == source.Id && NativeSkillSupport.CardMatches(new InternalItem { Card = card, Side = side }, target["Conditions"]);
+            if (type == "TTargetCardSelf")
+            {
+                InternalItem selfItem = FindItem(ctx, card.Id, side) ?? new InternalItem { Card = card, Side = side };
+                return card.Id == source.Id && NativeSkillSupport.CardMatches(selfItem, target["Conditions"], ctx);
+            }
             if (type == "TTargetCardPositional" && NativeSkillSupport.Text(target, "Origin") == "Self" && NativeSkillSupport.Text(target, "TargetMode") == "Neighbor" && !target["IncludeOrigin"].AsBool())
             {
-                BattleContext ctx = BattleEngine.InitBattle(config);
-                InternalItem sourceItem = ctx.Items.Find(delegate(InternalItem item) { return item.CardId == source.Id && item.Side == side; });
-                InternalItem targetItem = ctx.Items.Find(delegate(InternalItem item) { return item.CardId == card.Id && item.Side == side; });
-                return NativeSkillSupport.Adjacent(ctx, sourceItem, targetItem) && NativeSkillSupport.CardMatches(targetItem, target["Conditions"]);
+                InternalItem sourceItem = FindItem(ctx, source.Id, side);
+                InternalItem targetItem = FindItem(ctx, card.Id, side) ?? new InternalItem { Card = card, Side = side };
+                return NativeSkillSupport.Adjacent(ctx, sourceItem, targetItem) && NativeSkillSupport.CardMatches(targetItem, target["Conditions"], ctx);
             }
             string section = NativeSkillSupport.Text(target, "TargetSection");
-            if (type != "TTargetCardSection" || section != "SelfHand" && section != "SelfBoard" && !(side == Side.Enemy && section == "SelfHandAndStash")) throw new FormatException("光环目标区域未支持");
+            if (type == "TTargetCardRandom" && section == "SelfNeighbors")
+            {
+                InternalItem sourceItem = FindItem(ctx, source.Id, side);
+                InternalItem targetItem = FindItem(ctx, card.Id, side) ?? new InternalItem { Card = card, Side = side };
+                return NativeSkillSupport.Adjacent(ctx, sourceItem, targetItem) && NativeSkillSupport.CardMatches(targetItem, target["Conditions"], ctx);
+            }
+            if (type != "TTargetCardSection" || section != "SelfHand" && section != "SelfBoard" && section != "SelfHandAndStash" && section != "SelfStash" && !(side == Side.Enemy && (section == "SelfHandAndStash" || section == "SelfStash"))) throw new FormatException("光环目标区域未支持");
             if (!NativeSkillSupport.ConditionSupported(target["Conditions"])) throw new FormatException("光环目标条件未支持");
-            return !(target["ExcludeSelf"].AsBool() && card.Id == source.Id) && NativeSkillSupport.CardMatches(new InternalItem { Card = card, Side = side }, target["Conditions"]);
+            InternalItem item = FindItem(ctx, card.Id, side) ?? new InternalItem { Card = card, Side = side };
+            return !(target["ExcludeSelf"].AsBool() && card.Id == source.Id) && NativeSkillSupport.CardMatches(item, target["Conditions"], ctx);
         }
 
-        private static double StaticValue(BattleConfig config, CardDef source, Side side, JsonValue raw, Dictionary<string, double> attrs)
+        private static InternalItem FindItem(BattleContext ctx, string cardId, Side side)
+        {
+            return ctx.Items.Find(delegate(InternalItem item) { return item.CardId == cardId && item.Side == side; });
+        }
+
+        private static double StaticValue(BattleConfig config, CardDef source, Side side, JsonValue raw, Dictionary<string, double> attrs, BattleContext ctx)
         {
             string type = NativeSkillSupport.Type(raw);
             double value;
             if (type == "TReferenceValueCardCount")
             {
                 value = 0;
-                foreach (LoadoutItem item in Board(config, side).Items) if (StaticTargetMatches(config, config.Cards[item.CardId], source, raw["Target"], side)) value++;
+                foreach (LoadoutItem item in Board(config, side).Items) if (StaticTargetMatches(config, config.Cards[item.CardId], source, raw["Target"], side, ctx)) value++;
+            }
+            else if (type == "TReferenceValuePlayerAttribute" || type == "TReferenceValuePlayerAttributeUnscaled")
+            {
+                string attribute = NativeSkillSupport.Text(raw, "AttributeType");
+                string mode = NativeSkillSupport.Text(raw["Target"], "TargetMode");
+                InternalHero hero = mode == "Opponent" ? ctx.Hero(SideUtil.Opposing(side)) : ctx.Hero(side);
+                value = NativeSkillSupport.PlayerAttributeValue(ctx, hero, attribute);
+            }
+            else if (type == "TReferenceValueCardAttributeAggregate")
+            {
+                string attribute = NativeSkillSupport.Text(raw, "AttributeType");
+                value = 0;
+                foreach (LoadoutItem item in Board(config, side).Items)
+                    if (StaticTargetMatches(config, config.Cards[item.CardId], source, raw["Target"], side, ctx))
+                        value += NativeSkillSupport.AttributeValue(FindItem(ctx, item.CardId, side) ?? new InternalItem { Card = config.Cards[item.CardId], Side = side }, attribute);
+            }
+            else if (type == "TReferenceValueCardTagCount")
+            {
+                bool distinct = raw["Distinct"].AsBool();
+                int total = 0;
+                List<string> tags = new List<string>();
+                foreach (LoadoutItem item in Board(config, side).Items)
+                {
+                    CardDef card = config.Cards[item.CardId];
+                    if (!StaticTargetMatches(config, card, source, raw["Target"], side, ctx)) continue;
+                    if (!distinct) total += card.Tags.Count;
+                    else foreach (string tag in card.Tags) if (!tags.Contains(tag)) tags.Add(tag);
+                }
+                value = distinct ? tags.Count : total;
+            }
+            else if (type == "TRangeValue")
+            {
+                double min = Math.Max(0, raw["MinValue"].AsDouble()), max = raw["MaxValue"].AsDouble();
+                value = max <= min ? min : min + ctx.Rng.Int((int)(max - min) + 1);
             }
             else return SkillMapper.ReadValue(raw, attrs, null);
             JsonValue modifier = raw["Modifier"];
             if (!NativeSkillSupport.Empty(modifier))
             {
-                double other = StaticValue(config, source, side, modifier["Value"], attrs);
+                double other = StaticValue(config, source, side, modifier["Value"], attrs, ctx);
                 string mode = NativeSkillSupport.Text(modifier, "ModifyMode");
                 if (mode == "Multiply") value *= other;
                 else if (mode == "Add") value += other;

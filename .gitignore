@@ -17,3 +17,15 @@ captures/live_cards_bpp.json
 captures/live_cards_bpp.error.txt
 captures/live_loadout.json
 captures/live/
+
+# IDE 缓存
+.qoder/
+
+# 本地插件备份/暂存目录（不提交二进制）
+captures/diagnostics/plugin-before-dynamic-aura-*/
+tools/actionaxis_plugin/build/staged-dynamic-auras-*/
+
+# C# 测试临时二进制
+# 只保留构建产物 ActionAxisEngine.dll / ActionAxisPlugin.dll，测试与探针 DLL 不入库
+tools/actionaxis_plugin/build/EngineTests.exe
+tools/actionaxis_plugin/build/*Tests.dll

@@ -37,7 +37,12 @@ namespace BazaarActionAxis.Tests
             card.Cooldown = cooldown;
             card.Passive = cooldown == 0;
             card.Tags.AddRange(tags);
-            if (damage > 0) card.Effects.Add(new Effect { Kind = "damage", Amount = new NumExpr { Value = damage } });
+            if (damage > 0)
+            {
+                // 原生数值在结算时读实时属性；测试卡也走同一路径。
+                card.LiveAttributes["DamageAmount"] = (int)damage;
+                card.Effects.Add(new Effect { Kind = "damage", Amount = new NumExpr { Type = "cardAttribute", Attribute = "DamageAmount", TargetKind = "selfItem", Value = damage } });
+            }
             config.Cards[id] = card;
             (side == Side.Player ? config.Player : config.Enemy).Items.Add(new LoadoutItem { CardId = id, Slot = slot });
         }
@@ -174,7 +179,11 @@ namespace BazaarActionAxis.Tests
             LiveSkillEntry unknown = new LiveSkillEntry { TemplateId = "missing", Tier = "Gold" };
             Assert.Equal("missing-template", SkillMapper.Apply(config, new[] { unknown }, catalog).Skills[0].Status);
             LiveSkillEntry dynamicAura = CatalogSkill("0dd4d40e-ac14-4a57-8c7f-9d47a5bdd38a", "Gold");
-            Assert.Equal("unsupported", SkillMapper.Apply(config, new[] { dynamicAura }, catalog).Skills[0].Status);
+            mapped = SkillMapper.Apply(config, new[] { dynamicAura }, catalog);
+            // 人物条件光环现在作为战斗内动态层接入，不再整条技能回退。
+            Assert.Equal("simulated", mapped.Skills[0].Status);
+            Assert.Equal(1, config.PlayerSkills.Count);
+            Assert.Equal(1, config.PlayerSkills[0].NativeRuntimeAuras.Count);
             LiveSkillEntry fire = CatalogSkill("ffceb0c7-7913-4339-8013-f1bcc67cca9c", "Silver");
             mapped = SkillMapper.Apply(config, new[] { fire }, catalog);
             Assert.Equal("simulated", mapped.Skills[0].Status);

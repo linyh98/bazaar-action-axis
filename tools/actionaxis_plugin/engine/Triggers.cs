@@ -29,6 +29,20 @@ namespace BazaarActionAxis.Engine
             foreach (Effect effect in trigger.Effects)
                 Effects.ResolveEffect(ctx, effect, skill, time, depth + 1, chain, triggerSourceId);
         }
+
+        // 直接属于某张卡的同步被动（目前用于摧毁前）。
+        public static void FireOwn(BattleContext ctx, InternalItem item, string eventName, double time, int depth, int? chainId)
+        {
+            if (item == null || item.Card == null) return;
+            int chain = chainId.HasValue ? chainId.Value : ctx.NextChainId++;
+            foreach (TriggerDef trigger in item.Card.Triggers)
+            {
+                if (trigger.Event != eventName) continue;
+                if (trigger.SkillRule != null && !NativeSkillSupport.PrerequisitesMatch(ctx, item, trigger.SkillRule)) continue;
+                foreach (Effect effect in trigger.Effects)
+                    Effects.ResolveEffect(ctx, effect, item, time, depth + 1, chain, item.Id);
+            }
+        }
         private static readonly HashSet<string> SourceScoped = new HashSet<string>
         {
             "onHeal",
@@ -41,7 +55,12 @@ namespace BazaarActionAxis.Engine
             "onFreeze",
             "onCrit",
             "onReload",
-            "onDestroy"
+            "onDestroy",
+            "onCharge",
+            "onOverHeal",
+            "onFly",
+            "onFlyStop",
+            "onBeforeUse"
         };
 
         public static void Enqueue(BattleContext ctx, TriggerPayload payload)
@@ -51,7 +70,19 @@ namespace BazaarActionAxis.Engine
 
         public static void Drain(BattleContext ctx, double time)
         {
-            Drain(ctx, time, false);
+            Drain(ctx, time, false, null, false);
+        }
+
+        // 只结算指定事件，其余事件留在队列里按原生帧序执行。
+        public static void DrainEvent(BattleContext ctx, double time, string eventName)
+        {
+            Drain(ctx, time, false, eventName, false);
+        }
+
+        // 死亡触发需要在一方 HP 已归零时仍能结算（复活/回血）。
+        public static void DrainWhileDead(BattleContext ctx, double time)
+        {
+            Drain(ctx, time, false, null, true);
         }
 
         // Native frame logs show performed-action passives firing on the next
@@ -59,17 +90,20 @@ namespace BazaarActionAxis.Engine
         // following frame instead of collapsing the entire chain into one tick.
         public static void DrainNativeFrame(BattleContext ctx, double time)
         {
-            Drain(ctx, time, true);
+            Drain(ctx, time, true, null, false);
         }
 
-        private static void Drain(BattleContext ctx, double time, bool oneFrame)
+        private static void Drain(BattleContext ctx, double time, bool oneFrame, string onlyEvent, bool allowDead)
         {
             int remaining = ctx.TriggerQueue.Count;
+            Queue<TriggerPayload> deferred = new Queue<TriggerPayload>();
+            bool aborted = false;
             while (ctx.TriggerQueue.Count > 0 && (!oneFrame || remaining-- > 0))
             {
-                if (ctx.Player.Hp <= 0 || ctx.Enemy.Hp <= 0)
+                if (!allowDead && (ctx.Player.Hp <= 0 || ctx.Enemy.Hp <= 0))
                 {
                     ctx.TriggerQueue.Clear();
+                    aborted = true;
                     break;
                 }
 
@@ -87,10 +121,16 @@ namespace BazaarActionAxis.Engine
                     cap.Id = ctx.NextEventId++;
                     ctx.Events.Add(cap);
                     ctx.TriggerQueue.Clear();
+                    aborted = true;
                     break;
                 }
 
                 TriggerPayload payload = ctx.TriggerQueue.Dequeue();
+                if (onlyEvent != null && payload.Event != onlyEvent)
+                {
+                    deferred.Enqueue(payload);
+                    continue;
+                }
                 if (payload.Depth > ctx.Rules.MaxTriggerDepth)
                 {
                     ctx.Warnings.Add("trigger depth cap reached at t=" + time.ToString());
@@ -107,91 +147,130 @@ namespace BazaarActionAxis.Engine
                     continue;
                 }
 
-                InternalItem sourceItem = null;
-                if (!string.IsNullOrEmpty(payload.SourceItemId))
-                {
-                    foreach (InternalItem item in ctx.Items)
-                    {
-                        if (item.Id == payload.SourceItemId)
-                        {
-                            sourceItem = item;
-                            break;
-                        }
-                    }
-                }
+                ctx.PushTriggerAmount(payload.Amount);
+                try { ResolvePayload(ctx, payload, time); }
+                finally { ctx.PopTriggerAmount(); }
+            }
+            if (!aborted)
+                while (deferred.Count > 0) ctx.TriggerQueue.Enqueue(deferred.Dequeue());
+        }
 
+        // TReferenceValueAttributeChange 需要通过 TriggerAmount 读取本次变化量，
+        // 因此同一个 payload 下所有被动都必须在这个作用域内结算。
+        private static void ResolvePayload(BattleContext ctx, TriggerPayload payload, double time)
+        {
+            InternalItem sourceItem = null;
+            if (!string.IsNullOrEmpty(payload.SourceItemId))
+            {
                 foreach (InternalItem item in ctx.Items)
                 {
-                    if (ctx.IsTrainingDummySource(item.Side)) continue;
-                    foreach (TriggerDef trigger in item.Card.Triggers)
+                    if (item.Id == payload.SourceItemId)
                     {
-                        if (trigger.Event != payload.Event) continue;
-                        if (trigger.SkillRule != null)
-                        {
-                            if (!NativeMatches(ctx, item, sourceItem, trigger)) continue;
-                        }
-                        else
-                        {
-                            if (payload.Event == "onDamageTaken" && (!payload.TargetSide.HasValue || item.Side != payload.TargetSide.Value)) continue;
-                            if ((payload.Event == "onDamageDealt" || payload.Event == "onUse" || SourceScoped.Contains(payload.Event)) && item.Side != payload.SourceSide) continue;
-                        }
-
-                        if (trigger.Filter != null)
-                        {
-                            if (trigger.Filter.SourceOther && (sourceItem == null || sourceItem.Id == item.Id)) continue;
-                            if (trigger.Filter.SourceAdjacent && !AreAdjacent(ctx, item, sourceItem)) continue;
-                            if (trigger.Filter.SourceFlyingOrFriend &&
-                                (sourceItem == null || !sourceItem.Flying && !sourceItem.Card.Tags.Contains("Friend"))) continue;
-                            if (!string.IsNullOrEmpty(trigger.Filter.SourceItemId) &&
-                                trigger.Filter.SourceItemId != payload.SourceItemId)
-                                continue;
-
-                            if (!string.IsNullOrEmpty(trigger.Filter.SourceTag))
-                            {
-                                if (sourceItem == null ||
-                                    !sourceItem.Card.Tags.Contains(trigger.Filter.SourceTag))
-                                    continue;
-                            }
-
-                            if (trigger.Filter.TargetSide.HasValue &&
-                                trigger.Filter.TargetSide.Value != payload.TargetSide)
-                                continue;
-
-                            if (trigger.Filter.Self && payload.TargetItemId != item.Id) continue;
-                        }
-
-                        CountNative(item, trigger);
-                        foreach (Effect effect in trigger.Effects)
-                            Effects.ResolveEffect(ctx, effect, item, time, payload.Depth + 1, payload.ChainId, payload.SourceItemId);
+                        sourceItem = item;
+                        break;
                     }
                 }
+            }
 
-                foreach (InternalItem skill in ctx.Skills)
+            foreach (InternalItem item in ctx.Items)
+            {
+                if (ctx.IsTrainingDummySource(item.Side) || item.Destroyed) continue;
+                foreach (TriggerDef trigger in item.Card.Triggers)
                 {
-                    if (ctx.IsTrainingDummySource(skill.Side)) continue;
-                    foreach (TriggerDef trigger in skill.Card.Triggers)
+                    if (trigger.Event != payload.Event) continue;
+                    if (!AttributesMatch(trigger, payload)) continue;
+                    if (trigger.SkillRule != null)
                     {
-                        if (trigger.Event != payload.Event || trigger.SkillRule == null) continue;
-                        // A native item trigger can only originate from a real board item.
-                        // Skill shield/burn/etc. events must not impersonate item activations.
-                        if (!NativeMatches(ctx, skill, sourceItem, trigger)) continue;
-                        CountNative(skill, trigger);
-                        FireSkill(ctx, skill, trigger, time, payload.Depth, payload.ChainId, sourceItem.Id);
+                        if (trigger.SkillRule.PlayerOwner != null)
+                        {
+                            if (!PlayerMatches(ctx, item, payload, trigger)) continue;
+                        }
+                        else if (!NativeMatches(ctx, item, sourceItem, trigger, payload)) continue;
                     }
+                    else
+                    {
+                        if (payload.Event == "onDamageTaken" && (!payload.TargetSide.HasValue || item.Side != payload.TargetSide.Value)) continue;
+                        if ((payload.Event == "onDamageDealt" || payload.Event == "onUse" || SourceScoped.Contains(payload.Event)) && item.Side != payload.SourceSide) continue;
+                    }
+
+                    if (trigger.Filter != null)
+                    {
+                        if (trigger.Filter.SourceOther && (sourceItem == null || sourceItem.Id == item.Id)) continue;
+                        if (trigger.Filter.SourceAdjacent && !AreAdjacent(ctx, item, sourceItem)) continue;
+                        if (trigger.Filter.SourceFlyingOrFriend &&
+                            (sourceItem == null || !sourceItem.Flying && !sourceItem.Card.Tags.Contains("Friend"))) continue;
+                        if (!string.IsNullOrEmpty(trigger.Filter.SourceItemId) &&
+                            trigger.Filter.SourceItemId != payload.SourceItemId)
+                            continue;
+
+                        if (!string.IsNullOrEmpty(trigger.Filter.SourceTag))
+                        {
+                            if (sourceItem == null ||
+                                !sourceItem.Card.Tags.Contains(trigger.Filter.SourceTag))
+                                continue;
+                        }
+
+                        if (trigger.Filter.TargetSide.HasValue &&
+                            trigger.Filter.TargetSide.Value != payload.TargetSide)
+                            continue;
+
+                        if (trigger.Filter.Self && payload.TargetItemId != item.Id) continue;
+                    }
+
+                    CountNative(item, trigger);
+                    foreach (Effect effect in trigger.Effects)
+                        Effects.ResolveEffect(ctx, effect, item, time, payload.Depth + 1, payload.ChainId, payload.SourceItemId, payload.TargetItemId);
+                }
+            }
+
+            foreach (InternalItem skill in ctx.Skills)
+            {
+                if (ctx.IsTrainingDummySource(skill.Side)) continue;
+                foreach (TriggerDef trigger in skill.Card.Triggers)
+                {
+                    if (trigger.Event != payload.Event || trigger.SkillRule == null) continue;
+                    if (!AttributesMatch(trigger, payload)) continue;
+                    bool matched = trigger.SkillRule.PlayerOwner != null
+                        ? PlayerMatches(ctx, skill, payload, trigger)
+                        : NativeMatches(ctx, skill, sourceItem, trigger, payload);
+                    if (!matched) continue;
+                    CountNative(skill, trigger);
+                    FireSkill(ctx, skill, trigger, time, payload.Depth, payload.ChainId, sourceItem == null ? null : sourceItem.Id);
                 }
             }
         }
 
-        private static bool NativeMatches(BattleContext ctx, InternalItem owner, InternalItem source, TriggerDef trigger)
+        private static bool NativeMatches(BattleContext ctx, InternalItem owner, InternalItem source, TriggerDef trigger, TriggerPayload payload)
         {
             NativeSkillRule rule = trigger.SkillRule;
             if (source == null || rule == null) return false;
             if (rule.SourceOwner == "self" && source.Side != owner.Side || rule.SourceOwner == "enemy" && source.Side == owner.Side) return false;
             if (rule.SourceSelf && source.Id != owner.Id || rule.SourceOther && source.Id == owner.Id || rule.SourceAdjacent && !AreAdjacent(ctx, owner, source)) return false;
-            if (!NativeSkillSupport.CardMatches(source, rule.SourceCondition) || !NativeSkillSupport.PrerequisitesMatch(ctx, owner, rule)) return false;
+            if (!NativeSkillSupport.CardMatches(source, rule.SourceCondition, ctx, payload == null ? null : payload.SourceItemId) ||
+                !NativeSkillSupport.PrerequisitesMatch(ctx, owner, rule)) return false;
             int count;
             owner.NativeTriggerCounts.TryGetValue(trigger, out count);
             return !rule.MaxActivations.HasValue || count < rule.MaxActivations.Value;
+        }
+
+        // 人物事件（受伤、暴怒、死亡）的匹配集合是英雄，不是卡牌。
+        private static bool PlayerMatches(BattleContext ctx, InternalItem owner, TriggerPayload payload, TriggerDef trigger)
+        {
+            NativeSkillRule rule = trigger.SkillRule;
+            bool sideMatches = rule.PlayerOwner == "self" ? payload.SourceSide == owner.Side : payload.SourceSide != owner.Side;
+            if (!sideMatches) return false;
+            if (!NativeSkillSupport.PlayerConditionMatches(ctx, ctx.Hero(payload.SourceSide), rule.PlayerCondition)) return false;
+            int count;
+            owner.NativeTriggerCounts.TryGetValue(trigger, out count);
+            if (rule.MaxActivations.HasValue && count >= rule.MaxActivations.Value) return false;
+            return NativeSkillSupport.PrerequisitesMatch(ctx, owner, rule);
+        }
+
+        private static bool AttributesMatch(TriggerDef trigger, TriggerPayload payload)
+        {
+            if (trigger.AttributeFilter == null) return true;
+            if (!string.Equals(trigger.AttributeFilter, payload.AttributeName, StringComparison.OrdinalIgnoreCase)) return false;
+            return trigger.ChangeType == null || string.Equals(trigger.ChangeType, payload.ChangeType, StringComparison.OrdinalIgnoreCase);
         }
 
         private static void CountNative(InternalItem owner, TriggerDef trigger)

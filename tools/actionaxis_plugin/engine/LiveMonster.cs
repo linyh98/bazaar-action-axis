@@ -11,6 +11,29 @@ namespace BazaarActionAxis.Engine
         public int DefaultIndex;
     }
 
+    public sealed class MonsterSelection
+    {
+        private string _key;
+        private bool _hasChoices;
+        public int Index;
+
+        public LiveMonsterEntry Resolve(MonsterReadResult read)
+        {
+            if (read == null || read.Choices.Count == 0)
+            {
+                _key = null;
+                _hasChoices = false;
+                Index = 0;
+                return null;
+            }
+            if (!_hasChoices || _key != read.ChoiceKey) Index = read.DefaultIndex;
+            _key = read.ChoiceKey;
+            _hasChoices = true;
+            Index = Math.Max(0, Math.Min(read.Choices.Count - 1, Index));
+            return read.Choices[Index];
+        }
+    }
+
     public sealed class LiveMonsterEntry
     {
         public string Id;
@@ -100,7 +123,10 @@ namespace BazaarActionAxis.Engine
         {
             Dictionary<string, int> result = new Dictionary<string, int>();
             JsonValue tiers = Get(template, "Tiers");
-            int selected = Array.IndexOf(Tiers, tier);
+            // Native item and skill tier lookups alias Legendary to Diamond.
+            // Preserve the monster instance Tier and apply instance overrides later.
+            string lookupTier = tier == "Legendary" ? "Diamond" : tier;
+            int selected = Array.IndexOf(Tiers, lookupTier);
             if (selected < 0) selected = 0;
             for (int i = 0; i <= selected; i++)
                 CopyAttributes(Get(Get(tiers, Tiers[i]), "Attributes"), result);

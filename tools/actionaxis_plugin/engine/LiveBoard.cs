@@ -30,6 +30,8 @@ namespace BazaarActionAxis.Engine
         public List<LiveCardEntry> Cards = new List<LiveCardEntry>();
         public List<LiveSkillEntry> Skills = new List<LiveSkillEntry>();
         public Dictionary<string, int> PlayerAttributes = new Dictionary<string, int>();
+        // 玩家英雄身份（BPP snapshot 的 Hero），用于 TCardConditionalPlayerHero。
+        public string PlayerHero;
         public double? PlayerHealth;
         public double? PlayerMaxHealth;
         public string SkillReadError;
@@ -94,6 +96,7 @@ namespace BazaarActionAxis.Engine
                 return BoardReadResult.Fail("BPP 没有返回游戏状态，请先进入一局游戏");
 
             object boardItems = ReflectionUtil.GetProp(snapshot, "BoardItems");
+            string playerHero = HeroName(ReflectionUtil.GetProp(snapshot, "Hero"));
             List<LiveCardEntry> cards = new List<LiveCardEntry>();
             foreach (object raw in ReflectionUtil.GetEnumerable(boardItems))
             {
@@ -102,12 +105,22 @@ namespace BazaarActionAxis.Engine
             }
 
             if (cards.Count == 0)
-                return BoardReadResult.Fail("当前棋盘没有卡牌");
+            {
+                BoardReadResult empty = BoardReadResult.Fail("当前棋盘没有卡牌");
+                empty.PlayerHero = playerHero;
+                return empty;
+            }
 
             BoardReadResult result = new BoardReadResult();
             result.Ok = true;
             result.Cards = cards;
+            result.PlayerHero = playerHero;
             return result;
+        }
+
+        private static string HeroName(object value)
+        {
+            return value == null ? null : value.ToString();
         }
 
         private static LiveCardEntry FromCard(object raw)

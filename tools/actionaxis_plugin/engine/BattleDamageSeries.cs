@@ -29,9 +29,11 @@ namespace BazaarActionAxis.Engine
         private readonly List<double> _times = new List<double>();
         private readonly List<BattleDamageSnapshot> _points = new List<BattleDamageSnapshot>();
         private readonly BattleDamageSnapshot _initial;
+        private readonly double _endTime;
 
         internal BattleDamageSeries(BattleResult result, double enemyMaxHp)
         {
+            _endTime = result.EndTime;
             _initial = new BattleDamageSnapshot();
             _initial.EnemyHp = Math.Max(0, result.EnemyStartHp ?? enemyMaxHp);
             _initial.EnemyShield = Math.Max(0, result.EnemyStartShield);
@@ -99,7 +101,10 @@ namespace BazaarActionAxis.Engine
 
         public double DpsAt(double time)
         {
-            return double.IsNaN(time) || time <= 0 ? 0 : At(time).OutputDamage / time;
+            if (double.IsNaN(time) || time <= 0) return 0;
+            // 战斗结束后的空白时间不稀释 DPS；拖回结束前仍按当前时刻计算。
+            double elapsed = _endTime > 0 ? Math.Min(time, _endTime) : time;
+            return At(time).OutputDamage / elapsed;
         }
     }
 }

@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace BazaarActionAxis.Plugin
 {
-    [BepInPlugin("com.bazaarsim.actionaxis", "Bazaar Action Axis", "1.4.0")]
+    [BepInPlugin("com.bazaarsim.actionaxis", "Bazaar Action Axis", "1.5.3")]
     public sealed class ActionAxisPlugin : BaseUnityPlugin
     {
         internal static ActionAxisPlugin Instance;
@@ -31,7 +31,7 @@ namespace BazaarActionAxis.Plugin
                 "数据目录（cards.json 与 icons）");
 
             gameObject.AddComponent<ActionAxisOverlay>();
-            Logger.LogInfo("[ActionAxis] loaded");
+            Logger.LogInfo("[ActionAxis] loaded; engine=" + typeof(BattleEngine).Assembly.ManifestModule.ModuleVersionId);
         }
     }
 
@@ -52,8 +52,7 @@ namespace BazaarActionAxis.Plugin
         private bool _ready;
         private bool _refreshRequested;
         private int _dummySeed = 1;
-        private string _monsterChoiceKey;
-        private int _selectedMonsterIndex;
+        private readonly MonsterSelection _monsterSelection = new MonsterSelection();
         private float _nextReplayCapture;
         private string _savedReplayId;
         private int _savedReplayFrameCount;
@@ -71,7 +70,7 @@ namespace BazaarActionAxis.Plugin
             _panel = new ActionAxisPanel(_icons);
             _panel.OnRefresh = RequestRefresh;
             _panel.OnShuffle = delegate { _dummySeed++; RequestRefresh(); };
-            _panel.OnSelectMonster = delegate(int index) { _selectedMonsterIndex = index; RequestRefresh(); };
+            _panel.OnSelectMonster = delegate(int index) { _monsterSelection.Index = index; RequestRefresh(); };
             _reader = new LiveBoardReader();
             _ready = true;
         }
@@ -170,6 +169,7 @@ namespace BazaarActionAxis.Plugin
             _panel.SetData(empty, 30, "读取棋盘…");
             _panel.SetOpponent(null, 100000, null, null);
             _panel.SetSkills(null, null);
+            _panel.SetWarnings(null);
             _panel.SetCombatReplay(null, null);
             _panel.Open();
             if (!_inputBlocker.SetBlocked(true))
@@ -237,6 +237,8 @@ namespace BazaarActionAxis.Plugin
                         ? read.PlayerMaxHealth.Value : 100,
                     100000, 30);
                 mapped.Config.NativeMechanics = true;
+                // 英雄身份用于 TCardConditionalPlayerHero（“另一个英雄的物品”）。
+                mapped.Config.PlayerHero = read.PlayerHero;
                 // A fresh dummy projection starts before combat. Current replay
                 // HP and temporary Flying/Haste state are not opening state.
                 mapped.Config.PlayerStartHp = mapped.Config.PlayerMaxHp;
@@ -253,18 +255,11 @@ namespace BazaarActionAxis.Plugin
                     }
                 }
                 MonsterReadResult monsters = LiveMonsterReader.ReadChoices();
-                LiveMonsterEntry opponent = null;
+                LiveMonsterEntry opponent = _monsterSelection.Resolve(monsters);
                 MonsterMappingResult monsterMapping = null;
                 List<string> choiceNames = new List<string>();
-                if (monsters.Choices.Count > 0)
+                if (opponent != null)
                 {
-                    if (_monsterChoiceKey != monsters.ChoiceKey)
-                    {
-                        _monsterChoiceKey = monsters.ChoiceKey;
-                        _selectedMonsterIndex = monsters.DefaultIndex;
-                    }
-                    _selectedMonsterIndex = Math.Max(0, Math.Min(monsters.Choices.Count - 1, _selectedMonsterIndex));
-                    opponent = monsters.Choices[_selectedMonsterIndex];
                     mapped.Config.PlayerStartHp = read.PlayerHealth.HasValue
                         ? Math.Max(0, Math.Min(mapped.Config.PlayerMaxHp, read.PlayerHealth.Value))
                         : mapped.Config.PlayerMaxHp;
@@ -273,7 +268,6 @@ namespace BazaarActionAxis.Plugin
                 }
                 else
                 {
-                    _monsterChoiceKey = null;
                     TrainingDummy.Populate(mapped.Config, _catalog, _dummySeed);
                 }
                 SkillMappingResult skillMapping = SkillMapper.Apply(mapped.Config, read.Skills, _skillCatalog);
@@ -368,14 +362,21 @@ namespace BazaarActionAxis.Plugin
                     delegate(double time) { return damageSeries.At(time).OutputDamage; },
                     delegate(double time) { return damageSeries.At(time).EffectiveDamage; });
                 _panel.SetOpponentSimulation(damageSeries, opponent == null ? "木桩" : opponent.Name,
-                    choiceNames, _selectedMonsterIndex, result.EndTime, result.Winner);
+                    choiceNames, _monsterSelection.Index, result.EndTime, result.Winner);
                 _panel.SetSkills(skillRows, read.SkillReadError);
+                List<string> warnings = new List<string>(result.Warnings);
+                warnings.AddRange(skillMapping.Warnings);
+                warnings.AddRange(mapped.EnchantmentWarnings);
+                warnings.AddRange(mapped.LiveAttributeWarnings);
+                if (!string.IsNullOrEmpty(read.CardReadError)) warnings.Add(read.CardReadError);
+                if (!string.IsNullOrEmpty(read.SkillReadError)) warnings.Add(read.SkillReadError);
+                _panel.SetWarnings(warnings);
                 SaveSkillReport(read, skillMapping, mapped, result);
                 try
                 {
                     File.WriteAllText(Path.Combine(_dataDir, "last_monster_choices.json"),
                         LiveSkillReader.BuildDebugJson(new Dictionary<string, object> {
-                            { "selectedIndex", _selectedMonsterIndex }, { "read", monsters } }),
+                            { "selectedIndex", _monsterSelection.Index }, { "read", monsters } }),
                         new System.Text.UTF8Encoding(false));
                     if (monsterMapping != null)
                     {

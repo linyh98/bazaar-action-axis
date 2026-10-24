@@ -23,6 +23,12 @@ namespace BazaarActionAxis.Tests
             Assert.False(placed.Overlaps(anchors[0]));
             Assert.False(placed.Overlaps(anchors[1]));
 
+            // 离开战斗后录制按钮隐藏，行动轴应立即回到数据库按钮下面。
+            anchors[1] = new DockButtonBounds(1400, 120, 48, 48, false);
+            Assert.True(DockButtonLayout.TryPlace(1465, 903, anchors, blockers, 48, out placed));
+            Assert.Near(119.24, placed.Y);
+            anchors[1] = new DockButtonBounds(1400, 120, 48, 48, true);
+
             blockers.Add(new DockButtonBounds(1400, 173, 48, 50, true));
             Assert.True(DockButtonLayout.TryPlace(1465, 903, anchors, blockers, 48, out placed));
             Assert.Near(228.48, placed.Y);

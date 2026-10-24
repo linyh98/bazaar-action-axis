@@ -24,6 +24,15 @@ namespace BazaarActionAxis.Tests
             TestHarness.Run("NativeCombatReplay", NativeCombatReplayTests.Run);
             TestHarness.Run("DockButtonLayout", DockButtonLayoutTests.Run);
             TestHarness.Run("MonsterOpponent", MonsterOpponentTests.Run);
+            TestHarness.Run("NativeRuleExpansion", NativeRuleExpansionTests.Run);
+            TestHarness.Run("NativeConditionTarget", NativeConditionTargetTests.Run);
+            TestHarness.Run("NativeSkillTier", NativeSkillTierTests.Run);
+            TestHarness.Run("NativeLegendaryTier", NativeLegendaryTierTests.Run);
+            TestHarness.Run("NativeCanCrit", NativeCanCritTests.Run);
+            TestHarness.Run("NativeSkillDynamicAura", NativeSkillDynamicAuraTests.Run);
+            TestHarness.Run("DynamicAura", DynamicAuraTests.Run);
+            TestHarness.Run("NativeRuntimeRules", NativeRuntimeRulesTests.Run);
+            TestHarness.Run("Transform", TransformTests.Run);
             return TestHarness.Finish();
         }
     }

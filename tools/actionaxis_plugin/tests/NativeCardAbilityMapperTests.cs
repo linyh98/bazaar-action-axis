@@ -14,6 +14,43 @@ namespace BazaarActionAxis.Tests
             UnsupportedRuleCannotPartiallyApplyAura();
             CalibratedMonsterItemsEvaluateTheirOwnAuras();
             CrossCardAuraDoesNotDependOnCardOrder();
+            CalibratedMonsterWithoutCatalogStillAttacks();
+            MonsterSkillAuraSeesNativeTagsBeforeItemMapping();
+        }
+
+        private static void CalibratedMonsterWithoutCatalogStillAttacks()
+        {
+            LiveCardEntry spider = Entry("Trained Spider", "Silver", 0);
+            BattleConfig config = CardMapper.Build(new List<LiveCardEntry> { spider },
+                CardCatalog.FromCards(new List<CardDef>()), 10000, 10000, 12).Config;
+            config.NativeMechanics = true;
+            config.Enemy = config.Player;
+            config.Player = new Loadout();
+            Assert.Equal(0, NativeCardAbilityMapper.Apply(config).Count);
+            Assert.Equal(0, NativeItemMapper.Apply(config).Count);
+            CardDef card = config.Cards[config.Enemy.Items[0].CardId];
+            Assert.Equal("poison", card.Effects[0].Kind);
+            Assert.Near(spider.Attributes["PoisonApplyAmount"], card.Effects[0].Amount.Value);
+            Assert.True(card.DisplayName().IndexOf("未知卡") < 0);
+            Assert.True(BattleEngine.Simulate(config).Totals.Enemy.Damage > 0);
+        }
+
+        private static void MonsterSkillAuraSeesNativeTagsBeforeItemMapping()
+        {
+            LiveCardEntry bee = Entry("Busy Bee", "Gold", 0);
+            JsonValue skill = Json.Parse(@"{""$type"":""TCardSkill"",""Tiers"":{""Gold"":{""Attributes"":{},""AbilityIds"":[],""AuraIds"":[""0""],""TooltipIds"":[]}},""Auras"":{
+                ""0"":{""ActiveIn"":""HandOnly"",""Action"":{""$type"":""TAuraActionCardModifyAttribute"",""AttributeType"":""DamageAmount"",""Operation"":""Add"",""Value"":{""$type"":""TFixedValue"",""Value"":7},""Target"":{""$type"":""TTargetCardSection"",""TargetSection"":""SelfHand"",""Conditions"":{""$type"":""TCardConditionalTag"",""Tags"":[""Friend""],""Operator"":""Any""}}}}
+            }}");
+            LiveMonsterEntry monster = new LiveMonsterEntry { Id = "tags", MaxHp = 900, Health = 900 };
+            monster.Cards.Add(bee);
+            monster.Skills.Add(new LiveSkillEntry { TemplateId = "friend-aura", Tier = "Gold", Template = skill });
+            BattleConfig config = new BattleConfig { NativeMechanics = true };
+            MonsterMappingResult mapped = MonsterOpponentMapper.Apply(config, monster,
+                CardCatalog.FromCards(new List<CardDef>()), null);
+            Assert.Equal(1, mapped.Skills.CombatCount);
+            Assert.Equal(0, NativeCardAbilityMapper.Apply(config).Count);
+            CardDef card = config.Cards[config.Enemy.Items[0].CardId];
+            Assert.Near(17, card.Effects.Find(delegate(Effect effect) { return effect.Kind == "damage"; }).Amount.Value);
         }
 
         private static JsonValue Template(string name)
