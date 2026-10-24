@@ -44,6 +44,14 @@ namespace BazaarActionAxis.Engine
             IList<DockButtonBounds> anchors, IList<DockButtonBounds> blockers,
             double fallbackSize, out DockButtonBounds result)
         {
+            return TryPlace(screenWidth, screenHeight, anchors, blockers, new DockButtonBounds(), out result);
+        }
+
+        // 尺寸参考与避让范围分开：录制提示、阴影等只影响位置，不能放大入口。
+        public static bool TryPlace(double screenWidth, double screenHeight,
+            IList<DockButtonBounds> anchors, IList<DockButtonBounds> blockers,
+            DockButtonBounds sizeReference, out DockButtonBounds result)
+        {
             result = new DockButtonBounds();
             if (screenWidth <= 0 || screenHeight <= 0) return false;
             DockButtonBounds lowest = new DockButtonBounds();
@@ -56,17 +64,18 @@ namespace BazaarActionAxis.Engine
                 }
             }
 
-            double size = lowest.IsValid ? Math.Min(lowest.Width, lowest.Height) : fallbackSize;
-            size = Math.Max(24, Math.Min(Math.Min(screenWidth, screenHeight) * 0.16, size));
-            if (size > screenWidth || size > screenHeight) return false;
-            double gap = Math.Max(4, size * 0.13);
-            double centerX = lowest.IsValid ? lowest.CenterX : screenWidth - gap - size * 0.5;
-            double top = lowest.IsValid ? lowest.Bottom + gap : gap + (size + gap) * 3;
-            double left = Math.Max(gap, Math.Min(screenWidth - gap - size, centerX - size * 0.5));
+            // 没有可见的主界面锚点时禁止创建独立悬浮入口。
+            if (!lowest.IsValid) return false;
+            DockButtonBounds reference = InViewport(sizeReference, screenWidth, screenHeight) ? sizeReference : lowest;
+            double width = reference.Width, height = reference.Height;
+            double gap = Math.Max(4, Math.Min(width, height) * 0.13);
+            double centerX = reference.CenterX;
+            double top = lowest.Bottom + gap;
+            double left = Math.Max(gap, Math.Min(screenWidth - gap - width, centerX - width * 0.5));
 
             for (int slot = 0; slot < 12; slot++)
             {
-                DockButtonBounds proposed = new DockButtonBounds(left, top + slot * (size + gap), size, size, true);
+                DockButtonBounds proposed = new DockButtonBounds(left, top + slot * (height + gap), width, height, true);
                 if (!InViewport(proposed, screenWidth, screenHeight)) break;
                 if (OverlapsAny(proposed, anchors) || OverlapsAny(proposed, blockers)) continue;
                 result = proposed;

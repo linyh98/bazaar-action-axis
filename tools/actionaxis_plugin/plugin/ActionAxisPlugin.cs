@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace BazaarActionAxis.Plugin
 {
-    [BepInPlugin("com.bazaarsim.actionaxis", "Bazaar Action Axis", "1.5.3")]
+    [BepInPlugin("com.bazaarsim.actionaxis", "Bazaar Action Axis", "1.5.6")]
     public sealed class ActionAxisPlugin : BaseUnityPlugin
     {
         internal static ActionAxisPlugin Instance;
@@ -95,13 +95,15 @@ namespace BazaarActionAxis.Plugin
             if (_refreshRequested)
             {
                 _refreshRequested = false;
-                RefreshAndOpen();
+                // 点击到下一帧之间可能已打开 BPP，执行前再次确认入口仍可用。
+                if (_panel.IsOpen || _dockButton.CanOpen) RefreshAndOpen();
             }
             if (!_inputBlocker.SetBlocked(_panel.IsOpen))
             {
                 Debug.LogError("[ActionAxis] " + _inputBlocker.Error);
                 _panel.Close();
             }
+            if (_panel.IsOpen || !_dockButton.CanOpen) _dockButton.SetVisible(false);
         }
 
         private void OnGUI()
@@ -133,7 +135,12 @@ namespace BazaarActionAxis.Plugin
                 MatchesShortcut(plugin.Settings.ToggleKey.Value, current);
             if (!toggle && !(_panel.IsOpen && current.keyCode == KeyCode.Escape)) return;
             if (_panel.IsOpen) { _panel.Close(); _refreshRequested = false; }
-            else RequestRefresh();
+            else
+            {
+                // 热键不能绕过其他插件面板的入口限制。
+                if (!_dockButton.CanOpen) return;
+                RequestRefresh();
+            }
             current.Use();
         }
 
@@ -172,6 +179,7 @@ namespace BazaarActionAxis.Plugin
             _panel.SetWarnings(null);
             _panel.SetCombatReplay(null, null);
             _panel.Open();
+            _dockButton.SetVisible(false);
             if (!_inputBlocker.SetBlocked(true))
             {
                 Debug.LogError("[ActionAxis] " + _inputBlocker.Error);

@@ -12,11 +12,14 @@ namespace BazaarActionAxis.Plugin
     // to the game beneath this otherwise purely decorative control.
     internal sealed class ActionAxisDockButton : IDisposable
     {
+        private const float IconExtent = 0.96f;
         private readonly List<DockButtonBounds> _anchors = new List<DockButtonBounds>();
         private readonly List<DockButtonBounds> _nativeAnchors = new List<DockButtonBounds>();
         private readonly List<DockButtonBounds> _blockers = new List<DockButtonBounds>();
         private readonly Vector3[] _corners = new Vector3[4];
         private UnityEngine.Object[] _buttons = new UnityEngine.Object[0];
+        private readonly HashSet<Component> _nativeButtons = new HashSet<Component>();
+        private readonly DockButtonVisibility _visibility = new DockButtonVisibility(FindType);
         private Type _buttonType, _graphicType, _canvasType, _canvasGroupType;
         private GameObject _hitCanvas;
         private RectTransform _hitRect;
@@ -28,10 +31,20 @@ namespace BazaarActionAxis.Plugin
         private DockButtonBounds _lastPlacement;
         private bool _loggedHitError;
 
+        public bool CanOpen
+        {
+            get
+            {
+                DockButtonBounds placement;
+                return _visibility.CanOpen() && ResolvePlacement(out placement);
+            }
+        }
+
         public void Draw(Action onClick)
         {
             DockButtonBounds placement;
-            if (!ResolvePlacement(out placement)) { SetVisible(false); return; }
+            // 面板状态逐次检查，不能复用本帧较早事件留下的可见性。
+            if (!_visibility.CanOpen() || !ResolvePlacement(out placement)) { SetVisible(false); return; }
             Rect rect = new Rect((float)placement.X, (float)placement.Y,
                 (float)placement.Width, (float)placement.Height);
             if (!SyncHitSurface(rect)) return;
@@ -68,10 +81,14 @@ namespace BazaarActionAxis.Plugin
                     // Keep inactive recorder clones in the cache. Their active
                     // state can change between frames while the scene stays put.
                     _buttons = UnityEngine.Object.FindObjectsOfType(_buttonType, true);
+                    _nativeButtons.Clear();
+                    CollectNativeButtons("SettingDialogsView", "MainMenuSettingOptionButton", "HeroSelectSettingOptionButton");
+                    CollectNativeButtons("FightMenuDialog", "SettingButton");
                     _nextScan = Time.unscaledTime + 0.5f;
                 }
 
                 _anchors.Clear(); _nativeAnchors.Clear(); _blockers.Clear();
+                DockButtonBounds bppSize = new DockButtonBounds(), nativeSize = new DockButtonBounds();
                 foreach (UnityEngine.Object candidate in _buttons)
                 {
                     Component button = candidate as Component;
@@ -81,26 +98,76 @@ namespace BazaarActionAxis.Plugin
                     DockButtonBounds bounds;
                     if (!TryFootprint(button, out bounds)) continue;
                     string objectName = button.gameObject.name;
-                    bool bpp = objectName.StartsWith("BPP_CollectionDockButton_", StringComparison.Ordinal) ||
-                        objectName == "BPP_CurrentReplayRecordingButton";
-                    if (bpp) _anchors.Add(bounds);
+                    bool bpp = IsMainDockSibling(button) &&
+                        (objectName.StartsWith("BPP_CollectionDockButton_", StringComparison.Ordinal) ||
+                         objectName == "BPP_CurrentReplayRecordingButton");
+                    if (bpp)
+                    {
+                        _anchors.Add(bounds);
+                        // 优先使用数据库入口的外框，录制提示的大小和显隐不改变行动轴尺寸。
+                        DockButtonBounds frame;
+                        if ((objectName.StartsWith("BPP_CollectionDockButton_", StringComparison.Ordinal) || !bppSize.IsValid) &&
+                            TryButtonFrame(button, out frame)) bppSize = frame;
+                    }
                     else
                     {
                         _blockers.Add(bounds);
-                        if (bounds.X > Screen.width * 0.65 && bounds.Y < Screen.height * 0.35 &&
-                            bounds.Width < Screen.width * 0.12 && bounds.Height < Screen.height * 0.16 &&
-                            (objectName.IndexOf("Setting", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                             objectName.IndexOf("Option", StringComparison.OrdinalIgnoreCase) >= 0))
+                        // 只认 BPP 同样使用的原生入口，不把插件或设置弹窗里的按钮当作主界面。
+                        if (_nativeButtons.Contains(button) &&
+                            (bool)_buttonType.GetMethod("IsInteractable").Invoke(button, null))
+                        {
                             _nativeAnchors.Add(bounds);
+                            DockButtonBounds frame;
+                            if (TryButtonFrame(button, out frame)) nativeSize = frame;
+                        }
                     }
                 }
+                if (_nativeAnchors.Count == 0) return false;
                 _layoutAvailable = DockButtonLayout.TryPlace(Screen.width, Screen.height,
                     _anchors.Count > 0 ? _anchors : _nativeAnchors, _blockers,
-                    Mathf.Clamp(Screen.height / 1080f, 0.55f, 1.5f) * 64f, out placement);
+                    bppSize.IsValid ? bppSize : nativeSize, out placement);
                 _lastPlacement = placement;
                 return _layoutAvailable;
             }
             catch { return false; }
+        }
+
+        private void CollectNativeButtons(string typeName, params string[] fieldNames)
+        {
+            Type type = FindType(typeName);
+            if (type == null) return;
+            foreach (UnityEngine.Object owner in UnityEngine.Object.FindObjectsOfType(type, true))
+            {
+                if (owner == null) continue;
+                foreach (string name in fieldNames)
+                {
+                    FieldInfo field = type.GetField(name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    object value = field == null ? null : field.GetValue(owner);
+                    if (value == null) continue;
+                    if (!_buttonType.IsInstanceOfType(value))
+                    {
+                        MethodInfo getter = value.GetType().GetMethod("GetButton", Type.EmptyTypes);
+                        value = getter == null ? null : getter.Invoke(value, null);
+                    }
+                    Component button = value as Component;
+                    if (button != null && _buttonType.IsInstanceOfType(button)) _nativeButtons.Add(button);
+                }
+            }
+        }
+
+        private bool IsMainDockSibling(Component button)
+        {
+            foreach (Component native in _nativeButtons)
+                if (native != null && native.gameObject.activeInHierarchy &&
+                    native.transform.parent == button.transform.parent) return true;
+            return false;
+        }
+
+        private bool TryButtonFrame(Component button, out DockButtonBounds bounds)
+        {
+            // targetGraphic 是 BPP 保留的原生外框；屏幕坐标已包含 CanvasScaler 与父级缩放。
+            Component frame = Get(button, "targetGraphic") as Component;
+            return TryScreenBounds(frame == null ? button.transform as RectTransform : frame.transform as RectTransform, out bounds);
         }
 
         private bool TryFootprint(Component button, out DockButtonBounds bounds)
@@ -268,8 +335,9 @@ namespace BazaarActionAxis.Plugin
                     Color sum = new Color(0, 0, 0, 0);
                     for (int sy = 0; sy < 2; sy++)
                         for (int sx = 0; sx < 2; sx++)
-                            sum += IconPixel((x + (sx + 0.5f) * 0.5f) / size * 2f - 1f,
-                                (y + (sy + 0.5f) * 0.5f) / size * 2f - 1f, hover, pressed);
+                            // 去掉自绘纹理额外的透明边距，让可见外圈与参考外框等大。
+                            sum += IconPixel(((x + (sx + 0.5f) * 0.5f) / size * 2f - 1f) * IconExtent,
+                                ((y + (sy + 0.5f) * 0.5f) / size * 2f - 1f) * IconExtent, hover, pressed);
                     pixels[y * size + x] = sum * 0.25f;
                 }
             Texture2D texture = new Texture2D(size, size, TextureFormat.RGBA32, false);
@@ -284,13 +352,12 @@ namespace BazaarActionAxis.Plugin
         private static Color IconPixel(float x, float y, bool hover, bool pressed)
         {
             float radius = Mathf.Sqrt(x * x + y * y);
-            if (radius > 0.96f) return new Color(0, 0, 0, 0);
-            Color gold = hover ? new Color(1f, 0.86f, 0.51f, 1) : new Color(0.73f, 0.60f, 0.35f, 1);
-            if (radius > 0.88f) return gold;
-            if (radius > 0.81f) return new Color(0.10f, 0.075f, 0.045f, 1);
-            if (radius > 0.77f) return gold * new Color(0.65f, 0.65f, 0.65f, 1);
-            Color background = pressed ? new Color(0.10f, 0.16f, 0.16f, 1) :
-                hover ? new Color(0.17f, 0.25f, 0.24f, 1) : new Color(0.10f, 0.15f, 0.15f, 1);
+            if (radius > IconExtent) return new Color(0, 0, 0, 0);
+            // 底板与描边使用中性灰半透明，悬停和按下也保留游戏画面的透出。
+            Color background = pressed ? new Color(0.10f, 0.10f, 0.10f, 0.60f) :
+                hover ? new Color(0.24f, 0.24f, 0.24f, 0.55f) : new Color(0.16f, 0.16f, 0.16f, 0.45f);
+            if (radius > 0.91f)
+                return hover ? new Color(0.65f, 0.65f, 0.65f, 0.55f) : new Color(0.50f, 0.50f, 0.50f, 0.32f);
             // A clock face above three ascending timeline columns.
             float clockY = y - 0.16f;
             float clockRadius = Mathf.Sqrt(x * x + clockY * clockY);

@@ -19,6 +19,7 @@ done
 SOURCES+=("$(cygpath -w "$HERE/plugin/LiveSkillReader.cs")")
 SOURCES+=("$(cygpath -w "$HERE/plugin/LiveCardDetailReader.cs")")
 SOURCES+=("$(cygpath -w "$HERE/plugin/NativeCombatReplayReader.cs")")
+SOURCES+=("$(cygpath -w "$HERE/plugin/DockButtonVisibility.cs")")
 
 "$CSC" -nologo -target:exe -out:"$OUT" \
   -r:System.dll -r:System.Core.dll \
