@@ -45,11 +45,15 @@ function gh(argsList) {
     console.log(`[dry-run] gh ${argsList.join(' ')}`);
     return '';
   }
-  const result = spawnSync('gh', argsList, {
+  // 不走 shell：资产路径含空格，交给 cmd 会被拆成多个参数。
+  const executable = process.env.GH_BIN || (process.platform === 'win32' ? 'gh.exe' : 'gh');
+  const result = spawnSync(executable, argsList, {
     cwd: projectRoot,
-    encoding: 'utf8',
-    shell: process.platform === 'win32'
+    encoding: 'utf8'
   });
+  if (result.error) {
+    throw new Error(`无法执行 ${executable}：${result.error.message}（可用 GH_BIN 指定路径）`);
+  }
   if (result.status !== 0) {
     throw new Error(result.stderr?.trim() || `gh ${argsList.join(' ')} 失败`);
   }
@@ -100,4 +104,11 @@ const createArgs = [
 if (draft) createArgs.push('--draft');
 const url = gh(createArgs);
 if (url) console.log(`\n完成：${url}`);
+
+// GitHub 会把资产名里的空格换成点，打印出来方便核对更新器能否匹配。
+if (!dryRun) {
+  const assets = JSON.parse(gh(['release', 'view', tag, '--json', 'assets']))?.assets ?? [];
+  console.log('已上传资产：');
+  for (const asset of assets) console.log(`  - ${asset.name}`);
+}
 console.log('提示：管理器读取的是 latest Release，草稿不会出现在检查结果里。');

@@ -123,14 +123,20 @@ export function parseReleasePayload(payload: unknown, currentVersion: string): U
 /** 便携版产物名，与 electron-builder.yml 的 artifactName 保持一致 */
 export const MANAGER_ARTIFACT_PREFIX = 'Bazaar Plugin Manager';
 
-/** 便携版 exe 在 Release 中的固定文件名 */
+/** 便携版 exe 在本地构建产物中的文件名 */
 export function managerAssetName(version: string): string {
   return `${MANAGER_ARTIFACT_PREFIX}-${normalizeVersion(version)}-portable.exe`;
 }
 
+/** GitHub 上传资产时会把空格换成点，下载地址必须用这个形式 */
+export function githubAssetName(fileName: string): string {
+  return fileName.replace(/\s+/g, '.');
+}
+
 /** Release 资产的下载地址（命名约定） */
 export function conventionAssetUrl(version: string, fileName: string): string {
-  return `https://github.com/${RELEASE_REPO}/releases/download/v${normalizeVersion(version)}/${encodeURIComponent(fileName)}`;
+  const asset = encodeURIComponent(githubAssetName(fileName));
+  return `https://github.com/${RELEASE_REPO}/releases/download/v${normalizeVersion(version)}/${asset}`;
 }
 
 /**
@@ -149,13 +155,13 @@ export function buildConventionUpdateInfo(tagVersion: string, currentVersion: st
     publishedAt: null,
     notes: null,
     managerAsset: {
-      name: managerName,
+      name: githubAssetName(managerName),
       size: 0,
       url: conventionAssetUrl(latestVersion, managerName),
       digest: null
     },
     builtinAssets: BUILTIN_ASSET_NAMES.map((name) => ({
-      name,
+      name: githubAssetName(name),
       size: 0,
       url: conventionAssetUrl(latestVersion, name),
       digest: null

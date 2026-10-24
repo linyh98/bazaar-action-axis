@@ -5,6 +5,7 @@ import {
   buildConventionUpdateInfo,
   compareVersions,
   expectedSha256,
+  githubAssetName,
   isNewer,
   managerAssetName,
   normalizeVersion,
@@ -122,12 +123,19 @@ describe('API 受限时的命名约定回退', () => {
     expect(managerAssetName('v0.3.0')).toBe('Bazaar Plugin Manager-0.3.0-portable.exe');
   });
 
+  it('按 GitHub 的空格替换规则拼下载地址', () => {
+    expect(githubAssetName('Bazaar Plugin Manager-0.3.0-portable.exe')).toBe(
+      'Bazaar.Plugin.Manager-0.3.0-portable.exe'
+    );
+  });
+
   it('按 tag 拼出可直接下载的资产地址', () => {
     const info = buildConventionUpdateInfo('v0.3.0', '0.2.0');
     expect(info.hasUpdate).toBe(true);
     expect(info.managerAsset?.url).toBe(
-      'https://github.com/linyh98/bazaar-action-axis/releases/download/v0.3.0/Bazaar%20Plugin%20Manager-0.3.0-portable.exe'
+      'https://github.com/linyh98/bazaar-action-axis/releases/download/v0.3.0/Bazaar.Plugin.Manager-0.3.0-portable.exe'
     );
+    expect(info.managerAsset?.name).toBe('Bazaar.Plugin.Manager-0.3.0-portable.exe');
     expect(info.builtinAssets.map((item) => item.name)).toEqual(
       expect.arrayContaining(['ActionAxisPlugin.dll', 'LiveCardsDump.dll'])
     );
