@@ -53,7 +53,7 @@ npm run package
 |---|---|
 | 启动时 | 静默检查一次，有新版本时在侧边栏显示「可更新」徽标 |
 | 检查更新 | `GET /repos/linyh98/bazaar-action-axis/releases/latest`，用 `tag_name` 与当前版本比较 |
-| API 限流时 | 未登录 API 每个 IP 每小时只有 60 次，共享代理下会 403；此时改读 `main` 分支的 `plugin-manager/package.json` 版本号，资产地址按发布命名约定推断 |
+| API 限流时 | 未登录 API 每个 IP 每小时只有 60 次，共享代理下会 403；此时跟随 `/releases/latest` 的 302 取 tag，再按发布命名约定拼下载地址（GitHub 会把资产名中的空格换成点）；发布页也不可达时最后回退到仓库 `plugin-manager/package.json` 版本号 |
 | 下载更新 | 下载匹配 `*-portable.exe` 的资产到 `%APPDATA%/bazaar-plugin-manager/updates/<版本>/`，有 `sha256` 摘要时校验 |
 | 重启并更新 | 生成等待退出的 PowerShell 脚本 → 关闭管理器 → 备份当前 exe 为 `.bak` → 替换 → 重新启动 |
 | 更新内置插件 DLL | 下载 `ActionAxisPlugin.dll`、`ActionAxisEngine.dll`、`LiveCardsDump.dll` 到 `%APPDATA%/bazaar-plugin-manager/builtin/`，部署时优先使用该副本 |

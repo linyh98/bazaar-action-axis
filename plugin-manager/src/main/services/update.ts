@@ -104,9 +104,41 @@ async function fetchLatestRelease(): Promise<unknown> {
 }
 
 /**
- * 未登录的 GitHub API 每个 IP 每小时只有 60 次，共享代理下极易被限流；
- * net.fetch 拿不到重定向后的 URL，所以备用版本号直接读仓库里的 package.json。
+ * 未登录的 GitHub API 每个 IP 每小时只有 60 次，共享代理下极易被限流。
+ * 这里跟随 /releases/latest 的 302 拿真实 tag；net.fetch 拿不到重定向地址，
+ * 所以改用 net.request 的 redirect 事件。
  */
+function resolveLatestTag(): Promise<string | null> {
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = (value: string | null) => {
+      if (settled) return;
+      settled = true;
+      resolve(value);
+    };
+
+    try {
+      const request = net.request({
+        method: 'GET',
+        url: `https://github.com/${RELEASE_REPO}/releases/latest`,
+        redirect: 'manual'
+      });
+      request.on('redirect', (_status, _method, redirectUrl) => {
+        const match = /\/releases\/tag\/([^/?#]+)/.exec(redirectUrl);
+        finish(match ? decodeURIComponent(match[1]) : null);
+        request.abort();
+      });
+      request.on('response', () => finish(null));
+      request.on('error', () => finish(null));
+      request.end();
+      setTimeout(() => finish(null), CHECK_TIMEOUT_MS).unref();
+    } catch {
+      finish(null);
+    }
+  });
+}
+
+/** 发布页重定向也拿不到时的最后备用：仓库 package.json（raw 有 CDN 缓存延迟） */
 async function resolveLatestVersionFromRepo(): Promise<string | null> {
   const response = await net.fetch(
     `https://raw.githubusercontent.com/${RELEASE_REPO}/main/plugin-manager/package.json`,
@@ -147,15 +179,27 @@ export async function checkForUpdate(currentVersion: string): Promise<UpdateChec
     return { ok: true, message: describeUpdate(info), info, pendingVersion };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    // API 限流或网络异常时退化为只看仓库版本号，资产地址按发布命名约定推断。
+    // API 限流或网络异常时退化为只看版本号，资产地址按发布命名约定推断。
+    const tag = await resolveLatestTag();
+    if (tag) {
+      const info = buildConventionUpdateInfo(tag, currentVersion);
+      await log(`[update] GitHub API 不可用（${message}），改用发布页版本 v${info.latestVersion}`);
+      return {
+        ok: true,
+        message: `${describeUpdate(info)}（GitHub API 受限，资产地址按发布命名推断）`,
+        info,
+        pendingVersion
+      };
+    }
+
     const version = await resolveLatestVersionFromRepo().catch(() => null);
     if (!version) return { ok: false, message, pendingVersion };
 
     const info = buildConventionUpdateInfo(version, currentVersion);
-    await log(`[update] GitHub API 不可用（${message}），改用仓库版本 v${info.latestVersion}`);
+    await log(`[update] GitHub API 与发布页都不可用（${message}），改用仓库版本 v${info.latestVersion}`);
     return {
       ok: true,
-      message: `${describeUpdate(info)}（GitHub API 受限，版本号取自仓库，资产地址按发布命名推断）`,
+      message: `${describeUpdate(info)}（版本号取自仓库 package.json，可能有几分钟缓存延迟）`,
       info,
       pendingVersion
     };
