@@ -2,7 +2,7 @@ import { app } from 'electron';
 import path from 'node:path';
 import { BUILTIN_PLUGINS } from '@shared/constants';
 import type { BuiltinPluginId, BuiltinPluginInfo, PluginInfo } from '@shared/types';
-import { listFilesRecursive, pathExists } from './fsutil';
+import { listFilesRecursive, pathExists, readTextIfExists } from './fsutil';
 import type { DeployFile } from './plugins';
 
 interface BuiltinPaths {
@@ -18,27 +18,59 @@ function workspaceRoot(): string {
   return path.resolve(app.getAppPath(), '..');
 }
 
-function builtinPaths(): BuiltinPaths {
+/** 从 GitHub 更新的内置插件 DLL 存放位置，优先于安装包内置副本 */
+export function builtinOverrideRoot(): string {
+  return path.join(app.getPath('userData'), 'builtin');
+}
+
+export function builtinManifestPath(): string {
+  return path.join(builtinOverrideRoot(), 'manifest.json');
+}
+
+async function overrideVersion(): Promise<string | null> {
+  const text = await readTextIfExists(builtinManifestPath(), 64 * 1024);
+  if (!text) return null;
+  try {
+    const parsed = JSON.parse(text) as { version?: unknown };
+    return typeof parsed.version === 'string' ? parsed.version : null;
+  } catch {
+    return null;
+  }
+}
+
+/** 某个内置插件目录下已有更新副本时，直接用更新副本替换来源 */
+async function preferOverride(overrideDir: string, marker: string): Promise<string | null> {
+  const candidate = path.join(overrideDir, marker);
+  return (await pathExists(candidate)) ? overrideDir : null;
+}
+
+async function builtinPaths(): Promise<BuiltinPaths> {
+  const overrideRoot = builtinOverrideRoot();
+  const actionAxisOverride = await preferOverride(path.join(overrideRoot, 'actionaxis'), 'ActionAxisPlugin.dll');
+  const livecardsOverride = await preferOverride(path.join(overrideRoot, 'livecards'), 'LiveCardsDump.dll');
+  const version = await overrideVersion();
+  const overrideNote = version ? `GitHub 更新 v${version}` : 'GitHub 更新版本';
+
   if (app.isPackaged) {
     const base = path.join(process.resourcesPath, 'builtin');
     return {
-      actionAxis: path.join(base, 'actionaxis'),
-      livecards: path.join(base, 'livecards'),
+      actionAxis: actionAxisOverride ?? path.join(base, 'actionaxis'),
+      livecards: livecardsOverride ?? path.join(base, 'livecards'),
       cards: path.join(base, 'data', 'cards.json'),
       skills: path.join(base, 'data', 'skills.json'),
       icons: path.join(base, 'data', 'icons'),
-      note: '安装包内置资源'
+      note: actionAxisOverride || livecardsOverride ? overrideNote : '安装包内置资源'
     };
   }
 
   const base = workspaceRoot();
   return {
-    actionAxis: path.join(base, 'tools', 'actionaxis_plugin', 'build'),
-    livecards: path.join(base, 'tools', 'livecards_plugin'),
+    actionAxis: actionAxisOverride ?? path.join(base, 'tools', 'actionaxis_plugin', 'build'),
+    livecards: livecardsOverride ?? path.join(base, 'tools', 'livecards_plugin'),
     cards: path.join(base, 'src', 'data', 'cards.json'),
     skills: path.join(base, 'data', 'skills.json'),
     icons: path.join(base, 'captures', 'card_icons'),
-    note: '本仓库构建产物'
+    note: actionAxisOverride || livecardsOverride ? overrideNote : '本仓库构建产物'
   };
 }
 
@@ -60,7 +92,7 @@ export interface BuiltinFilePlan {
 
 /** 生成内置插件的部署清单（含 ActionAxis 的 cards/skills/icons） */
 export async function getBuiltinFilePlan(id: BuiltinPluginId): Promise<BuiltinFilePlan> {
-  const paths = builtinPaths();
+  const paths = await builtinPaths();
 
   if (id === 'actionaxis') {
     const required: DeployFile[] = [
@@ -93,7 +125,7 @@ export async function getBuiltinFilePlan(id: BuiltinPluginId): Promise<BuiltinFi
 }
 
 export async function getBuiltinPluginInfo(plugins: PluginInfo[]): Promise<BuiltinPluginInfo[]> {
-  const paths = builtinPaths();
+  const paths = await builtinPaths();
   const results: BuiltinPluginInfo[] = [];
 
   for (const definition of BUILTIN_PLUGINS) {

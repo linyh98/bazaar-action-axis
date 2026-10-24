@@ -1,30 +1,44 @@
-import type { AppConfig, Bootstrap } from '@shared/types';
+import type { AppConfig, Bootstrap, UpdateCheckResult } from '@shared/types';
 import { Badge, Button, Card, CardHeader, Toggle } from '../components';
 import { sourceLabel } from '../format';
 
 interface SettingsPageProps {
   bootstrap: Bootstrap;
   busy: string | null;
+  update: UpdateCheckResult | null;
   onChoosePath: () => void;
   onDetect: () => void;
   onUpdateConfig: (patch: Partial<AppConfig>) => void;
   onOpenUserData: () => void;
   onOpenPath: (path: string) => void;
+  onOpenExternal: (url: string) => void;
   onCopy: (text: string) => void;
+  onCheckUpdate: () => void;
+  onDownloadUpdate: () => void;
+  onApplyUpdate: () => void;
+  onUpdateBuiltin: () => void;
 }
 
 export default function SettingsPage({
   bootstrap,
   busy,
+  update,
   onChoosePath,
   onDetect,
   onUpdateConfig,
   onOpenUserData,
   onOpenPath,
-  onCopy
+  onOpenExternal,
+  onCopy,
+  onCheckUpdate,
+  onDownloadUpdate,
+  onApplyUpdate,
+  onUpdateBuiltin
 }: SettingsPageProps) {
   const { config, game, userDataDir, appVersion, platform } = bootstrap;
   const bepinex = game.bepinex;
+  const info = update?.info ?? null;
+  const pendingVersion = update?.pendingVersion ?? null;
 
   return (
     <div className="page-stack">
@@ -100,7 +114,51 @@ export default function SettingsPage({
       </Card>
 
       <Card>
-        <CardHeader title="内置插件来源" subtitle="管理器不会联网检查更新，只部署本机已有的构建产物。" />
+        <CardHeader
+          title="更新"
+          subtitle="从 GitHub Releases 读取最新版本；便携版会在退出后自动替换并重新打开。"
+          actions={
+            <div className="inline-actions">
+              {info ? (
+                <Button small variant="subtle" onClick={() => onOpenExternal(info.releaseUrl)}>
+                  发布页
+                </Button>
+              ) : null}
+              <Button small onClick={onCheckUpdate} busy={busy === '检查更新'}>
+                检查更新
+              </Button>
+            </div>
+          }
+        />
+        <div className="settings-meta">
+          <Badge tone="neutral">当前 v{appVersion}</Badge>
+          {info ? (
+            <Badge tone={info.hasUpdate ? 'gold' : 'green'}>最新 v{info.latestVersion}</Badge>
+          ) : (
+            <Badge>尚未检查</Badge>
+          )}
+          {pendingVersion ? <Badge tone="blue">已下载 v{pendingVersion}</Badge> : null}
+          {info?.managerAsset ? (
+            <span className="muted small">{info.managerAsset.name}</span>
+          ) : null}
+        </div>
+        <p className="muted small">{update ? update.message : '点击「检查更新」与服务端版本比对。'}</p>
+        {info?.notes ? <pre className="update-notes">{info.notes}</pre> : null}
+        <div className="inline-actions update-actions">
+          <Button small variant="primary" disabled={!info?.hasUpdate} onClick={onDownloadUpdate} busy={busy === '下载更新'}>
+            下载更新
+          </Button>
+          <Button small disabled={!pendingVersion} onClick={onApplyUpdate} busy={busy === '重启并更新'}>
+            重启并更新
+          </Button>
+          <Button small variant="subtle" onClick={onUpdateBuiltin} busy={busy === '更新内置插件'}>
+            更新内置插件 DLL
+          </Button>
+        </div>
+      </Card>
+
+      <Card>
+        <CardHeader title="内置插件来源" subtitle="默认使用安装包内的同名版本，可单独从最新 Release 更新 DLL。" />
         <ul className="plain-list">
           {bootstrap.builtin.map((item) => (
             <li key={item.id}>

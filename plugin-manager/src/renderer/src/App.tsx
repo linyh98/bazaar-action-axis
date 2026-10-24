@@ -4,7 +4,8 @@ import type {
   AppConfig,
   Bootstrap,
   BuiltinPluginId,
-  PluginInfo
+  PluginInfo,
+  UpdateCheckResult
 } from '@shared/types';
 import { Badge, Button, Modal, Toast, type ToastTone } from './components';
 import { formatBytes, shortPath } from './format';
@@ -102,6 +103,7 @@ export default function App() {
   const [busy, setBusy] = useState<string | null>(null);
   const [toast, setToast] = useState<ToastState | null>(null);
   const [confirm, setConfirm] = useState<ConfirmState | null>(null);
+  const [update, setUpdate] = useState<UpdateCheckResult | null>(null);
 
   const refresh = useCallback(async (silent = false) => {
     if (!silent) setLoading(true);
@@ -119,6 +121,27 @@ export default function App() {
   useEffect(() => {
     void refresh();
   }, [refresh]);
+
+  // 启动后静默检查一次更新，有新版本时才提示用户。
+  useEffect(() => {
+    if (!bootstrap) return;
+    let cancelled = false;
+    void (async () => {
+      try {
+        const outcome = await window.bazaarManager.checkUpdate();
+        if (cancelled) return;
+        setUpdate(outcome);
+        if (outcome.ok && outcome.info?.hasUpdate) {
+          setToast({ tone: 'info', message: `发现新版本 v${outcome.info.latestVersion}，可在「设置」中更新` });
+        }
+      } catch {
+        // 启动检查失败不打断主流程，用户可手动点「检查更新」。
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [bootstrap]);
 
   useEffect(() => {
     if (!toast) return;
@@ -267,6 +290,46 @@ export default function App() {
     void window.bazaarManager.openUserData();
   };
 
+  const openExternal = (url: string) => {
+    void window.bazaarManager.openExternal(url);
+  };
+
+  const checkUpdate = async () => {
+    setBusy('检查更新');
+    try {
+      const outcome = await window.bazaarManager.checkUpdate();
+      setUpdate(outcome);
+      setToast({ tone: outcome.ok ? 'success' : 'error', message: outcome.message });
+    } catch (cause) {
+      setToast({ tone: 'error', message: errorText(cause) });
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const downloadUpdate = () => {
+    void runAction('下载更新', () => window.bazaarManager.downloadUpdate()).then((ok) => {
+      if (ok) void checkUpdate();
+    });
+  };
+
+  const applyUpdate = () => {
+    setConfirm({
+      title: '重启并更新管理器？',
+      message:
+        '管理器会退出，用已下载的新版本替换当前 exe，然后重新启动。替换前的程序会保留为 .bak 文件，可手动回滚。',
+      detail: update?.pendingVersion ? `目标版本：v${update.pendingVersion}` : undefined,
+      confirmLabel: '重启并更新',
+      action: async () => {
+        await runAction('重启并更新', () => window.bazaarManager.applyUpdate());
+      }
+    });
+  };
+
+  const updateBuiltin = () => {
+    void runAction('更新内置插件', () => window.bazaarManager.updateBuiltinFromRelease());
+  };
+
   const copy = (text: string) => {
     void window.bazaarManager.copyToClipboard(text);
     setToast({ tone: 'info', message: '已复制到剪贴板' });
@@ -313,7 +376,16 @@ export default function App() {
             </span>
           </div>
         </div>
-        {bootstrap ? <div className="sidebar-version">v{bootstrap.appVersion}</div> : null}
+        {bootstrap ? (
+          <div className="sidebar-version">
+            <span>v{bootstrap.appVersion}</span>
+            {update?.info?.hasUpdate ? (
+              <button className="version-update" onClick={() => setPage('settings')}>
+                可更新 v{update.info.latestVersion}
+              </button>
+            ) : null}
+          </div>
+        ) : null}
       </aside>
 
       <div className="main-column">
@@ -398,12 +470,18 @@ export default function App() {
                 <SettingsPage
                   bootstrap={bootstrap}
                   busy={busy}
+                  update={update}
                   onChoosePath={choosePath}
                   onDetect={detect}
                   onUpdateConfig={updateConfig}
                   onOpenUserData={openUserData}
                   onOpenPath={openPath}
+                  onOpenExternal={openExternal}
                   onCopy={copy}
+                  onCheckUpdate={() => void checkUpdate()}
+                  onDownloadUpdate={downloadUpdate}
+                  onApplyUpdate={applyUpdate}
+                  onUpdateBuiltin={updateBuiltin}
                 />
               ) : null}
             </>

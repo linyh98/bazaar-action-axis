@@ -248,9 +248,28 @@ button {
 }
 
 .sidebar-version {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
   color: #6f6152;
   font-size: 11px;
   text-align: center;
+}
+
+.version-update {
+  font: inherit;
+  color: var(--gold);
+  background: rgba(232, 200, 122, 0.12);
+  border: 1px solid rgba(232, 200, 122, 0.38);
+  border-radius: 999px;
+  padding: 2px 9px;
+  cursor: pointer;
+}
+
+.version-update:hover {
+  color: var(--bg);
+  background: var(--gold);
 }
 
 /* ---------- 主区域 ---------- */
@@ -994,6 +1013,25 @@ button {
   align-items: center;
   gap: 8px 14px;
   margin-top: 10px;
+}
+
+.update-notes {
+  max-height: 180px;
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  overflow: auto;
+  color: var(--muted);
+  font-family: "Cascadia Mono", Consolas, "Courier New", monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  background: var(--bg-elev-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.update-actions {
+  flex-wrap: wrap;
+  margin-top: 12px;
 }
 
 .settings-divider {

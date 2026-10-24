@@ -13,6 +13,7 @@
 - **卸载插件**：先备份到管理器数据目录，再从 `BepInEx/plugins` 删除。
 - **数据清理**：按组列出 BPP 数据、行动轴运行数据与卡图缓存、LiveCardsDump 输出、BepInEx 配置；清理时统一移入 Windows 回收站。
 - **启动游戏**：优先通过 Steam 启动，失败时直接运行 `TheBazaar.exe`。
+- **自动更新**：读取 GitHub Releases 的最新版本，一键下载 portable exe，退出时替换并自动重启；内置插件 DLL 也可单独从同一个 Release 更新。
 
 ## 快速开始
 
@@ -30,7 +31,7 @@ npm run dev
 
 ```bash
 npm run package
-# 产物：release/Bazaar Plugin Manager-0.1.0-portable.exe
+# 产物：release/Bazaar Plugin Manager-0.2.0-portable.exe
 ```
 
 打包时会把这些文件作为内置资源带入安装包：
@@ -43,6 +44,33 @@ npm run package
 | `../captures/card_icons/*.png` | 行动轴初始卡图（若存在；已有文件不覆盖） |
 
 构建产物缺失时，对应的「安装」按钮会显示为不可用，但应用本身仍可管理已安装插件和数据。
+
+## 更新
+
+更新源是 <https://github.com/linyh98/bazaar-action-axis/releases> 的 latest Release，无需配置 Token（公开仓库）。
+
+| 操作 | 行为 |
+|---|---|
+| 启动时 | 静默检查一次，有新版本时在侧边栏显示「可更新」徽标 |
+| 检查更新 | `GET /repos/linyh98/bazaar-action-axis/releases/latest`，用 `tag_name` 与当前版本比较 |
+| API 限流时 | 未登录 API 每个 IP 每小时只有 60 次，共享代理下会 403；此时改读 `main` 分支的 `plugin-manager/package.json` 版本号，资产地址按发布命名约定推断 |
+| 下载更新 | 下载匹配 `*-portable.exe` 的资产到 `%APPDATA%/bazaar-plugin-manager/updates/<版本>/`，有 `sha256` 摘要时校验 |
+| 重启并更新 | 生成等待退出的 PowerShell 脚本 → 关闭管理器 → 备份当前 exe 为 `.bak` → 替换 → 重新启动 |
+| 更新内置插件 DLL | 下载 `ActionAxisPlugin.dll`、`ActionAxisEngine.dll`、`LiveCardsDump.dll` 到 `%APPDATA%/bazaar-plugin-manager/builtin/`，部署时优先使用该副本 |
+
+开发模式下不会替换程序本体，「重启并更新」会直接拒绝，避免把 `electron.exe` 换掉。
+
+### 发布新版本
+
+```bash
+cd plugin-manager
+node scripts/publish-release.mjs            # 打包 + 创建 Release
+node scripts/publish-release.mjs --skip-build --draft
+```
+
+脚本会发布 `release/Bazaar Plugin Manager-<version>-portable.exe` 与三个内置插件 DLL，tag 取 `package.json` 的 `version`。需要已登录的 `gh`；走代理时先设置 `HTTPS_PROXY`。
+
+> Release 必须先上传 portable exe，管理器才能自动更新；缺少 exe 时只会在界面上给出提示并附上发布页链接。
 
 ## 工作方式
 
@@ -81,7 +109,7 @@ npm run package
 npm run dev        # electron-vite 开发模式
 npm run build      # 生产构建
 npm run typecheck  # 主进程与渲染层类型检查
-npm test           # Vitest（20 个测试）
+npm test           # Vitest（29 个测试）
 npm run package    # electron-builder portable 打包
 ```
 
@@ -99,7 +127,8 @@ src/shared/        共享类型与已知插件清单
 - `contextIsolation: true`、`nodeIntegration: false`，渲染层只能调用 preload 暴露的 IPC。
 - 卸载/清理的路径全部来自主进程重新扫描的结果，不接受渲染层传入的任意路径。
 - 打开目录只允许游戏目录、管理器数据目录、`%APPDATA%` 与本仓库路径。
-- 除用户主动输入的 URL 安装外，不发起网络请求。
+- 网络请求只有两类：GitHub Releases 更新检查/下载，以及用户主动输入的 URL 安装；下载都限制体积并校验可选摘要。
+- 自动替换只针对便携版 exe，且保留 `.bak` 备份；开发模式禁用。
 
 ## 限制
 

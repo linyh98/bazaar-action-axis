@@ -16,7 +16,11 @@ const api: ManagerApi = {
   openUserData: () => ipcRenderer.invoke('manager:openUserData'),
   openExternal: (url: string) => ipcRenderer.invoke('manager:openExternal', url),
   updateConfig: (partial: Partial<AppConfig>) => ipcRenderer.invoke('manager:updateConfig', partial),
-  copyToClipboard: (text: string) => ipcRenderer.invoke('manager:copy', text)
+  copyToClipboard: (text: string) => ipcRenderer.invoke('manager:copy', text),
+  checkUpdate: () => ipcRenderer.invoke('manager:checkUpdate'),
+  downloadUpdate: () => ipcRenderer.invoke('manager:downloadUpdate'),
+  applyUpdate: () => ipcRenderer.invoke('manager:applyUpdate'),
+  updateBuiltinFromRelease: () => ipcRenderer.invoke('manager:updateBuiltinFromRelease')
 };
 
 contextBridge.exposeInMainWorld('bazaarManager', api);

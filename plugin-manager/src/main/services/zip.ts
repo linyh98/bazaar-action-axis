@@ -130,8 +130,18 @@ export async function installZipArchive(
   }
 }
 
-/** 下载 URL 到本地临时文件（仅 http/https，限制 200 MB） */
-export async function downloadFile(url: string, destPath: string, maxBytes = 200 * 1024 * 1024): Promise<void> {
+/** 下载实现，默认用全局 fetch；主进程传入 Electron net.fetch 以复用系统代理 */
+type FetchLike = (url: string, init?: RequestInit) => Promise<Response>;
+
+/** 下载 URL 到本地临时文件（仅 http/https，默认限制 200 MB） */
+export async function downloadFile(
+  url: string,
+  destPath: string,
+  maxBytes = 200 * 1024 * 1024,
+  // 主进程可以直接传 Electron 的 net.fetch，以复用系统代理设置。
+  fetchImpl: FetchLike = fetch
+): Promise<void> {
+  const limitLabel = `${Math.round(maxBytes / 1024 / 1024)} MB`;
   let parsed: URL;
   try {
     parsed = new URL(url);
@@ -145,17 +155,17 @@ export async function downloadFile(url: string, destPath: string, maxBytes = 200
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 120000);
   try {
-    const response = await fetch(url, { redirect: 'follow', signal: controller.signal });
+    const response = await fetchImpl(url, { redirect: 'follow', signal: controller.signal });
     if (!response.ok) {
       throw new Error(`下载失败：HTTP ${response.status} ${response.statusText}`);
     }
     const length = Number(response.headers.get('content-length') ?? 0);
     if (length > maxBytes) {
-      throw new Error('文件超过 200 MB，已拒绝下载');
+      throw new Error(`文件超过 ${limitLabel}，已拒绝下载`);
     }
     const buffer = Buffer.from(await response.arrayBuffer());
     if (buffer.length > maxBytes) {
-      throw new Error('文件超过 200 MB，已拒绝下载');
+      throw new Error(`文件超过 ${limitLabel}，已拒绝下载`);
     }
     await fs.mkdir(path.dirname(destPath), { recursive: true });
     await fs.writeFile(destPath, buffer);

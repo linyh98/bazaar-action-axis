@@ -10,7 +10,8 @@ import type {
   Bootstrap,
   BuiltinPluginId,
   CleanResult,
-  DataTarget
+  DataTarget,
+  UpdateCheckResult
 } from '@shared/types';
 import { loadConfig, saveConfig } from './config';
 import { describeError, log } from './logger';
@@ -21,9 +22,18 @@ import { getGameState, validateGamePath } from './services/game';
 import { deployFiles, scanPlugins, uninstallPlugin } from './services/plugins';
 import { isProcessRunning } from './services/process';
 import { downloadFile, installZipArchive } from './services/zip';
+import {
+  applyPendingUpdate,
+  checkForUpdate,
+  downloadBuiltinUpdate,
+  downloadManagerUpdate
+} from './services/update';
 
 const BACKUP_DIR = () => path.join(app.getPath('userData'), 'backups');
 const WORK_DIR = () => path.join(app.getPath('userData'), 'tmp');
+
+/** 最近一次检查到的 Release，下载时只允许使用这次结果中的资产 */
+let lastRelease: UpdateCheckResult['info'] = undefined;
 
 function workspaceRoot(): string {
   return app.isPackaged ? app.getAppPath() : path.resolve(app.getAppPath(), '..');
@@ -336,4 +346,34 @@ export function registerIpc(): void {
   ipcMain.handle('manager:copy', (_, text: unknown) => {
     if (typeof text === 'string') clipboard.writeText(text);
   });
+
+  ipcMain.handle('manager:checkUpdate', async (): Promise<UpdateCheckResult> => {
+    const outcome = await checkForUpdate(app.getVersion());
+    if (outcome.info) lastRelease = outcome.info;
+    return outcome;
+  });
+
+  ipcMain.handle('manager:downloadUpdate', () =>
+    guard(async () => {
+      const outcome = await checkForUpdate(app.getVersion());
+      if (outcome.info) lastRelease = outcome.info;
+      const info = outcome.info ?? lastRelease;
+      if (!info) return { ok: false, message: outcome.message };
+      if (!info.hasUpdate) return { ok: false, message: `当前已是最新版本 v${info.currentVersion}` };
+      return downloadManagerUpdate(info);
+    })
+  );
+
+  ipcMain.handle('manager:applyUpdate', () => guard(() => applyPendingUpdate()));
+
+  ipcMain.handle('manager:updateBuiltinFromRelease', () =>
+    guard(async () => {
+      const outcome = await checkForUpdate(app.getVersion());
+      if (outcome.info) lastRelease = outcome.info;
+      const info = outcome.info ?? lastRelease;
+      if (!info) return { ok: false, message: outcome.message };
+      const response = await downloadBuiltinUpdate(info);
+      return response.ok ? result(true, response.message, response.detail) : response;
+    })
+  );
 }

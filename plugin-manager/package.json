@@ -1,6 +1,6 @@
 {
   "name": "bazaar-plugin-manager",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "《大巴扎》BepInEx 插件管理器：自动定位游戏、安装/卸载插件、清理本地数据",
   "main": "./out/main/index.js",
   "author": "Bazaar Plus",

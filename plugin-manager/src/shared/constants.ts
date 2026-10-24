@@ -70,7 +70,7 @@ export const BUILTIN_PLUGINS: BuiltinPluginDefinition[] = [
     id: 'actionaxis',
     name: 'Bazaar Action Axis',
     description: '在游戏内按冷却轴推演当前棋盘与怪物，支持时间轴拖动和实战回放对照。',
-    version: '1.2.2'
+    version: '1.5.6'
   },
   {
     id: 'livecardsdump',

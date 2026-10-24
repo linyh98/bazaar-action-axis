@@ -75,6 +75,39 @@ export interface AppConfig {
   autoDetect: boolean;
 }
 
+/** GitHub Release 中的一个下载资产 */
+export interface ReleaseAsset {
+  name: string;
+  size: number;
+  url: string;
+  /** GitHub 提供的 sha256 校验值，形如 sha256:xxxx；老版本可能为空 */
+  digest: string | null;
+}
+
+/** 一次更新检查的结果 */
+export interface UpdateInfo {
+  repo: string;
+  releaseUrl: string;
+  currentVersion: string;
+  latestVersion: string;
+  hasUpdate: boolean;
+  publishedAt: string | null;
+  notes: string | null;
+  /** 管理器便携版 exe 资产 */
+  managerAsset: ReleaseAsset | null;
+  /** 内置插件 DLL 资产 */
+  builtinAssets: ReleaseAsset[];
+  checkedAt: number;
+}
+
+export interface UpdateCheckResult {
+  ok: boolean;
+  message: string;
+  info?: UpdateInfo;
+  /** 已经下载但尚未应用的版本 */
+  pendingVersion?: string | null;
+}
+
 export interface Bootstrap {
   config: AppConfig;
   game: GameState;
@@ -116,4 +149,8 @@ export interface ManagerApi {
   openExternal: (url: string) => Promise<void>;
   updateConfig: (partial: Partial<AppConfig>) => Promise<Bootstrap>;
   copyToClipboard: (text: string) => Promise<void>;
+  checkUpdate: () => Promise<UpdateCheckResult>;
+  downloadUpdate: () => Promise<ActionResult>;
+  applyUpdate: () => Promise<ActionResult>;
+  updateBuiltinFromRelease: () => Promise<ActionResult>;
 }
