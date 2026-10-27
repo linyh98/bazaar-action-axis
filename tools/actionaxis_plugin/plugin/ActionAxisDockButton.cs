@@ -7,12 +7,11 @@ using UnityEngine;
 
 namespace BazaarActionAxis.Plugin
 {
-    // BPP is optional: read its visible native controls without referencing or
-    // changing its assembly. The hit surface is UGUI so IMGUI cannot click through
+    // Read BPP's visible in-run controls without referencing or changing its
+    // assembly. The hit surface is UGUI so IMGUI cannot click through
     // to the game beneath this otherwise purely decorative control.
     internal sealed class ActionAxisDockButton : IDisposable
     {
-        private const float IconExtent = 0.96f;
         private readonly List<DockButtonBounds> _anchors = new List<DockButtonBounds>();
         private readonly List<DockButtonBounds> _nativeAnchors = new List<DockButtonBounds>();
         private readonly List<DockButtonBounds> _blockers = new List<DockButtonBounds>();
@@ -20,15 +19,18 @@ namespace BazaarActionAxis.Plugin
         private UnityEngine.Object[] _buttons = new UnityEngine.Object[0];
         private readonly HashSet<Component> _nativeButtons = new HashSet<Component>();
         private readonly DockButtonVisibility _visibility = new DockButtonVisibility(FindType);
-        private Type _buttonType, _graphicType, _canvasType, _canvasGroupType;
+        private Type _buttonType, _graphicType, _canvasType, _canvasGroupType, _imageType;
         private GameObject _hitCanvas;
         private RectTransform _hitRect;
-        private Texture2D _normal, _hover, _pressed;
+        private Component _skinSource, _visualSource, _frameImage;
+        private RectTransform _visualRoot;
+        private Texture2D _iconTexture;
+        private Sprite _iconSprite, _normalSprite;
+        private object _nativeColors, _nativeSprites;
+        private int _nativeTransition, _visualState = -1;
+        private bool _pointerDown;
         private GUIStyle _style;
         private float _nextScan;
-        private int _lastLayoutFrame = -1;
-        private bool _layoutAvailable;
-        private DockButtonBounds _lastPlacement;
         private bool _loggedHitError;
 
         public bool CanOpen
@@ -36,7 +38,9 @@ namespace BazaarActionAxis.Plugin
             get
             {
                 DockButtonBounds placement;
-                return _visibility.CanOpen() && ResolvePlacement(out placement);
+                bool available = _visibility.CanOpen() && ResolvePlacement(out placement);
+                if (!available) SetVisible(false);
+                return available;
             }
         }
 
@@ -49,26 +53,38 @@ namespace BazaarActionAxis.Plugin
                 (float)placement.Width, (float)placement.Height);
             if (!SyncHitSurface(rect)) return;
             EnsureStyle();
+            Event current = Event.current;
+            bool hovered = current != null && rect.Contains(current.mousePosition);
+            // The game enables Input System only; legacy Input mouse polling
+            // throws before GUI.Button can process the click. IMGUI raw events
+            // also let a release clear the visual state after Event.Use().
+            if (current != null)
+            {
+                if (current.rawType == EventType.MouseLeaveWindow || current.rawType == EventType.Ignore)
+                    _pointerDown = false;
+                else if (current.button == 0)
+                {
+                    if (current.rawType == EventType.MouseDown) _pointerDown = hovered;
+                    else if (current.rawType == EventType.MouseUp) _pointerDown = false;
+                }
+            }
+            SyncVisualState(hovered, hovered && _pointerDown);
             if (GUI.Button(rect, new GUIContent("", "行动轴 F8"), _style) && onClick != null)
                 onClick();
-            if (Event.current != null && rect.Contains(Event.current.mousePosition)) DrawTooltip(rect);
+            if (hovered) DrawTooltip(rect);
         }
 
         public void SetVisible(bool visible)
         {
             if (_hitCanvas != null && _hitCanvas.activeSelf != visible) _hitCanvas.SetActive(visible);
+            if (!visible) { _pointerDown = false; _visualState = -1; }
         }
 
         private bool ResolvePlacement(out DockButtonBounds placement)
         {
-            if (_lastLayoutFrame == Time.frameCount)
-            {
-                placement = _lastPlacement;
-                return _layoutAvailable;
-            }
-            _lastLayoutFrame = Time.frameCount;
+            // Active/canvas visibility can change between IMGUI events in the
+            // same frame; only cache the object inventory, never eligibility.
             placement = new DockButtonBounds();
-            _layoutAvailable = false;
             try
             {
                 if (_buttonType == null) _buttonType = FindType("UnityEngine.UI.Button");
@@ -82,13 +98,13 @@ namespace BazaarActionAxis.Plugin
                     // state can change between frames while the scene stays put.
                     _buttons = UnityEngine.Object.FindObjectsOfType(_buttonType, true);
                     _nativeButtons.Clear();
-                    CollectNativeButtons("SettingDialogsView", "MainMenuSettingOptionButton", "HeroSelectSettingOptionButton");
                     CollectNativeButtons("FightMenuDialog", "SettingButton");
                     _nextScan = Time.unscaledTime + 0.5f;
                 }
 
                 _anchors.Clear(); _nativeAnchors.Clear(); _blockers.Clear();
-                DockButtonBounds bppSize = new DockButtonBounds(), nativeSize = new DockButtonBounds();
+                _skinSource = null;
+                DockButtonBounds bppSize = new DockButtonBounds();
                 foreach (UnityEngine.Object candidate in _buttons)
                 {
                     Component button = candidate as Component;
@@ -107,27 +123,26 @@ namespace BazaarActionAxis.Plugin
                         // 优先使用数据库入口的外框，录制提示的大小和显隐不改变行动轴尺寸。
                         DockButtonBounds frame;
                         if ((objectName.StartsWith("BPP_CollectionDockButton_", StringComparison.Ordinal) || !bppSize.IsValid) &&
-                            TryButtonFrame(button, out frame)) bppSize = frame;
+                            TryButtonFrame(button, out frame))
+                        {
+                            bppSize = frame;
+                            _skinSource = button;
+                        }
                     }
                     else
                     {
                         _blockers.Add(bounds);
-                        // 只认 BPP 同样使用的原生入口，不把插件或设置弹窗里的按钮当作主界面。
+                        // 只认对局中的原生设置入口；大厅与选英雄的按钮永不作为后备。
                         if (_nativeButtons.Contains(button) &&
                             (bool)_buttonType.GetMethod("IsInteractable").Invoke(button, null))
                         {
                             _nativeAnchors.Add(bounds);
-                            DockButtonBounds frame;
-                            if (TryButtonFrame(button, out frame)) nativeSize = frame;
                         }
                     }
                 }
-                if (_nativeAnchors.Count == 0) return false;
-                _layoutAvailable = DockButtonLayout.TryPlace(Screen.width, Screen.height,
-                    _anchors.Count > 0 ? _anchors : _nativeAnchors, _blockers,
-                    bppSize.IsValid ? bppSize : nativeSize, out placement);
-                _lastPlacement = placement;
-                return _layoutAvailable;
+                if (_nativeAnchors.Count == 0 || _anchors.Count == 0 || !bppSize.IsValid) return false;
+                return DockButtonLayout.TryPlace(Screen.width, Screen.height,
+                    _anchors, _blockers, bppSize, out placement);
             }
             catch { return false; }
         }
@@ -165,9 +180,12 @@ namespace BazaarActionAxis.Plugin
 
         private bool TryButtonFrame(Component button, out DockButtonBounds bounds)
         {
-            // targetGraphic 是 BPP 保留的原生外框；屏幕坐标已包含 CanvasScaler 与父级缩放。
-            Component frame = Get(button, "targetGraphic") as Component;
-            return TryScreenBounds(frame == null ? button.transform as RectTransform : frame.transform as RectTransform, out bounds);
+            // Native targetGraphic is the smaller, swapping center disc. The
+            // decorative frame defines the visible button size, not that disc.
+            foreach (Component graphic in button.GetComponentsInChildren(_graphicType, false))
+                if (graphic.gameObject.name == "Btn_Frame" && OwnedBy(graphic.transform, button.transform) &&
+                    TryScreenBounds(graphic.transform as RectTransform, out bounds)) return true;
+            return TryScreenBounds(button.transform as RectTransform, out bounds);
         }
 
         private bool TryFootprint(Component button, out DockButtonBounds bounds)
@@ -266,8 +284,8 @@ namespace BazaarActionAxis.Plugin
                 if (_hitCanvas == null)
                 {
                     Type raycasterType = FindType("UnityEngine.UI.GraphicRaycaster");
-                    Type imageType = FindType("UnityEngine.UI.Image");
-                    if (_canvasType == null || raycasterType == null || imageType == null)
+                    _imageType = FindType("UnityEngine.UI.Image");
+                    if (_canvasType == null || raycasterType == null || _imageType == null)
                         throw new InvalidOperationException("Unity UI unavailable");
                     _hitCanvas = new GameObject("ActionAxis_DockHitCanvas", typeof(RectTransform), _canvasType, raycasterType);
                     _hitCanvas.SetActive(false);
@@ -277,13 +295,13 @@ namespace BazaarActionAxis.Plugin
                     Set(canvas, "renderMode", Enum.ToObject(_canvasType.GetProperty("renderMode").PropertyType, 0));
                     Set(canvas, "overrideSorting", true);
                     Set(canvas, "sortingOrder", (int)short.MaxValue - 1);
-                    GameObject hit = new GameObject("ActionAxis_DockHit", typeof(RectTransform), imageType);
+                    GameObject hit = new GameObject("ActionAxis_DockHit", typeof(RectTransform), _imageType);
                     hit.layer = 5;
                     _hitRect = hit.GetComponent<RectTransform>();
                     _hitRect.SetParent(_hitCanvas.transform, false);
                     _hitRect.anchorMin = _hitRect.anchorMax = new Vector2(0, 1);
                     _hitRect.pivot = new Vector2(0, 1);
-                    Component image = hit.GetComponent(imageType);
+                    Component image = hit.GetComponent(_imageType);
                     Set(image, "color", new Color(0, 0, 0, 0));
                     Set(image, "raycastTarget", true);
                     // Zero-alpha UI still has to participate in raycasts.
@@ -293,6 +311,7 @@ namespace BazaarActionAxis.Plugin
                 }
                 _hitRect.anchoredPosition = new Vector2(screenRect.x, -screenRect.y);
                 _hitRect.sizeDelta = new Vector2(screenRect.width, screenRect.height);
+                SyncNativeVisuals(screenRect);
                 SetVisible(true);
                 return true;
             }
@@ -301,6 +320,7 @@ namespace BazaarActionAxis.Plugin
                 SetVisible(false);
                 if (_hitCanvas != null) UnityEngine.Object.Destroy(_hitCanvas);
                 _hitCanvas = null; _hitRect = null;
+                _visualRoot = null; _visualSource = null; _frameImage = null;
                 if (!_loggedHitError)
                 {
                     _loggedHitError = true;
@@ -313,64 +333,121 @@ namespace BazaarActionAxis.Plugin
         private void EnsureStyle()
         {
             if (_style != null) return;
-            _normal = BuildTexture(false, false);
-            _hover = BuildTexture(true, false);
-            _pressed = BuildTexture(true, true);
+            // The UGUI visual tree owns the native skin. IMGUI keeps the
+            // existing click handling, keyboard shortcut and tooltip only.
             _style = new GUIStyle();
-            _style.normal.background = _normal;
-            _style.hover.background = _hover;
-            _style.active.background = _pressed;
-            _style.focused.background = _hover;
             _style.border = new RectOffset(0, 0, 0, 0);
             _style.padding = new RectOffset(0, 0, 0, 0);
         }
 
-        private static Texture2D BuildTexture(bool hover, bool pressed)
+        private void SyncNativeVisuals(Rect screenRect)
         {
-            const int size = 128;
-            Color[] pixels = new Color[size * size];
-            for (int y = 0; y < size; y++)
-                for (int x = 0; x < size; x++)
+            if (_skinSource == null) throw new InvalidOperationException("BPP button skin unavailable");
+            if (_visualRoot == null || _visualSource != _skinSource)
+            {
+                if (_visualRoot != null) UnityEngine.Object.Destroy(_visualRoot.gameObject);
+                if (_iconTexture == null)
                 {
-                    Color sum = new Color(0, 0, 0, 0);
-                    for (int sy = 0; sy < 2; sy++)
-                        for (int sx = 0; sx < 2; sx++)
-                            // 去掉自绘纹理额外的透明边距，让可见外圈与参考外框等大。
-                            sum += IconPixel(((x + (sx + 0.5f) * 0.5f) / size * 2f - 1f) * IconExtent,
-                                ((y + (sy + 0.5f) * 0.5f) / size * 2f - 1f) * IconExtent, hover, pressed);
-                    pixels[y * size + x] = sum * 0.25f;
+                    _iconTexture = DockButtonArtwork.CreateIcon();
+                    _iconSprite = Sprite.Create(_iconTexture, new Rect(0, 0, _iconTexture.width, _iconTexture.height),
+                        new Vector2(0.5f, 0.5f), 100f);
+                    _iconSprite.name = "ActionAxis_DockTimeline";
                 }
-            Texture2D texture = new Texture2D(size, size, TextureFormat.RGBA32, false);
-            texture.name = "ActionAxis_DockClock";
-            texture.filterMode = FilterMode.Bilinear;
-            texture.wrapMode = TextureWrapMode.Clamp;
-            texture.SetPixels(pixels);
-            texture.Apply(false, true);
-            return texture;
+                Dictionary<Component, Component> images = new Dictionary<Component, Component>();
+                _visualRoot = CopyVisualTree(_skinSource.transform, _hitRect, images);
+                _visualSource = _skinSource;
+                bool iconFound = false;
+                foreach (Component original in images.Keys)
+                    if (original.gameObject.name == "BPP_DockButtonIcon") { iconFound = true; break; }
+                if (!iconFound) throw new InvalidOperationException("BPP button icon unavailable");
+                Component sourceFrame = Get(_skinSource, "targetGraphic") as Component;
+                if (sourceFrame == null || !images.TryGetValue(sourceFrame, out _frameImage))
+                    throw new InvalidOperationException("BPP button frame unavailable");
+                // BPP records the baseline before hovering or opening its panel.
+                // Read that baseline so our normal state cannot inherit a hover sprite.
+                Type savedType = FindType("BazaarPlusPlus.Game.Settings.BppDockButtonNativeVisualState");
+                Component saved = savedType == null ? null : _skinSource.GetComponent(savedType);
+                object state = LiveSkillReader.GetMember(saved, "CapturedNativeState");
+                _normalSprite = LiveSkillReader.GetMember(state, "NormalBaseSprite") as Sprite ?? Get(sourceFrame, "sprite") as Sprite;
+                Set(_frameImage, "sprite", _normalSprite);
+                _nativeTransition = Convert.ToInt32(Get(_skinSource, "transition"));
+                _nativeColors = Get(_skinSource, "colors");
+                _nativeSprites = Get(_skinSource, "spriteState");
+                _visualState = -1;
+            }
+            DockButtonBounds frame, sourceBounds;
+            RectTransform sourceRect = _skinSource.transform as RectTransform;
+            if (sourceRect == null || !TryButtonFrame(_skinSource, out frame) ||
+                !TryScreenBounds(sourceRect, out sourceBounds) || sourceRect.rect.width <= 0 || sourceRect.rect.height <= 0)
+                throw new InvalidOperationException("BPP button geometry unavailable");
+            float scaleX = screenRect.width / (float)frame.Width, scaleY = screenRect.height / (float)frame.Height;
+            _visualRoot.anchorMin = _visualRoot.anchorMax = _visualRoot.pivot = new Vector2(0.5f, 0.5f);
+            _visualRoot.sizeDelta = sourceRect.rect.size;
+            _visualRoot.anchoredPosition = new Vector2((float)(sourceBounds.CenterX - frame.CenterX) * scaleX,
+                (float)((frame.Y + frame.Height * 0.5) - (sourceBounds.Y + sourceBounds.Height * 0.5)) * scaleY);
+            _visualRoot.localRotation = Quaternion.identity;
+            _visualRoot.localScale = new Vector3((float)sourceBounds.Width / sourceRect.rect.width * scaleX,
+                (float)sourceBounds.Height / sourceRect.rect.height * scaleY, 1);
         }
 
-        private static Color IconPixel(float x, float y, bool hover, bool pressed)
+        private RectTransform CopyVisualTree(Transform source, Transform parent, Dictionary<Component, Component> images)
         {
-            float radius = Mathf.Sqrt(x * x + y * y);
-            if (radius > IconExtent) return new Color(0, 0, 0, 0);
-            // 底板与描边使用中性灰半透明，悬停和按下也保留游戏画面的透出。
-            Color background = pressed ? new Color(0.10f, 0.10f, 0.10f, 0.60f) :
-                hover ? new Color(0.24f, 0.24f, 0.24f, 0.55f) : new Color(0.16f, 0.16f, 0.16f, 0.45f);
-            if (radius > 0.91f)
-                return hover ? new Color(0.65f, 0.65f, 0.65f, 0.55f) : new Color(0.50f, 0.50f, 0.50f, 0.32f);
-            // A clock face above three ascending timeline columns.
-            float clockY = y - 0.16f;
-            float clockRadius = Mathf.Sqrt(x * x + clockY * clockY);
-            bool face = clockRadius > 0.40f && clockRadius < 0.46f && y > -0.15f;
-            bool hands = (Mathf.Abs(x) < 0.027f && y > 0.13f && y < 0.43f) ||
-                (Mathf.Abs(y - (0.16f - x * 0.60f)) < 0.03f && x > -0.025f && x < 0.23f);
-            if (face || hands) return new Color(0.98f, 0.91f, 0.73f, 1);
-            bool columns = y > -0.49f && ((x > -0.35f && x < -0.20f && y < -0.27f) ||
-                (x > -0.075f && x < 0.075f && y < -0.09f) ||
-                (x > 0.20f && x < 0.35f && y < 0.09f));
-            bool baseline = Mathf.Abs(y + 0.50f) < 0.024f && Mathf.Abs(x) < 0.45f;
-            if (columns || baseline) return new Color(0.43f, 0.85f, 0.77f, 1);
-            return background;
+            RectTransform original = source as RectTransform;
+            if (original == null) return null;
+            // Deliberately copy only rectangles and images, never BPP scripts,
+            // native button listeners, animators or layout controllers.
+            GameObject visual = new GameObject("ActionAxis_Visual_" + source.name, typeof(RectTransform));
+            visual.SetActive(false);
+            visual.layer = 5;
+            RectTransform rect = visual.GetComponent<RectTransform>();
+            rect.SetParent(parent, false);
+            rect.anchorMin = original.anchorMin; rect.anchorMax = original.anchorMax;
+            rect.pivot = original.pivot; rect.sizeDelta = original.sizeDelta;
+            rect.anchoredPosition3D = original.anchoredPosition3D;
+            rect.localRotation = original.localRotation; rect.localScale = original.localScale;
+            Component sourceImage = source.GetComponent(_imageType);
+            if (sourceImage != null)
+            {
+                Component image = visual.AddComponent(_imageType);
+                foreach (string property in new string[] { "sprite", "type", "color", "material", "preserveAspect",
+                    "fillCenter", "fillMethod", "fillAmount", "fillOrigin", "fillClockwise", "pixelsPerUnitMultiplier" })
+                    Set(image, property, Get(sourceImage, property));
+                Set(image, "enabled", Get(sourceImage, "enabled"));
+                Set(image, "raycastTarget", false);
+                if (source.name == "BPP_DockButtonIcon")
+                {
+                    Set(image, "sprite", _iconSprite);
+                    Set(image, "type", Enum.ToObject(_imageType.GetProperty("type").PropertyType, 0));
+                    Set(image, "preserveAspect", true);
+                    Set(image, "color", Color.white);
+                    Set(image, "enabled", true);
+                }
+                images[sourceImage] = image;
+            }
+            for (int i = 0; i < source.childCount; i++) CopyVisualTree(source.GetChild(i), rect, images);
+            visual.SetActive(source.gameObject.activeSelf);
+            return rect;
+        }
+
+        private void SyncVisualState(bool hover, bool pressed)
+        {
+            int state = pressed ? 2 : hover ? 1 : 0;
+            if (_frameImage == null || _visualState == state) return;
+            bool reset = _visualState < 0;
+            _visualState = state;
+            if (_nativeTransition == 2) // Native Selectable.SpriteSwap.
+            {
+                Sprite sprite = state == 0 ? _normalSprite :
+                    Get(_nativeSprites, state == 2 ? "pressedSprite" : "highlightedSprite") as Sprite;
+                Set(_frameImage, "sprite", sprite == null ? _normalSprite : sprite);
+            }
+            else if (_nativeTransition != 0)
+            {
+                Color tint = (Color)Get(_nativeColors, state == 2 ? "pressedColor" : state == 1 ? "highlightedColor" : "normalColor");
+                tint *= Convert.ToSingle(Get(_nativeColors, "colorMultiplier"));
+                MethodInfo fade = _graphicType.GetMethod("CrossFadeColor", new Type[] { typeof(Color), typeof(float), typeof(bool), typeof(bool) });
+                if (fade != null) fade.Invoke(_frameImage, new object[] { tint, reset ? 0f : Convert.ToSingle(Get(_nativeColors, "fadeDuration")), true, true });
+            }
         }
 
         private static void DrawTooltip(Rect button)
@@ -389,11 +466,12 @@ namespace BazaarActionAxis.Plugin
         public void Dispose()
         {
             if (_hitCanvas != null) UnityEngine.Object.Destroy(_hitCanvas);
-            if (_normal != null) UnityEngine.Object.Destroy(_normal);
-            if (_hover != null) UnityEngine.Object.Destroy(_hover);
-            if (_pressed != null) UnityEngine.Object.Destroy(_pressed);
+            if (_iconSprite != null) UnityEngine.Object.Destroy(_iconSprite);
+            if (_iconTexture != null) UnityEngine.Object.Destroy(_iconTexture);
             _hitCanvas = null; _hitRect = null;
-            _normal = _hover = _pressed = null;
+            _visualRoot = null; _skinSource = _visualSource = _frameImage = null;
+            _iconSprite = _normalSprite = null; _iconTexture = null;
+            _nativeColors = _nativeSprites = null;
             _style = null;
         }
 

@@ -30,6 +30,7 @@ namespace BazaarActionAxis.Tests
             Assert.Equal("heal", lines[2].ColorKey);
 
             BoardSlotsPreserveSizeAndGaps();
+            MonsterPlayheadUsesExactTerminalFrame();
 
             Assert.Near(0, PanelModel.PlayheadFromMouse(-10, 100, 800, 60));
             Assert.Near(60, PanelModel.PlayheadFromMouse(2000, 100, 800, 60));
@@ -38,6 +39,29 @@ namespace BazaarActionAxis.Tests
 
             Assert.Equal("42", PanelModel.FormatNumber(42));
             Assert.Equal("3.5", PanelModel.FormatNumber(3.5));
+        }
+
+        private static void MonsterPlayheadUsesExactTerminalFrame()
+        {
+            Assert.Near(6.05, PanelModel.DefaultPlayhead(true, 6.05, 6.05));
+            Assert.Near(0, PanelModel.DefaultPlayhead(true, 0, 0));
+            Assert.Near(30, PanelModel.DefaultPlayhead(true, 60, 60));
+            Assert.Near(30, PanelModel.DefaultPlayhead(true, 30, 45));
+            Assert.Near(0, PanelModel.DefaultPlayhead(true, 30, -1));
+            Assert.Near(30, PanelModel.DefaultPlayhead(false, 30, 4));
+            Assert.Near(30, PanelModel.DefaultPlayhead(false, 60, 4));
+            Assert.Near(10, PanelModel.DefaultPlayhead(false, 10, 4));
+            Assert.Near(0, PanelModel.DefaultPlayhead(true, double.NaN, 4));
+            Assert.Near(0.05, PanelModel.PlayheadFromMouse(5, 0, 100, 1));
+            Assert.Near(6.05, PanelModel.PlayheadFromMouse(100, 0, 100, 6.05));
+            Assert.Near(0.4, PanelModel.HealthRatio(40, 100));
+            Assert.Near(0, PanelModel.HealthRatio(-1, 100));
+            Assert.Near(1, PanelModel.HealthRatio(120, 100));
+            Assert.Near(0, PanelModel.HealthRatio(10, 0));
+            Assert.Equal("我方胜利", PanelModel.BattleOutcome(true, "player"));
+            Assert.Equal("我方落败", PanelModel.BattleOutcome(true, "enemy"));
+            Assert.Equal("双方倒下", PanelModel.BattleOutcome(true, "draw"));
+            Assert.Equal("已到推演上限 · 尚未分胜负", PanelModel.BattleOutcome(false, "player"));
         }
 
         private static void BoardSlotsPreserveSizeAndGaps()

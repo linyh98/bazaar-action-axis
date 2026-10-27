@@ -70,6 +70,26 @@ namespace BazaarActionAxis.Engine
             return lines;
         }
 
+        public static double DefaultPlayhead(bool monsterCombat, double endTime, double simulationEndTime)
+        {
+            if (double.IsNaN(endTime) || double.IsInfinity(endTime) || endTime <= 0) return 0;
+            double time = monsterCombat ? simulationEndTime : 30;
+            if (double.IsNaN(time) || double.IsInfinity(time)) time = endTime;
+            return Math.Max(0, Math.Min(30, Math.Min(time, endTime)));
+        }
+
+        public static string BattleOutcome(bool endedByDeath, string winner)
+        {
+            if (!endedByDeath) return "已到推演上限 · 尚未分胜负";
+            return winner == "player" ? "我方胜利" : winner == "enemy" ? "我方落败" : "双方倒下";
+        }
+
+        public static double HealthRatio(double hp, double maxHp)
+        {
+            if (double.IsNaN(hp) || double.IsNaN(maxHp) || maxHp <= 0) return 0;
+            return Math.Max(0, Math.Min(1, hp / maxHp));
+        }
+
         public static double PlayheadFromMouse(
             float mouseX,
             float barX,
@@ -81,7 +101,7 @@ namespace BazaarActionAxis.Engine
             if (ratio < 0) ratio = 0;
             if (ratio > 1) ratio = 1;
             double time = ratio * endTime;
-            time = JsMath.Round(time * 10) / 10.0;
+            time = JsMath.Round(time * 20) / 20.0;
             if (time < 0) time = 0;
             if (time > endTime) time = endTime;
             return time;

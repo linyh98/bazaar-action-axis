@@ -170,7 +170,7 @@ export function registerIpc(): void {
     guard(async () => {
       if (!isBuiltinPluginId(id)) return { ok: false, message: '未知的内置插件' };
       const { pluginsDir } = await requireGame();
-      const plan = await getBuiltinFilePlan(id);
+      const plan = await getBuiltinFilePlan(id, pluginsDir);
       const deployed = await deployFiles(pluginsDir, plan.files, BACKUP_DIR());
       await log(`[install] 内置插件 ${id}：复制 ${deployed.copied}，跳过 ${deployed.skipped}`);
       const missing = deployed.missing.length > 0 ? `，${deployed.missing.length} 个可选资源缺失` : '';

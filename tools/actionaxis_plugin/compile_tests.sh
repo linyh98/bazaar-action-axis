@@ -11,19 +11,24 @@ if [ ! -f "$CSC" ]; then
 fi
 
 mkdir -p "$HERE/build"
-OUT="$(cygpath -w "$HERE/build/EngineTests.exe")"
+TEST_EXE="${ACTIONAXIS_TEST_EXE:-$HERE/build/EngineTests.exe}"
+OUT="$(cygpath -w "$TEST_EXE")"
 SOURCES=()
 for file in "$HERE"/engine/*.cs "$HERE"/tests/*.cs; do
   SOURCES+=("$(cygpath -w "$file")")
 done
 SOURCES+=("$(cygpath -w "$HERE/plugin/LiveSkillReader.cs")")
+SOURCES+=("$(cygpath -w "$HERE/plugin/LiveMonsterReader.cs")")
 SOURCES+=("$(cygpath -w "$HERE/plugin/LiveCardDetailReader.cs")")
 SOURCES+=("$(cygpath -w "$HERE/plugin/NativeCombatReplayReader.cs")")
+SOURCES+=("$(cygpath -w "$HERE/plugin/ValidationReplayCapture.cs")")
+SOURCES+=("$(cygpath -w "$HERE/plugin/ValidationSnapshot.cs")")
+SOURCES+=("$(cygpath -w "$HERE/plugin/ValidationReplayWriter.cs")")
 SOURCES+=("$(cygpath -w "$HERE/plugin/DockButtonVisibility.cs")")
 
-"$CSC" -nologo -target:exe -out:"$OUT" \
+"$CSC" -nologo -target:exe -debug -out:"$OUT" \
   -r:System.dll -r:System.Core.dll \
   "${SOURCES[@]}"
 
 cd "$ROOT"
-"$HERE/build/EngineTests.exe"
+"$TEST_EXE"

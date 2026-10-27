@@ -31,7 +31,7 @@ npm run dev
 
 ```bash
 npm run package
-# 产物：release/Bazaar Plugin Manager-0.2.0-portable.exe
+# 产物：release/Bazaar Plugin Manager-0.2.2-portable.exe
 ```
 
 打包时会把这些文件作为内置资源带入安装包：
@@ -90,6 +90,7 @@ node scripts/publish-release.mjs --skip-build --draft
 - 覆盖任何已有文件前，先备份到：
   `%APPDATA%/bazaar-plugin-manager/backups/<时间戳>/`
 - 游戏运行中时拒绝安装、卸载和清理游戏目录内的数据。
+- 内置行动轴显示实际来源 DLL 的版本；部署前比较已安装版本，阻止旧内置版本覆盖新版。
 - ZIP 解压由应用自己完成：拒绝绝对路径与 `..` 穿越，限制 20000 个条目、解压后 500 MB。
 
 ### 数据清理范围

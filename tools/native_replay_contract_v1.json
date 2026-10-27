@@ -1,0 +1,1855 @@
+{
+ "contractVersion": 1,
+ "payloadVersions": [
+  1
+ ],
+ "sourceAssembly": "BazaarGameShared.dll",
+ "assemblySha256": "c51716ea3ec8c43009ef244a84767f88c14d836efea565b85459e420223a8947",
+ "sourceGameData": "GameData.db.zip",
+ "gameDataSha256": "fdfd3087e6a23eda2c9f53be68b012006cc949d03e8666dd51ad65abc71b61e5",
+ "frameSeconds": 0.05,
+ "combatEvents": {
+  "1": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventCombatantDied",
+   "fields": [
+    {
+     "key": 0,
+     "name": "CombatantId",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    }
+   ]
+  },
+  "2": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventSandstormCountdownStarted",
+   "fields": []
+  },
+  "3": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventSandstormStarted",
+   "fields": []
+  },
+  "4": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventMonsterGoldReceived",
+   "fields": [
+    {
+     "key": 0,
+     "name": "HealthAmount",
+     "kind": "field",
+     "type": "r4"
+    }
+   ]
+  },
+  "5": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventEffectExecuted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "ExecutionContextId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "EffectId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "ActionType",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Effect.EActionCommandType"
+    },
+    {
+     "key": 3,
+     "name": "VfxIndex",
+     "kind": "property",
+     "type": "System.Nullable`1<i4>"
+    },
+    {
+     "key": 4,
+     "name": "Source",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.InstanceId>"
+    },
+    {
+     "key": 5,
+     "name": "TriggerSource",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.InstanceId>"
+    },
+    {
+     "key": 6,
+     "name": "Target",
+     "kind": "property",
+     "type": "BazaarGameShared.Infra.Messages.Shared.IEffectTarget"
+    }
+   ]
+  },
+  "6": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventEffectTriggered",
+   "fields": [
+    {
+     "key": 0,
+     "name": "ExecutionContextId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "EffectId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "Source",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.InstanceId>"
+    },
+    {
+     "key": 3,
+     "name": "TriggerSource",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.InstanceId>"
+    },
+    {
+     "key": 4,
+     "name": "Targets",
+     "kind": "property",
+     "type": "System.Collections.Generic.List`1<BazaarGameShared.Infra.Messages.Shared.IEffectTarget>"
+    }
+   ]
+  },
+  "7": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventEffectAuraExecuted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "ExecutionContextId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "EffectId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "Source",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.InstanceId>"
+    },
+    {
+     "key": 3,
+     "name": "TriggerSource",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.InstanceId>"
+    },
+    {
+     "key": 4,
+     "name": "AppliedTo",
+     "kind": "property",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Infra.Messages.Shared.IEffectTarget>"
+    },
+    {
+     "key": 5,
+     "name": "RemovedFrom",
+     "kind": "property",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Infra.Messages.Shared.IEffectTarget>"
+    }
+   ]
+  },
+  "8": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventCardEnchanted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "EnchantmentType",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EEnchantmentType>"
+    },
+    {
+     "key": 2,
+     "name": "IsReverted",
+     "kind": "property",
+     "type": "bool"
+    }
+   ]
+  },
+  "9": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventCardTransformed",
+   "fields": [
+    {
+     "key": 0,
+     "name": "ExecutionContextId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "OriginalInstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "TransformedCards",
+     "kind": "property",
+     "type": "System.Collections.Generic.List`1<BazaarGameShared.Infra.Messages.Shared.SimEventCardTransformation>"
+    }
+   ]
+  },
+  "10": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventCardTransformReverted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "OriginalCard",
+     "kind": "property",
+     "type": "BazaarGameShared.Infra.Messages.Shared.SimEventCardTransformation"
+    },
+    {
+     "key": 1,
+     "name": "TransformedCardInstanceIds",
+     "kind": "property",
+     "type": "System.Collections.Generic.List`1<string>"
+    }
+   ]
+  },
+  "11": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventCardQuestCompleted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "QuestGroupIndex",
+     "kind": "property",
+     "type": "i4"
+    },
+    {
+     "key": 2,
+     "name": "QuestEntryIndex",
+     "kind": "property",
+     "type": "i4"
+    }
+   ]
+  },
+  "12": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventCardQuestUpdated",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "QuestGroupIndex",
+     "kind": "property",
+     "type": "i4"
+    },
+    {
+     "key": 2,
+     "name": "QuestEntryIndex",
+     "kind": "property",
+     "type": "i4"
+    },
+    {
+     "key": 3,
+     "name": "OldProgress",
+     "kind": "property",
+     "type": "i4"
+    },
+    {
+     "key": 4,
+     "name": "NewProgress",
+     "kind": "property",
+     "type": "i4"
+    }
+   ]
+  },
+  "13": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventMonsterXpReceived",
+   "fields": [
+    {
+     "key": 0,
+     "name": "HealthAmount",
+     "kind": "field",
+     "type": "r4"
+    }
+   ]
+  },
+  "14": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventCardActionCostSpent",
+   "fields": [
+    {
+     "key": 0,
+     "name": "ExecutingCard",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.InstanceId"
+    },
+    {
+     "key": 1,
+     "name": "PlayerAttributeSpent",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EPlayerAttributeType>"
+    },
+    {
+     "key": 2,
+     "name": "CardAttributeSpent",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.ECardAttributeType>"
+    }
+   ]
+  },
+  "15": {
+   "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimEventCardAttributeDeleted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.InstanceId"
+    },
+    {
+     "key": 1,
+     "name": "AttributeType",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.ECardAttributeType"
+    }
+   ]
+  }
+ },
+ "gameEvents": {
+  "1": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardDealt",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "TemplateId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "Type",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ECardType"
+    }
+   ]
+  },
+  "2": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardDisposed",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "Reason",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ECardDisposalReason"
+    }
+   ]
+  },
+  "3": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardEnchanted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "EnchantmentType",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EEnchantmentType>"
+    },
+    {
+     "key": 2,
+     "name": "IsReverted",
+     "kind": "property",
+     "type": "bool"
+    }
+   ]
+  },
+  "4": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardFused",
+   "fields": [
+    {
+     "key": 0,
+     "name": "SelectedInstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "FusedInstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "NewTier",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ETier"
+    },
+    {
+     "key": 3,
+     "name": "EnchantmentType",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EEnchantmentType>"
+    }
+   ]
+  },
+  "5": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardMoved",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "Owner",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    },
+    {
+     "key": 2,
+     "name": "ToInventory",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.EInventorySection"
+    },
+    {
+     "key": 3,
+     "name": "ToSocket",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.EContainerSocketId"
+    }
+   ]
+  },
+  "6": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardPurchased",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "BuyPrice",
+     "kind": "property",
+     "type": "u4"
+    },
+    {
+     "key": 2,
+     "name": "LeftSocketId",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EContainerSocketId>"
+    },
+    {
+     "key": 3,
+     "name": "Section",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EInventorySection>"
+    },
+    {
+     "key": 4,
+     "name": "CombatantId",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.ECombatantId>"
+    }
+   ]
+  },
+  "7": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardSold",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "SellPrice",
+     "kind": "property",
+     "type": "u4"
+    }
+   ]
+  },
+  "8": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardSpawned",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "TemplateId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "Type",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ECardType"
+    },
+    {
+     "key": 3,
+     "name": "CombatantId",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    },
+    {
+     "key": 4,
+     "name": "Section",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EInventorySection>"
+    },
+    {
+     "key": 5,
+     "name": "Socket",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EContainerSocketId>"
+    }
+   ]
+  },
+  "9": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardUpgraded",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "NewTier",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ETier"
+    }
+   ]
+  },
+  "10": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventEffectExecuted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "ExecutionContextId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "EffectId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "ActionType",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Effect.EActionCommandType"
+    },
+    {
+     "key": 3,
+     "name": "VfxIndex",
+     "kind": "property",
+     "type": "System.Nullable`1<i4>"
+    },
+    {
+     "key": 4,
+     "name": "Source",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.InstanceId>"
+    },
+    {
+     "key": 5,
+     "name": "TriggerSource",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.InstanceId>"
+    },
+    {
+     "key": 6,
+     "name": "Target",
+     "kind": "property",
+     "type": "BazaarGameShared.Infra.Messages.Shared.IEffectTarget"
+    }
+   ]
+  },
+  "11": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventInterruptStateEntered",
+   "fields": [
+    {
+     "key": 0,
+     "name": "EnteredState",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Runs.ERunState"
+    },
+    {
+     "key": 1,
+     "name": "IsInterrupt",
+     "kind": "property",
+     "type": "bool"
+    }
+   ]
+  },
+  "12": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventInterruptStateExited",
+   "fields": [
+    {
+     "key": 0,
+     "name": "ExitedState",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Runs.ERunState"
+    },
+    {
+     "key": 1,
+     "name": "IsInterrupt",
+     "kind": "property",
+     "type": "bool"
+    }
+   ]
+  },
+  "13": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventPedestalActivated",
+   "fields": []
+  },
+  "14": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventPlayerExperienceGained",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Amount",
+     "kind": "property",
+     "type": "u4"
+    },
+    {
+     "key": 1,
+     "name": "ExperienceType",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.EExperienceType"
+    },
+    {
+     "key": 2,
+     "name": "SourceInstanceId",
+     "kind": "property",
+     "type": "string"
+    }
+   ]
+  },
+  "15": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventPlayerIncomeGained",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Amount",
+     "kind": "property",
+     "type": "u4"
+    }
+   ]
+  },
+  "16": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventPlayerPrestigeChanged",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Delta",
+     "kind": "property",
+     "type": "i4"
+    }
+   ]
+  },
+  "17": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventRunDayChanged",
+   "fields": [
+    {
+     "key": 0,
+     "name": "NewDay",
+     "kind": "property",
+     "type": "u4"
+    }
+   ]
+  },
+  "18": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventRunHourChanged",
+   "fields": [
+    {
+     "key": 0,
+     "name": "NewHour",
+     "kind": "property",
+     "type": "u4"
+    }
+   ]
+  },
+  "19": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventSocketsUnlocked",
+   "fields": [
+    {
+     "key": 0,
+     "name": "UnlockedSockets",
+     "kind": "property",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Core.Types.EContainerSocketId>"
+    },
+    {
+     "key": 1,
+     "name": "UnlockedSocketsBitmask",
+     "kind": "property",
+     "type": "u2"
+    },
+    {
+     "key": 2,
+     "name": "Section",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.EInventorySection"
+    }
+   ]
+  },
+  "20": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventStateTransitioned",
+   "fields": [
+    {
+     "key": 0,
+     "name": "ToState",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Runs.ERunState"
+    },
+    {
+     "key": 1,
+     "name": "CurrentEncounterId",
+     "kind": "property",
+     "type": "string"
+    }
+   ]
+  },
+  "21": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventPlayerSkillEquipped",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "Owner",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    }
+   ]
+  },
+  "22": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventPlayerInitialized",
+   "fields": [
+    {
+     "key": 0,
+     "name": "CombatantId",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    },
+    {
+     "key": 1,
+     "name": "Hero",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.EHero"
+    }
+   ]
+  },
+  "23": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventEffectAuraExecuted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "ExecutionContextId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "EffectId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "Source",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.InstanceId>"
+    },
+    {
+     "key": 3,
+     "name": "TriggerSource",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.InstanceId>"
+    },
+    {
+     "key": 4,
+     "name": "AppliedTo",
+     "kind": "property",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Infra.Messages.Shared.IEffectTarget>"
+    },
+    {
+     "key": 5,
+     "name": "RemovedFrom",
+     "kind": "property",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Infra.Messages.Shared.IEffectTarget>"
+    }
+   ]
+  },
+  "24": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventRunCompleted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Rewards",
+     "kind": "property",
+     "type": "BazaarGameShared.TempoNet.Responses.CompleteRunResult"
+    }
+   ]
+  },
+  "25": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardTransformed",
+   "fields": [
+    {
+     "key": 0,
+     "name": "ExecutionContextId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "OriginalInstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "TransformedCards",
+     "kind": "property",
+     "type": "System.Collections.Generic.List`1<BazaarGameShared.Infra.Messages.Shared.SimEventCardTransformation>"
+    }
+   ]
+  },
+  "26": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardTransformReverted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "OriginalCard",
+     "kind": "property",
+     "type": "BazaarGameShared.Infra.Messages.Shared.SimEventCardTransformation"
+    },
+    {
+     "key": 1,
+     "name": "TransformedCardInstanceIds",
+     "kind": "property",
+     "type": "System.Collections.Generic.List`1<string>"
+    }
+   ]
+  },
+  "27": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardQuestCompleted",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "QuestGroupIndex",
+     "kind": "property",
+     "type": "i4"
+    },
+    {
+     "key": 2,
+     "name": "QuestEntryIndex",
+     "kind": "property",
+     "type": "i4"
+    }
+   ]
+  },
+  "28": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventCardQuestUpdated",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "QuestGroupIndex",
+     "kind": "property",
+     "type": "i4"
+    },
+    {
+     "key": 2,
+     "name": "QuestEntryIndex",
+     "kind": "property",
+     "type": "i4"
+    },
+    {
+     "key": 3,
+     "name": "OldProgress",
+     "kind": "property",
+     "type": "i4"
+    },
+    {
+     "key": 4,
+     "name": "NewProgress",
+     "kind": "property",
+     "type": "i4"
+    }
+   ]
+  },
+  "29": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventBoardOverridden",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Board",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "Presentation",
+     "kind": "property",
+     "type": "string"
+    }
+   ]
+  },
+  "30": {
+   "type": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSimEventRunRerollCostChanged",
+   "fields": [
+    {
+     "key": 0,
+     "name": "NewCost",
+     "kind": "property",
+     "type": "u4"
+    }
+   ]
+  }
+ },
+ "enums": {
+  "EActionCommandType": {
+   "None": 0,
+   "CardAddTags": 1,
+   "CardRemoveTags": 2,
+   "CardBeginSandstorm": 3,
+   "CardCharge": 4,
+   "CardDestroy": 5,
+   "CardDisable": 6,
+   "CardForceUse": 7,
+   "CardFreeze": 8,
+   "CardHaste": 9,
+   "CardModifyAttribute": 10,
+   "CardReload": 11,
+   "CardSlow": 12,
+   "CardEnchant": 13,
+   "CardTransform": 14,
+   "CardUpgrade": 15,
+   "GameDealCards": 16,
+   "GameModifyTime": 17,
+   "GameScheduleEncounter": 18,
+   "GameSpawnCards": 19,
+   "GameStartCombat": 20,
+   "GameUnscheduleEncounter": 21,
+   "PlayerBurnApply": 22,
+   "PlayerBurnRemove": 23,
+   "PlayerDamage": 24,
+   "PlayerGoldSteal": 25,
+   "PlayerHeal": 26,
+   "PlayerJoyApply": 27,
+   "PlayerJoyRemove": 28,
+   "PlayerMaxHealthDecrease": 29,
+   "PlayerMaxHealthIncrease": 30,
+   "PlayerModifyAttribute": 31,
+   "PlayerPoisonApply": 32,
+   "PlayerPoisonRemove": 33,
+   "PlayerRegenApply": 34,
+   "PlayerRegenRemove": 35,
+   "PlayerShieldApply": 36,
+   "PlayerShieldRemove": 37,
+   "ExitReplacementSet": 38,
+   "CardEnchantRemove": 39,
+   "FlyingStart": 40,
+   "FlyingStop": 41,
+   "CardRepair": 42,
+   "CardTransformDestroyed": 43,
+   "CardAddTagsRandom": 44,
+   "PlayerPortraitNext": 45,
+   "PlayerPortraitReset": 46,
+   "PlayerRageApply": 47,
+   "PlayerRageRemove": 48,
+   "GameReroll": 49,
+   "PlayerTempoApply": 50,
+   "PlayerTempoRemove": 51,
+   "GameAddToExclusionSet": 52,
+   "GameRemoveFromExclusionSet": 53,
+   "GameSetNextHourSpawnContext": 54
+  },
+  "EAttributeDeltaType": {
+   "Update": 0,
+   "Delete": 1
+  },
+  "ECardAttributeType": {
+   "Ammo": 0,
+   "AmmoMax": 1,
+   "ReloadAmount": 2,
+   "ReloadTargets": 3,
+   "Cooldown": 4,
+   "CooldownMax": 5,
+   "ChargeAmount": 6,
+   "ChargeTargets": 7,
+   "Haste": 9,
+   "HasteAmount": 10,
+   "HasteTargets": 11,
+   "Slow": 12,
+   "SlowAmount": 13,
+   "SlowTargets": 14,
+   "Freeze": 15,
+   "FreezeAmount": 16,
+   "FreezeTargets": 17,
+   "BurnApplyAmount": 18,
+   "BurnRemoveAmount": 19,
+   "PoisonApplyAmount": 20,
+   "PoisonRemoveAmount": 21,
+   "Multicast": 24,
+   "Lifesteal": 25,
+   "CritChance": 26,
+   "DamageAmount": 27,
+   "DamageCrit": 28,
+   "HealAmount": 29,
+   "HealCrit": 30,
+   "JoyApplyAmount": 31,
+   "JoyRemoveAmount": 32,
+   "JoyCrit": 33,
+   "ShieldApplyAmount": 34,
+   "ShieldRemoveAmount": 35,
+   "ShieldCrit": 36,
+   "BuyPrice": 37,
+   "SellPrice": 38,
+   "Counter": 39,
+   "Custom_0": 40,
+   "Custom_1": 41,
+   "Custom_2": 42,
+   "Custom_3": 43,
+   "Custom_4": 44,
+   "Custom_5": 45,
+   "Custom_6": 46,
+   "Custom_7": 47,
+   "Custom_8": 48,
+   "ForceUseTargets": 49,
+   "EnchantTargets": 50,
+   "UpgradeTargets": 51,
+   "DisableTargets": 52,
+   "RepairTargets": 99,
+   "BurnCrit": 53,
+   "PoisonCrit": 54,
+   "DestroyTargets": 55,
+   "RegenApplyAmount": 56,
+   "RegenRemoveAmount": 57,
+   "RegenCrit": 58,
+   "TransformTargets": 59,
+   "FlatCooldownReduction": 60,
+   "PercentCooldownReduction": 61,
+   "EnchantRemoveTargets": 62,
+   "Flying": 63,
+   "FlyingTargets": 64,
+   "PercentChargeReduction": 65,
+   "PercentHasteReduction": 66,
+   "PercentSlowReduction": 67,
+   "PercentFreezeReduction": 68,
+   "DestroyImmunity": 69,
+   "QuestCompletedCount": 70,
+   "Quest_1": 71,
+   "Quest_2": 72,
+   "Quest_3": 73,
+   "Quest_4": 74,
+   "Quest_5": 75,
+   "Quest_6": 76,
+   "Quest_7": 77,
+   "Quest_8": 78,
+   "Quest_9": 79,
+   "Quest_10": 80,
+   "Quest_11": 81,
+   "Quest_12": 82,
+   "Heated": 90,
+   "Chilled": 91,
+   "RageApplyAmount": 92,
+   "RageRemoveAmount": 93,
+   "CooldownDisabled": 100,
+   "TempoCost": 101,
+   "FlatTempoCostReduction": 102,
+   "PercentTempoCostReduction": 103,
+   "TempoApplyAmount": 104,
+   "TempoRemoveAmount": 105
+  },
+  "EPlayerAttributeType": {
+   "Burn": 0,
+   "CritChance": 1,
+   "DamageCrit": 2,
+   "Experience": 3,
+   "Gold": 4,
+   "Income": 5,
+   "Joy": 6,
+   "JoyCrit": 8,
+   "Prestige": 9,
+   "Health": 10,
+   "HealthMax": 11,
+   "HealthRegen": 12,
+   "HealAmount": 13,
+   "HealCrit": 14,
+   "Level": 15,
+   "Poison": 16,
+   "RerollCostModifier": 17,
+   "Shield": 19,
+   "ShieldCrit": 21,
+   "FlatDamageReduction": 22,
+   "PercentDamageReduction": 23,
+   "Custom_0": 24,
+   "Custom_1": 25,
+   "Custom_2": 26,
+   "Custom_3": 27,
+   "Custom_4": 28,
+   "Custom_5": 29,
+   "Custom_6": 30,
+   "Custom_7": 31,
+   "Custom_8": 32,
+   "Custom_9": 33,
+   "Rage": 34,
+   "RageMax": 35,
+   "Enraged": 36,
+   "EnragedDuration": 37,
+   "EnragedDurationMax": 38,
+   "Tempo": 39,
+   "TempoGainCooldownMax": 40,
+   "FlatTempoGainCooldownReduction": 41,
+   "PercentTempoGainCooldownReduction": 42,
+   "Custom_10": 43,
+   "Custom_11": 44,
+   "Custom_12": 45,
+   "Custom_13": 46,
+   "Custom_14": 47,
+   "Custom_15": 48,
+   "Custom_16": 49,
+   "Custom_17": 50,
+   "Custom_18": 51,
+   "Custom_19": 52
+  },
+  "EDamageType": {
+   "Damage": 0,
+   "Burn": 1,
+   "Poison": 2,
+   "Sandstorm": 3,
+   "Heal": 4,
+   "Shield": 5,
+   "Joy": 6,
+   "Regen": 7
+  },
+  "EPlayerHealthChangeType": {
+   "Health": 0,
+   "Joy": 1,
+   "Shield": 2
+  },
+  "ECardState": {
+   "Alive": 0,
+   "Casting": 1,
+   "Disabled": 2,
+   "Transformed": 3
+  },
+  "ECardType": {
+   "Item": 0,
+   "Skill": 1,
+   "CombatEncounter": 2,
+   "EncounterStep": 3,
+   "EventEncounter": 4,
+   "PedestalEncounter": 5,
+   "PvpEncounter": 6,
+   "SocketEffect": 7,
+   "PlayerEffect": 8
+  },
+  "EHero": {
+   "Common": 0,
+   "Pygmalien": 1,
+   "Vanessa": 2,
+   "Stelle": 3,
+   "Jules": 4,
+   "Dooley": 5,
+   "Mak": 6,
+   "Karnok": 7,
+   "Hero8": 8
+  },
+  "ECombatantId": {
+   "Player": 0,
+   "Opponent": 1
+  },
+  "EInventorySection": {
+   "Hand": 0,
+   "Stash": 1
+  },
+  "EEnchantmentType": {
+   "Deadly": 0,
+   "Ethereal": 1,
+   "Fiery": 2,
+   "Golden": 3,
+   "Heavy": 4,
+   "Icy": 5,
+   "Mystical": 6,
+   "Obsidian": 7,
+   "Radiant": 8,
+   "Restorative": 9,
+   "Shielded": 10,
+   "Shiny": 11,
+   "Tiny": 12,
+   "Toxic": 13,
+   "Turbo": 14,
+   "Mossy": 15
+  },
+  "ETier": {
+   "Bronze": 0,
+   "Silver": 1,
+   "Gold": 2,
+   "Diamond": 3,
+   "Legendary": 4
+  },
+  "ECardSize": {
+   "Small": 1,
+   "Medium": 2,
+   "Large": 3
+  },
+  "EContainerSocketId": {
+   "Socket_0": 0,
+   "Socket_1": 1,
+   "Socket_2": 2,
+   "Socket_3": 3,
+   "Socket_4": 4,
+   "Socket_5": 5,
+   "Socket_6": 6,
+   "Socket_7": 7,
+   "Socket_8": 8,
+   "Socket_9": 9
+  }
+ },
+ "effectTargets": {
+  "1": {
+   "type": "BazaarGameShared.Infra.Messages.Shared.EffectTargetCard",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Target",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.InstanceId"
+    }
+   ]
+  },
+  "2": {
+   "type": "BazaarGameShared.Infra.Messages.Shared.EffectTargetPlayer",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Target",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    }
+   ]
+  }
+ },
+ "dtos": {
+  "CombatSim": {
+   "full": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSim",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Frames",
+     "kind": "field",
+     "type": "System.Collections.Generic.List`1<BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimFrame>"
+    },
+    {
+     "key": 1,
+     "name": "Winner",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    },
+    {
+     "key": 2,
+     "name": "Loser",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    },
+    {
+     "key": 3,
+     "name": "OpponentHealthThresholdsForGold",
+     "kind": "field",
+     "type": "System.Collections.Generic.List`1<r4>"
+    },
+    {
+     "key": 4,
+     "name": "OpponentHealthThresholdsForXp",
+     "kind": "field",
+     "type": "System.Collections.Generic.List`1<r4>"
+    },
+    {
+     "key": 5,
+     "name": "CardStats",
+     "kind": "field",
+     "type": "System.Collections.Generic.Dictionary`2<string,System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.ECardStats,i4>>"
+    },
+    {
+     "key": 6,
+     "name": "VfxKeys",
+     "kind": "field",
+     "type": "System.Collections.Generic.List`1<string>"
+    },
+    {
+     "key": 7,
+     "name": "PortraitKeys",
+     "kind": "field",
+     "type": "System.Collections.Generic.List`1<string>"
+    }
+   ]
+  },
+  "CombatSimFrame": {
+   "full": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimFrame",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Events",
+     "kind": "field",
+     "type": "System.Collections.Generic.List`1<BazaarGameShared.Infra.Messages.CombatSimEvents.ICombatSimEvent>"
+    },
+    {
+     "key": 1,
+     "name": "PlayerUpdates",
+     "kind": "field",
+     "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimPlayerUpdate"
+    },
+    {
+     "key": 2,
+     "name": "OpponentUpdates",
+     "kind": "field",
+     "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimPlayerUpdate"
+    },
+    {
+     "key": 3,
+     "name": "CardUpdates",
+     "kind": "field",
+     "type": "System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.InstanceId,BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimCardUpdate>"
+    }
+   ]
+  },
+  "CombatSimPlayerUpdate": {
+   "full": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimPlayerUpdate",
+   "fields": [
+    {
+     "key": 0,
+     "name": "IsPlayerDead",
+     "kind": "field",
+     "type": "bool"
+    },
+    {
+     "key": 1,
+     "name": "HealthAdjustments",
+     "kind": "field",
+     "type": "System.Collections.Generic.List`1<BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimPlayerHealthAdjustment>"
+    },
+    {
+     "key": 2,
+     "name": "Attributes",
+     "kind": "field",
+     "type": "System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.EPlayerAttributeType,BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimPlayerAttributeUpdate>"
+    },
+    {
+     "key": 3,
+     "name": "Portrait",
+     "kind": "field",
+     "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimPlayerPortraitUpdate"
+    }
+   ]
+  },
+  "CombatSimPlayerHealthAdjustment": {
+   "full": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimPlayerHealthAdjustment",
+   "fields": [
+    {
+     "key": 0,
+     "name": "DamageType",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.EDamageType"
+    },
+    {
+     "key": 1,
+     "name": "AttributeChanged",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.EPlayerHealthChangeType"
+    },
+    {
+     "key": 2,
+     "name": "Amount",
+     "kind": "field",
+     "type": "i4"
+    },
+    {
+     "key": 3,
+     "name": "IsCrit",
+     "kind": "field",
+     "type": "bool"
+    },
+    {
+     "key": 4,
+     "name": "IsDamageReduced",
+     "kind": "field",
+     "type": "bool"
+    }
+   ]
+  },
+  "CombatSimPlayerAttributeUpdate": {
+   "full": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimPlayerAttributeUpdate",
+   "fields": [
+    {
+     "key": 0,
+     "name": "AttributeType",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.EPlayerAttributeType"
+    },
+    {
+     "key": 1,
+     "name": "PreviousValue",
+     "kind": "field",
+     "type": "i4"
+    },
+    {
+     "key": 2,
+     "name": "CurrentValue",
+     "kind": "field",
+     "type": "i4"
+    }
+   ]
+  },
+  "CombatSimCardUpdate": {
+   "full": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimCardUpdate",
+   "fields": [
+    {
+     "key": 0,
+     "name": "CardInstanceId",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.InstanceId"
+    },
+    {
+     "key": 1,
+     "name": "Attributes",
+     "kind": "field",
+     "type": "System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.ECardAttributeType,BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimCardAttributeUpdate>"
+    },
+    {
+     "key": 2,
+     "name": "Enchantment",
+     "kind": "field",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EEnchantmentType>"
+    },
+    {
+     "key": 3,
+     "name": "Heroes",
+     "kind": "field",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Core.Types.EHero>"
+    },
+    {
+     "key": 4,
+     "name": "HiddenTags",
+     "kind": "field",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Core.Types.EHiddenTag>"
+    },
+    {
+     "key": 5,
+     "name": "Placement",
+     "kind": "field",
+     "type": "BazaarGameShared.Infra.Messages.GameSimEvents.CardDeltaPlacement"
+    },
+    {
+     "key": 6,
+     "name": "Size",
+     "kind": "field",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.ECardSize>"
+    },
+    {
+     "key": 7,
+     "name": "Tags",
+     "kind": "field",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Core.Types.ECardTag>"
+    },
+    {
+     "key": 8,
+     "name": "Tier",
+     "kind": "field",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.ETier>"
+    },
+    {
+     "key": 9,
+     "name": "State",
+     "kind": "field",
+     "type": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimCardStateUpdate"
+    }
+   ]
+  },
+  "CombatSimCardAttributeUpdate": {
+   "full": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimCardAttributeUpdate",
+   "fields": [
+    {
+     "key": 0,
+     "name": "AttributeType",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.ECardAttributeType"
+    },
+    {
+     "key": 1,
+     "name": "PreviousValue",
+     "kind": "field",
+     "type": "i4"
+    },
+    {
+     "key": 2,
+     "name": "CurrentValue",
+     "kind": "field",
+     "type": "i4"
+    }
+   ]
+  },
+  "CombatSimCardStateUpdate": {
+   "full": "BazaarGameShared.Infra.Messages.CombatSimEvents.CombatSimCardStateUpdate",
+   "fields": [
+    {
+     "key": 0,
+     "name": "PreviousValue",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.ECardState"
+    },
+    {
+     "key": 1,
+     "name": "CurrentValue",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.ECardState"
+    }
+   ]
+  },
+  "GameSim": {
+   "full": "BazaarGameShared.Infra.Messages.GameSimEvents.GameSim",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Events",
+     "kind": "field",
+     "type": "System.Collections.Generic.List`1<BazaarGameShared.Infra.Messages.GameSimEvents.IGameSimEvent>"
+    },
+    {
+     "key": 1,
+     "name": "Player",
+     "kind": "field",
+     "type": "BazaarGameShared.Infra.Messages.GameSimEvents.SimUpdatePlayer"
+    },
+    {
+     "key": 2,
+     "name": "Opponent",
+     "kind": "field",
+     "type": "BazaarGameShared.Infra.Messages.GameSimEvents.SimUpdatePlayer"
+    },
+    {
+     "key": 3,
+     "name": "Cards",
+     "kind": "field",
+     "type": "System.Collections.Generic.Dictionary`2<string,BazaarGameShared.Infra.Messages.GameSimEvents.SimUpdateCard>"
+    },
+    {
+     "key": 4,
+     "name": "Run",
+     "kind": "field",
+     "type": "BazaarGameShared.Infra.Messages.GameSimEvents.SimUpdateRun"
+    },
+    {
+     "key": 5,
+     "name": "CurrentState",
+     "kind": "field",
+     "type": "BazaarGameShared.Infra.Messages.GameSimEvents.SimUpdateRunState"
+    },
+    {
+     "key": 6,
+     "name": "VfxKeys",
+     "kind": "field",
+     "type": "System.Collections.Generic.List`1<string>"
+    }
+   ]
+  },
+  "SimUpdatePlayer": {
+   "full": "BazaarGameShared.Infra.Messages.GameSimEvents.SimUpdatePlayer",
+   "fields": [
+    {
+     "key": 0,
+     "name": "CombatantId",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    },
+    {
+     "key": 1,
+     "name": "Attributes",
+     "kind": "field",
+     "type": "System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.EPlayerAttributeType,i4>"
+    }
+   ]
+  },
+  "SimUpdateRun": {
+   "full": "BazaarGameShared.Infra.Messages.GameSimEvents.SimUpdateRun",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Day",
+     "kind": "field",
+     "type": "u4"
+    },
+    {
+     "key": 1,
+     "name": "Hour",
+     "kind": "field",
+     "type": "u4"
+    },
+    {
+     "key": 2,
+     "name": "Victories",
+     "kind": "field",
+     "type": "u4"
+    },
+    {
+     "key": 3,
+     "name": "Defeats",
+     "kind": "field",
+     "type": "u4"
+    },
+    {
+     "key": 4,
+     "name": "HasVisitedFates",
+     "kind": "field",
+     "type": "bool"
+    },
+    {
+     "key": 5,
+     "name": "CurrentHourXP",
+     "kind": "field",
+     "type": "u4"
+    },
+    {
+     "key": 6,
+     "name": "DataVersion",
+     "kind": "field",
+     "type": "string"
+    }
+   ]
+  },
+  "SimUpdateCard": {
+   "full": "BazaarGameShared.Infra.Messages.GameSimEvents.SimUpdateCard",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "field",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "Attributes",
+     "kind": "field",
+     "type": "System.Collections.Generic.Dictionary`2<BazaarGameShared.Domain.Core.Types.ECardAttributeType,BazaarGameShared.Infra.Messages.GameSimEvents.AttributeDelta>"
+    },
+    {
+     "key": 2,
+     "name": "Enchantment",
+     "kind": "field",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EEnchantmentType>"
+    },
+    {
+     "key": 3,
+     "name": "Heroes",
+     "kind": "field",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Core.Types.EHero>"
+    },
+    {
+     "key": 4,
+     "name": "HiddenTags",
+     "kind": "field",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Core.Types.EHiddenTag>"
+    },
+    {
+     "key": 5,
+     "name": "Placement",
+     "kind": "field",
+     "type": "BazaarGameShared.Infra.Messages.GameSimEvents.CardDeltaPlacement"
+    },
+    {
+     "key": 6,
+     "name": "Size",
+     "kind": "field",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.ECardSize>"
+    },
+    {
+     "key": 7,
+     "name": "Tags",
+     "kind": "field",
+     "type": "System.Collections.Generic.HashSet`1<BazaarGameShared.Domain.Core.Types.ECardTag>"
+    },
+    {
+     "key": 8,
+     "name": "Tier",
+     "kind": "field",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.ETier>"
+    },
+    {
+     "key": 9,
+     "name": "State",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ECardState"
+    }
+   ]
+  },
+  "AttributeDelta": {
+   "full": "BazaarGameShared.Infra.Messages.GameSimEvents.AttributeDelta",
+   "fields": [
+    {
+     "key": 0,
+     "name": "DeltaType",
+     "kind": "property",
+     "type": "BazaarGameShared.Infra.Messages.GameSimEvents.EAttributeDeltaType"
+    },
+    {
+     "key": 1,
+     "name": "Value",
+     "kind": "property",
+     "type": "i4"
+    }
+   ]
+  },
+  "CardDeltaPlacement": {
+   "full": "BazaarGameShared.Infra.Messages.GameSimEvents.CardDeltaPlacement",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Owner",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.ECombatantId>"
+    },
+    {
+     "key": 1,
+     "name": "Socket",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EContainerSocketId>"
+    },
+    {
+     "key": 2,
+     "name": "Section",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EInventorySection>"
+    }
+   ]
+  },
+  "SimEventCardTransformation": {
+   "full": "BazaarGameShared.Infra.Messages.Shared.SimEventCardTransformation",
+   "fields": [
+    {
+     "key": 0,
+     "name": "InstanceId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 1,
+     "name": "TemplateId",
+     "kind": "property",
+     "type": "string"
+    },
+    {
+     "key": 2,
+     "name": "Type",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ECardType"
+    },
+    {
+     "key": 3,
+     "name": "CombatantId",
+     "kind": "property",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    },
+    {
+     "key": 4,
+     "name": "Section",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EInventorySection>"
+    },
+    {
+     "key": 5,
+     "name": "Socket",
+     "kind": "property",
+     "type": "System.Nullable`1<BazaarGameShared.Domain.Core.Types.EContainerSocketId>"
+    }
+   ]
+  },
+  "EffectTargetCard": {
+   "full": "BazaarGameShared.Infra.Messages.Shared.EffectTargetCard",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Target",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.InstanceId"
+    }
+   ]
+  },
+  "EffectTargetPlayer": {
+   "full": "BazaarGameShared.Infra.Messages.Shared.EffectTargetPlayer",
+   "fields": [
+    {
+     "key": 0,
+     "name": "Target",
+     "kind": "field",
+     "type": "BazaarGameShared.Domain.Core.Types.ECombatantId"
+    }
+   ]
+  }
+ }
+}

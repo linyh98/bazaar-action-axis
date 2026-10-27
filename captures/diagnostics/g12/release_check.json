@@ -1,0 +1,39 @@
+{
+ "files": {
+  "ActionAxisEngine.dll": {
+   "source": {
+    "path": "tools\\actionaxis_plugin\\build\\ActionAxisEngine.dll",
+    "sha256": "c55a55686b94e843250eb7a711db223bbcc89812400acb53f597c2902566bb80",
+    "mvid": "b8419f96-e719-44d2-bc92-31a0c0e73fa6"
+   },
+   "target": {
+    "path": "D:\\Program Files (x86)\\Steam\\steamapps\\common\\The Bazaar\\BepInEx\\plugins\\ActionAxisEngine.dll",
+    "sha256": "7ed0bd7c673fa3d456ecfe207b9e29721c2b85ad2cd82e23758a5bbb12146e85",
+    "mvid": "1687d746-66e2-4152-9d8a-5393eed11d14"
+   }
+  },
+  "ActionAxisPlugin.dll": {
+   "source": {
+    "path": "tools\\actionaxis_plugin\\build\\ActionAxisPlugin.dll",
+    "sha256": "43839ad8ce5ecbc809e5e7a40286fe5a937c8ca09a40f51c79568665b80d4a20",
+    "mvid": "cc6422d9-7073-4a30-bd46-43a3e4cd0b43"
+   },
+   "target": {
+    "path": "D:\\Program Files (x86)\\Steam\\steamapps\\common\\The Bazaar\\BepInEx\\plugins\\ActionAxisPlugin.dll",
+    "sha256": "ba261a4e834ef4cdfce6ac3800d49133384203ffbbd3f748f877c7024488f6df",
+    "mvid": "0436a66f-6c25-457d-b061-a7c9c6e4d58b"
+   }
+  }
+ },
+ "sameBuildAndInstalled": {
+  "ActionAxisEngine.dll": false,
+  "ActionAxisPlugin.dll": false
+ },
+ "log": {
+  "path": "D:\\Program Files (x86)\\Steam\\steamapps\\common\\The Bazaar\\BepInEx\\LogOutput.log",
+  "loadedEngineMvid": "1687d746-66e2-4152-9d8a-5393eed11d14"
+ },
+ "loadedEngineMatchesInstalled": true,
+ "deployment": "NOT_EXECUTED_READ_ONLY_CHECK",
+ "verdict": "MISMATCH"
+}

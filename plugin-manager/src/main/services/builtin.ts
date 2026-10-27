@@ -4,6 +4,7 @@ import { BUILTIN_PLUGINS } from '@shared/constants';
 import type { BuiltinPluginId, BuiltinPluginInfo, PluginInfo } from '@shared/types';
 import { listFilesRecursive, pathExists, readTextIfExists } from './fsutil';
 import type { DeployFile } from './plugins';
+import { assertBuiltinActionAxisUpgrade, readActionAxisVersion } from './plugin-version';
 
 interface BuiltinPaths {
   actionAxis: string;
@@ -91,7 +92,7 @@ export interface BuiltinFilePlan {
 }
 
 /** 生成内置插件的部署清单（含 ActionAxis 的 cards/skills/icons） */
-export async function getBuiltinFilePlan(id: BuiltinPluginId): Promise<BuiltinFilePlan> {
+export async function getBuiltinFilePlan(id: BuiltinPluginId, pluginsDir: string): Promise<BuiltinFilePlan> {
   const paths = await builtinPaths();
 
   if (id === 'actionaxis') {
@@ -99,6 +100,7 @@ export async function getBuiltinFilePlan(id: BuiltinPluginId): Promise<BuiltinFi
       { source: path.join(paths.actionAxis, 'ActionAxisPlugin.dll'), destRel: 'ActionAxisPlugin.dll' },
       { source: path.join(paths.actionAxis, 'ActionAxisEngine.dll'), destRel: 'ActionAxisEngine.dll' }
     ];
+    await assertBuiltinActionAxisUpgrade(required[0].source, path.join(pluginsDir, 'ActionAxisPlugin.dll'));
     const files: DeployFile[] = [
       ...required,
       { source: paths.cards, destRel: 'BazaarActionAxis/cards.json', optional: true },
@@ -132,12 +134,14 @@ export async function getBuiltinPluginInfo(plugins: PluginInfo[]): Promise<Built
     const required = requiredSourceFiles(definition.id, paths);
     const availability = await Promise.all(required.map((file) => pathExists(file)));
     const installedPlugin = plugins.find((plugin) => plugin.knownId === definition.id);
+    const version = definition.id === 'actionaxis'
+      ? await readActionAxisVersion(required[0]) : definition.version;
 
     results.push({
       id: definition.id,
       name: definition.name,
       description: definition.description,
-      version: definition.version,
+      version: version ?? '未知',
       installed: Boolean(installedPlugin),
       available: availability.every(Boolean),
       sourceNote: paths.note,

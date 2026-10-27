@@ -1,0 +1,4150 @@
+{
+  "Launcher Core": {
+    "id": "9fafc0a5-6675-4e17-9457-590f13354a39",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 6000,
+            "Multicast": 1,
+            "FlyingTargets": 2,
+            "ChargeAmount": 1000
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "FlyingTargets": 3
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "FlyingTargets": 4
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Launcher Core Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {
+            "SlowTargets": 2,
+            "SlowAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Heavy The Core Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "3e0ae5b0-fe0d-4468-93ea-89d6ef2330e6",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "da86d3a1ce7dcd6dbd9b7836013f252f",
+                  "Text": "Slow {ability.e1.targets} items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 1,
+            "FreezeAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy The Core Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "c48bdb4f-7ef8-4644-8f8c-377743d5d59a",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "a820ee7c836aa0744217cbf8a8931641",
+                  "Text": "Freeze an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteTargets": 2,
+            "HasteAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Turbo The Core Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1246135c-aff1-4f63-84bc-6dac9d869ab8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "e0273d30fb00533957c10a054657e3de",
+                  "Text": "Haste {ability.e1.targets} items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 50
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Shielded Launcher Core Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "fa54c55e-0b0f-4547-89ef-798630249e7b",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "36d0af58f9c61cf7e820e9b430b56fbb",
+                  "Text": "Shield {ability.e1}"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Restorative": {
+          "Attributes": {
+            "HealAmount": 50
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerHeal",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Restorative Launcher Core Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "e089c8bb-6786-45ad-a72d-0abf70e94a1a",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Heal"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "5924827764130bc55a5ccc48ab0de0ef",
+                  "Text": "Heal {ability.e1}"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 5
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Toxic Launcher Core Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "a1f60ddf-33db-4b57-b13d-7983ac0c7179",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "3133c08a2706453dbfb893201311b593",
+                  "Text": "Poison {ability.e1}"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 5
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Fiery Launcher Core Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "95935ae2-c6a5-453d-9e3b-c2c3d5dc0c2c",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "e5b643e5042fb429d98b63364e397ef1",
+                  "Text": "Burn {ability.e1}"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Multicast",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Launcher Core Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "79757a81-8317-47d8-996d-785d2a67adf9",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "dc1a96bffac3ce0cba3e40cfa57a3836",
+                  "Text": "This has +{aura.e1} Multicast"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 40.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAnd",
+                    "Conditions": [
+                      {
+                        "$type": "TCardConditionalAttribute",
+                        "Attribute": "Flying",
+                        "ComparisonOperator": "Equal",
+                        "ComparisonValue": {
+                          "$type": "TFixedValue",
+                          "Value": 1.0
+                        }
+                      },
+                      {
+                        "$type": "TCardConditionalCanCrit",
+                        "IsNot": false
+                      }
+                    ]
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Deadly Launcher Core Aura",
+              "InternalDescription": "Deadly",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "8ff1e0c0-ec81-4b71-bba1-c358cc79b643",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Crit"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "aa774d8b1b72f42ef48ed55534ad3276",
+                  "Text": "Your Flying items have +{aura.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {
+            "PercentSlowReduction": 100,
+            "PercentFreezeReduction": 100,
+            "DestroyImmunity": 1
+          },
+          "Abilities": {},
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "128752298544554061d35691fb9222c8",
+                  "Text": "This is immune to Freeze, Slow and Destroy"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": false
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 50
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Obsidian Launcher Core Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6894acb5-0ac7-4648-bf11-a11131b10875",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "b17c25768096428a8434b3262b96b8ae",
+                  "Text": "Deal {ability.e1} Damage"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 5
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy Launcher Core Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "a1f60ddf-33db-4b57-b13d-7983ac0c7179",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "549396c82b7f87260fdb6fc5efdc607c",
+                  "Text": "Regen {ability.e1}"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "9fafc0a5-6675-4e17-9457-590f13354a39",
+      "Version": "5.0.0",
+      "InternalName": "Launcher Core",
+      "InternalDescription": "",
+      "StartingTier": "Silver",
+      "Size": "Medium",
+      "Heroes": [
+        "Dooley"
+      ],
+      "Tags": [
+        "Core",
+        "Tech"
+      ],
+      "HiddenTags": [
+        "Flying",
+        "FlyingReference",
+        "Charge"
+      ],
+      "ArtKey": "efd0e9686853a884691cd727c796855d",
+      "TranslationKey": "74178f71b1d6612922138bbe09cc0981",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "a893a5722e08be47476e2f35a41d2221",
+          "Text": "Launcher Core"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "4ded640d1d1d58ffdaa5deb2b51afd14",
+              "Text": "{ability.0.targets} other items start Flying"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "d52c5162f7eb86454c80ad6a82e2924b",
+              "Text": "Charge your other Flying items {ability.1} second"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "7645da9b2a6e3d36e57c8f15d814bbd7",
+              "Text": "When you use another Friend or Flying item, Charge this {ability.2} second"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardFlyingStart",
+            "Duration": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": true,
+              "TargetSection": "SelfHand",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "Flying",
+                "ComparisonOperator": "Equal",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Launcher Core 1",
+          "InternalDescription": "[2/3/4] other items start Flying",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "846e8e7afaf45608603ea0cb19c2e4be",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardCharge",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": true,
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "Flying",
+                "ComparisonOperator": "Equal",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                }
+              }
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Launcher Core 2",
+          "InternalDescription": "Charge your Flying items 1 second",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "78d5e8670d88516a486726c28e6a37f1",
+          "WorksIn": "Anywhere"
+        },
+        "2": {
+          "Id": "2",
+          "Trigger": {
+            "$type": "TTriggerOnBeforeItemUsed",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": true,
+              "Conditions": {
+                "$type": "TCardConditionalOr",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  },
+                  {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "Flying",
+                    "ComparisonOperator": "Equal",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardCharge",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Launcher Core 3",
+          "InternalDescription": "When you use a Friend or Flying item, Charge this 1 second",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "78d5e8670d88516a486726c28e6a37f1",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    }
+  },
+  "Dryad": {
+    "id": "cda40a45-8703-4347-8f4e-7fd460b2ac57",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 7000,
+            "HealAmount": 30,
+            "ChargeAmount": 1000,
+            "ChargeTargets": 1
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 6000
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 5000
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "CooldownMax": 4000
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Dryad Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {
+            "SlowTargets": 1,
+            "SlowAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Heavy Dryad Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "84786f3d-468f-4169-a655-b3f332761e74",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "1d5db875afe5e3b17b4bafe1d6209ccd",
+                  "Text": "Slow an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 1,
+            "FreezeAmount": 500
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy Dryad Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "19ffef39-2770-4fc9-8e52-de3c9e6340f4",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "a820ee7c836aa0744217cbf8a8931641",
+                  "Text": "Freeze an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteTargets": 1,
+            "HasteAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Turbo Dryad Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "e8576ff1-8d81-4b84-ad66-9225c429e179",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "0af165fdd879b2da2146a0f6cd25b63f",
+                  "Text": "Haste an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Shielded Dryad Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "c181e454-290a-4557-b204-b58a983ebb40",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "ShieldApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "HealAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shielded Dryad Aura",
+              "InternalDescription": "Sets the value of ShieldApplyAmount",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "175acedca4c51e63972dbc4fc09f688e",
+                  "Text": "Shield equal to this item's Heal"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Restorative": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "HealAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Restorative Dryad Aura",
+              "InternalDescription": "Restorative 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Heal"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "6217d99da222fa6925e802bd4054fd62",
+                  "Text": "This has double Heal"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Toxic Dryad Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "fd0f96d4-c0f1-4982-a381-162f44e68927",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PoisonApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "HealAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Toxic Dryad Aura",
+              "InternalDescription": "Sets the value of Poison",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "6976152830a90f15209ddf81ef8c2d47",
+                  "Text": "Poison equal to 10% of this item's Heal"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Fiery Dryad Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "498c422a-4ef0-468e-86bc-710cd8d1b6bf",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "BurnApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "HealAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Fiery Dryad Aura",
+              "InternalDescription": "Sets the value of Burn",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "48b76f75ceb43a970df1ad854ae532f7",
+                  "Text": "Burn equal to 10% of this item's Heal"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Multicast",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Dryad Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "d101edc8-16d0-4226-a9ce-d35207585831",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "dc1a96bffac3ce0cba3e40cfa57a3836",
+                  "Text": "This has +{aura.e1} Multicast"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Deadly Dryad Aura",
+              "InternalDescription": "Deadly 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "e94d1abd-ce34-4ce8-b10a-354843224f83",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "fb0d333c350d41af9d9d617a0e7d57ba",
+                  "Text": "This has +{aura.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {
+            "PercentSlowReduction": 100,
+            "PercentFreezeReduction": 100,
+            "DestroyImmunity": 1
+          },
+          "Abilities": {},
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "4abf58312c149a24b073ef628cdecf2f",
+                  "Text": "This item is immune to Freeze, Slow and Destroy"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": false
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Obsidian Dryad Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6894acb5-0ac7-4648-bf11-a11131b10875",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "DamageAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "HealAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Obsidian Dryad Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "408fdc11a9a755dcd7cde14f33cc719d",
+                  "Text": "Deal Damage equal to this item's Heal"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy Dryad Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "fd0f96d4-c0f1-4982-a381-162f44e68927",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "RegenApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "HealAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Mossy Dryad Aura",
+              "InternalDescription": "Sets the value of Regen",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "f8cb101e528e6da28284645af37854f5",
+                  "Text": "Regen equal to 10% of this item's Heal"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "cda40a45-8703-4347-8f4e-7fd460b2ac57",
+      "Version": "5.0.0",
+      "InternalName": "Dryad",
+      "InternalDescription": "",
+      "StartingTier": "Bronze",
+      "Size": "Medium",
+      "Heroes": [
+        "Karnok"
+      ],
+      "Tags": [
+        "Friend"
+      ],
+      "HiddenTags": [
+        "Heal",
+        "RageReference",
+        "Charge"
+      ],
+      "ArtKey": "9f254337c61ea09458d05919e3dd1e08",
+      "TranslationKey": "d904c79f8bee68dc007de9efd2231843",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "d6ffdde48416d2b61f3b478e9a953a0b",
+          "Text": "Dryad"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "a97e36c86a304c0e9f9c8469b388936a",
+              "Text": "Heal {ability.0}"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "fc8d72cebe5313937aeeccdb68735c6b",
+              "Text": "When you use another item, charge this {ability.1} second"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "0944715d24aed1c779a348eed4e68240",
+              "Text": "When you Enrage, increase this item's Charge by 1 second"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerHeal",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Dryad 1",
+          "InternalDescription": "Shield {ability.0}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "06fe4684e576e50e5245f0cb0b73051c",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnItemUsed",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": true,
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardCharge",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "4b4cf2264f5bc49b80dc743ab5ab2b37",
+          "WorksIn": "Anywhere"
+        },
+        "2": {
+          "Id": "2",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerEnraged",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "Source": null
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 1000.0
+            },
+            "AttributeType": "ChargeAmount",
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "c1db006c3cf5c00be610c9d7a2fd0603",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    }
+  },
+  "Cog": {
+    "id": "ca77281c-f912-4db3-86ce-64842a4ccdaa",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 4000,
+            "Multicast": 1,
+            "HasteAmount": 1000,
+            "HasteTargets": 1
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "HasteAmount": 2000
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "HasteAmount": 3000
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "HasteAmount": 4000
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Cog Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {
+            "SlowTargets": 1,
+            "SlowAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Heavy Cog Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "bac12d8e-ab6f-41c6-88e1-9ae54eba904c",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "1d5db875afe5e3b17b4bafe1d6209ccd",
+                  "Text": "Slow an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 1,
+            "FreezeAmount": 500
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy Cog Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b39ec067-0a71-4c90-a8e0-9ee6cbf206fd",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "a820ee7c836aa0744217cbf8a8931641",
+                  "Text": "Freeze an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "HasteAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Turbo Cog Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "ee7372bc-5856-49a7-8f3f-20eb2e099067",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "HasteReference"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "cc2c56a507c5fc3de78ca16e32e40063",
+                  "Text": "This Hastes for twice as long"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 30
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Shielded Cog Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "a1625985-433f-49a9-8490-6d2d5adfac76",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "36d0af58f9c61cf7e820e9b430b56fbb",
+                  "Text": "Shield {ability.e1}"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Restorative": {
+          "Attributes": {
+            "HealAmount": 30
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerHeal",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Restorative Cog Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "7a8793ce-ca4a-4526-8b11-aa3e5f39eb54",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Heal"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "5924827764130bc55a5ccc48ab0de0ef",
+                  "Text": "Heal {ability.e1}"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 3
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Toxic Cog Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "37dcdb09-00af-451c-8b25-5d22e4b03e51",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "3133c08a2706453dbfb893201311b593",
+                  "Text": "Poison {ability.e1}"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 3
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Fiery Cog Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1ab0eb14-605c-4aed-9f9f-fe2b0bd20e15",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "e5b643e5042fb429d98b63364e397ef1",
+                  "Text": "Burn {ability.e1}"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Multicast",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Cog Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "966ef6ac-536b-45b9-9707-191a330424e5",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "dc1a96bffac3ce0cba3e40cfa57a3836",
+                  "Text": "This has +{aura.e1} Multicast"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {
+            "PercentSlowReduction": 100,
+            "PercentFreezeReduction": 100,
+            "DestroyImmunity": 1
+          },
+          "Abilities": {},
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "128752298544554061d35691fb9222c8",
+                  "Text": "This is immune to Freeze, Slow and Destroy"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": false
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 20.0
+                },
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfNeighbors",
+                  "Conditions": {
+                    "$type": "TCardConditionalAnd",
+                    "Conditions": [
+                      {
+                        "$type": "TCardConditionalCanCrit",
+                        "IsNot": false
+                      }
+                    ]
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Deadly Cog Ability",
+              "InternalDescription": "Deadly",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "a6045c5b-64b3-4682-8c55-342fd95e34fg",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Crit"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "725cc79e8cbc706ef030eff1d8f7f345",
+                  "Text": "An adjacent item gains 20% Crit Chance"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 30
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Obsidian Cog Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6894acb5-0ac7-4648-bf11-a11131b10875",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "b17c25768096428a8434b3262b96b8ae",
+                  "Text": "Deal {ability.e1} Damage"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 3
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy Cog Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "37dcdb09-00af-451c-8b25-5d22e4b03e51",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "549396c82b7f87260fdb6fc5efdc607c",
+                  "Text": "Regen {ability.e1}"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "ca77281c-f912-4db3-86ce-64842a4ccdaa",
+      "Version": "5.0.0",
+      "InternalName": "Cog",
+      "InternalDescription": "",
+      "StartingTier": "Bronze",
+      "Size": "Small",
+      "Heroes": [
+        "Dooley"
+      ],
+      "Tags": [
+        "Relic"
+      ],
+      "HiddenTags": [
+        "Haste"
+      ],
+      "ArtKey": "7f932a90904c01d4ebe7d6502ac8f44b",
+      "TranslationKey": "6d5c6fcfde82eb131e35fb1cf1cd8143",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "6d5c6fcfde82eb131e35fb1cf1cd8143",
+          "Text": "Cog"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "32f762c8bce89d17595fb88bdbf0e747",
+              "Text": "Haste an adjacent item for {ability.0} second(s)"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardHaste",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": false,
+              "TargetSection": "SelfNeighbors",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "CooldownMax",
+                "ComparisonOperator": "GreaterThan",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "High",
+          "InternalName": "Cog 1",
+          "InternalDescription": "Haste an adjacent item for {ability.0} second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "0fa9ecacdd5b2ca505fa87ffe3427a27",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    }
+  },
+  "Drowsdrop": {
+    "id": "a655fb50-b9e1-41ec-b658-07459014f96c",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Multicast": 1,
+            "AmmoMax": 1,
+            "PoisonApplyAmount": 4,
+            "SlowAmount": 1000,
+            "SlowTargets": 1,
+            "ReloadAmount": 99,
+            "ReloadTargets": 1
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "PoisonApplyAmount": 8,
+            "SlowTargets": 2
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "PoisonApplyAmount": 12,
+            "SlowTargets": 3
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "PoisonApplyAmount": 16,
+            "SlowTargets": 4
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Drowsdrop Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SlowAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Heavy Sands of Time Aura",
+              "InternalDescription": "Heavy 2",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "25c00cb2-e60b-4893-bc6b-8d28e16e036d",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "SlowReference"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "31cff168f0fdfefc1500ab67fca6348d",
+                  "Text": "This Slows for twice as long"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 1,
+            "FreezeAmount": 500
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy Drowsdrop Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PotionsThrowing/Freeze/Projectile_PotionsThrowing_Freeze_PV.prefab",
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b39ec067-0a71-4c90-a8e0-9ee6cbf206fd",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "a820ee7c836aa0744217cbf8a8931641",
+                  "Text": "Freeze an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteTargets": 1,
+            "HasteAmount": 3000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Turbo Drowsdrop Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PotionsThrowing/Haste/Projectile_PotionsThrowing_Haste_PV.prefab",
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "196449b1-6f26-4651-b5e1-9e765bfaca67",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "0af165fdd879b2da2146a0f6cd25b63f",
+                  "Text": "Haste an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Shielded Drowsdrop Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PotionsThrowing/Shield/Projectile_PotionsThrowing_Shield_PV.prefab",
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "e9075d1f-b08a-4f13-a391-128b84e4ecd8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "ShieldApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "PoisonApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 5.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shielded Drowsdrop Aura",
+              "InternalDescription": "Sets the value of Shield",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "0f5f8684b4017f756eaafb9a43821098",
+                  "Text": "Shield equal to {aura.e2.mod} times this item's Poison"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Restorative": {
+          "Attributes": {
+            "HealAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerHeal",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Restorative Drowsdrop Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "25cbc239-8002-4008-a9d2-9e8a887605a8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "HealAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "PoisonApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 5.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Restorative Drowsdrop Aura",
+              "InternalDescription": "Sets the value of Heal",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Heal"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "bbaa262badf83852f0a7f6e3f0e7917d",
+                  "Text": "Heal equal to {aura.e2.mod} times this item's Poison"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Toxic": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PoisonApplyAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Toxic Drowsdrop Aura",
+              "InternalDescription": "Toxic 2",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "38aac203-cecf-4447-bb47-1213ce5abcc6",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "PoisonReference"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "ab081919b010c642c9d1e439e95047b5",
+                  "Text": "This has double Poison"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Fiery Drowsdrop Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PotionsThrowing/Burn/Projectile_PotionsThrowing_Burn_PV.prefab",
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "8e8c73cb-8f17-4721-9692-6e80e0ebe776",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "BurnApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "PoisonApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Fiery Drowsdrop Aura",
+              "InternalDescription": "Sets the value of Burn",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "a0ebcea3ab0050e8e04fa9f28b9bc3d9",
+                  "Text": "Burn equal to this item's Poison"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Multicast",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Katana Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "79757a81-8317-47d8-996d-785d2a67adf9",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "dc1a96bffac3ce0cba3e40cfa57a3836",
+                  "Text": "This has +{aura.e1} Multicast"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Deadly Drowsdrop Aura",
+              "InternalDescription": "Deadly 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "ae9e9b17-da01-49a1-aa6d-7717611ea351",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "fb0d333c350d41af9d9d617a0e7d57ba",
+                  "Text": "This has +{aura.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {
+            "PercentSlowReduction": 100,
+            "PercentFreezeReduction": 100,
+            "DestroyImmunity": 1
+          },
+          "Abilities": {},
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "128752298544554061d35691fb9222c8",
+                  "Text": "This is immune to Freeze, Slow and Destroy"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": false
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Obsidian Drowsdrop Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PotionsThrowing/Critrate/Projectile_PotionsThrowing_Critrate_PV.prefab",
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6894acb5-0ac7-4648-bf11-a11131b10875",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "DamageAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "PoisonApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 5.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Obsidian Drowsdrop Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "4b92f77a8b0b3ee056097acb3f34204a",
+                  "Text": "Deal Damage equal to {aura.e2.mod} times this item's Poison"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy Drowsdrop Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PotionsThrowing/Regen/Projectile_PotionsThrowing_Regen_PV.prefab",
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "8e8c73cb-8f17-4721-9692-6e80e0ebe776",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "RegenApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "PoisonApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Mossy Drowsdrop Aura",
+              "InternalDescription": "Sets the value of Regen",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "a825118f9821925a4865b75f609c1231",
+                  "Text": "Regen equal to this item's Poison"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "a655fb50-b9e1-41ec-b658-07459014f96c",
+      "Version": "5.0.0",
+      "InternalName": "Drowsdrop",
+      "InternalDescription": "",
+      "StartingTier": "Bronze",
+      "Size": "Small",
+      "Heroes": [
+        "Karnok"
+      ],
+      "Tags": [
+        "Potion"
+      ],
+      "HiddenTags": [
+        "Poison",
+        "Slow",
+        "Ammo"
+      ],
+      "ArtKey": "ddcd7f0620b02144f92dfd73d06963c3",
+      "TranslationKey": "787f5c373817e1971d07917bf29556dd",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "792820faa8de8bc7ead304527adf7a52",
+          "Text": "Drowsdrop"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "1d253ebff415eba7833e3eb9d8ce7258",
+              "Text": "Poison {ability.0}"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "d349e562dafaf0e23ba5b2cf65168ecc",
+              "Text": "Slow {ability.1.targets} item(s) for {ability.1} second(s)"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "2e88ba982fbcf051295c7d495f3a1188",
+              "Text": "When you Slow this, Reload it"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerPoisonApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Drowsdrop 1",
+          "InternalDescription": "Poison {ability.0}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PotionsThrowing/Poison/Projectile_PotionsThrowing_Poison_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "f81e2a52bd8a45e8ba22e5ed65b179ad",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardSlow",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardRandom",
+              "ExcludeSelf": false,
+              "TargetSection": "OpponentHand",
+              "Conditions": {
+                "$type": "TCardConditionalAttribute",
+                "Attribute": "CooldownMax",
+                "ComparisonOperator": "GreaterThan",
+                "ComparisonValue": {
+                  "$type": "TFixedValue",
+                  "Value": 0.0
+                }
+              }
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "3769133992f9bd90cef8f0f5a57b0bf4",
+          "WorksIn": "Anywhere"
+        },
+        "2": {
+          "Id": "2",
+          "Trigger": {
+            "$type": "TTriggerOnCardPerformedSlow",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfBoard",
+              "ExcludeSelf": false,
+              "Conditions": null
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardReload",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Hunter's Blind 3",
+          "InternalDescription": "When you Slow this, reload it",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1e28737efff81bd95f11ba802c62a374",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    }
+  }
+}

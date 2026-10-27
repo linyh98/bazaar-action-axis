@@ -12,7 +12,11 @@ namespace BazaarActionAxis.Engine
         public static ResolvedRules Resolve(RuleOverrides overrides, bool nativeMechanics)
         {
             ResolvedRules merged = new ResolvedRules();
-            if (nativeMechanics) merged.Dt = 0.05;
+            if (nativeMechanics)
+            {
+                merged.Dt = 0.05;
+                merged.LifestealOnShieldDamage = true;
+            }
             if (overrides == null) return merged;
 
             if (overrides.Dt.HasValue) merged.Dt = overrides.Dt.Value;

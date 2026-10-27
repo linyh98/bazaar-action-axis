@@ -41,9 +41,9 @@ namespace BazaarActionAxis.Engine
             switch (template.ToLowerInvariant())
             {
                 case Firefly:
-                    card.Triggers.Clear();
-                    card.Triggers.Add(Trigger("onHaste", Charge(charge), new TriggerFilter { SourceAdjacent = true }));
-                    card.Triggers.Add(Trigger("onSlow", Charge(charge), new TriggerFilter { SourceAdjacent = true }));
+                    SetBaseTriggers(card,
+                        Trigger("onHaste", Charge(charge), new TriggerFilter { SourceAdjacent = true }),
+                        Trigger("onSlow", Charge(charge), new TriggerFilter { SourceAdjacent = true }));
                     break;
                 case Cog:
                     ReplaceFirst(card, "haste", new Effect {
@@ -55,7 +55,7 @@ namespace BazaarActionAxis.Engine
                 case LauncherCore:
                     // TTriggerOnCardFired + TActionCardFlyingStart means start flying
                     // on each use. It is not an at-combat-start trigger.
-                    card.Effects.RemoveAll(delegate(Effect e) { return e.Kind == "fly"; });
+                    card.Effects.RemoveAll(delegate(Effect e) { return e.Kind == "fly" && !e.FromEnchantment; });
                     ReplaceFirst(card, "charge", new Effect {
                         Kind = "charge", Seconds = charge,
                         Target = new Target { Kind = "allSelfItems", ExcludeSelf = true, FlyingOnly = true }
@@ -64,30 +64,29 @@ namespace BazaarActionAxis.Engine
                         Kind = "fly", Count = (int)Read(card, "FlyingTargets", Tier(card, 2, 2, 3, 4)),
                         Target = new Target { Kind = "randomSelfItem", ExcludeSelf = true, NotFlyingOnly = true }
                     });
-                    card.Triggers.Clear();
-                    card.Triggers.Add(Trigger("onUse", Charge(charge), new TriggerFilter { SourceOther = true, SourceFlyingOrFriend = true }));
+                    SetBaseTriggers(card, Trigger("onUse", Charge(charge), new TriggerFilter { SourceOther = true, SourceFlyingOrFriend = true }));
                     break;
                 case Drowsdrop:
                     if (!card.Tags.Contains("Potion")) card.Tags.Add("Potion");
-                    card.Triggers.Clear();
-                    card.Triggers.Add(Trigger("onSlow", new Effect {
+                    SetBaseTriggers(card, Trigger("onSlow", new Effect {
                         Kind = "reload", AmountValue = Read(card, "ReloadAmount", 99),
                         Count = 1, Target = new Target { Kind = "selfItem" }
                     }, new TriggerFilter { Self = true }));
                     // Its outgoing slow must only target items with a cooldown.
                     for (int i = 0; i < card.Effects.Count; i++)
                     {
-                        if (card.Effects[i].Kind != "slow") continue;
+                        if (card.Effects[i].Kind != "slow" || card.Effects[i].FromEnchantment) continue;
                         Effect slow = card.Effects[i];
                         card.Effects[i] = new Effect { Kind = "slow", Seconds = slow.Seconds, Count = slow.Count,
+                            DurationValue = slow.DurationValue, CountValue = slow.CountValue,
                             Target = new Target { Kind = "randomEnemyItem", HasCooldownOnly = true } };
                         break;
                     }
                     break;
                 case Aviators:
-                    card.Triggers.Clear();
-                    card.Triggers.Add(Trigger("onBurnApplied", Charge(charge), null));
-                    card.Triggers.Add(Trigger("onDestroy", Charge(charge), null));
+                    SetBaseTriggers(card,
+                        Trigger("onBurnApplied", Charge(charge), null),
+                        Trigger("onDestroy", Charge(charge), null));
                     break;
                 case Spider:
                 case SolderingGun:
@@ -103,28 +102,58 @@ namespace BazaarActionAxis.Engine
             // All combat abilities of these templates are represented here;
             // day/sale actions are deliberately outside the combat simulation.
             // Unsupported enchantments continue to report their own warnings.
+            foreach (Effect effect in card.Effects) BindRuntimeValues(card, effect);
+            foreach (TriggerDef trigger in card.Triggers)
+                foreach (Effect effect in trigger.Effects) BindRuntimeValues(card, effect);
             card.ParseStatus = "structured";
-            CheckUnresolvedResistance(card, warnings);
+            CheckUnresolvedResistance(config, card, warnings);
             config.Cards[item.CardId] = card;
         }
 
-        private static void CheckUnresolvedResistance(CardDef card, IList<string> warnings)
+        private static void BindRuntimeValues(CardDef card, Effect effect)
+        {
+            string attr = effect.Kind == "charge" ? "ChargeAmount" : effect.Kind == "haste" ? "HasteAmount" :
+                effect.Kind == "slow" ? "SlowAmount" : effect.Kind == "freeze" ? "FreezeAmount" : null;
+            int value;
+            if (attr != null && effect.DurationValue == null && card.LiveAttributes.TryGetValue(attr, out value))
+                effect.DurationValue = new NumExpr { Type = "cardAttribute", TargetKind = "selfItem", Attribute = attr, Value = value };
+            string countAttr = attr != null ? attr.Replace("Amount", "Targets") : effect.Kind == "fly" ? "FlyingTargets" : null;
+            if (countAttr != null && effect.CountValue == null && effect.Target != null &&
+                effect.Target.Kind.StartsWith("random", StringComparison.Ordinal) && card.LiveAttributes.TryGetValue(countAttr, out value))
+                effect.CountValue = new NumExpr { Type = "cardAttribute", TargetKind = "selfItem", Attribute = countAttr, Value = value };
+            if (effect.Kind == "reload" && effect.Amount == null && effect.AmountValue >= 0 && card.LiveAttributes.TryGetValue("ReloadAmount", out value))
+                effect.Amount = new NumExpr { Type = "cardAttribute", TargetKind = "selfItem", Attribute = "ReloadAmount", Value = value };
+        }
+
+        private static void CheckUnresolvedResistance(BattleConfig config, CardDef card, IList<string> warnings)
         {
             int flying, slow, freeze;
             bool isFlying = card.LiveAttributes.TryGetValue("Flying", out flying) && flying != 0;
+            bool slowAura = ResistanceAuraSupported(config, "PercentSlowReduction");
+            bool freezeAura = ResistanceAuraSupported(config, "PercentFreezeReduction");
             if (card.LiveAttributes.TryGetValue("PercentSlowReduction", out slow) &&
-                !ResistanceExplained(slow, card.PercentSlowReduction, isFlying) ||
+                !ResistanceExplained(slow, card.PercentSlowReduction, isFlying, slowAura) ||
                 card.LiveAttributes.TryGetValue("PercentFreezeReduction", out freeze) &&
-                !ResistanceExplained(freeze, card.PercentFreezeReduction, isFlying))
+                !ResistanceExplained(freeze, card.PercentFreezeReduction, isFlying, freezeAura))
                 warnings.Add(card.DisplayName() + "：实时减速/冻结抗性无法区分永久加成与战斗临时效果，保留已知基础抗性，额外抗性未加入木桩推演");
         }
 
-        private static bool ResistanceExplained(int live, double permanent, bool flying)
+        private static bool ResistanceAuraSupported(BattleConfig config, string attribute)
+        {
+            if (config == null) return false;
+            foreach (CardDef candidate in config.Cards.Values)
+                foreach (JsonValue raw in candidate.NativeRuntimeAuras)
+                    if (NativeSkillSupport.Text(raw["Action"], "AttributeType") == attribute) return true;
+            return false;
+        }
+
+        private static bool ResistanceExplained(int live, double permanent, bool flying, bool supportedAura)
         {
             // All eight verified native templates have zero innate resistance.
             // A captured 50 on a flying card is the known derived flight value.
             // Other values cannot safely be normalized by subtracting 50.
-            return live == permanent || flying && permanent == 0 && live == 50;
+            return live == permanent || flying && permanent == 0 && live == 50 ||
+                supportedAura && permanent == 0;
         }
 
         private static Effect Charge(double seconds)
@@ -139,10 +168,18 @@ namespace BazaarActionAxis.Engine
             return trigger;
         }
 
+        private static void SetBaseTriggers(CardDef card, params TriggerDef[] triggers)
+        {
+            // 校准只替换基础触发器；附魔被动是 NativeCardAbilityMapper 追加的
+            // 独立层，不能被校准路径清空。
+            card.Triggers.RemoveAll(delegate(TriggerDef trigger) { return !trigger.FromEnchantment; });
+            card.Triggers.AddRange(triggers);
+        }
+
         private static void ReplaceFirst(CardDef card, string kind, Effect replacement)
         {
             for (int i = 0; i < card.Effects.Count; i++)
-                if (card.Effects[i].Kind == kind) { card.Effects[i] = replacement; return; }
+                if (card.Effects[i].Kind == kind && !card.Effects[i].FromEnchantment) { card.Effects[i] = replacement; return; }
             card.Effects.Add(replacement);
         }
 

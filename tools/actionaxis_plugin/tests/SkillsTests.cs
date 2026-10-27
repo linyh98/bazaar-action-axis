@@ -108,7 +108,11 @@ namespace BazaarActionAxis.Tests
             Assert.Equal(4, EventCount(result, "skillTrigger", mapped.Skills[0].SourceId));
             Assert.Equal(0, EventCount(result, "activate", mapped.Skills[0].SourceId));
             Assert.Equal(3, result.PlayerItems.Count);
-            foreach (ItemSnapshot snapshot in result.ItemSnapshots) Assert.False(snapshot.ItemId.StartsWith("skill:"));
+            // 技能实例自原生技能卡牌更新对齐起进属性快照流（Battle.CaptureItemSnapshots）；
+            // 物品视图仍只含物品（上方 Count==3 已覆盖）。
+            foreach (ItemSnapshot snapshot in result.ItemSnapshots)
+                if (snapshot.ItemId.StartsWith("skill:"))
+                    Assert.Equal(mapped.Skills[0].SourceId, snapshot.ItemId);
             Assert.Equal(1, SkillMapper.Apply(config, new[] { skill }, catalog).CombatCount);
             Assert.Equal(1, config.PlayerSkills.Count);
         }

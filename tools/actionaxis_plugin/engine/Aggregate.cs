@@ -39,6 +39,7 @@ namespace BazaarActionAxis.Engine
         private readonly double[] _burnStacks;
         private readonly double[] _poisonStacks;
         private readonly List<ItemSnapshot> _cooldowns = new List<ItemSnapshot>();
+        private bool _hasCooldown;
 
         internal CardStatsSeries(double dt, int ticks, double endTime)
         {
@@ -62,11 +63,12 @@ namespace BazaarActionAxis.Engine
 
         public double Dt { get { return _dt; } }
         public int Ticks { get { return _ticks; } }
-        public bool HasCooldown { get { return _cooldowns.Count > 0 && _cooldowns[0].HasCooldown; } }
+        public bool HasCooldown { get { return _hasCooldown; } }
 
         internal void AddCooldown(ItemSnapshot snapshot)
         {
             _cooldowns.Add(snapshot);
+            _hasCooldown |= snapshot.HasCooldown;
         }
 
         // 0 = new cooldown, 1 = ready. At an activation tick the next cooldown
@@ -75,7 +77,7 @@ namespace BazaarActionAxis.Engine
         public double CooldownProgressAt(double time)
         {
             if (!HasCooldown || double.IsNaN(time)) return 0;
-            if (time < _cooldowns[0].Time) time = _cooldowns[0].Time;
+            if (time < _cooldowns[0].Time) return 0;
             if (time > _endTime) time = _endTime;
 
             ItemSnapshot snapshot = _cooldowns[CooldownIndexAt(time)];
@@ -195,7 +197,12 @@ namespace BazaarActionAxis.Engine
     {
         public static BattleDamageSeries BuildDamage(BattleResult result, double enemyMaxHp)
         {
-            return new BattleDamageSeries(result ?? new BattleResult(), enemyMaxHp);
+            return new BattleDamageSeries(result ?? new BattleResult(), Side.Enemy, enemyMaxHp);
+        }
+
+        public static BattleDamageSeries BuildDamage(BattleResult result, Side targetSide, double targetMaxHp)
+        {
+            return new BattleDamageSeries(result ?? new BattleResult(), targetSide, targetMaxHp);
         }
 
         public static Dictionary<string, CardStatsSeries> Build(BattleResult result, double dt)
@@ -222,13 +229,48 @@ namespace BazaarActionAxis.Engine
 
             foreach (BattleEvent ev in result.Events)
             {
+                double value = ev.Value.HasValue ? ev.Value.Value : 0;
+                bool damage = ev.Kind == "damage" ||
+                    (ev.Kind == "dotTick" && (ev.Note == "burn" || ev.Note == "poison"));
+                if (ev.Kind == "activate" || ev.Kind == "skillTrigger")
+                {
+                    CardStatsSeries action;
+                    if (ev.SourceItemId != null && map.TryGetValue(ev.SourceItemId, out action))
+                        action.AddActivation(ev.Time);
+                    continue;
+                }
+                if (damage && ev.Shares != null && ev.Shares.Count > 0)
+                {
+                    // DoT ticks are split among the current stack owners. The
+                    // observed side is never the output side for its own hit.
+                    foreach (BattleEventShare share in ev.Shares)
+                    {
+                        if (ev.TargetSide.HasValue && share.Side == ev.TargetSide.Value) continue;
+                        CardStatsSeries shared;
+                        if (share.SourceItemId != null && map.TryGetValue(share.SourceItemId, out shared))
+                            shared.AddDamage(ev.Time, Math.Max(0, share.ActualAmount));
+                    }
+                    continue;
+                }
+                if (ev.Kind == "heal" && ev.Shares != null && ev.Shares.Count > 0)
+                {
+                    foreach (BattleEventShare share in ev.Shares)
+                    {
+                        CardStatsSeries shared;
+                        if (share.SourceItemId != null && map.TryGetValue(share.SourceItemId, out shared))
+                            shared.AddHeal(ev.Time, Math.Max(0, share.ActualAmount));
+                    }
+                    continue;
+                }
                 if (ev.SourceItemId == null) continue;
                 CardStatsSeries series;
                 if (!map.TryGetValue(ev.SourceItemId, out series)) continue;
 
-                double value = ev.Value.HasValue ? ev.Value.Value : 0;
-                if (ev.Kind == "activate" || ev.Kind == "skillTrigger") series.AddActivation(ev.Time);
-                else if (ev.Kind == "damage") series.AddDamage(ev.Time, ev.ActualDamage ?? value);
+                if (damage)
+                {
+                    if (ev.TargetSide.HasValue && ev.Side == ev.TargetSide.Value) continue;
+                    series.AddDamage(ev.Time, ev.ActualDamage ?? value);
+                }
                 else if (ev.Kind == "heal") series.AddHeal(ev.Time, value);
                 else if (ev.Kind == "shield") series.AddShield(ev.Time, value);
             }

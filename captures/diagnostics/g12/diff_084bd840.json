@@ -1,0 +1,1583 @@
+{
+ "comparatorVersion": 1,
+ "verdict": "DIFF",
+ "native": {
+  "path": null,
+  "ledgerSha256": null,
+  "battleId": "084bd840e98c4b81a681cb8d30c7b72f",
+  "sha256": "a2096bcc1f8eb31cdb274e2948c65271f08542bb989a986ebfe683c23ed06c08",
+  "contract": {
+   "path": "tools\\native_replay_contract_v1.json",
+   "sha256": "e29e360a7fec44c1b3e27d2f5d0aa942c9781413963f3362d3bf9e860b2ab90b",
+   "contractVersion": 1,
+   "assemblySha256": "c51716ea3ec8c43009ef244a84767f88c14d836efea565b85459e420223a8947",
+   "gameDataSha256": "fdfd3087e6a23eda2c9f53be68b012006cc949d03e8666dd51ad65abc71b61e5",
+   "payloadVersions": [
+    1
+   ]
+  }
+ },
+ "simulated": {
+  "path": null,
+  "ledgerSha256": null,
+  "kind": "simulated",
+  "source": {
+   "fixturePath": "D:\\巴扎plus\\tmp_g12\\batch_full_v9\\fixtures\\084bd840e98c4b81a681cb8d30c7b72f.json",
+   "fixtureSha256": "a1396524060185548e945a20ce9f5e70ae11f83960bcdd02b81b328750aac009",
+   "templatePath": "D:\\巴扎plus\\tools\\actionaxis_plugin\\build\\native_mapping_templates.jsonl",
+   "templateSha256": "ed9ebc2695a4ff242f1defac161fca145c3e4fedd8fcc75d8d34236c140e4494",
+   "catalogPath": "D:\\巴扎plus\\src\\data\\cards.json",
+   "catalogSha256": "03cf426a0a7b4580e4228974be813e73dc486c2cfed257258a579c48a5208ec0",
+   "seed": 1,
+   "assumptions": [
+    "player.maxHp 使用开局 Health；原生 SpawnMessage 没有 HealthMax",
+    "player.startShield 使用 0；原生载荷没有该字段",
+    "player.startRegen 使用 0；原生载荷没有该字段",
+    "player.rageMax 使用引擎默认 100；原生载荷没有该字段",
+    "player.enragedDurationMax 使用引擎默认 5000ms；原生载荷没有该字段",
+    "随机种子固定为 1；回放载荷没有可重建的种子"
+   ]
+  }
+ },
+ "counts": {
+  "matched": 2429,
+  "unverified": 1441,
+  "postEnd": 45,
+  "missing": 3,
+  "extra": 0,
+  "valueMismatch": 18,
+  "timeMismatch": 0,
+  "unknown": 29
+ },
+ "channels": {
+  "effects": {
+   "matched": 44,
+   "unverified": 23,
+   "unverifiedReasons": {
+    "noCounterpart": 13,
+    "randomTarget": 3,
+    "randomTransform": 7
+   },
+   "postEnd": 4,
+   "native": 65,
+   "simulated": 50,
+   "missing": 1,
+   "extra": 0,
+   "valueMismatch": 0,
+   "timeMismatch": 0
+  },
+  "health": {
+   "matched": 51,
+   "unverified": 0,
+   "unverifiedReasons": {},
+   "postEnd": 1,
+   "native": 52,
+   "simulated": 51,
+   "missing": 1,
+   "extra": 0,
+   "valueMismatch": 18,
+   "timeMismatch": 0
+  },
+  "cards": {
+   "matched": 2328,
+   "unverified": 1412,
+   "unverifiedReasons": {
+    "randomTarget": 196,
+    "randomCascade": 1216
+   },
+   "postEnd": 40,
+   "native": 3403,
+   "simulated": 3381,
+   "missing": 1,
+   "extra": 0,
+   "valueMismatch": 0,
+   "timeMismatch": 0
+  },
+  "identity": {
+   "matched": 5,
+   "unverified": 6,
+   "unverifiedReasons": {
+    "randomTransform": 6
+   },
+   "postEnd": 0,
+   "native": 11,
+   "simulated": 11,
+   "missing": 0,
+   "extra": 0,
+   "valueMismatch": 0,
+   "timeMismatch": 0
+  },
+  "outcome": {
+   "matched": 1,
+   "unverified": 0,
+   "unverifiedReasons": {},
+   "postEnd": 0,
+   "native": 1,
+   "simulated": 1,
+   "missing": 0,
+   "extra": 0,
+   "valueMismatch": 0,
+   "timeMismatch": 0
+  }
+ },
+ "unknowns": [
+  {
+   "side": "native",
+   "detail": {
+    "scope": "opening.skills",
+    "detail": "player 状态=CapturedEmpty，不能当作完整开场技能",
+    "source": "bpp.battle_snapshots"
+   }
+  },
+  {
+   "side": "native",
+   "detail": {
+    "scope": "opening.skills",
+    "detail": "enemy 状态=CapturedEmpty，不能当作完整开场技能",
+    "source": "bpp.battle_snapshots"
+   }
+  },
+  {
+   "side": "native",
+   "detail": {
+    "scope": "opening.attribute.player",
+    "detail": "回放 SpawnMessage 与侧车均未提供 HealthMax",
+    "source": "replay/opening"
+   }
+  },
+  {
+   "side": "native",
+   "detail": {
+    "scope": "opening.attribute.player",
+    "detail": "回放 SpawnMessage 与侧车均未提供 Shield",
+    "source": "replay/opening"
+   }
+  },
+  {
+   "side": "native",
+   "detail": {
+    "scope": "opening.attribute.player",
+    "detail": "回放 SpawnMessage 与侧车均未提供 HealthRegen",
+    "source": "replay/opening"
+   }
+  },
+  {
+   "side": "native",
+   "detail": {
+    "scope": "opening.attribute.player",
+    "detail": "回放 SpawnMessage 与侧车均未提供 RageMax",
+    "source": "replay/opening"
+   }
+  },
+  {
+   "side": "native",
+   "detail": {
+    "scope": "opening.attribute.player",
+    "detail": "回放 SpawnMessage 与侧车均未提供 EnragedDurationMax",
+    "source": "replay/opening"
+   }
+  },
+  {
+   "side": "native",
+   "detail": {
+    "scope": "opening.playerSkills",
+    "detail": "没有玩家技能数据（回放载荷不携带，需 OpeningMessage 侧车）"
+   }
+  },
+  {
+   "side": "native",
+   "detail": {
+    "scope": "sample.random",
+    "detail": "回放载荷没有可重建的随机种子/选取顺序；随机分支只能标为 UNVERIFIED",
+    "source": "replay payload"
+   }
+  },
+  {
+   "side": "native",
+   "detail": {
+    "scope": "sample.passive",
+    "detail": "该回放战斗帧没有 EffectTriggered 事件；被动触发目标无法逐事件核对",
+    "source": "084bd840e98c4b81a681cb8d30c7b72f"
+   }
+  },
+  {
+   "side": "native",
+   "detail": {
+    "scope": "sample.activation",
+    "detail": "原生战斗帧没有独立的主动施放事件；activationsDerived 仅为 EffectExecuted 按来源/帧分组"
+   }
+  },
+  {
+   "side": "simulated",
+   "detail": "player.maxHp 使用开局 Health；原生 SpawnMessage 没有 HealthMax"
+  },
+  {
+   "side": "simulated",
+   "detail": "player.startShield 使用 0；原生载荷没有该字段"
+  },
+  {
+   "side": "simulated",
+   "detail": "player.startRegen 使用 0；原生载荷没有该字段"
+  },
+  {
+   "side": "simulated",
+   "detail": "player.rageMax 使用引擎默认 100；原生载荷没有该字段"
+  },
+  {
+   "side": "simulated",
+   "detail": "player.enragedDurationMax 使用引擎默认 5000ms；原生载荷没有该字段"
+  },
+  {
+   "side": "simulated",
+   "detail": "随机种子固定为 1；回放载荷没有可重建的种子"
+  }
+ ],
+ "firstDifferences": [
+  {
+   "channel": "cards",
+   "status": "missing",
+   "frame": 99,
+   "time": 4.95,
+   "note": "native card update has no simulated update",
+   "native": {
+    "frame": 99,
+    "time": 4.95,
+    "canonical": "player|7|g0|a655fb50-b9e1-41ec-b658-07459014f96c",
+    "attribute": "Ammo",
+    "previous": 1,
+    "current": 0,
+    "randomTarget": false,
+    "randomCascade": false,
+    "runtimeAbility": false,
+    "auraRefresh": false,
+    "raw": {
+     "frame": 99,
+     "time": 4.95,
+     "instanceId": "itm_FSYXkmf",
+     "side": "player",
+     "attribute": "Ammo",
+     "previous": 1,
+     "current": 0
+    }
+   },
+   "simulated": null,
+   "canonical": "player|7|g0|a655fb50-b9e1-41ec-b658-07459014f96c",
+   "attribute": "Ammo"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 240,
+   "time": 12.0,
+   "note": "burn 2.0 vs 1.0; poison 20.0 vs 21.0",
+   "native": {
+    "hp": 306.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 2.0,
+    "poison": 20.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 240,
+    "time": 12.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 306.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 1.0,
+    "poison": 21.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 240,
+    "time": 12.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 245,
+   "time": 12.25,
+   "note": "burn 2.0 vs 1.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 306.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 2.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 245,
+    "time": 12.25,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 306.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 245,
+    "time": 12.25,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "missing",
+   "frame": 250,
+   "time": 12.5,
+   "note": "native health change has no simulated change",
+   "native": {
+    "hp": 306.0,
+    "hpMax": 400.0,
+    "shield": 149.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 250,
+    "time": 12.5,
+    "side": "enemy"
+   },
+   "simulated": null,
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 260,
+   "time": 13.0,
+   "note": "hp 282.0 vs 281.0; shield 149.0 vs 150.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 282.0,
+    "hpMax": 400.0,
+    "shield": 149.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 260,
+    "time": 13.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 281.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 260,
+    "time": 13.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 280,
+   "time": 14.0,
+   "note": "hp 258.0 vs 256.0; shield 149.0 vs 150.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 258.0,
+    "hpMax": 400.0,
+    "shield": 149.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 280,
+    "time": 14.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 256.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 280,
+    "time": 14.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 282,
+   "time": 14.1,
+   "note": "hp 258.0 vs 256.0; shield 199.0 vs 200.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 258.0,
+    "hpMax": 400.0,
+    "shield": 199.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 282,
+    "time": 14.1,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 256.0,
+    "hpMax": 400.0,
+    "shield": 200.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 282,
+    "time": 14.1,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 300,
+   "time": 15.0,
+   "note": "hp 234.0 vs 231.0; shield 199.0 vs 200.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 234.0,
+    "hpMax": 400.0,
+    "shield": 199.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 300,
+    "time": 15.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 231.0,
+    "hpMax": 400.0,
+    "shield": 200.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 300,
+    "time": 15.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 320,
+   "time": 16.0,
+   "note": "hp 210.0 vs 206.0; shield 199.0 vs 200.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 210.0,
+    "hpMax": 400.0,
+    "shield": 199.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 320,
+    "time": 16.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 206.0,
+    "hpMax": 400.0,
+    "shield": 200.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 320,
+    "time": 16.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 332,
+   "time": 16.6,
+   "note": "hp 210.0 vs 206.0; shield 249.0 vs 250.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 210.0,
+    "hpMax": 400.0,
+    "shield": 249.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 332,
+    "time": 16.6,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 206.0,
+    "hpMax": 400.0,
+    "shield": 250.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 332,
+    "time": 16.6,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 340,
+   "time": 17.0,
+   "note": "hp 186.0 vs 181.0; shield 249.0 vs 250.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 186.0,
+    "hpMax": 400.0,
+    "shield": 249.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 340,
+    "time": 17.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 181.0,
+    "hpMax": 400.0,
+    "shield": 250.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 340,
+    "time": 17.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 360,
+   "time": 18.0,
+   "note": "hp 162.0 vs 156.0; shield 249.0 vs 250.0; poison 28.0 vs 29.0",
+   "native": {
+    "hp": 162.0,
+    "hpMax": 400.0,
+    "shield": 249.0,
+    "burn": 1.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 360,
+    "time": 18.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 156.0,
+    "hpMax": 400.0,
+    "shield": 250.0,
+    "burn": 1.0,
+    "poison": 29.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 360,
+    "time": 18.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 380,
+   "time": 19.0,
+   "note": "hp 134.0 vs 127.0; shield 249.0 vs 250.0; poison 28.0 vs 29.0",
+   "native": {
+    "hp": 134.0,
+    "hpMax": 400.0,
+    "shield": 249.0,
+    "burn": 1.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 380,
+    "time": 19.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 127.0,
+    "hpMax": 400.0,
+    "shield": 250.0,
+    "burn": 1.0,
+    "poison": 29.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 380,
+    "time": 19.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 400,
+   "time": 20.0,
+   "note": "hp 106.0 vs 98.0; shield 249.0 vs 250.0; poison 28.0 vs 29.0",
+   "native": {
+    "hp": 106.0,
+    "hpMax": 400.0,
+    "shield": 249.0,
+    "burn": 1.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 400,
+    "time": 20.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 98.0,
+    "hpMax": 400.0,
+    "shield": 250.0,
+    "burn": 1.0,
+    "poison": 29.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 400,
+    "time": 20.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 400,
+   "time": 20.0,
+   "note": "poison 36.0 vs 28.0",
+   "native": {
+    "hp": 94.0,
+    "hpMax": null,
+    "shield": null,
+    "burn": null,
+    "poison": 36.0,
+    "regen": null,
+    "dead": false,
+    "frame": 400,
+    "time": 20.0,
+    "side": "player"
+   },
+   "simulated": {
+    "hp": 94.0,
+    "hpMax": 400.0,
+    "shield": 0.0,
+    "burn": 0.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 400,
+    "time": 20.0,
+    "side": "player"
+   },
+   "side": "player"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 410,
+   "time": 20.5,
+   "note": "poison 36.0 vs 28.0",
+   "native": {
+    "hp": 64.0,
+    "hpMax": null,
+    "shield": null,
+    "burn": null,
+    "poison": 36.0,
+    "regen": null,
+    "dead": false,
+    "frame": 410,
+    "time": 20.5,
+    "side": "player"
+   },
+   "simulated": {
+    "hp": 64.0,
+    "hpMax": 400.0,
+    "shield": 0.0,
+    "burn": 0.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 410,
+    "time": 20.5,
+    "side": "player"
+   },
+   "side": "player"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 412,
+   "time": 20.6,
+   "note": "hp 106.0 vs 98.0; shield 299.0 vs 300.0; poison 28.0 vs 29.0",
+   "native": {
+    "hp": 106.0,
+    "hpMax": 400.0,
+    "shield": 299.0,
+    "burn": 1.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 412,
+    "time": 20.6,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 98.0,
+    "hpMax": 400.0,
+    "shield": 300.0,
+    "burn": 1.0,
+    "poison": 29.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 412,
+    "time": 20.6,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 420,
+   "time": 21.0,
+   "note": "hp 78.0 vs 69.0; shield 299.0 vs 300.0; poison 28.0 vs 29.0",
+   "native": {
+    "hp": 78.0,
+    "hpMax": 400.0,
+    "shield": 299.0,
+    "burn": 1.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 420,
+    "time": 21.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 69.0,
+    "hpMax": 400.0,
+    "shield": 300.0,
+    "burn": 1.0,
+    "poison": 29.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 420,
+    "time": 21.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 420,
+   "time": 21.0,
+   "note": "hp 13.0 vs 21.0; poison 36.0 vs 28.0",
+   "native": {
+    "hp": 13.0,
+    "hpMax": null,
+    "shield": null,
+    "burn": null,
+    "poison": 36.0,
+    "regen": null,
+    "dead": false,
+    "frame": 420,
+    "time": 21.0,
+    "side": "player"
+   },
+   "simulated": {
+    "hp": 21.0,
+    "hpMax": 400.0,
+    "shield": 0.0,
+    "burn": 0.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 420,
+    "time": 21.0,
+    "side": "player"
+   },
+   "side": "player"
+  },
+  {
+   "channel": "effects",
+   "status": "missing",
+   "frame": 425,
+   "time": 21.25,
+   "note": "native death has no simulated effect",
+   "native": {
+    "channel": "effects",
+    "frame": 425,
+    "time": 21.25,
+    "kind": "death",
+    "source": "player|player|g0|player",
+    "target": "player|player|g0|player",
+    "value": null,
+    "sourceName": "CombatantDied",
+    "randomTarget": false,
+    "unverifiable": false,
+    "unverifiableReason": null,
+    "raw": {
+     "code": 1,
+     "codeName": "CombatSimEventCombatantDied",
+     "phase": "combat",
+     "frame": 425,
+     "time": 21.25,
+     "sequence": 67,
+     "fields": {
+      "CombatantId": 0
+     },
+     "combatantId": 0,
+     "side": "player"
+    }
+   },
+   "simulated": null,
+   "kind": "death",
+   "source": "player|player|g0|player",
+   "target": "player|player|g0|player"
+  }
+ ],
+ "topDiffGroups": [
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "kind": null,
+   "canonical": null,
+   "attribute": null,
+   "count": 18,
+   "firstFrame": 240,
+   "lastFrame": 425,
+   "example": "burn 2.0 vs 1.0; poison 20.0 vs 21.0"
+  },
+  {
+   "channel": "cards",
+   "status": "missing",
+   "kind": null,
+   "canonical": "player|7|g0|a655fb50-b9e1-41ec-b658-07459014f96c",
+   "attribute": "Ammo",
+   "count": 1,
+   "firstFrame": 99,
+   "lastFrame": 99,
+   "example": "native card update has no simulated update"
+  },
+  {
+   "channel": "health",
+   "status": "missing",
+   "kind": null,
+   "canonical": null,
+   "attribute": null,
+   "count": 1,
+   "firstFrame": 250,
+   "lastFrame": 250,
+   "example": "native health change has no simulated change"
+  },
+  {
+   "channel": "effects",
+   "status": "missing",
+   "kind": "death",
+   "canonical": null,
+   "attribute": null,
+   "count": 1,
+   "firstFrame": 425,
+   "lastFrame": 425,
+   "example": "native death has no simulated effect"
+  }
+ ],
+ "diffs": [
+  {
+   "channel": "cards",
+   "status": "missing",
+   "frame": 99,
+   "time": 4.95,
+   "note": "native card update has no simulated update",
+   "native": {
+    "frame": 99,
+    "time": 4.95,
+    "canonical": "player|7|g0|a655fb50-b9e1-41ec-b658-07459014f96c",
+    "attribute": "Ammo",
+    "previous": 1,
+    "current": 0,
+    "randomTarget": false,
+    "randomCascade": false,
+    "runtimeAbility": false,
+    "auraRefresh": false,
+    "raw": {
+     "frame": 99,
+     "time": 4.95,
+     "instanceId": "itm_FSYXkmf",
+     "side": "player",
+     "attribute": "Ammo",
+     "previous": 1,
+     "current": 0
+    }
+   },
+   "simulated": null,
+   "canonical": "player|7|g0|a655fb50-b9e1-41ec-b658-07459014f96c",
+   "attribute": "Ammo"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 240,
+   "time": 12.0,
+   "note": "burn 2.0 vs 1.0; poison 20.0 vs 21.0",
+   "native": {
+    "hp": 306.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 2.0,
+    "poison": 20.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 240,
+    "time": 12.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 306.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 1.0,
+    "poison": 21.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 240,
+    "time": 12.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 245,
+   "time": 12.25,
+   "note": "burn 2.0 vs 1.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 306.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 2.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 245,
+    "time": 12.25,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 306.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 245,
+    "time": 12.25,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "missing",
+   "frame": 250,
+   "time": 12.5,
+   "note": "native health change has no simulated change",
+   "native": {
+    "hp": 306.0,
+    "hpMax": 400.0,
+    "shield": 149.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 250,
+    "time": 12.5,
+    "side": "enemy"
+   },
+   "simulated": null,
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 260,
+   "time": 13.0,
+   "note": "hp 282.0 vs 281.0; shield 149.0 vs 150.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 282.0,
+    "hpMax": 400.0,
+    "shield": 149.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 260,
+    "time": 13.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 281.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 260,
+    "time": 13.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 280,
+   "time": 14.0,
+   "note": "hp 258.0 vs 256.0; shield 149.0 vs 150.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 258.0,
+    "hpMax": 400.0,
+    "shield": 149.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 280,
+    "time": 14.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 256.0,
+    "hpMax": 400.0,
+    "shield": 150.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 280,
+    "time": 14.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 282,
+   "time": 14.1,
+   "note": "hp 258.0 vs 256.0; shield 199.0 vs 200.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 258.0,
+    "hpMax": 400.0,
+    "shield": 199.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 282,
+    "time": 14.1,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 256.0,
+    "hpMax": 400.0,
+    "shield": 200.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 282,
+    "time": 14.1,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 300,
+   "time": 15.0,
+   "note": "hp 234.0 vs 231.0; shield 199.0 vs 200.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 234.0,
+    "hpMax": 400.0,
+    "shield": 199.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 300,
+    "time": 15.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 231.0,
+    "hpMax": 400.0,
+    "shield": 200.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 300,
+    "time": 15.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 320,
+   "time": 16.0,
+   "note": "hp 210.0 vs 206.0; shield 199.0 vs 200.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 210.0,
+    "hpMax": 400.0,
+    "shield": 199.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 320,
+    "time": 16.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 206.0,
+    "hpMax": 400.0,
+    "shield": 200.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 320,
+    "time": 16.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 332,
+   "time": 16.6,
+   "note": "hp 210.0 vs 206.0; shield 249.0 vs 250.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 210.0,
+    "hpMax": 400.0,
+    "shield": 249.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 332,
+    "time": 16.6,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 206.0,
+    "hpMax": 400.0,
+    "shield": 250.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 332,
+    "time": 16.6,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 340,
+   "time": 17.0,
+   "note": "hp 186.0 vs 181.0; shield 249.0 vs 250.0; poison 24.0 vs 25.0",
+   "native": {
+    "hp": 186.0,
+    "hpMax": 400.0,
+    "shield": 249.0,
+    "burn": 1.0,
+    "poison": 24.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 340,
+    "time": 17.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 181.0,
+    "hpMax": 400.0,
+    "shield": 250.0,
+    "burn": 1.0,
+    "poison": 25.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 340,
+    "time": 17.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 360,
+   "time": 18.0,
+   "note": "hp 162.0 vs 156.0; shield 249.0 vs 250.0; poison 28.0 vs 29.0",
+   "native": {
+    "hp": 162.0,
+    "hpMax": 400.0,
+    "shield": 249.0,
+    "burn": 1.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 360,
+    "time": 18.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 156.0,
+    "hpMax": 400.0,
+    "shield": 250.0,
+    "burn": 1.0,
+    "poison": 29.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 360,
+    "time": 18.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 380,
+   "time": 19.0,
+   "note": "hp 134.0 vs 127.0; shield 249.0 vs 250.0; poison 28.0 vs 29.0",
+   "native": {
+    "hp": 134.0,
+    "hpMax": 400.0,
+    "shield": 249.0,
+    "burn": 1.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 380,
+    "time": 19.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 127.0,
+    "hpMax": 400.0,
+    "shield": 250.0,
+    "burn": 1.0,
+    "poison": 29.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 380,
+    "time": 19.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 400,
+   "time": 20.0,
+   "note": "hp 106.0 vs 98.0; shield 249.0 vs 250.0; poison 28.0 vs 29.0",
+   "native": {
+    "hp": 106.0,
+    "hpMax": 400.0,
+    "shield": 249.0,
+    "burn": 1.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 400,
+    "time": 20.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 98.0,
+    "hpMax": 400.0,
+    "shield": 250.0,
+    "burn": 1.0,
+    "poison": 29.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 400,
+    "time": 20.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 400,
+   "time": 20.0,
+   "note": "poison 36.0 vs 28.0",
+   "native": {
+    "hp": 94.0,
+    "hpMax": null,
+    "shield": null,
+    "burn": null,
+    "poison": 36.0,
+    "regen": null,
+    "dead": false,
+    "frame": 400,
+    "time": 20.0,
+    "side": "player"
+   },
+   "simulated": {
+    "hp": 94.0,
+    "hpMax": 400.0,
+    "shield": 0.0,
+    "burn": 0.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 400,
+    "time": 20.0,
+    "side": "player"
+   },
+   "side": "player"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 410,
+   "time": 20.5,
+   "note": "poison 36.0 vs 28.0",
+   "native": {
+    "hp": 64.0,
+    "hpMax": null,
+    "shield": null,
+    "burn": null,
+    "poison": 36.0,
+    "regen": null,
+    "dead": false,
+    "frame": 410,
+    "time": 20.5,
+    "side": "player"
+   },
+   "simulated": {
+    "hp": 64.0,
+    "hpMax": 400.0,
+    "shield": 0.0,
+    "burn": 0.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 410,
+    "time": 20.5,
+    "side": "player"
+   },
+   "side": "player"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 412,
+   "time": 20.6,
+   "note": "hp 106.0 vs 98.0; shield 299.0 vs 300.0; poison 28.0 vs 29.0",
+   "native": {
+    "hp": 106.0,
+    "hpMax": 400.0,
+    "shield": 299.0,
+    "burn": 1.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 412,
+    "time": 20.6,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 98.0,
+    "hpMax": 400.0,
+    "shield": 300.0,
+    "burn": 1.0,
+    "poison": 29.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 412,
+    "time": 20.6,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 420,
+   "time": 21.0,
+   "note": "hp 78.0 vs 69.0; shield 299.0 vs 300.0; poison 28.0 vs 29.0",
+   "native": {
+    "hp": 78.0,
+    "hpMax": 400.0,
+    "shield": 299.0,
+    "burn": 1.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 420,
+    "time": 21.0,
+    "side": "enemy"
+   },
+   "simulated": {
+    "hp": 69.0,
+    "hpMax": 400.0,
+    "shield": 300.0,
+    "burn": 1.0,
+    "poison": 29.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 420,
+    "time": 21.0,
+    "side": "enemy"
+   },
+   "side": "enemy"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 420,
+   "time": 21.0,
+   "note": "hp 13.0 vs 21.0; poison 36.0 vs 28.0",
+   "native": {
+    "hp": 13.0,
+    "hpMax": null,
+    "shield": null,
+    "burn": null,
+    "poison": 36.0,
+    "regen": null,
+    "dead": false,
+    "frame": 420,
+    "time": 21.0,
+    "side": "player"
+   },
+   "simulated": {
+    "hp": 21.0,
+    "hpMax": 400.0,
+    "shield": 0.0,
+    "burn": 0.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 420,
+    "time": 21.0,
+    "side": "player"
+   },
+   "side": "player"
+  },
+  {
+   "channel": "effects",
+   "status": "missing",
+   "frame": 425,
+   "time": 21.25,
+   "note": "native death has no simulated effect",
+   "native": {
+    "channel": "effects",
+    "frame": 425,
+    "time": 21.25,
+    "kind": "death",
+    "source": "player|player|g0|player",
+    "target": "player|player|g0|player",
+    "value": null,
+    "sourceName": "CombatantDied",
+    "randomTarget": false,
+    "unverifiable": false,
+    "unverifiableReason": null,
+    "raw": {
+     "code": 1,
+     "codeName": "CombatSimEventCombatantDied",
+     "phase": "combat",
+     "frame": 425,
+     "time": 21.25,
+     "sequence": 67,
+     "fields": {
+      "CombatantId": 0
+     },
+     "combatantId": 0,
+     "side": "player"
+    }
+   },
+   "simulated": null,
+   "kind": "death",
+   "source": "player|player|g0|player",
+   "target": "player|player|g0|player"
+  },
+  {
+   "channel": "health",
+   "status": "value-mismatch",
+   "frame": 425,
+   "time": 21.25,
+   "note": "hp -2.0 vs 6.0; poison 36.0 vs 28.0; dead True vs False",
+   "native": {
+    "hp": -2.0,
+    "hpMax": null,
+    "shield": null,
+    "burn": null,
+    "poison": 36.0,
+    "regen": null,
+    "dead": true,
+    "frame": 425,
+    "time": 21.25,
+    "side": "player"
+   },
+   "simulated": {
+    "hp": 6.0,
+    "hpMax": 400.0,
+    "shield": 0.0,
+    "burn": 0.0,
+    "poison": 28.0,
+    "regen": 0.0,
+    "dead": false,
+    "frame": 425,
+    "time": 21.25,
+    "side": "player"
+   },
+   "side": "player"
+  }
+ ]
+}

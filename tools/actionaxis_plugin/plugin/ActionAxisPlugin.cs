@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace BazaarActionAxis.Plugin
 {
-    [BepInPlugin("com.bazaarsim.actionaxis", "Bazaar Action Axis", "1.5.6")]
+    [BepInPlugin("com.bazaarsim.actionaxis", "Bazaar Action Axis", "1.6.10")]
     public sealed class ActionAxisPlugin : BaseUnityPlugin
     {
         internal static ActionAxisPlugin Instance;
@@ -30,6 +30,11 @@ namespace BazaarActionAxis.Plugin
                 "BazaarActionAxis",
                 "数据目录（cards.json 与 icons）");
 
+            Settings.RecordVerification = Config.Bind("Verification", "Enabled", true,
+                "自动记录用于核对行动轴的开场快照、原始逐帧战斗和完整模板库；不需要打开面板，下次启动生效。");
+            Settings.VerificationDir = Config.Bind("Verification", "Directory", "BazaarActionAxis/VerificationReplays",
+                "验证记录目录（相对于 BepInEx/plugins，或绝对路径）；分享时请保留 catalog 文件。");
+            if (Settings.RecordVerification.Value) gameObject.AddComponent<ValidationReplayRecorder>();
             gameObject.AddComponent<ActionAxisOverlay>();
             Logger.LogInfo("[ActionAxis] loaded; engine=" + typeof(BattleEngine).Assembly.ManifestModule.ModuleVersionId);
         }
@@ -39,6 +44,8 @@ namespace BazaarActionAxis.Plugin
     {
         public ConfigEntry<KeyboardShortcut> ToggleKey;
         public ConfigEntry<string> DataDir;
+        public ConfigEntry<bool> RecordVerification;
+        public ConfigEntry<string> VerificationDir;
     }
 
     internal sealed class ActionAxisOverlay : MonoBehaviour
@@ -111,7 +118,7 @@ namespace BazaarActionAxis.Plugin
             if (!_ready) return;
             HandleKeyboardEvent();
             GUI.depth = -1000;
-            Theme.Scale = Mathf.Clamp(Mathf.Min(Screen.width / 1240f, Screen.height / 760f), 0.25f, 1.5f);
+            Theme.Scale = Mathf.Clamp(Mathf.Min(Screen.width / 1240f, Screen.height / 840f), 0.25f, 1.5f);
             Theme.EnsureInit();
 
             if (_panel.IsOpen)
@@ -178,6 +185,7 @@ namespace BazaarActionAxis.Plugin
             _panel.SetSkills(null, null);
             _panel.SetWarnings(null);
             _panel.SetCombatReplay(null, null);
+            _panel.SetCombatants(null, null, null);
             _panel.Open();
             _dockButton.SetVisible(false);
             if (!_inputBlocker.SetBlocked(true))
@@ -244,9 +252,27 @@ namespace BazaarActionAxis.Plugin
                     read.PlayerMaxHealth.HasValue && read.PlayerMaxHealth.Value > 0
                         ? read.PlayerMaxHealth.Value : 100,
                     100000, 30);
+                // TransformDestroyed 需要棋盘外的同品质供体（Jerky／小型 Drone）。
+                // 本地卡库是显示数据时会在变形时给出显式告警，不静默冒充原生。
+                mapped.Config.SpawnPool.AddRange(_catalog.Cards);
+                foreach (string templateId in NativeTransform.FixedTemplateIds)
+                {
+                    try
+                    {
+                        JsonValue template = LiveMonsterReader.LoadCardTemplate(templateId);
+                        if (template != null) mapped.Config.NativeTemplates[templateId] = template;
+                    }
+                    catch (Exception templateError)
+                    {
+                        Debug.LogWarning("[ActionAxis] fixed transform template " + templateId + ": " + templateError.Message);
+                    }
+                }
                 mapped.Config.NativeMechanics = true;
                 // 英雄身份用于 TCardConditionalPlayerHero（“另一个英雄的物品”）。
                 mapped.Config.PlayerHero = read.PlayerHero;
+                mapped.Config.EnemyHero = read.EnemyHero;
+                MonsterOpponentMapper.ApplyHeroAttributes(mapped.Config, read.PlayerAttributes, Side.Player);
+                mapped.Config.PlayerHeroAttributesAreLive = read.PlayerAttributes.Count > 0;
                 // A fresh dummy projection starts before combat. Current replay
                 // HP and temporary Flying/Haste state are not opening state.
                 mapped.Config.PlayerStartHp = mapped.Config.PlayerMaxHp;
@@ -268,6 +294,8 @@ namespace BazaarActionAxis.Plugin
                 List<string> choiceNames = new List<string>();
                 if (opponent != null)
                 {
+                    // 两种模式共享 0–30 秒时间轴；真实野怪战遇到死亡立即结算。
+                    mapped.Config.MaxTime = 30;
                     mapped.Config.PlayerStartHp = read.PlayerHealth.HasValue
                         ? Math.Max(0, Math.Min(mapped.Config.PlayerMaxHp, read.PlayerHealth.Value))
                         : mapped.Config.PlayerMaxHp;
@@ -321,6 +349,7 @@ namespace BazaarActionAxis.Plugin
 
                     TileModel tile = new TileModel();
                     tile.Id = item.Id;
+                    tile.History = item;
                     tile.Card = item.Card;
                     tile.Slot = item.Slot;
                     tile.Enchantment = enchantment;
@@ -333,6 +362,7 @@ namespace BazaarActionAxis.Plugin
                 {
                     TileModel tile = new TileModel();
                     tile.Id = item.Id;
+                    tile.History = item;
                     tile.Card = item.Card;
                     tile.Slot = item.Slot;
                     CardStatsSeries stats;
@@ -370,8 +400,13 @@ namespace BazaarActionAxis.Plugin
                     delegate(double time) { return damageSeries.At(time).OutputDamage; },
                     delegate(double time) { return damageSeries.At(time).EffectiveDamage; });
                 _panel.SetOpponentSimulation(damageSeries, opponent == null ? "木桩" : opponent.Name,
-                    choiceNames, _monsterSelection.Index, result.EndTime, result.Winner);
+                    choiceNames, _monsterSelection.Index, result.EndTime, result.Winner,
+                    new BattleHealthSeries(result));
                 _panel.SetSkills(skillRows, read.SkillReadError);
+                _panel.SetCombatants(HeroDisplayName(read.PlayerHero),
+                    delegate { return PortraitResolver.GetPlayer(read.PlayerHero); },
+                    opponent == null ? (Func<Texture2D>)null :
+                    delegate { return PortraitResolver.GetMonster(opponent.Id, opponent.Name, opponent.EncounterId); });
                 List<string> warnings = new List<string>(result.Warnings);
                 warnings.AddRange(skillMapping.Warnings);
                 warnings.AddRange(mapped.EnchantmentWarnings);
@@ -476,7 +511,20 @@ namespace BazaarActionAxis.Plugin
             _dockButton.Dispose();
             _inputBlocker.Dispose();
             if (_icons != null) _icons.Dispose();
+            PortraitResolver.Dispose();
+            SkillIconResolver.Dispose();
             Theme.Dispose();
+        }
+
+        private static string HeroDisplayName(string hero)
+        {
+            if (string.Equals(hero, "Vanessa", StringComparison.OrdinalIgnoreCase)) return "凡妮莎";
+            if (string.Equals(hero, "Pygmalien", StringComparison.OrdinalIgnoreCase)) return "皮格马利翁";
+            if (string.Equals(hero, "Dooley", StringComparison.OrdinalIgnoreCase)) return "杜利";
+            if (string.Equals(hero, "Mak", StringComparison.OrdinalIgnoreCase)) return "马克";
+            if (string.Equals(hero, "Stelle", StringComparison.OrdinalIgnoreCase)) return "斯黛拉";
+            if (string.Equals(hero, "Jules", StringComparison.OrdinalIgnoreCase)) return "朱尔斯";
+            return string.IsNullOrEmpty(hero) ? "我方英雄" : hero;
         }
 
         private void OnDisable()

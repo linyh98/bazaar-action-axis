@@ -1,0 +1,758 @@
+{
+  "battleId": "084bd840e98c4b81a681cb8d30c7b72f",
+  "replaySha256": "a2096bcc1f8eb31cdb274e2948c65271f08542bb989a986ebfe683c23ed06c08",
+  "openingHeroes": {
+    "player": "Dooley",
+    "enemy": "Pygmalien"
+  },
+  "directHits": [
+    {
+      "frame": 80,
+      "time": 4.0,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -30,
+      "sources": [
+        "jh_RfYv"
+      ],
+      "sourceNames": [
+        "0c99ece6-4aa5-40ac-a663-dc81df03a694"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 140,
+      "time": 7.0,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [
+        "ts2bWYg"
+      ],
+      "sourceNames": [
+        "cbe0436a-3573-4bbb-968b-9bb61343c2a7"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 145,
+      "time": 7.25,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [
+        "ts2bWYg"
+      ],
+      "sourceNames": [
+        "cbe0436a-3573-4bbb-968b-9bb61343c2a7"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 150,
+      "time": 7.5,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [
+        "ts2bWYg"
+      ],
+      "sourceNames": [
+        "cbe0436a-3573-4bbb-968b-9bb61343c2a7"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 170,
+      "time": 8.5,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -30,
+      "sources": [
+        "jh_RfYv"
+      ],
+      "sourceNames": [
+        "0c99ece6-4aa5-40ac-a663-dc81df03a694"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 250,
+      "time": 12.5,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -30,
+      "sources": [
+        "jh_RfYv"
+      ],
+      "sourceNames": [
+        "0c99ece6-4aa5-40ac-a663-dc81df03a694"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 280,
+      "time": 14.0,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [
+        "ts2bWYg"
+      ],
+      "sourceNames": [
+        "cbe0436a-3573-4bbb-968b-9bb61343c2a7"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 285,
+      "time": 14.25,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [
+        "ts2bWYg"
+      ],
+      "sourceNames": [
+        "cbe0436a-3573-4bbb-968b-9bb61343c2a7"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 290,
+      "time": 14.5,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [
+        "ts2bWYg"
+      ],
+      "sourceNames": [
+        "cbe0436a-3573-4bbb-968b-9bb61343c2a7"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 330,
+      "time": 16.5,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -30,
+      "sources": [
+        "jh_RfYv"
+      ],
+      "sourceNames": [
+        "0c99ece6-4aa5-40ac-a663-dc81df03a694"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 410,
+      "time": 20.5,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -30,
+      "sources": [
+        "jh_RfYv"
+      ],
+      "sourceNames": [
+        "0c99ece6-4aa5-40ac-a663-dc81df03a694"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 420,
+      "time": 21.0,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [
+        "ts2bWYg"
+      ],
+      "sourceNames": [
+        "cbe0436a-3573-4bbb-968b-9bb61343c2a7"
+      ],
+      "attribution": "verified"
+    },
+    {
+      "frame": 425,
+      "time": 21.25,
+      "side": "player",
+      "damageType": "Damage",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [
+        "ts2bWYg"
+      ],
+      "sourceNames": [
+        "cbe0436a-3573-4bbb-968b-9bb61343c2a7"
+      ],
+      "attribution": "verified"
+    }
+  ],
+  "dotTicks": [
+    {
+      "frame": 120,
+      "time": 6.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -4,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 140,
+      "time": 7.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 160,
+      "time": 8.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 180,
+      "time": 9.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -2,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 180,
+      "time": 9.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 200,
+      "time": 10.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -2,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 200,
+      "time": 10.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 220,
+      "time": 11.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -2,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 220,
+      "time": 11.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 240,
+      "time": 12.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -2,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 240,
+      "time": 12.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -15,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 250,
+      "time": 12.5,
+      "side": "enemy",
+      "damageType": "Burn",
+      "attributeChanged": "Shield",
+      "amount": -1,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 260,
+      "time": 13.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -2,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 260,
+      "time": 13.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -24,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 280,
+      "time": 14.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -2,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 280,
+      "time": 14.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -24,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 300,
+      "time": 15.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -6,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 300,
+      "time": 15.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -24,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 320,
+      "time": 16.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -6,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 320,
+      "time": 16.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -24,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 340,
+      "time": 17.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -12,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 340,
+      "time": 17.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -24,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 360,
+      "time": 18.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -20,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 360,
+      "time": 18.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -24,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 380,
+      "time": 19.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -20,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 380,
+      "time": 19.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -28,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 400,
+      "time": 20.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -20,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 400,
+      "time": 20.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -28,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 420,
+      "time": 21.0,
+      "side": "player",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -36,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    },
+    {
+      "frame": 420,
+      "time": 21.0,
+      "side": "enemy",
+      "damageType": "Poison",
+      "attributeChanged": "Health",
+      "amount": -28,
+      "sources": [],
+      "attribution": "unavailable-native-no-tick-source"
+    }
+  ],
+  "applications": [
+    {
+      "frame": 82,
+      "time": 4.1,
+      "action": "PlayerShieldApply",
+      "source": "G94BYGW",
+      "sourceName": "c9930f2d-507e-4187-8889-b55bbd88ea18",
+      "sourceSide": "enemy",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 100,
+      "time": 5.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_FSYXkmf",
+      "sourceName": "Drowsdrop",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 120,
+      "time": 6.0,
+      "action": "PlayerBurnApply",
+      "source": "itm_dz4JQQf",
+      "sourceName": "Soldering Gun",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 120,
+      "time": 6.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_dz4JQQf",
+      "sourceName": "Soldering Gun",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 120,
+      "time": 6.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_hg9MRKT",
+      "sourceName": "Trained Spider",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 120,
+      "time": 6.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_djpLX-4",
+      "sourceName": "Aludel",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 125,
+      "time": 6.25,
+      "action": "PlayerPoisonApply",
+      "source": "itm_djpLX-4",
+      "sourceName": "Aludel",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 147,
+      "time": 7.35,
+      "action": "PlayerShieldApply",
+      "source": "G94BYGW",
+      "sourceName": "c9930f2d-507e-4187-8889-b55bbd88ea18",
+      "sourceSide": "enemy",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 160,
+      "time": 8.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_St6EfRS",
+      "sourceName": "Virus",
+      "sourceSide": "player",
+      "targetSides": [
+        "player"
+      ]
+    },
+    {
+      "frame": 207,
+      "time": 10.35,
+      "action": "PlayerShieldApply",
+      "source": "G94BYGW",
+      "sourceName": "c9930f2d-507e-4187-8889-b55bbd88ea18",
+      "sourceSide": "enemy",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 240,
+      "time": 12.0,
+      "action": "PlayerBurnApply",
+      "source": "itm_dz4JQQf",
+      "sourceName": "Soldering Gun",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 240,
+      "time": 12.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_dz4JQQf",
+      "sourceName": "Soldering Gun",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 240,
+      "time": 12.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_djpLX-4",
+      "sourceName": "Aludel",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 245,
+      "time": 12.25,
+      "action": "PlayerPoisonApply",
+      "source": "itm_djpLX-4",
+      "sourceName": "Aludel",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 280,
+      "time": 14.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_4sA6nh-",
+      "sourceName": null,
+      "sourceSide": "player",
+      "targetSides": [
+        "player"
+      ]
+    },
+    {
+      "frame": 282,
+      "time": 14.1,
+      "action": "PlayerShieldApply",
+      "source": "G94BYGW",
+      "sourceName": "c9930f2d-507e-4187-8889-b55bbd88ea18",
+      "sourceSide": "enemy",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 320,
+      "time": 16.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_St6EfRS",
+      "sourceName": "Virus",
+      "sourceSide": "player",
+      "targetSides": [
+        "player"
+      ]
+    },
+    {
+      "frame": 332,
+      "time": 16.6,
+      "action": "PlayerShieldApply",
+      "source": "G94BYGW",
+      "sourceName": "c9930f2d-507e-4187-8889-b55bbd88ea18",
+      "sourceSide": "enemy",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 341,
+      "time": 17.05,
+      "action": "PlayerPoisonApply",
+      "source": "itm_YglPDyh",
+      "sourceName": null,
+      "sourceSide": "player",
+      "targetSides": [
+        "player"
+      ]
+    },
+    {
+      "frame": 360,
+      "time": 18.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_djpLX-4",
+      "sourceName": "Aludel",
+      "sourceSide": "player",
+      "targetSides": [
+        "enemy"
+      ]
+    },
+    {
+      "frame": 400,
+      "time": 20.0,
+      "action": "PlayerPoisonApply",
+      "source": "itm_niRxuzr",
+      "sourceName": null,
+      "sourceSide": "player",
+      "targetSides": [
+        "player"
+      ]
+    },
+    {
+      "frame": 412,
+      "time": 20.6,
+      "action": "PlayerShieldApply",
+      "source": "G94BYGW",
+      "sourceName": "c9930f2d-507e-4187-8889-b55bbd88ea18",
+      "sourceSide": "enemy",
+      "targetSides": [
+        "enemy"
+      ]
+    }
+  ],
+  "summary": {
+    "directHits": 13,
+    "dotTicks": 30,
+    "applications": 22,
+    "verifiedDirectHits": 13,
+    "unverifiedDotTicks": 30
+  }
+}

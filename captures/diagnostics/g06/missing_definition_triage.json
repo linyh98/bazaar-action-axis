@@ -1,0 +1,755 @@
+{
+  "generated": "2026-10-25",
+  "scope": {
+    "group": "G06",
+    "primary_templates_in_index": 136,
+    "templates_with_unsupported_rows_in_report": 19,
+    "report": "tools/actionaxis_plugin/build/native_mapping_report_g06full.tsv",
+    "report_mtime": "2026-10-25T00:56",
+    "report_rows": 387678,
+    "templates_jsonl": "tools/actionaxis_plugin/build/native_mapping_templates.jsonl",
+    "native_db": "vendor/GameData/GameData.db"
+  },
+  "snapshot_warning": "The named report predates current uncommitted engine edits. A 01:03 recheck (EngineTests.exe 01:02) resolved 7 of 19 templates and the Calcinator Custom_9 aura error. A 01:25 recheck with a copied EngineTests.exe 01:24:36 and ActionAxisEngine.dll 01:22:41, run over the original 19 templates, produced zero unsupported and zero exception rows: items are mapped or mapped-warning, skills simulated/live-applied/inactive, and the two economy cards out-of-combat. The four data-defect items carry explicit 'definition missing, skipped, rest of combat retained' warnings. Later edits were still in flight (SkillMapper.cs 01:24:55); use the 01:25 state as current evidence, not as a release gate.",
+  "counts": {
+    "templates_total": 19,
+    "report_unsupported_rows_total": 3513,
+    "classification": {
+      "DATA_DEFECT": 7,
+      "ENGINE_GAP": 10,
+      "NON_COMBAT": 2
+    },
+    "open_at_0103": {
+      "DATA_DEFECT": 7,
+      "ENGINE_GAP": 4,
+      "NON_COMBAT": 1
+    },
+    "resolved_at_0103": {
+      "ENGINE_GAP": 6,
+      "NON_COMBAT": 1
+    },
+    "latest_0125": {
+      "coverage_rows": 3630,
+      "item_mapped": 2184,
+      "item_mapped_warning": 1176,
+      "skill_simulated": 106,
+      "skill_live_applied": 14,
+      "skill_out_of_combat": 54,
+      "skill_inactive": 96,
+      "item_unsupported": 0,
+      "skill_unsupported": 0,
+      "exception": 0,
+      "still_blocked_templates": 0
+    },
+    "open_at_0125": {
+      "DATA_DEFECT": 7,
+      "ENGINE_GAP": 0,
+      "NON_COMBAT": 0,
+      "unsupported_rows": 0,
+      "warning_only_data_defects": 4
+    }
+  },
+  "aggregates": {
+    "data_defective": [
+      "Adrenaline Rush",
+      "Bushel",
+      "Calcinator",
+      "Feral Alliance",
+      "Outlands Terror",
+      "Still Focus",
+      "Tea Set"
+    ],
+    "engine_gap_open": [
+      "[DEBUG] Rage Extender",
+      "[DEBUG] Replacement Effect",
+      "Extended Rage",
+      "Shortened Rage"
+    ],
+    "engine_gap_resolved_at_0103": [
+      "Ghillie Suit",
+      "Hammock",
+      "Hunker Down",
+      "Invulnerability Potion",
+      "Retort",
+      "Staff of the Moose"
+    ],
+    "non_combat_open": [
+      "Healthy Tip"
+    ],
+    "non_combat_resolved": [
+      "Red Envelope"
+    ],
+    "unblocked_by_skip_missing_definitions_with_warning": [
+      "Adrenaline Rush",
+      "Bushel",
+      "Calcinator",
+      "Feral Alliance",
+      "Outlands Terror",
+      "Still Focus",
+      "Tea Set"
+    ],
+    "unblocked_by_static_player_enraged_duration_aura": [
+      "[DEBUG] Rage Extender",
+      "Extended Rage",
+      "Shortened Rage"
+    ],
+    "unblocked_by_player_attribute_rage": [
+      "[DEBUG] Replacement Effect"
+    ],
+    "unblocked_by_non_combat_gold_attribute_change": [
+      "Healthy Tip"
+    ],
+    "no_number_guessing": true,
+    "mapped_warning_at_0125": [
+      "Bushel",
+      "Calcinator (Diamond/Legendary)",
+      "Outlands Terror",
+      "Tea Set"
+    ],
+    "out_of_combat_at_0125": [
+      "Healthy Tip",
+      "Red Envelope"
+    ],
+    "still_blocked_at_0125": []
+  },
+  "templates": [
+    {
+      "template": "[DEBUG] Rage Extender",
+      "id": "cc822ee3-0c6c-4ff9-9883-d451a27d433a",
+      "kind": "skill",
+      "report_unsupported_rows": 9,
+      "report_reason": "未加入模拟：尚不支持动态光环、未知光环属性或条件",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "ENGINE_GAP",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "unsupported (player) / simulated (enemy)",
+      "resolved_at_0103": false,
+      "native_data_defect": false,
+      "failure_mode": "c: unsupported player aura",
+      "definition_context": "No missing key. Aura 0 TAuraActionPlayerModifyAttribute EnragedDurationMax Add (Custom_0, 5000/10000 ms), no prerequisite. Auras 8/9 are unreferenced Tooltip Handling.",
+      "exact_minimal_fix": "Apply no-prerequisite player EnragedDurationMax skill aura statically at battle init via ApplyStaticAuras (Add). Do not send it through the dynamic-aura validator.",
+      "risk_if_skipped": "Debug card only; its whole enrage-window effect is unmodelled.",
+      "combat_effect": true,
+      "debug_only": true,
+      "unblocked_by": "static_player_enraged_duration_aura",
+      "latest_0125_status": "simulated / live-applied (player + enemy); inactive lower tiers",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "[DEBUG] Replacement Effect",
+      "id": "f3d410a9-0c04-41f4-a650-271277d07fa3",
+      "kind": "item",
+      "report_unsupported_rows": 252,
+      "report_reason": "原生战斗规则未完整模拟（尚不支持人物属性 Rage）",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "ENGINE_GAP",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "unsupported",
+      "resolved_at_0103": false,
+      "native_data_defect": false,
+      "failure_mode": "a: unsupported active action attribute Rage",
+      "definition_context": "No missing key. Both abilities trigger on TTriggerOnPlayerAttributeChanged Rage Gain; one gives Regen instead, the other subtracts Rage, both by TReferenceValueAttributeChange.",
+      "exact_minimal_fix": "Add 'Rage' to the supported player attributes in SkillMapper.MapAction. Effects already implements Rage add/subtract and emits onPlayerAttributeChanged.",
+      "risk_if_skipped": "Debug card only. Mapping the trigger pair nets regen-instead-of-rage; exact replacement ordering (suppressing Enrage from the replaced gain) is a deeper semantic caveat.",
+      "combat_effect": true,
+      "debug_only": true,
+      "unblocked_by": "player_attribute_rage",
+      "latest_0125_status": "mapped",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Adrenaline Rush",
+      "id": "c7fa34d4-3e26-4471-a7a4-7919fdc86aab",
+      "kind": "skill",
+      "report_unsupported_rows": 18,
+      "report_reason": "未加入模拟：技能缺少能力定义",
+      "missing_refs": [
+        {
+          "type": "ability",
+          "key": "1",
+          "referenced_by_all_declared_tiers": true
+        }
+      ],
+      "affected_tiers": [
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "DATA_DEFECT",
+      "report_time_classification": "DATA_DEFECT",
+      "current_engine_0103_status": "unsupported",
+      "resolved_at_0103": false,
+      "native_data_defect": true,
+      "failure_mode": "d: missing definition aborts card before ability 0 commits",
+      "definition_context": "Abilities has only 0 (InternalName '', OnPlayerEnraged -> Charge Weapons); no key 1 in cards.Data. Tooltip 0 references ability.0 only. No card-local duplicate/renamed definition for key 1.",
+      "exact_minimal_fix": "Skip absent ability 1 with a per-card MappingWarnings entry and keep ability 0; optionally delete stale '1' from the tier arrays. Do not synthesize an ability.",
+      "risk_if_skipped": "Only an undocumented hidden effect could be lost; every tooltip and non-null definition is preserved. No numbers/definition text exist to recover.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "skip_missing_definitions_with_warning",
+      "latest_0125_status": "simulated (Gold/Diamond/Legendary); inactive Bronze/Silver",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Bushel",
+      "id": "843ddc82-9d87-4995-b81c-bf31ae45fd30",
+      "kind": "item",
+      "report_unsupported_rows": 420,
+      "report_reason": "原生战斗规则未完整模拟（光环定义缺失 3）",
+      "missing_refs": [
+        {
+          "type": "aura",
+          "key": "3",
+          "referenced_by_all_declared_tiers": true
+        }
+      ],
+      "affected_tiers": [
+        "Bronze",
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "DATA_DEFECT",
+      "report_time_classification": "DATA_DEFECT",
+      "current_engine_0103_status": "unsupported",
+      "resolved_at_0103": false,
+      "native_data_defect": true,
+      "failure_mode": "d: missing aura aborts card before abilities map",
+      "definition_context": "Abilities 0/1/2 ('Bushel 1', 'Hammock 2', 'Bushel 3'); Auras map empty. Ability 1 is the same HealthMax definition as Hammock ability 1. Hammock aura 3 exists but adds right-card SellPrice to Custom_0 and is unrelated. No aura 3 definition in Bushel.",
+      "exact_minimal_fix": "Skip absent aura 3 with a per-card warning and map abilities 0/1/2; optionally delete '3' from AuraIds. Do not copy Hammock aura 3.",
+      "risk_if_skipped": "Only aura 3 is lost; no native tooltip references it and no definition exists. Heal, Max-Health gain and Shield-charge remain. Borrowing Hammock aura 3 would silently change Max-Health scaling.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "skip_missing_definitions_with_warning",
+      "latest_0125_status": "mapped-warning",
+      "latest_0125_warning": "光环定义缺失 3（已跳过，保留其余战斗部分）",
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Calcinator",
+      "id": "3e3bda1d-81ba-4719-8772-417d8b834e99",
+      "kind": "item",
+      "report_unsupported_rows": 420,
+      "report_reason": "原生战斗规则未完整模拟（光环人物属性未支持 Custom_9）",
+      "missing_refs": [
+        {
+          "type": "ability",
+          "key": "1",
+          "tiers": [
+            "Diamond"
+          ],
+          "referenced_by_all_declared_tiers": false
+        }
+      ],
+      "affected_tiers": [
+        "Bronze",
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "DATA_DEFECT",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "mapped 252 / unsupported 168 (Diamond ability 1)",
+      "resolved_at_0103": false,
+      "native_data_defect": true,
+      "failure_mode": "report-time a: unsupported aura value Custom_9; residual d: missing Diamond ability 1",
+      "definition_context": "Abilities 0/2/3 ('Calcinator 1', 'Calcinator 3', 'Calcinator 4'); Diamond AbilityIds uniquely add '1'. data/game_cards_full.json Diamond rawAbilities['1'] = null. Retort never references ability 1. Aura 1 present; tooltips reference ability 0, ability 3 and aura 1, never ability 1.",
+      "exact_minimal_fix": "Skip Diamond AbilityId '1' with a warning and keep abilities 0/2/3 plus aura 1. No Custom_9 work is needed if current Custom_* player-reference support is kept.",
+      "risk_if_skipped": "The null Diamond key has no behaviour to lose. Bronze/Silver/Gold already map; Diamond keeps its burn active and all three present abilities.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "skip_missing_definitions_with_warning",
+      "secondary_resolved_engine_gap": "Custom_9 aura player-attribute reference",
+      "latest_0125_status": "mapped (Bronze/Silver/Gold); mapped-warning (Diamond/Legendary)",
+      "latest_0125_warning": "能力定义缺失 1（已跳过，保留其余战斗部分）",
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Extended Rage",
+      "id": "8b583fac-46a1-4531-8026-efd57232571a",
+      "kind": "skill",
+      "report_unsupported_rows": 6,
+      "report_reason": "未加入模拟：尚不支持动态光环、未知光环属性或条件",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "ENGINE_GAP",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "unsupported (player) / simulated (enemy)",
+      "resolved_at_0103": false,
+      "native_data_defect": false,
+      "failure_mode": "c: unsupported player aura",
+      "definition_context": "No missing key. Aura 0 TAuraActionPlayerModifyAttribute EnragedDurationMax Add (Custom_0, 1000 ms), no prerequisite. Auras 8/9 unreferenced Tooltip Handling.",
+      "exact_minimal_fix": "Apply the no-prerequisite player EnragedDurationMax aura statically at battle init via ApplyStaticAuras (Add).",
+      "risk_if_skipped": "The whole card effect (+1 s enrage window) is lost. Enemy side already simulates via the static path.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "static_player_enraged_duration_aura",
+      "latest_0125_status": "simulated / live-applied (player + enemy); inactive lower tiers",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Feral Alliance",
+      "id": "feac268f-c3aa-442b-8b14-ba9026156133",
+      "kind": "skill",
+      "report_unsupported_rows": 18,
+      "report_reason": "未加入模拟：技能缺少能力定义",
+      "missing_refs": [
+        {
+          "type": "ability",
+          "key": "1",
+          "referenced_by_all_declared_tiers": true
+        }
+      ],
+      "affected_tiers": [
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "DATA_DEFECT",
+      "report_time_classification": "DATA_DEFECT",
+      "current_engine_0103_status": "unsupported",
+      "resolved_at_0103": false,
+      "native_data_defect": true,
+      "failure_mode": "d: missing definition aborts card before ability 0 commits",
+      "definition_context": "Abilities has only 0 (InternalName '', OnPlayerEnraged -> Charge Friends); no key 1 in cards.Data. Tooltip 0 references ability.0 only. No card-local duplicate/renamed definition for key 1.",
+      "exact_minimal_fix": "Skip absent ability 1 with a warning and keep ability 0; optionally remove '1' from the tier arrays. Do not synthesize an ability.",
+      "risk_if_skipped": "Only an undocumented hidden effect could be lost; every tooltip and non-null definition is preserved.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "skip_missing_definitions_with_warning",
+      "latest_0125_status": "simulated (Gold/Diamond/Legendary); inactive Bronze/Silver",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Ghillie Suit",
+      "id": "d25ccf21-f789-4e06-8c38-b7f5f47e66af",
+      "kind": "item",
+      "report_unsupported_rows": 336,
+      "report_reason": "原生战斗规则未完整模拟（尚不支持人物属性 PercentDamageReduction）",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "ENGINE_GAP",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "mapped",
+      "resolved_at_0103": true,
+      "native_data_defect": false,
+      "failure_mode": "a: unsupported player attribute PercentDamageReduction",
+      "definition_context": "No missing key. Ability 0 PercentDamageReduction with TCombatDuration 1000 ms; abilities 1/2 counter and CritChance. Aura 9 unreferenced tooltip handling.",
+      "exact_minimal_fix": "Keep PercentDamageReduction in the supported player-attribute list and honour TCombatDuration expiry via ActionPercentDamageReductionUntil.",
+      "risk_if_skipped": "First-crit damage immunity lost; other abilities still map.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "already_fixed_percent_damage_reduction",
+      "latest_0125_status": "mapped",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Hammock",
+      "id": "a4b48bb6-180a-49fd-bb1c-c6beb372b6de",
+      "kind": "item",
+      "report_unsupported_rows": 336,
+      "report_reason": "原生战斗规则未完整模拟（尚不支持人物属性变化 HealthMax）",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "ENGINE_GAP",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "mapped",
+      "resolved_at_0103": true,
+      "native_data_defect": false,
+      "failure_mode": "b: unsupported player-attribute trigger HealthMax",
+      "definition_context": "No missing key. Abilities 0/2 trigger on HealthMax Gain; ability 1 is the active Max-Health gain. Auras 2/3 add adjacent SellPrice to Custom_0.",
+      "exact_minimal_fix": "Allow HealthMax in MapTrigger and emit onPlayerAttributeChanged on Max-HP gains (already in current source).",
+      "risk_if_skipped": "Max-Health-to-Heal and Max-Health-to-Shield synergy lost; item still heals.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "already_fixed_healthmax_trigger",
+      "latest_0125_status": "mapped",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Healthy Tip",
+      "id": "c6a57594-4358-44de-b888-64216df4aa05",
+      "kind": "skill",
+      "report_unsupported_rows": 24,
+      "report_reason": "未加入模拟：尚不支持人物属性变化 Gold",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "NON_COMBAT",
+      "report_time_classification": "NON_COMBAT",
+      "current_engine_0103_status": "unsupported",
+      "resolved_at_0103": false,
+      "native_data_defect": false,
+      "failure_mode": "e: economy trigger not skipped",
+      "definition_context": "No missing key. Ability 0 triggers on Gold Gain and permanently adds HealthMax (Duration null). Aura 9 is unreferenced tooltip handling.",
+      "exact_minimal_fix": "Add Gold (and other economy attributes) to the TTriggerOnPlayerAttributeChanged non-combat branch of IsNonCombatTrigger so the skill is out-of-combat. Do not simulate permanent progression.",
+      "risk_if_skipped": "No combat loss; out-of-combat permanent Max-HP growth remains unmodelled by design.",
+      "combat_effect": false,
+      "debug_only": false,
+      "unblocked_by": "non_combat_gold_attribute_change",
+      "latest_0125_status": "out-of-combat; inactive Bronze",
+      "latest_0125_warning": "economy",
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Hunker Down",
+      "id": "369a6704-2727-4cea-be27-01b76c82df45",
+      "kind": "skill",
+      "report_unsupported_rows": 24,
+      "report_reason": "未加入模拟：尚不支持人物属性 PercentDamageReduction",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "ENGINE_GAP",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "simulated",
+      "resolved_at_0103": true,
+      "native_data_defect": false,
+      "failure_mode": "a: unsupported player attribute PercentDamageReduction",
+      "definition_context": "No missing key. Sole ability: OnSandstorm -> PercentDamageReduction Add Custom_0 UntilEndOfCombat.",
+      "exact_minimal_fix": "Same PercentDamageReduction support with UntilEndOfCombat duration (already in current playerAttribute branch).",
+      "risk_if_skipped": "The card's only effect (25/50/75 % damage reduction for the fight) is lost.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "already_fixed_percent_damage_reduction",
+      "latest_0125_status": "simulated; inactive Bronze",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Invulnerability Potion",
+      "id": "4fdc947b-3646-429e-ba4e-bb693fe44bc2",
+      "kind": "item",
+      "report_unsupported_rows": 336,
+      "report_reason": "原生战斗规则未完整模拟（尚不支持人物属性 PercentDamageReduction）",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "ENGINE_GAP",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "mapped",
+      "resolved_at_0103": true,
+      "native_data_defect": false,
+      "failure_mode": "a: unsupported player attribute PercentDamageReduction with TCombatDuration",
+      "definition_context": "No missing key. Abilities 0/1 PercentDamageReduction with TCombatDuration 1000/2000 ms and Shiny prerequisites; ability 2 is a Custom_8 usage dummy. Aura 9 unreferenced tooltip handling.",
+      "exact_minimal_fix": "Same PercentDamageReduction support including TCombatDuration expiry. No data change.",
+      "risk_if_skipped": "The no-damage window is the card's whole defensive effect.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "already_fixed_percent_damage_reduction",
+      "latest_0125_status": "mapped",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Outlands Terror",
+      "id": "0660ace1-2d6a-4f7b-bfc2-05e8582d27b9",
+      "kind": "item",
+      "report_unsupported_rows": 252,
+      "report_reason": "原生战斗规则未完整模拟（光环定义缺失 0）",
+      "missing_refs": [
+        {
+          "type": "aura",
+          "key": "0",
+          "referenced_by_all_declared_tiers": true
+        }
+      ],
+      "affected_tiers": [
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "DATA_DEFECT",
+      "report_time_classification": "DATA_DEFECT",
+      "current_engine_0103_status": "unsupported",
+      "resolved_at_0103": false,
+      "native_data_defect": true,
+      "failure_mode": "d: missing aura aborts card before present auras/ability map",
+      "definition_context": "Auras 1/2/3 exist ('Outlands Terror 2' Lifesteal, 'Outlands Terror 2' CDR, 'Outlands terror 3' RageApplyAmount x2); no aura 0 in this template. Tooltips reference aura 2 only; auras 1/2/3 cover both passives.",
+      "exact_minimal_fix": "Skip absent aura 0 with a warning and map aura 1/2/3 plus ability 0; optionally delete '0' from AuraIds. Do not invent an aura.",
+      "risk_if_skipped": "Only stale aura 0 lost; Lifesteal, cooldown reduction, double Rage gain and active damage remain.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "skip_missing_definitions_with_warning",
+      "latest_0125_status": "mapped-warning",
+      "latest_0125_warning": "光环定义缺失 0（已跳过，保留其余战斗部分）",
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Red Envelope",
+      "id": "5ff845f5-6cb5-40b8-957f-8a6ae47c3962",
+      "kind": "skill",
+      "report_unsupported_rows": 30,
+      "report_reason": "未加入模拟：尚不支持触发器 TTriggerOnCardSelected",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Bronze",
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "NON_COMBAT",
+      "report_time_classification": "NON_COMBAT",
+      "current_engine_0103_status": "out-of-combat",
+      "resolved_at_0103": true,
+      "native_data_defect": false,
+      "failure_mode": "e: buy/upgrade economy trigger not skipped",
+      "definition_context": "No missing key. Ability 0 TTriggerOnCardSelected -> Gold Add 10, HandOnly/Anywhere. No auras.",
+      "exact_minimal_fix": "No further change: TTriggerOnCardSelected is already in IsNonCombatTrigger.",
+      "risk_if_skipped": "None; buying/upgrading Gold gain is outside combat.",
+      "combat_effect": false,
+      "debug_only": false,
+      "unblocked_by": "already_out_of_combat",
+      "latest_0125_status": "out-of-combat",
+      "latest_0125_warning": "economy",
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Retort",
+      "id": "c2cc691a-8f35-43be-8951-c65911b08865",
+      "kind": "item",
+      "report_unsupported_rows": 420,
+      "report_reason": "原生战斗规则未完整模拟（光环人物属性未支持 Custom_9）",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Bronze",
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "ENGINE_GAP",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "mapped",
+      "resolved_at_0103": true,
+      "native_data_defect": false,
+      "failure_mode": "aura value references unsupported player attribute Custom_9",
+      "definition_context": "No missing key. Ability 0 Poison; abilities 2/3 day-start economy (spawn Chunk of Lead, spend 2 Gold); aura 1 scales PoisonApplyAmount by Player Custom_9 x Card Custom_0.",
+      "exact_minimal_fix": "Keep accepting Custom_* in TReferenceValuePlayerAttribute for aura values, defaulting to 0 when the live snapshot lacks the run stat.",
+      "risk_if_skipped": "Poison scaling aura lost; active Poison still maps. Day-start abilities are correctly out-of-combat.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "already_fixed_custom_player_attribute",
+      "latest_0125_status": "mapped",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Shortened Rage",
+      "id": "00e1526a-0eb6-49af-93fd-e5e4aea5f05a",
+      "kind": "skill",
+      "report_unsupported_rows": 6,
+      "report_reason": "未加入模拟：尚不支持动态光环、未知光环属性或条件",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "ENGINE_GAP",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "unsupported (player) / simulated (enemy)",
+      "resolved_at_0103": false,
+      "native_data_defect": false,
+      "failure_mode": "c: unsupported player aura and Subtract operation",
+      "definition_context": "No missing key. Aura 0 TAuraActionPlayerModifyAttribute EnragedDurationMax Subtract (Custom_0, 1000 ms), no prerequisite. Auras 8/9 unreferenced Tooltip Handling.",
+      "exact_minimal_fix": "Apply the no-prerequisite player EnragedDurationMax aura statically and allow Subtract; ApplyStaticAuras already supports both for EnragedDurationMax.",
+      "risk_if_skipped": "The whole card effect (-1 s enrage window) is lost. Enemy side already simulates.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "static_player_enraged_duration_aura",
+      "latest_0125_status": "simulated / live-applied (player + enemy); inactive lower tiers",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Staff of the Moose",
+      "id": "c135f23d-b8b4-4aa8-9a11-b288ae05908c",
+      "kind": "item",
+      "report_unsupported_rows": 252,
+      "report_reason": "原生战斗规则未完整模拟（尚不支持人物属性 PercentDamageReduction）",
+      "missing_refs": [],
+      "affected_tiers": [
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "ENGINE_GAP",
+      "report_time_classification": "ENGINE_GAP",
+      "current_engine_0103_status": "mapped",
+      "resolved_at_0103": true,
+      "native_data_defect": false,
+      "failure_mode": "a: unsupported player attribute PercentDamageReduction",
+      "definition_context": "No missing key. Ability 0 Damage; abilities 1/2 PercentDamageReduction on Health loss; ability 4 Regen; ability 5 half-Health counter; aura 6 adds player HealthRegen to Weapon Damage; aura 9 unreferenced tooltip handling.",
+      "exact_minimal_fix": "Keep PercentDamageReduction support with TCombatDuration expiry. No data change.",
+      "risk_if_skipped": "First-below-half-Health immunity lost; damage, Regen, counter and aura 6 still map.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "already_fixed_percent_damage_reduction",
+      "latest_0125_status": "mapped",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Still Focus",
+      "id": "38eb79ab-a415-4a8b-ab61-5a7370397b59",
+      "kind": "skill",
+      "report_unsupported_rows": 18,
+      "report_reason": "未加入模拟：技能缺少能力定义",
+      "missing_refs": [
+        {
+          "type": "ability",
+          "key": "1",
+          "referenced_by_all_declared_tiers": true
+        }
+      ],
+      "affected_tiers": [
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "DATA_DEFECT",
+      "report_time_classification": "DATA_DEFECT",
+      "current_engine_0103_status": "unsupported",
+      "resolved_at_0103": false,
+      "native_data_defect": true,
+      "failure_mode": "d: missing definition aborts card before ability 0 commits",
+      "definition_context": "Abilities has only 0 (InternalName '', OnPlayerEnrageEnded -> Charge non-Weapons); no key 1 in cards.Data. Tooltip 0 references ability.0 only. No card-local duplicate/renamed definition for key 1.",
+      "exact_minimal_fix": "Skip absent ability 1 with a warning and keep ability 0; optionally remove '1' from the tier arrays. Do not synthesize an ability.",
+      "risk_if_skipped": "Only an undocumented hidden effect could be lost; every tooltip and non-null definition is preserved.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "skip_missing_definitions_with_warning",
+      "latest_0125_status": "simulated (Gold/Diamond/Legendary); inactive Bronze/Silver",
+      "latest_0125_warning": null,
+      "resolved_at_0125": true
+    },
+    {
+      "template": "Tea Set",
+      "id": "0c501dff-aa3a-4091-9c1e-2df43faef2e1",
+      "kind": "item",
+      "report_unsupported_rows": 336,
+      "report_reason": "原生战斗规则未完整模拟（光环定义缺失 3）",
+      "missing_refs": [
+        {
+          "type": "aura",
+          "key": "3",
+          "referenced_by_all_declared_tiers": true
+        }
+      ],
+      "affected_tiers": [
+        "Silver",
+        "Gold",
+        "Diamond",
+        "Legendary"
+      ],
+      "classification": "DATA_DEFECT",
+      "report_time_classification": "DATA_DEFECT",
+      "current_engine_0103_status": "unsupported",
+      "resolved_at_0103": false,
+      "native_data_defect": true,
+      "failure_mode": "d: missing aura aborts card before abilities 1/2 map",
+      "definition_context": "Abilities 1/2 ('Tea Set 2', 'Tea Set 3'); no ability 0 and Auras empty. Hammock ability 2 is also named 'Tea Set 3'; Hammock aura 3 is right-card SellPrice scaling and unrelated. Tooltips reference abilities 1/2 only.",
+      "exact_minimal_fix": "Skip absent aura 3 with a warning and map abilities 1/2; optionally delete '3' from AuraIds. Do not copy Hammock aura 3 or import the community-DB Burn 2 value absent from native 5.0.0.",
+      "risk_if_skipped": "Only aura 3 lost. Active Max-Health gain and Burn-on-Max-Health passive remain. Substituting Hammock's SellPrice aura or a guessed Burn value would change combat numbers without native evidence.",
+      "combat_effect": true,
+      "debug_only": false,
+      "unblocked_by": "skip_missing_definitions_with_warning",
+      "latest_0125_status": "mapped-warning",
+      "latest_0125_warning": "光环定义缺失 3（已跳过，保留其余战斗部分）",
+      "resolved_at_0125": true
+    }
+  ],
+  "conclusion": {
+    "engine_changes_unblock_semantics": [
+      "Extended Rage",
+      "Shortened Rage",
+      "[DEBUG] Rage Extender",
+      "[DEBUG] Replacement Effect"
+    ],
+    "engine_tolerance_unblocks_data_defects": [
+      "Adrenaline Rush",
+      "Feral Alliance",
+      "Still Focus",
+      "Bushel",
+      "Tea Set",
+      "Outlands Terror",
+      "Calcinator (Diamond)"
+    ],
+    "already_resolved_in_0103_recheck": [
+      "Ghillie Suit",
+      "Hammock",
+      "Hunker Down",
+      "Invulnerability Potion",
+      "Retort",
+      "Staff of the Moose",
+      "Red Envelope"
+    ],
+    "truly_data_defective": [
+      "Adrenaline Rush",
+      "Feral Alliance",
+      "Still Focus",
+      "Bushel",
+      "Tea Set",
+      "Outlands Terror",
+      "Calcinator (Diamond ability 1 is null)"
+    ],
+    "mark_out_of_combat": [
+      "Healthy Tip",
+      "Red Envelope"
+    ],
+    "no_number_guessing": "The missing ability 1 and aura 0/3 definitions do not exist in cards.Data. Skip them with a visible warning; do not invent values or borrow Hammock aura 3.",
+    "current_state_0125": "All 19 templates are unblocked in the latest in-flight build: zero unsupported and zero exception rows. The only residual signals are four mapped-warning item data defects (Bushel, Calcinator Diamond/Legendary, Outlands Terror, Tea Set) whose warnings name the skipped key, and the two economy cards recorded as out-of-combat (Healthy Tip, Red Envelope).",
+    "recommended_remaining_work": "No further mapping work is needed for coverage. If desired, clean up the four stale native tier references or keep the mapped-warning surface; do not invent the missing definitions.",
+    "data_defects_still_warn": [
+      "Bushel (aura 3)",
+      "Calcinator (Diamond ability 1, null)",
+      "Outlands Terror (aura 0)",
+      "Tea Set (aura 3)"
+    ]
+  }
+}

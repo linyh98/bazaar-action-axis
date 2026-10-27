@@ -20,6 +20,7 @@ namespace BazaarActionAxis.Plugin
             if (result == null) throw new ArgumentNullException("result");
             result.Skills.Clear();
             result.PlayerAttributes.Clear();
+            result.EnemyHero = null;
             result.PlayerHealth = null;
             result.PlayerMaxHealth = null;
             result.SkillReadError = null;
@@ -37,31 +38,35 @@ namespace BazaarActionAxis.Plugin
                     result.PlayerHealth = health;
                 if (result.PlayerAttributes.TryGetValue("HealthMax", out health))
                     result.PlayerMaxHealth = health;
+                // PvP 对手身份来自 Run.Opponent；怪物战该值为空。
+                result.EnemyHero = Text(GetMember(GetMember(run, "Opponent"), "Hero"));
 
                 object skills = GetMember(player, "Skills");
                 if (skills == null) throw new InvalidOperationException("当前玩家的 Skills 不可用");
-                int order = 0;
+                int order = 0, index = 0;
                 foreach (object nativeSkill in ReflectionUtil.GetEnumerable(skills))
                 {
+                    int current = index++;
                     if (nativeSkill == null) continue;
                     try
                     {
-                        result.Skills.Add(ReadSkill(nativeSkill, order++, result));
+                        result.Skills.Add(ReadSkill(nativeSkill, order++, current, result));
                     }
                     catch (Exception error)
                     {
-                        AddError(result, "技能 " + order + "：" + RootMessage(error));
+                        AddError(result, "Run.Player.Skills[" + current + "]（技能 " + order + "）：" + RootMessage(error));
                     }
                 }
             }
             catch (Exception error)
             {
-                AddError(result, "读取技能失败：" + RootMessage(error));
+                AddError(result, "读取技能失败（路径：Run.Player.Skills）：" + RootMessage(error));
             }
         }
 
-        private static LiveSkillEntry ReadSkill(object nativeSkill, int order, BoardReadResult result)
+        private static LiveSkillEntry ReadSkill(object nativeSkill, int order, int index, BoardReadResult result)
         {
+            string skillPath = "Run.Player.Skills[" + index + "]";
             LiveSkillEntry skill = new LiveSkillEntry();
             object instance = GetMember(nativeSkill, "InstanceId");
             skill.InstanceId = GetMember(instance, "Value") as string ?? Text(instance);
@@ -70,16 +75,17 @@ namespace BazaarActionAxis.Plugin
             skill.Tier = Text(GetMember(nativeSkill, "Tier"));
             skill.Order = order;
             skill.Attributes = ReadAttributes(GetMember(nativeSkill, "Attributes"));
+            skill.AttributesAreLive = skill.Attributes.Count > 0;
             object template = null;
             try
             {
                 template = GetMember(nativeSkill, "Template");
                 if (template == null) throw new InvalidOperationException("技能模板为空");
-                skill.Template = SerializeNative(template, 0, new List<object>());
+                skill.Template = SerializeNative(template, 0, new List<object>(), skillPath + ".Template");
             }
             catch (Exception error)
             {
-                AddError(result, "技能模板 " + skill.TemplateId + "：" + RootMessage(error));
+                AddError(result, "技能模板 " + skill.TemplateId + "（路径：" + skillPath + ".Template）：" + RootMessage(error));
             }
             object title = GetMember(GetMember(template, "Localization"), "Title");
             skill.Name = GetMember(title, "Text") as string ??
@@ -120,27 +126,31 @@ namespace BazaarActionAxis.Plugin
         {
             Dictionary<string, JsonValue> root = new Dictionary<string, JsonValue>();
             root["capturedAt"] = JsonValue.FromString(DateTime.UtcNow.ToString("o"));
+            root["playerHero"] = StringValue(result.PlayerHero);
+            root["enemyHero"] = StringValue(result.EnemyHero);
             root["playerHealth"] = OptionalNumber(result.PlayerHealth);
             root["playerMaxHealth"] = OptionalNumber(result.PlayerMaxHealth);
-            root["playerAttributes"] = SerializeNative(result.PlayerAttributes, 0, new List<object>());
+            root["playerAttributes"] = SerializeNative(result.PlayerAttributes, 0, new List<object>(), "$.playerAttributes");
             root["skillReadError"] = StringValue(result.SkillReadError);
             root["cardReadError"] = StringValue(result.CardReadError);
             List<JsonValue> skills = new List<JsonValue>();
-            foreach (LiveSkillEntry skill in result.Skills)
+            for (int index = 0; index < result.Skills.Count; index++)
             {
+                LiveSkillEntry skill = result.Skills[index];
+                string path = "$.skills[" + index + "]";
                 Dictionary<string, JsonValue> record = new Dictionary<string, JsonValue>();
                 record["instanceId"] = StringValue(skill.InstanceId);
                 record["templateId"] = StringValue(skill.TemplateId);
                 record["tier"] = StringValue(skill.Tier);
                 record["name"] = StringValue(skill.Name);
                 record["order"] = JsonValue.FromNumber(skill.Order);
-                record["attributes"] = SerializeNative(skill.Attributes, 0, new List<object>());
-                record["rawTooltips"] = SerializeNative(skill.RawTooltips, 0, new List<object>());
+                record["attributes"] = SerializeNative(skill.Attributes, 0, new List<object>(), path + ".attributes");
+                record["rawTooltips"] = SerializeNative(skill.RawTooltips, 0, new List<object>(), path + ".rawTooltips");
                 record["template"] = skill.Template ?? JsonValue.Null;
                 skills.Add(JsonValue.FromObject(record));
             }
             root["skills"] = JsonValue.FromArray(skills);
-            root["board"] = SerializeNative(result.Cards, 0, new List<object>());
+            root["board"] = SerializeNative(result.Cards, 0, new List<object>(), "$.board");
             StringBuilder json = new StringBuilder();
             WriteJson(json, JsonValue.FromObject(root));
             return json.ToString();
@@ -148,7 +158,12 @@ namespace BazaarActionAxis.Plugin
 
         public static JsonValue SerializeTemplate(object value)
         {
-            return SerializeNative(value, 0, new List<object>());
+            return SerializeNative(value, 0, new List<object>(), "$");
+        }
+
+        public static JsonValue SerializeTemplate(object value, string path)
+        {
+            return SerializeNative(value, 0, new List<object>(), path);
         }
 
         public static string BuildDebugJson(object value)
@@ -158,7 +173,7 @@ namespace BazaarActionAxis.Plugin
             return json.ToString();
         }
 
-        private static JsonValue SerializeNative(object value, int depth, List<object> ancestors)
+        private static JsonValue SerializeNative(object value, int depth, List<object> ancestors, string path)
         {
             if (value == null) return JsonValue.Null;
             JsonValue existing = value as JsonValue;
@@ -169,10 +184,10 @@ namespace BazaarActionAxis.Plugin
             if (value is bool) return JsonValue.FromBool((bool)value);
             if (type.IsPrimitive || value is decimal)
                 return JsonValue.FromNumber(Convert.ToDouble(value, CultureInfo.InvariantCulture));
-            if (depth > 40) throw new InvalidOperationException("技能模板嵌套层数超过限制");
+            if (depth > 40) throw new InvalidOperationException("技能模板嵌套层数超过限制（路径：" + path + "）");
             foreach (object ancestor in ancestors)
                 if (object.ReferenceEquals(ancestor, value))
-                    throw new InvalidOperationException("技能模板包含循环引用");
+                    throw new InvalidOperationException("技能模板包含循环引用（路径：" + path + "）");
             ancestors.Add(value);
             try
             {
@@ -181,8 +196,10 @@ namespace BazaarActionAxis.Plugin
                 {
                     Dictionary<string, JsonValue> entries = new Dictionary<string, JsonValue>();
                     foreach (DictionaryEntry entry in dictionary)
-                        entries[Convert.ToString(entry.Key, CultureInfo.InvariantCulture)] =
-                            SerializeNative(entry.Value, depth + 1, ancestors);
+                    {
+                        string key = Convert.ToString(entry.Key, CultureInfo.InvariantCulture);
+                        entries[key] = SerializeNative(entry.Value, depth + 1, ancestors, path + "." + key);
+                    }
                     return JsonValue.FromObject(entries);
                 }
                 IEnumerable enumerable = value as IEnumerable;
@@ -190,7 +207,7 @@ namespace BazaarActionAxis.Plugin
                 {
                     List<JsonValue> entries = new List<JsonValue>();
                     foreach (object entry in enumerable)
-                        entries.Add(SerializeNative(entry, depth + 1, ancestors));
+                        entries.Add(SerializeNative(entry, depth + 1, ancestors, path + "[" + entries.Count + "]"));
                     return JsonValue.FromArray(entries);
                 }
 
@@ -203,11 +220,13 @@ namespace BazaarActionAxis.Plugin
                     if (!property.CanRead || property.GetIndexParameters().Length != 0) continue;
                     MethodInfo getter = property.GetGetMethod(false);
                     if (getter == null) continue;
-                    fields[property.Name] = SerializeNative(property.GetValue(value, null), depth + 1, ancestors);
+                    fields[property.Name] = SerializeNative(property.GetValue(value, null), depth + 1, ancestors,
+                        path + "." + property.Name);
                 }
                 foreach (FieldInfo field in type.GetFields(BindingFlags.Public | BindingFlags.Instance))
                     if (!fields.ContainsKey(field.Name))
-                        fields[field.Name] = SerializeNative(field.GetValue(value), depth + 1, ancestors);
+                        fields[field.Name] = SerializeNative(field.GetValue(value), depth + 1, ancestors,
+                            path + "." + field.Name);
                 return JsonValue.FromObject(fields);
             }
             finally { ancestors.RemoveAt(ancestors.Count - 1); }

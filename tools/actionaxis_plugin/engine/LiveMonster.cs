@@ -57,7 +57,7 @@ namespace BazaarActionAxis.Engine
         public static LiveMonsterEntry FromJson(JsonValue monster, Func<string, JsonValue> getCard)
         {
             if (monster == null || monster.Kind != JsonKind.Object)
-                throw new ArgumentException("怪物模板为空");
+                throw new ArgumentException("怪物模板为空（路径：monster）");
             LiveMonsterEntry result = new LiveMonsterEntry();
             result.Id = Text(monster, "Id");
             result.Name = Text(monster, "InternalName") ?? result.Id;
@@ -67,10 +67,13 @@ namespace BazaarActionAxis.Engine
             int value;
             result.MaxHp = result.Attributes.TryGetValue("HealthMax", out value) ? value : 0;
             result.Health = result.Attributes.TryGetValue("Health", out value) ? value : result.MaxHp;
-            if (result.MaxHp <= 0) throw new InvalidOperationException("怪物缺少有效生命上限");
+            if (result.MaxHp <= 0)
+                throw new InvalidOperationException("怪物缺少有效生命上限（路径：Player.Attributes.HealthMax）");
             int order = 0;
-            foreach (JsonValue raw in Get(Get(player, "Hand"), "Items").AsArray())
+            JsonValue items = Get(Get(player, "Hand"), "Items");
+            for (int index = 0; index < items.Count; index++)
             {
+                JsonValue raw = items[index];
                 LiveCardEntry card = new LiveCardEntry();
                 card.TemplateId = Text(raw, "TemplateId");
                 card.InstanceId = Text(raw, "InstanceId") ?? "monster:" + result.Id + ":item:" + order;
@@ -86,14 +89,17 @@ namespace BazaarActionAxis.Engine
                 CopyAttributes(Get(card.EnchantmentDefinition, "Attributes"), card.Attributes);
                 CopyAttributes(Get(raw, "Attributes"), card.Attributes);
                 if (card.Template == null || card.Template.Kind != JsonKind.Object)
-                    result.Warnings.Add("怪物卡牌缺少原生模板：" + card.TemplateId);
+                    result.Warnings.Add("怪物卡牌缺少原生模板：" + card.TemplateId +
+                        "（路径：Player.Hand.Items[" + index + "].TemplateId=" + (card.TemplateId ?? "null") + "）");
                 result.Cards.Add(card);
                 order++;
             }
             result.Cards.Sort(delegate(LiveCardEntry a, LiveCardEntry b) { return a.Socket.CompareTo(b.Socket); });
             order = 0;
-            foreach (JsonValue raw in Get(player, "Skills").AsArray())
+            JsonValue skills = Get(player, "Skills");
+            for (int index = 0; index < skills.Count; index++)
             {
+                JsonValue raw = skills[index];
                 LiveSkillEntry skill = new LiveSkillEntry();
                 skill.TemplateId = Text(raw, "TemplateId");
                 skill.InstanceId = Text(raw, "InstanceId") ?? "monster:" + result.Id + ":skill:" + order;
@@ -109,13 +115,101 @@ namespace BazaarActionAxis.Engine
                     if (!string.IsNullOrEmpty(text)) skill.RawTooltips.Add(text);
                 }
                 if (skill.Template == null || skill.Template.Kind != JsonKind.Object)
-                    result.Warnings.Add("怪物技能缺少原生模板：" + skill.TemplateId);
+                    result.Warnings.Add("怪物技能缺少原生模板：" + skill.TemplateId +
+                        "（路径：Player.Skills[" + index + "].TemplateId=" + (skill.TemplateId ?? "null") + "）");
                 result.Skills.Add(skill);
             }
-            foreach (JsonValue effect in Get(player, "Effects").AsArray())
-                result.Warnings.Add("怪物初始额外效果尚未映射：" + (Text(effect, "$type") ?? "unknown"));
-            if (Get(Get(player, "Socket"), "Effects").Count > 0)
-                result.Warnings.Add("怪物插槽效果尚未加入模拟");
+            JsonValue effects = Get(player, "Effects");
+            for (int index = 0; index < effects.Count; index++)
+                result.Warnings.Add("怪物初始额外效果尚未映射：" + (Text(effects[index], "$type") ?? "unknown") +
+                    "（路径：Player.Effects[" + index + "]）");
+            JsonValue socketEffects = Get(Get(player, "Socket"), "Effects");
+            for (int index = 0; index < socketEffects.Count; index++)
+            {
+                JsonValue raw = socketEffects[index];
+                string templateId = Text(raw, "TemplateId");
+                string path = "Player.Socket.Effects[" + index + "]";
+                JsonValue template = getCard == null ? null : getCard(templateId);
+                if (template == null || template.Kind != JsonKind.Object)
+                {
+                    result.Warnings.Add("怪物插槽效果缺少原生模板：" + (templateId ?? "null") +
+                        "（路径：" + path + ".TemplateId=" + (templateId ?? "null") + "）");
+                    continue;
+                }
+                ApplySocketEffect(result, raw, template, path);
+            }
+            return result;
+        }
+
+        // TCardSocketEffect 是“该槽位物品 +1 Heated/Chilled”的开场静态效果。
+        // 只读取 TCardSocketEffect 的 TTargetCardOccupying 光环；未知目标/值保留告警。
+        private static void ApplySocketEffect(LiveMonsterEntry monster, JsonValue raw, JsonValue template, string path)
+        {
+            int socket = Socket(Get(raw, "SocketId"), -1);
+            LiveCardEntry target = null;
+            foreach (LiveCardEntry card in monster.Cards)
+            {
+                if (card.Socket == socket) { target = card; break; }
+            }
+            if (target == null)
+            {
+                monster.Warnings.Add("怪物插槽效果没有对应物品（路径：" + path + "，SocketId=" + socket + "）");
+                return;
+            }
+            string tier = Text(raw, "Tier") ?? "Diamond";
+            Dictionary<string, int> attributes = TierAttributes(template, tier);
+            CopyAttributes(Get(raw, "Attributes"), attributes);
+            JsonValue auras = Get(template, "Auras");
+            foreach (KeyValuePair<string, JsonValue> pair in auras.AsObject())
+            {
+                JsonValue action = Get(pair.Value, "Action");
+                if (NativeSkillSupport.Type(action) != "TAuraActionCardModifyAttribute")
+                {
+                    monster.Warnings.Add("怪物插槽效果动作未支持：" + (NativeSkillSupport.Type(action) ?? "null") + "（路径：" + path + ".Auras." + pair.Key + "）");
+                    continue;
+                }
+                if (NativeSkillSupport.Type(Get(action, "Target")) != "TTargetCardOccupying")
+                {
+                    monster.Warnings.Add("怪物插槽效果目标未支持：" + (NativeSkillSupport.Type(Get(action, "Target")) ?? "null") +
+                        "（路径：" + path + ".Auras." + pair.Key + ".Target）");
+                    continue;
+                }
+                string attribute = Text(action, "AttributeType");
+                if (string.IsNullOrEmpty(attribute))
+                {
+                    monster.Warnings.Add("怪物插槽效果缺少属性名（路径：" + path + ".Auras." + pair.Key + ".Action）");
+                    continue;
+                }
+                double value = SocketValue(Get(action, "Value"), attributes);
+                if (value == 0) continue;
+                int current;
+                target.Attributes.TryGetValue(attribute, out current);
+                target.Attributes[attribute] = current + (int)JsMath.Round(value);
+            }
+        }
+
+        private static double SocketValue(JsonValue value, Dictionary<string, int> attributes)
+        {
+            if (NativeSkillSupport.Empty(value)) return 0;
+            string type = NativeSkillSupport.Type(value);
+            double result;
+            if (type == "TFixedValue")
+                return value["Value"].Kind == JsonKind.Number ? value["Value"].AsDouble() : 0;
+            if (type == "TReferenceValueCardAttribute" || type == "TReferenceValueCardAttributeUnscaled")
+            {
+                string attribute = Text(value, "AttributeType");
+                int found;
+                result = attribute != null && attributes.TryGetValue(attribute, out found) ? found :
+                    (value["DefaultValue"].Kind == JsonKind.Number ? value["DefaultValue"].AsDouble() : 0);
+            }
+            else return 0;
+            JsonValue modifier = Get(value, "Modifier");
+            if (modifier.Kind != JsonKind.Object) return result;
+            double amount = SocketValue(Get(modifier, "Value"), attributes);
+            string mode = Text(modifier, "ModifyMode");
+            if (mode == "Add") return result + amount;
+            if (mode == "Subtract") return result - amount;
+            if (mode == "Multiply") return result * amount;
             return result;
         }
 

@@ -70,7 +70,7 @@ namespace BazaarActionAxis.Tests
             BattleEngine.FlushPendingItems(ctx);
 
             // 原打印机位置变成第一份副本，另外两份排在其后。
-            Assert.Equal(4, ctx.Items.Count);
+            Assert.Equal(5, ctx.Items.Count);
             int copies = 0;
             foreach (InternalItem item in ctx.Items)
             {
@@ -79,7 +79,9 @@ namespace BazaarActionAxis.Tests
                 Assert.Near(2, item.CooldownMax);
             }
             Assert.Equal(3, copies);
-            Assert.Equal("gem#0", printer.CardId);
+            Assert.True(printer.Destroyed && printer.Disabled);
+            Assert.Equal("printer#1", printer.CardId);
+            Assert.Near(0.05, printer.History.RemovedAt.Value);
             int transforms = 0;
             foreach (BattleEvent ev in ctx.Events) if (ev.Kind == "transform") transforms++;
             Assert.Equal(3, transforms);

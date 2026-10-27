@@ -130,7 +130,7 @@ namespace BazaarActionAxis.Tests
             BattleResult fight = BattleEngine.Simulate(config);
             // 合法的反击技能让两只蜜蜂提前到第 11 秒再次攻击，各增加 20 伤害。
             Assert.Near(supportedSkill ? 330 : 290, fight.Totals.Enemy.Damage);
-            Assert.Equal(supportedSkill ? 1 : 0, fight.Events.FindAll(delegate(BattleEvent ev) {
+            Assert.Equal(supportedSkill ? 2 : 0, fight.Events.FindAll(delegate(BattleEvent ev) {
                 return ev.Kind == "skillTrigger" && ev.Side == Side.Enemy;
             }).Count);
             Assert.Equal(6, fight.EnemyItems.Count);

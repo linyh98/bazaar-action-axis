@@ -68,11 +68,11 @@ namespace BazaarActionAxis.Tests
             return null;
         }
 
-        private static void Trigger(BattleContext ctx, string name, InternalItem source, InternalItem target)
+        private static void Trigger(BattleContext ctx, string name, InternalItem source, InternalItem target, double time = 1)
         {
             Triggers.Enqueue(ctx, new TriggerPayload { Event = name, SourceSide = source.Side, SourceItemId = source.Id,
                 TargetItemId = target == null ? null : target.Id, TargetSide = target == null ? (Side?)null : target.Side });
-            Triggers.Drain(ctx, 1);
+            Triggers.Drain(ctx, time);
         }
 
         private static void CoreUsesFlyingOnActivation()
@@ -119,7 +119,8 @@ namespace BazaarActionAxis.Tests
             Assert.Equal(4, flying);
             other.Flying = true;
             launcher.Cooldown = 6;
-            Trigger(ctx, "onUse", other, null);
+            // 原生同一（充能者,目标）250ms 串行：上次充能后再触发需错开时间。
+            Trigger(ctx, "onUse", other, null, 1.3);
             Assert.Near(4.5, launcher.Cooldown);
         }
 
@@ -146,7 +147,8 @@ namespace BazaarActionAxis.Tests
             Assert.Near(6, firefly.Cooldown); // Target proximity is insufficient.
             Trigger(ctx, "onHaste", Item(ctx, "opponent", Side.Enemy), firefly);
             Assert.Near(6, firefly.Cooldown);
-            Trigger(ctx, "onSlow", cog, Item(ctx, "opponent", Side.Enemy));
+            // 原生同一（充能者,目标）250ms 串行：上次充能后再触发需错开时间。
+            Trigger(ctx, "onSlow", cog, Item(ctx, "opponent", Side.Enemy), 1.3);
             Assert.Near(5, firefly.Cooldown); // Neighbor may Slow an enemy.
         }
 
@@ -187,7 +189,8 @@ namespace BazaarActionAxis.Tests
             Assert.Near(4, glasses.Cooldown);
             Trigger(ctx, "onBurnApplied", Item(ctx, "enemy", Side.Enemy), null);
             Assert.Near(4, glasses.Cooldown);
-            Trigger(ctx, "onDestroy", firefly, null);
+            // 原生同一（充能者,目标）250ms 串行：销毁触发的充能需错开时间。
+            Trigger(ctx, "onDestroy", firefly, null, 1.3);
             Assert.Near(3, glasses.Cooldown);
             Trigger(ctx, "onDestroy", Item(ctx, "enemy", Side.Enemy), null);
             Assert.Near(3, glasses.Cooldown);

@@ -76,6 +76,16 @@ bash tools/build_actionaxis_plugin.sh --test
 ```
 
 重启 The Bazaar 后，点击右上角 BPP 按钮下方的金框时间轴图标，或按 `F8` 打开面板。
+入口仅在已进入有效对局且 BPP 对局按钮可见时显示；登录、加载、大厅、选英雄与回放界面隐藏，`F8` 同样受此限制。
+入口复用 BPP 的原生金色装饰框、深色内盘与悬停/按下状态，中央为浅金色时钟与时间刻度图标，大小随 BPP 入口同步缩放。
+
+行动轴采用与入口一致的黑色半透明底、金色边框。双方按「敌方头像与技能 → 敌方血条 → 敌方卡牌 → 我方卡牌 → 我方血条 → 我方头像与技能」排列；顶部时间轴始终保留 0–30 秒，拖动即可查看该时刻的累计输出、DPS 和卡牌触发情况。
+双方头像与血条居中对齐，技能以 60 像素圆形图标排列在头像左右，图案填满原生品质框内侧，悬停时显示名称、效果与当前累计数据；技能较多时保持图标大小，左右区域可分别横向滚动。
+
+- **当前为野怪遭遇**（包括事件内已出现的怪物选项）：读取当次遭遇的真实野怪卡牌、血量和技能，默认定位到一方死亡或 30 秒；有多个野怪选择时，点击敌方头像上的切换图标查看下一只。
+- **其他事件（包括玩家对决）**：使用无限生命木桩，打开时默认定位到 15 秒，仍可拖动查看完整 0–30 秒。敌方仅显示大、中、小空白卡，随机 3–8 秒冷却或无冷却。空白卡会发布使用事件但不造成伤害，推演完整持续 30 秒；不会沿用历史野怪。
+
+更新 DLL 后需重启游戏，已经运行的游戏会继续使用启动时加载的版本。
 
 ---
 
@@ -244,6 +254,10 @@ npm run cards
 - 卡图保存在 `DataDir/icons/`：无附魔 `<baseItemId>.png`，附魔 `<baseItemId>--enchant-<附魔名小写>.png`；已有资源不覆盖。
 - 每次打开 / 重新记录保存 `DataDir/last_snapshot.json`、`last_skill_report.txt`、`last_monster_choices.json`、`last_monster_report.txt`。
 - 运行期间每两秒检查原生实战回放，完整帧就绪后保存 `DataDir/last_combat_replay.json` 与 `DataDir/combats/<combatId>.json`。
+- 从 1.6.10 起默认自动录制行动轴验证数据，与面板是否打开无关。目录为游戏的 `BepInEx/plugins/BazaarActionAxis/VerificationReplays/`；可在配置 `[Verification]` 中设置 `Enabled`（启动时生效）与 `Directory`。
+- 每场 `*.validation.json.gz` 保存消息接收时冻结的原始 MessagePack、带类型的完整事件 JSON、开场消息处理前后双方卡牌/技能/英雄属性（包含背包）、附魔和模板。原始帧保留目标、效果与执行上下文 ID、暴击标记、冷却/弹药/状态变化；服务端没有提供的随机种子或来源归属仍是未知。
+- 同目录 `catalog-*.json.gz` 是该次游戏静态数据库的完整模板库，包含棋盘外变形候选和所有品质/附魔定义；**提供数据时保留整个目录**。模板在后台读取、压缩，记录按 opening → combat → complete 原子更新，收到战斗帧即保存；中断和缺失会显式记录，`complete` 只代表消息齐全，不能当作核对正确。
+- `recorder-status.json.gz` 与 BepInEx 日志记录采集接口/写盘故障；接口不兼容会报错。验证导入命令：`python tools/import_validation_replay.py <记录.validation.json.gz> --out <核对输出目录> [--engine tools/actionaxis_plugin/build/EngineTests.exe]`。工具检查游戏程序集契约、开场、模板/品质和随机归属，再生成原生账本、引擎输入与严格差异报告；缺失数据不会被补成通过。
 
 ### 构建与部署
 

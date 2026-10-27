@@ -7,8 +7,8 @@ namespace BazaarActionAxis.Engine
     {
         public const double MaxHp = 100000;
 
-        // The random cards are a visible target board, not a prediction of the
-        // real opponent. Their source effects are disabled by the dummy flag.
+        // Synthetic targets preserve size and cooldown interactions without
+        // borrowing any real opponent's identity, tags, abilities or artwork.
         public static void Populate(BattleConfig config, CardCatalog catalog, double seed)
         {
             if (config == null) throw new ArgumentNullException("config");
@@ -20,41 +20,45 @@ namespace BazaarActionAxis.Engine
             config.EnemyIsTrainingDummy = true;
             config.EnemyMaxHp = MaxHp;
             config.EnemyStartHp = MaxHp;
-
-            List<CardDef> pool = new List<CardDef>();
-            if (catalog != null)
-                foreach (CardDef card in catalog.Cards)
-                    if (card != null && !string.IsNullOrEmpty(card.Id) &&
-                        string.Equals(card.ParseStatus, "structured", StringComparison.OrdinalIgnoreCase))
-                        pool.Add(card);
-            // Sorting keeps a seed stable even if catalog enumeration changes.
-            pool.Sort(delegate(CardDef a, CardDef b) { return string.CompareOrdinal(a.Id, b.Id); });
+            config.EnemyStartShield = 0;
+            config.EnemyStartRegen = 0;
+            config.EnemyHero = null;
+            config.MaxTime = 30;
+            if (config.Rules == null) config.Rules = new RuleOverrides();
+            config.Rules.MaxTime = 30;
 
             Rng rng = new Rng(seed);
-            HashSet<string> selected = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            List<int> spans = new List<int> { 1, 2, 3 };
+            for (int i = spans.Count - 1; i > 0; i--)
+            {
+                int other = rng.Int(i + 1);
+                int span = spans[i];
+                spans[i] = spans[other];
+                spans[other] = span;
+            }
+            // Every board contains all three sizes and both cooldown modes.
+            bool firstHasCooldown = rng.Chance(0.5);
             int slot = 0;
+            int index = 0;
             while (slot < PanelModel.BoardSlots)
             {
-                List<CardDef> fitting = new List<CardDef>();
-                foreach (CardDef candidate in pool)
-                    if (!selected.Contains(BaseKey(candidate)) &&
-                        slot + PanelModel.CardSpan(candidate) <= PanelModel.BoardSlots)
-                        fitting.Add(candidate);
-                if (fitting.Count == 0) break;
-
-                CardDef original = fitting[rng.Int(fitting.Count)];
-                selected.Add(BaseKey(original));
-                CardDef card = original.Clone();
-                card.Id = "dummy:" + slot + ":" + original.Id;
+                int span = index < spans.Count ? spans[index] :
+                    1 + rng.Int(Math.Min(3, PanelModel.BoardSlots - slot));
+                bool hasCooldown = index == 0 ? firstHasCooldown :
+                    index == 1 ? !firstHasCooldown : rng.Chance(0.5);
+                string size = span == 3 ? "Large" : span == 2 ? "Medium" : "Small";
+                CardDef card = new CardDef
+                {
+                    Id = "dummy:" + slot + ":blank-" + size.ToLowerInvariant(),
+                    NameCn = "空白卡牌", Size = size, ParseStatus = "structured",
+                    Cooldown = hasCooldown ? 3 + rng.Int(6) : 0,
+                    Passive = !hasCooldown, DataSource = "training-dummy"
+                };
                 config.Cards[card.Id] = card;
                 config.Enemy.Items.Add(new LoadoutItem { CardId = card.Id, Slot = slot });
-                slot += PanelModel.CardSpan(card);
+                slot += span;
+                index++;
             }
-        }
-
-        private static string BaseKey(CardDef card)
-        {
-            return string.IsNullOrEmpty(card.BaseItemId) ? card.Id : card.BaseItemId;
         }
     }
 }

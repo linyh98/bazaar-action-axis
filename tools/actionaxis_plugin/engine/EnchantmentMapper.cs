@@ -19,29 +19,61 @@ namespace BazaarActionAxis.Engine
                 if (native["Abilities"].Kind != JsonKind.Object || native["Auras"].Kind != JsonKind.Object)
                     throw new FormatException("附魔规则不完整");
                 List<Effect> added = new List<Effect>();
+                List<TriggerDef> addedTriggers = new List<TriggerDef>();
                 foreach (KeyValuePair<string, JsonValue> pair in native["Abilities"].AsObject())
                 {
                     JsonValue ability = pair.Value;
                     CheckArea(ability);
                     if (!NativeSkillSupport.Empty(ability["Prerequisites"])) throw new FormatException("附魔能力含尚未支持的触发条件或次数限制");
-                    if (NativeSkillSupport.Type(ability["Trigger"]) != "TTriggerOnCardFired")
-                        throw new FormatException("尚不支持附魔触发器 " + NativeSkillSupport.Type(ability["Trigger"]));
-                    added.Add(MapAction(ability["Action"], live.Attributes));
+                    string trigger = NativeSkillSupport.Type(ability["Trigger"]);
+                    // 战斗外附魔分支仍按白名单跳过；同卡的战斗内能力必须保留。
+                    if (SkillMapper.IsNonCombatTrigger(ability["Trigger"])) continue;
+                    Effect effect = MapAction(ability["Action"], live.Attributes);
+                    effect.FromEnchantment = true;
+                    effect.Priority = NativeSkillSupport.Text(ability, "Priority");
+                    if (trigger == "TTriggerOnCardFired")
+                    {
+                        added.Add(effect);
+                        continue;
+                    }
+                    // 附魔被动（例如 Deadly 的 TTriggerOnItemUsed）与主动同样执行。
+                    foreach (TriggerDef mapped in NativeSkillSupport.MapTriggers(ability["Trigger"]))
+                    {
+                        mapped.SkillRule.Prerequisites = ability["Prerequisites"];
+                        mapped.Effects.Add(effect);
+                        mapped.FromEnchantment = true;
+                        addedTriggers.Add(mapped);
+                    }
                 }
                 foreach (KeyValuePair<string, JsonValue> pair in native["Auras"].AsObject())
                     ValidateInheritedAura(pair.Value, live.Attributes);
-                // These live-only attributes need engine mechanics of their own.
-                // Do not report Radiant/Obsidian immunity as supported just because
-                // the raw value was captured.
                 foreach (KeyValuePair<string, JsonValue> pair in native["Attributes"].AsObject())
                     if (!InheritedAttribute(pair.Key)) throw new FormatException("尚不支持附魔属性 " + pair.Key);
 
                 CardDef result = source.Clone();
+                result.EnchantmentName = live.Enchantment;
+                result.NativeEnchantment = native;
                 result.Effects = new List<Effect>(source.Effects);
                 result.Effects.AddRange(added);
+                result.Triggers = new List<TriggerDef>(source.Triggers);
+                result.Triggers.AddRange(addedTriggers);
                 result.Tags = new List<string>(source.Tags);
                 foreach (JsonValue tag in native["Tags"].AsArray())
                     if (!result.Tags.Contains(tag.AsString())) result.Tags.Add(tag.AsString());
+                result.HiddenTags = new List<string>(source.HiddenTags);
+                foreach (JsonValue tag in native["HiddenTags"].AsArray())
+                    if (!result.HiddenTags.Contains(tag.AsString())) result.HiddenTags.Add(tag.AsString());
+                // 直接附魔属性（Radiant 的缓速/冻结抗性与摧毁免疫）必须落到
+                // 实际结算字段，不能只作为快照里的诊断值保存。
+                foreach (KeyValuePair<string, JsonValue> pair in native["Attributes"].AsObject())
+                {
+                    int value = pair.Value.AsInt();
+                    result.LiveAttributes[pair.Key] = value;
+                    if (pair.Key == "PercentSlowReduction") result.PercentSlowReduction = value;
+                    else if (pair.Key == "PercentFreezeReduction") result.PercentFreezeReduction = value;
+                    else if (pair.Key == "PercentHasteReduction") result.PercentHasteReduction = value;
+                    else if (pair.Key == "DestroyImmunity") result.DestroyImmunity = value;
+                }
                 return result;
             }
             catch (Exception error)
@@ -95,22 +127,16 @@ namespace BazaarActionAxis.Engine
             }
             else
             {
-                string targetType = NativeSkillSupport.Type(target);
-                string section = NativeSkillSupport.Text(target, "TargetSection");
-                if (targetType != "TTargetCardRandom" && targetType != "TTargetCardSection")
-                    throw new FormatException("尚不支持附魔卡牌目标 " + targetType);
-                if (section != "SelfHand" && section != "OpponentHand") throw new FormatException("尚不支持附魔目标区域 " + section);
-                if (target["ExcludeSelf"].AsBool()) throw new FormatException("尚不支持附魔排除自身目标");
-                if (!NativeSkillSupport.ConditionSupported(target["Conditions"])) throw new FormatException("尚不支持附魔目标条件");
-                result.Target = new Target
-                {
-                    Kind = targetType == "TTargetCardRandom" ? (section == "SelfHand" ? "randomSelfItem" : "randomEnemyItem") :
-                        (section == "SelfHand" ? "allSelfItems" : "allEnemyItems"),
-                    NativeCondition = target["Conditions"]
-                };
+                // 附魔主动效果与普通动作共享同一目标契约：AllHands、Absolute、
+                // 位置、XMost 和 Occupying 不能各自维护一套近似解析。
+                result.Target = SkillMapper.MapCardTarget(target);
                 result.Seconds = ReadValue(raw["Value"], attrs, attribute) / 1000.0;
-                result.Count = targetType == "TTargetCardSection" && NativeSkillSupport.Empty(raw["TargetCount"])
-                    ? 1 : (int)ReadValue(raw["TargetCount"], attrs, attribute.Replace("Amount", "Targets"));
+                if (!NativeSkillSupport.Empty(raw["TargetCount"]))
+                    result.Count = (int)ReadValue(raw["TargetCount"], attrs, null);
+                else if (result.Target.Kind != null && result.Target.Kind.StartsWith("all", StringComparison.Ordinal) ||
+                    result.Target.PositionMode != null)
+                    result.Count = int.MaxValue;
+                else result.Count = 1;
                 if (result.Count.Value <= 0) throw new FormatException("缺少有效附魔目标数量");
             }
             return result;
@@ -179,9 +205,10 @@ namespace BazaarActionAxis.Engine
 
         private static bool InheritedAttribute(string attribute)
         {
-            string[] inherited = { "DamageAmount", "HealAmount", "ShieldApplyAmount", "BurnApplyAmount", "PoisonApplyAmount", "RegenApplyAmount",
-                "CritChance", "Lifesteal", "LifestealPercentage", "CooldownMax", "AmmoMax", "Multicast", "HasteAmount", "HasteTargets", "SlowAmount", "SlowTargets",
-                "FreezeAmount", "FreezeTargets", "ChargeAmount", "ChargeTargets" };
+            string[] inherited = { "DamageAmount", "HealAmount", "ShieldApplyAmount", "BurnApplyAmount", "PoisonApplyAmount", "RegenApplyAmount", "RageApplyAmount",
+                "CritChance", "DamageCrit", "Lifesteal", "LifestealPercentage", "CooldownMax", "AmmoMax", "Multicast", "HasteAmount", "HasteTargets", "SlowAmount", "SlowTargets",
+                "FreezeAmount", "FreezeTargets", "FlyingTargets", "EnchantTargets", "ChargeAmount", "ChargeTargets", "BurnRemoveAmount", "PoisonRemoveAmount",
+                "SellPrice", "BuyPrice", "PercentSlowReduction", "PercentFreezeReduction", "PercentHasteReduction", "DestroyImmunity", "Heated", "Chilled" };
             return Array.IndexOf(inherited, attribute) >= 0;
         }
     }

@@ -56,9 +56,13 @@ namespace BazaarActionAxis.Tests
             Assert.False(NativeSkillSupport.CardMatches(ctx.Items[0], notId, ctx));
             Assert.True(NativeSkillSupport.CardMatches(ctx.Items[1], notId, ctx));
 
-            JsonValue anyEnchant = Condition(@"{""$type"":""TCardConditionalHasEnchantment"",""Enchantment"":null,""IsNot"":false}");
+            // 原生 Enchantment:null 表示“任意附魔”，IsNot 再取反。
+            JsonValue anyEnchant = Condition(@"{""$type"":""TCardConditionalHasEnchantment"",""Enchantment"":null,""IsNot"":true}");
             Assert.False(NativeSkillSupport.CardMatches(ctx.Items[0], anyEnchant, ctx));
             Assert.True(NativeSkillSupport.CardMatches(ctx.Items[1], anyEnchant, ctx));
+            JsonValue noEnchant = Condition(@"{""$type"":""TCardConditionalHasEnchantment"",""Enchantment"":null,""IsNot"":false}");
+            Assert.True(NativeSkillSupport.CardMatches(ctx.Items[0], noEnchant, ctx));
+            Assert.False(NativeSkillSupport.CardMatches(ctx.Items[1], noEnchant, ctx));
             JsonValue icy = Condition(@"{""$type"":""TCardConditionalHasEnchantment"",""Enchantment"":""Icy"",""IsNot"":false}");
             Assert.True(NativeSkillSupport.CardMatches(ctx.Items[1], icy, ctx));
             Assert.False(NativeSkillSupport.CardMatches(ctx.Items[0], icy, ctx));

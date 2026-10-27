@@ -12,6 +12,16 @@ namespace BazaarActionAxis.Plugin.Ui
         public int Slot;
         public string Enchantment;
         public CardStatsSeries Series;
+        public BattleItemView History;
+
+        public TileModel At(double time)
+        {
+            if (History == null) return this;
+            BattleItemState state = History.At(time);
+            if (state == null) return null;
+            return new TileModel { Id = Id, Card = state.Card, Slot = state.Slot,
+                Enchantment = state.Card.EnchantmentName, Series = Series };
+        }
     }
 
     public static class CardTile
@@ -24,11 +34,12 @@ namespace BazaarActionAxis.Plugin.Ui
             Rect body = new Rect(rect.x + 3f * scale, rect.y + 3f * scale,
                 rect.width - 6f * scale, rect.height - 6f * scale);
             Theme.Fill(rect, Theme.Tile);
-            Texture2D texture = icons != null ? icons.Get(model.Card.BaseItemId, model.Enchantment) : null;
+            bool dummy = model.Card.Id != null && model.Card.Id.StartsWith("dummy:", StringComparison.Ordinal);
+            Texture2D texture = !dummy && icons != null ? icons.Get(model.Card.BaseItemId, model.Enchantment) : null;
             if (texture != null)
             {
                 GUI.DrawTexture(body, texture, ScaleMode.ScaleToFit);
-                Theme.Fill(body, new Color(0.025f, 0.018f, 0.01f, 0.48f));
+                Theme.Fill(body, new Color(0f, 0f, 0f, 0.16f));
             }
 
             double progress = model.Series != null ? model.Series.CooldownProgressAt(playhead) : 0;
@@ -41,13 +52,13 @@ namespace BazaarActionAxis.Plugin.Ui
                 Theme.Fill(new Rect(body.x, waterY, body.width, 2f * scale), Theme.WaterLine);
             }
 
-            Theme.Outline(rect, Theme.TierColor(model.Card.Tier), 2f * scale);
+            Theme.Outline(rect, dummy ? Theme.FrameDim : Theme.TierColor(model.Card.Tier), scale);
             Theme.Outline(body, Theme.FrameDim, scale);
 
             Rect nameRect = new Rect(rect.x + pad, rect.y + 8f * scale,
                 rect.width - pad * 2f, (compact ? 32f : 42f) * scale);
             Theme.Fill(new Rect(body.x, body.y, body.width, (compact ? 52f : 66f) * scale),
-                new Color(0.04f, 0.026f, 0.015f, 0.70f));
+                new Color(0f, 0f, 0f, 0.68f));
             GUIStyle nameStyle = Theme.TileNameStyle;
             int nameSize = nameStyle.fontSize;
             GUIContent name = new GUIContent(model.Card.DisplayName());
@@ -62,9 +73,26 @@ namespace BazaarActionAxis.Plugin.Ui
 
             if (compact)
             {
+                if (dummy)
+                {
+                    GUI.Label(new Rect(body.x, body.y + 55f * scale, body.width, 35f * scale),
+                        model.Card.Size == "Large" ? "III" : model.Card.Size == "Medium" ? "II" : "I", Theme.PlaceholderStyle);
+                    GUI.Label(new Rect(body.x, rect.yMax - 36f * scale, body.width, 18f * scale),
+                        model.Card.Cooldown > 0 ? model.Card.Cooldown.ToString("0.#") + "s 冷却" : "无冷却", Theme.CenterSmallStyle);
+                }
+                else if (rect.height >= 120f * scale)
+                {
+                    List<BadgeLine> summary = PanelModel.BadgeLines(stats);
+                    for (int i = 0; i < Math.Min(2, summary.Count); i++)
+                        DrawEffect(new Rect(rect.x + pad, rect.yMax - (60f - i * 20f) * scale,
+                            rect.width - pad * 2f, 18f * scale), summary[i]);
+                }
                 if (model.Series != null && model.Series.HasCooldown)
-                    GUI.Label(new Rect(body.x, rect.yMax - 18f * scale, body.width, 16f * scale),
-                        PanelModel.TriggerText(stats), Theme.CenterSmallStyle);
+                {
+                    Rect counter = new Rect(body.x, rect.yMax - 21f * scale, body.width, 18f * scale);
+                    Theme.Fill(counter, new Color(0f, 0f, 0f, 0.82f));
+                    GUI.Label(counter, PanelModel.TriggerText(stats), Theme.BadgeStyle);
+                }
                 return;
             }
 
@@ -81,7 +109,7 @@ namespace BazaarActionAxis.Plugin.Ui
             }
 
             Rect footer = new Rect(body.x, rect.yMax - 37f * scale, body.width, 34f * scale);
-            Theme.Fill(footer, new Color(0.035f, 0.024f, 0.016f, 0.86f));
+            Theme.Fill(footer, new Color(0f, 0f, 0f, 0.86f));
             Theme.Fill(new Rect(footer.x + pad, footer.y, footer.width - pad * 2f, scale), Theme.FrameDim);
             GUI.Label(footer, PanelModel.TriggerText(stats), Theme.TriggerStyle);
         }
@@ -95,7 +123,7 @@ namespace BazaarActionAxis.Plugin.Ui
             while (style.fontSize > Mathf.Max(6, Mathf.RoundToInt(8f * Theme.Scale)) &&
                 style.CalcSize(content).x > rect.width)
                 style.fontSize--;
-            Theme.Fill(rect, new Color(0.03f, 0.02f, 0.01f, 0.52f));
+            Theme.Fill(rect, new Color(0f, 0f, 0f, 0.70f));
             GUI.contentColor = Theme.BadgeColor(badge.ColorKey);
             GUI.Label(rect, content, style);
             GUI.contentColor = original;

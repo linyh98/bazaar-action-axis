@@ -1,0 +1,1233 @@
+{
+  "Waterskin": {
+    "id": "3c9438a9-78a6-4cb3-b1d8-a6410693a879",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 4000,
+            "ChargeTargets": 1,
+            "ChargeAmount": 1000,
+            "HealAmount": 15
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "HealAmount": 30
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "HealAmount": 60
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "HealAmount": 120
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Waterskin Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {
+            "SlowTargets": 1,
+            "SlowAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Heavy Waterskin Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6e7c38fb-5854-4c69-8bd4-c5a83f3ee66c",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "b4a09a8f6fbce3e12ec39f47304e2cc4",
+                  "Text": "When you use the item to the left, Slow an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 1,
+            "FreezeAmount": 500
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy Waterskin Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b39ec067-0a71-4c90-a8e0-9ee6cbf206fd",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "e6c53cfeaff6b8ac5af9b9e20843d1bc",
+                  "Text": "When you use the item to the left, Freeze an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteTargets": 1,
+            "HasteAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Turbo Waterskin Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7aa6f7a-b701-4984-b9f2-f4bb6921b0ab",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "62de4864e9ebdad03e39d06af0864030",
+                  "Text": "When you use the item to the left, Haste an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Shielded Waterskin Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "8e87889d-7a95-464d-91c1-0eea43bf0285",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "ShieldApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "HealAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shielded Waterskin Aura",
+              "InternalDescription": "Sets the value of Shield",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "11838679705ac0a6897ecbfa3526e19f",
+                  "Text": "When you use the item to the left, Shield equal to this item's Heal"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Restorative": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "HealAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Restorative First Aiden Aura",
+              "InternalDescription": "Restorative 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "HealReference"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "6217d99da222fa6925e802bd4054fd62",
+                  "Text": "This has double Heal"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Toxic First Aiden Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "fd0f96d4-c0f1-4982-a381-162f44e68927",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PoisonApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "HealAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Toxic First Aiden Aura",
+              "InternalDescription": "Sets the value of Poison",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "254b7b2af9ac42d5e9bdfdaea5deabe6",
+                  "Text": "When you use the item to the left, Poison equal to 10% of this item's Heal"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Fiery Waterskin Ability",
+              "InternalDescription": "Burn",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "9df82189-50fe-4253-b441-15908fa7fdff",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "BurnApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "HealAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Fiery Waterskin Aura",
+              "InternalDescription": "Sets the value of Burn",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "df3d9f1a27509b0dc99ae7cab3b5b76e",
+                  "Text": "When you use the item to the left, Burn equal to 10% of this item's Heal"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Multicast",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny First Aiden Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "d101edc8-16d0-4226-a9ce-d35207585831",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "dc1a96bffac3ce0cba3e40cfa57a3836",
+                  "Text": "This has +{aura.e1} Multicast"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 30.0
+                },
+                "Target": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Deadly Waterskin Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "fdb3c87d-a451-4e45-89d1-d7c10f73966f",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "7e38287df4addb46541a1295dd3612c5",
+                  "Text": "The item to the left has +{aura.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PercentFreezeReduction",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Weapon"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Radiant Left Aura",
+              "InternalDescription": "Radiant 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "11e83ca5-77c1-4b08-bd6e-5fc66ad8c7a8",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PercentSlowReduction",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Weapon"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Radiant Left Aura",
+              "InternalDescription": "Radiant 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "11e83ca5-77c1-4b08-bd6e-5fc66ad8c7a8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "65359bd2e1077a72e2f2941430fd84ea",
+                  "Text": "The item to the left is affected by Freeze and Slow for half as long"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Obsidian Waterskin Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6894acb5-0ac7-4648-bf11-a11131b10875",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "DamageAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "HealAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Obsidian Waterskin Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "ea59db80e2dbbfd3af952d10b555b367",
+                  "Text": "When you use the item to the left, deal Damage equal to this item's Heal"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "LeftCard",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy First Aiden Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "fd0f96d4-c0f1-4982-a381-162f44e68927",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "RegenApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "HealAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Mossy First Aiden Aura",
+              "InternalDescription": "Sets the value of Regen",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "31d7c25541ef3daba32e7ff8c7309cce",
+                  "Text": "When you use the item to the left, Regen equal to 10% of this item's Heal"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "3c9438a9-78a6-4cb3-b1d8-a6410693a879",
+      "Version": "5.0.0",
+      "InternalName": "Waterskin",
+      "InternalDescription": "",
+      "StartingTier": "Bronze",
+      "Size": "Small",
+      "Heroes": [
+        "Karnok"
+      ],
+      "Tags": [
+        "Food"
+      ],
+      "HiddenTags": [
+        "Heal",
+        "Charge"
+      ],
+      "ArtKey": "29d8872dfa66db34ba90c16b9b1e4b16",
+      "TranslationKey": "071dbd416520d14b2e3688145801de41",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "d72401c22176101b6cd0bf5470158fc6",
+          "Text": "Waterskin"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "b273da22b6fe1e3e48e2d77928ffd3e4",
+              "Text": "Charge the item to the left {ability.0} second(s)"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "86796e94e5bc24be0cf2e478127e8527",
+              "Text": "When you use the item to the left, Heal {ability.1}"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardCharge",
+            "Value": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardPositional",
+              "Origin": "Self",
+              "TargetMode": "LeftCard",
+              "IncludeOrigin": false,
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Battery 1",
+          "InternalDescription": "Charge the item to the left {ability.0} second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "cab0033d160b0156f8f25f6953d72b2b",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnItemUsed",
+            "Subject": {
+              "$type": "TTargetCardPositional",
+              "Origin": "Self",
+              "TargetMode": "LeftCard",
+              "IncludeOrigin": false,
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerHeal",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Waterskin",
+          "InternalDescription": "Heal",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "e6d1652384b9cfef1c6e5e7a7407a709",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    }
+  }
+}

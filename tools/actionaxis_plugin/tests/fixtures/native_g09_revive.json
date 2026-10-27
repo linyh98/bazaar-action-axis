@@ -1,0 +1,5611 @@
+{
+  "Memento Mori": {
+    "table": "cards",
+    "id": "34618f7b-f262-4d49-b395-de92bef0508c",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Gold": {
+          "Attributes": {
+            "HealAmount": 1,
+            "Custom_0": 0,
+            "Custom_1": 1,
+            "Custom_2": 0
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "4",
+            "5"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "Custom_1": 2
+          },
+          "AbilityIds": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Memento Mori Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {
+            "SlowAmount": 4000,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "OpponentHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Heavy Memento Mori Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "eedb7069-e169-46ab-a8e4-a094a2fa910e",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "b891bc1830a956da1524b7eac30115eb",
+                  "Text": "The first time you would be defeated each fight, Slow all enemy items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeAmount": 4000,
+            "FreezeTargets": 3,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Icy Memento Mori Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "429060d6-2d58-4ddd-8a28-9408aedbaa24",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "1f54e53ddac4728dfc30c51fe2f80ae8",
+                  "Text": "The first time you would be defeated each fight, Freeze {ability.e1.targets} items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteAmount": 4000,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Turbo Memento Mori Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "98333069-3fed-4289-9c0c-a5424dbd616d",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "beb6e80482ba5303a74402990f7b741d",
+                  "Text": "The first time you would be defeated each fight, Haste all your items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 0,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Shielded Memento Mori Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "071ebe5e-13a2-4c4f-a047-b4db1dba24e0",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e3": {
+              "Id": "e3",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "ShieldApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValuePlayerAttribute",
+                  "AttributeType": "HealthMax",
+                  "Target": {
+                    "$type": "TTargetPlayerRelative",
+                    "TargetMode": "Self",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.2
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shielded Memento Mori Aura",
+              "InternalDescription": "Sets the Shield of the item",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "51e6b6537256f327c5e8ec2cc66473d4",
+                  "Text": "The first time you would be defeated each fight, Shield equal to 20% of your Max Health"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Restorative": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "HealAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Restorative Memento Mori Aura",
+              "InternalDescription": "Restorative 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "HealReference"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "6217d99da222fa6925e802bd4054fd62",
+                  "Text": "This has double Heal"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 0,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Toxic Memento Mori Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "95f96a06-f7f5-4357-858f-b8c666c2d397",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e3": {
+              "Id": "e3",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PoisonApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValuePlayerAttribute",
+                  "AttributeType": "HealthMax",
+                  "Target": {
+                    "$type": "TTargetPlayerRelative",
+                    "TargetMode": "Self",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Toxic Memento Mori Aura",
+              "InternalDescription": "Toxic",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "1350dab25e6989026c926288d67bef65",
+                  "Text": "The first time you would be defeated each fight, Poison equal to 10% of your Max Health"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 0,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Fiery Memento Mori Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "d04b1c70-0299-4bd4-820b-52a972508c64",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e3": {
+              "Id": "e3",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "BurnApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValuePlayerAttribute",
+                  "AttributeType": "HealthMax",
+                  "Target": {
+                    "$type": "TTargetPlayerRelative",
+                    "TargetMode": "Self",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Fiery Memento Mori Aura",
+              "InternalDescription": "Fiery",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "d607563f381ff9cc036fa876a9db2a0f",
+                  "Text": "The first time you would be defeated each fight, Burn equal to 10% of your Max Health"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Deadly": {
+          "Attributes": {
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 25.0
+                },
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAnd",
+                    "Conditions": [
+                      {
+                        "$type": "TCardConditionalCanCrit",
+                        "IsNot": false
+                      }
+                    ]
+                  }
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Deadly Memento Mori Aura",
+              "InternalDescription": "Deadly 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "2d251c1f-596a-4957-ab5f-79f7f0e9bc67",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Crit"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "7d887eb7a35d9c74f8ab9b42c0637e85",
+                  "Text": "The first time you would be defeated each fight, your items gain {ability.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Custom_1",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Plague Glaive Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "742dc465-3e2b-4915-b300-0cbf9a2dbf82",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "551a7093ae19f2a3c5370f58aa5fe5e1",
+                  "Text": "This has double invulnerability duration"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PercentFreezeReduction",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "Neighbor",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Radiant Adjacent Aura",
+              "InternalDescription": "Radiant 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "11e83ca5-77c1-4b08-bd6e-5fc66ad8c7a8",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PercentSlowReduction",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "Neighbor",
+                  "IncludeOrigin": false,
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Radiant Adjacent Aura",
+              "InternalDescription": "Radiant 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "11e83ca5-77c1-4b08-bd6e-5fc66ad8c7a8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "4927f5e528e6a62b69715fc451741fca",
+                  "Text": "Adjacent items are affected by Freeze and Slow for half as long"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 0,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Obsidian Memento Mori Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "071ebe5e-13a2-4c4f-a047-b4db1dba24e0",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e3": {
+              "Id": "e3",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "DamageAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValuePlayerAttribute",
+                  "AttributeType": "HealthMax",
+                  "Target": {
+                    "$type": "TTargetPlayerRelative",
+                    "TargetMode": "Self",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.2
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Obsidian Memento Mori Aura",
+              "InternalDescription": "Obsidian",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "67d65fc7b2ec38bc840f60ed2951c6e1",
+                  "Text": "The first time you would be defeated each fight, deal Damage equal to 20% of your Max Health"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 0,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Mossy Memento Mori Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "95f96a06-f7f5-4357-858f-b8c666c2d397",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e3": {
+              "Id": "e3",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "RegenApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValuePlayerAttribute",
+                  "AttributeType": "HealthMax",
+                  "Target": {
+                    "$type": "TTargetPlayerRelative",
+                    "TargetMode": "Self",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Mossy Memento Mori Aura",
+              "InternalDescription": "Mossy",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "512363c60c5de5d3526252d7a163f37a",
+                  "Text": "The first time you would be defeated each fight, Regen equal to 5% of your Max Health"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "34618f7b-f262-4d49-b395-de92bef0508c",
+      "Version": "5.0.0",
+      "InternalName": "Memento Mori",
+      "InternalDescription": "",
+      "StartingTier": "Gold",
+      "Size": "Medium",
+      "Heroes": [
+        "Mak"
+      ],
+      "Tags": [
+        "Relic"
+      ],
+      "HiddenTags": [
+        "Heal"
+      ],
+      "ArtKey": "16e057558bf523d4db82f09f67dd2465",
+      "TranslationKey": "1c7444be9626d149ab598fb79b639f96",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "33880c1b6a567516bbbde2bef3f0c814",
+          "Text": "Memento Mori"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "1a6000c646f8a465989f5aa69a65a93f",
+              "Text": "The first time you would be defeated each fight, Heal {ability.10} and take no Damage for {aura.9} second(s)"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerDied",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerModifyAttribute",
+            "AttributeType": "PercentDamageReduction",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 100.0
+            },
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TCombatDuration",
+              "DurationInMs": 1000
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Custom_0",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 0.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            },
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalHasEnchantment",
+                  "Enchantment": "Shiny",
+                  "IsNot": false
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 0
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Memento Mori 1 Gold",
+          "InternalDescription": "The first time you would be defeated each fight, take no Damage for [--/--/1/2] seconds",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Art/FX/Prefabs/DefaultInvulnerability/Projectile_DefaultInvulnerability_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "62736e5e420fd210eb31e2839af5b80d",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerDied",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerModifyAttribute",
+            "AttributeType": "PercentDamageReduction",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 100.0
+            },
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TCombatDuration",
+              "DurationInMs": 2000
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Custom_0",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 0.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            },
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalHasEnchantment",
+                  "Enchantment": "Shiny",
+                  "IsNot": false
+                }
+              },
+              "Comparison": "GreaterThanOrEqual",
+              "Amount": 1
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Memento Mori 1 Gold - Shiny",
+          "InternalDescription": "The first time you would be defeated each fight, take no Damage for [--/--/1/2] seconds",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Art/FX/Prefabs/DefaultInvulnerability/Projectile_DefaultInvulnerability_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "62736e5e420fd210eb31e2839af5b80d",
+          "WorksIn": "Anywhere"
+        },
+        "2": {
+          "Id": "2",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerDied",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerModifyAttribute",
+            "AttributeType": "PercentDamageReduction",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 100.0
+            },
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TCombatDuration",
+              "DurationInMs": 2000
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Custom_0",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 0.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            },
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalHasEnchantment",
+                  "Enchantment": "Shiny",
+                  "IsNot": false
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 0
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Memento Mori 1 Diamond",
+          "InternalDescription": "The first time you would be defeated each fight, take no Damage for [--/--/1/2] seconds",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Art/FX/Prefabs/DefaultInvulnerability/Projectile_DefaultInvulnerability_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "62736e5e420fd210eb31e2839af5b80d",
+          "WorksIn": "Anywhere"
+        },
+        "3": {
+          "Id": "3",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerDied",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerModifyAttribute",
+            "AttributeType": "PercentDamageReduction",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 100.0
+            },
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TCombatDuration",
+              "DurationInMs": 4000
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Custom_0",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 0.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            },
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalHasEnchantment",
+                  "Enchantment": "Shiny",
+                  "IsNot": false
+                }
+              },
+              "Comparison": "GreaterThanOrEqual",
+              "Amount": 1
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Memento Mori 1 Diamond - Shiny",
+          "InternalDescription": "The first time you would be defeated each fight, take no Damage for [--/--/1/2] seconds",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Art/FX/Prefabs/DefaultInvulnerability/Projectile_DefaultInvulnerability_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "62736e5e420fd210eb31e2839af5b80d",
+          "WorksIn": "Anywhere"
+        },
+        "4": {
+          "Id": "4",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerDied",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerReviveHeal",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Custom_0",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 0.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Memento Mori 2",
+          "InternalDescription": "The first time you would be defeated each fight, Heal 1",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "eced065e5205511ce1fedbb1d52997d0",
+          "WorksIn": "Anywhere"
+        },
+        "5": {
+          "Id": "5",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerDied",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 1.0
+            },
+            "AttributeType": "Custom_0",
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Immediate",
+          "InternalName": "Counter Increment",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+          "WorksIn": "Anywhere"
+        },
+        "10": {
+          "Id": "10",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerDied",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerHeal",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Custom_0",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 0.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Tooltip",
+          "InternalDescription": "The first time you would be defeated each fight, Heal 1",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "eced065e5205511ce1fedbb1d52997d0",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "9": {
+          "Id": "9",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Custom_2",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_1",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Tooltip Handling",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "9ed8516049000a0e1a90054e0aab06ce",
+          "WorksIn": "Anywhere"
+        }
+      }
+    }
+  },
+  "Luxury Tents": {
+    "table": "cards",
+    "id": "3b1e3858-93d4-45c8-892b-b66aec1b14a9",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Gold": {
+          "Attributes": {
+            "HealAmount": 0,
+            "Custom_0": 10,
+            "Custom_1": 1,
+            "Custom_2": 0,
+            "Custom_3": 10,
+            "Custom_4": 0
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2",
+            "3"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "Custom_0": 20,
+            "Custom_3": 20
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2",
+            "3"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Luxury Tents Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {
+            "SlowAmount": 4000,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "OpponentHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Heavy Luxury Tents Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "eedb7069-e169-46ab-a8e4-a094a2fa910e",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "b891bc1830a956da1524b7eac30115eb",
+                  "Text": "The first time you would be defeated each fight, Slow all enemy items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeAmount": 4000,
+            "FreezeTargets": 3,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Icy Luxury Tents Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "429060d6-2d58-4ddd-8a28-9408aedbaa24",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "de403077254b80aa5be42cdc9f8305a6",
+                  "Text": "The first time you would be defeated each fight, Freeze {ability.e1.targets} enemy items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteAmount": 4000,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Turbo Luxury Tents Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "98333069-3fed-4289-9c0c-a5424dbd616d",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "beb6e80482ba5303a74402990f7b741d",
+                  "Text": "The first time you would be defeated each fight, Haste all your items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 0,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Shielded Luxury Tents Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "071ebe5e-13a2-4c4f-a047-b4db1dba24e0",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e3": {
+              "Id": "e3",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "ShieldApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValuePlayerAttribute",
+                  "AttributeType": "HealthMax",
+                  "Target": {
+                    "$type": "TTargetPlayerRelative",
+                    "TargetMode": "Self",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.25
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shielded Luxury Tents Aura",
+              "InternalDescription": "Sets the Shield of the item",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "b4830f95d8ed2d3b905dffd680b119b1",
+                  "Text": "The first time you would be defeated each fight, Shield equal to 25% of your Max Health"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Restorative": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "HealAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Restorative Luxury Tents Aura",
+              "InternalDescription": "Restorative 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "HealReference"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "6217d99da222fa6925e802bd4054fd62",
+                  "Text": "This has double Heal"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 0,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Toxic Luxury Tents Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "95f96a06-f7f5-4357-858f-b8c666c2d397",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e3": {
+              "Id": "e3",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PoisonApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValuePlayerAttribute",
+                  "AttributeType": "HealthMax",
+                  "Target": {
+                    "$type": "TTargetPlayerRelative",
+                    "TargetMode": "Self",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": false
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Toxic Luxury Tents Aura",
+              "InternalDescription": "Sets the value of Poison",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "1350dab25e6989026c926288d67bef65",
+                  "Text": "The first time you would be defeated each fight, Poison equal to 10% of your Max Health"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 0,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Fiery Luxury Tents Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "d04b1c70-0299-4bd4-820b-52a972508c64",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e3": {
+              "Id": "e3",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "BurnApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValuePlayerAttribute",
+                  "AttributeType": "HealthMax",
+                  "Target": {
+                    "$type": "TTargetPlayerRelative",
+                    "TargetMode": "Self",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": false
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Fiery Luxury Tents Aura",
+              "InternalDescription": "Sets the value of Burn",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "d607563f381ff9cc036fa876a9db2a0f",
+                  "Text": "The first time you would be defeated each fight, Burn equal to 10% of your Max Health"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Custom_1",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Luxury Tents Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "61c800fd-9810-4a58-8636-5d86099ed101",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "bd2ba1a08dcf57990e51bef1b19b76b2",
+                  "Text": "This has double Multicast bonus"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Deadly": {
+          "Attributes": {
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAnd",
+                    "Conditions": [
+                      {
+                        "$type": "TCardConditionalCanCrit",
+                        "IsNot": false
+                      }
+                    ]
+                  }
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Deadly Luxury Tents Aura",
+              "InternalDescription": "Deadly 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "2d251c1f-596a-4957-ab5f-79f7f0e9bc67",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Crit"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "7d887eb7a35d9c74f8ab9b42c0637e85",
+                  "Text": "The first time you would be defeated each fight, your items gain {ability.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Radiant": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PercentFreezeReduction",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAnd",
+                    "Conditions": [
+                      {
+                        "$type": "TCardConditionalHiddenTag",
+                        "Tags": [
+                          "Heal"
+                        ],
+                        "Operator": "Any"
+                      }
+                    ]
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Radiant Shipwreck Aura",
+              "InternalDescription": "Radiant 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "11e83ca5-77c1-4b08-bd6e-5fc66ad8c7a8",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PercentSlowReduction",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAnd",
+                    "Conditions": [
+                      {
+                        "$type": "TCardConditionalHiddenTag",
+                        "Tags": [
+                          "Heal"
+                        ],
+                        "Operator": "Any"
+                      }
+                    ]
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Radiant Shipwreck Aura",
+              "InternalDescription": "Radiant 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "11e83ca5-77c1-4b08-bd6e-5fc66ad8c7a8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "c738db80a79e72703a9bbbc6a8aff63f",
+                  "Text": "Your Heal items are affected by Freeze and Slow for half as long"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 0,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Obsidian Luxury Tents Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "071ebe5e-13a2-4c4f-a047-b4db1dba24e0",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e3": {
+              "Id": "e3",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "DamageAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValuePlayerAttribute",
+                  "AttributeType": "HealthMax",
+                  "Target": {
+                    "$type": "TTargetPlayerRelative",
+                    "TargetMode": "Self",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.25
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "InternalName": "Obsidian Luxury Tents Aura",
+              "InternalDescription": "Obsidian",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "95aac314d5866569635835e61738f5f1",
+                  "Text": "The first time you would be defeated each fight, deal Damage equal to 25% of your Max Health"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 0,
+            "Custom_5": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": [
+                {
+                  "$type": "TPrerequisiteCardCount",
+                  "Subject": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": {
+                      "$type": "TCardConditionalAttribute",
+                      "Attribute": "Custom_5",
+                      "ComparisonOperator": "Equal",
+                      "ComparisonValue": {
+                        "$type": "TFixedValue",
+                        "Value": 0.0
+                      }
+                    }
+                  },
+                  "Comparison": "Equal",
+                  "Amount": 1
+                }
+              ],
+              "Priority": "Medium",
+              "InternalName": "Mossy Luxury Tents Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "95f96a06-f7f5-4357-858f-b8c666c2d397",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnPlayerDied",
+                "Subject": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "Custom_5",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Immediate",
+              "InternalName": "Counter Increment",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e3": {
+              "Id": "e3",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "RegenApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValuePlayerAttribute",
+                  "AttributeType": "HealthMax",
+                  "Target": {
+                    "$type": "TTargetPlayerRelative",
+                    "TargetMode": "Self",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": false
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Mossy Luxury Tents Aura",
+              "InternalDescription": "Sets the value of Regen",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "1360b3efe3c36930b15ee641d5415e17",
+                  "Text": "The first time you would be defeated each fight, Regen equal to 10% of your Max Health"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "3b1e3858-93d4-45c8-892b-b66aec1b14a9",
+      "Version": "5.0.0",
+      "InternalName": "Luxury Tents",
+      "InternalDescription": "",
+      "StartingTier": "Gold",
+      "Size": "Large",
+      "Heroes": [
+        "Pygmalien"
+      ],
+      "Tags": [
+        "Property"
+      ],
+      "HiddenTags": [
+        "Heal",
+        "HealthReference"
+      ],
+      "ArtKey": "a377ed9b2368a2242a53bccddf32a849",
+      "TranslationKey": "31ad490fe3fc2157b75b75d41f7cf84e",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "31ad490fe3fc2157b75b75d41f7cf84e",
+          "Text": "Luxury Tents"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "e4ab0fdfcc9e64db2054674809d17864",
+              "Text": "The first time you would be defeated each fight, Heal for {aura.9}% of your Max Health"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "171f0ade6f2c6caa77df636d4fd9f563",
+              "Text": "Your Heal items have +{aura.3.mod} Multicast"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerDied",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerReviveHeal",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalAttribute",
+                  "Attribute": "Custom_2",
+                  "ComparisonOperator": "Equal",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 0.0
+                  }
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 1
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Luxury Tents 1",
+          "InternalDescription": "The first time you would be defeated each fight, Heal for 25/50 of your Max Health",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "249b0019f0b969ad0882c8dc1a759ce3",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerDied",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 1.0
+            },
+            "AttributeType": "Custom_2",
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Immediate",
+          "InternalName": "Counter Increment",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1765d39b625142ba0ad0f322f5e114ca",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "HealAmount",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValuePlayerAttribute",
+              "AttributeType": "HealthMax",
+              "Target": {
+                "$type": "TTargetPlayerRelative",
+                "TargetMode": "Self",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "Custom_0",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0100001
+                    },
+                    "ShouldRound": false
+                  }
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Luxury Tents- Heal Set",
+          "InternalDescription": "Sets the Heal of the item",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+          "WorksIn": "Anywhere"
+        },
+        "3": {
+          "Id": "3",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Multicast",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_1",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalAnd",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  },
+                  {
+                    "$type": "TCardConditionalHiddenTag",
+                    "Tags": [
+                      "Heal"
+                    ],
+                    "Operator": "Any"
+                  }
+                ]
+              }
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Luxury Tents",
+          "InternalDescription": "Your Heal and Regen items have +1 Multicast",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "6c2934b996c6098dfa6eea9556a1e1a1",
+          "WorksIn": "Anywhere"
+        },
+        "9": {
+          "Id": "9",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Custom_4",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_3",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Tooltip Handling",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "9ed8516049000a0e1a90054e0aab06ce",
+          "WorksIn": "Anywhere"
+        }
+      }
+    }
+  },
+  "Ancient Locket": {
+    "table": "cards",
+    "id": "d641c57b-ab42-4b2f-b4f4-addd18eb7100",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "Custom_0": 2,
+            "Custom_7": 0
+          },
+          "AbilityIds": [
+            "0",
+            "1",
+            "2",
+            "7"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "Custom_0": 3
+          },
+          "AbilityIds": [
+            "0",
+            "3",
+            "4",
+            "7"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "Custom_0": 4
+          },
+          "AbilityIds": [
+            "0",
+            "5",
+            "6",
+            "7"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Ancient Locket Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {
+            "SlowTargets": 1,
+            "SlowAmount": 4000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Heavy Ancient Locket Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "a8bfc928-c1db-4067-937f-d106a9ba09b3",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "e3195555e6e3c86317431f4f8d4bb16a",
+                  "Text": "When this is destroyed, Slow an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 1,
+            "FreezeAmount": 2000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy Ancient Locket Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b39ec067-0a71-4c90-a8e0-9ee6cbf206fd",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "5dcbee35c741fc924958cd42b383aeb5",
+                  "Text": "When this is destroyed, Freeze an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteTargets": 1,
+            "HasteAmount": 4000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Turbo Ancient Locket Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1a1501a0-5afd-4cbc-a74c-9c4e196707a5",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "3134ddbc002d6bcba0ae4753f416742f",
+                  "Text": "When this is destroyed, Haste an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 200
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Shielded Ancient Locket Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "8774c7be-2757-4c9a-bba0-685266636939",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "35345560e8a27593e231372ed6807af9",
+                  "Text": "When this is destroyed, Shield {ability.e1}"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Restorative": {
+          "Attributes": {
+            "HealAmount": 200
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerHeal",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Restorative Ancient Locket Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "02b618e3-c25b-426e-a1d1-266582d41b11",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Heal"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "3a929f1d8498a52af47033e4423fce2a",
+                  "Text": "When this is destroyed, Heal {ability.e1}"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 20
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Toxic Ancient Locket Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "30daee93-10c0-406c-8bd1-0665cf7698d3",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "394cfbc78830448b2c6a0a1a463029e9",
+                  "Text": "When this is destroyed, Poison {ability.e1}"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 20
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Fiery Ancient Locket Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "f4a6007b-2c23-4516-8046-974d9fcb3ca8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "9fa4f53a6c0fd9a3d36a0c3b49eb0ddf",
+                  "Text": "When this is destroyed, Burn {ability.e1}"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAnd",
+                    "Conditions": [
+                      {
+                        "$type": "TCardConditionalCanCrit",
+                        "IsNot": false
+                      }
+                    ]
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Low",
+              "InternalName": "Deadly Pylon Ability",
+              "InternalDescription": "Deadly 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "30e81009-f317-40f8-888b-000e9344f5f6",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Crit"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "0d65430ac7c8c092c17a45ad0193d4b0",
+                  "Text": "When this is destroyed, your items gain {ability.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Custom_0",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Plague Glaive Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "742dc465-3e2b-4915-b300-0cbf9a2dbf82",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "5b78bdc2e4590430c0c46021ad80f145",
+                  "Text": "You take no damage for an additional second"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {},
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 100.0
+                },
+                "AttributeType": "PercentFreezeReduction",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TCombatDuration",
+                  "DurationInMs": 6000
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Radiant Start of Fight Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1128d6fb-f697-4cf6-8ace-3be7adf7b32e",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 100.0
+                },
+                "AttributeType": "PercentSlowReduction",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TCombatDuration",
+                  "DurationInMs": 6000
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Radiant Start of Fight Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1128d6fb-f697-4cf6-8ace-3be7adf7b32e",
+              "WorksIn": "Anywhere"
+            },
+            "e3": {
+              "Id": "e3",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardModifyAttribute",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "AttributeType": "DestroyImmunity",
+                "Operation": "Add",
+                "Duration": {
+                  "$type": "TCombatDuration",
+                  "DurationInMs": 6000
+                },
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": true,
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Radiant Start of Fight Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1128d6fb-f697-4cf6-8ace-3be7adf7b32e",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "810e2ab4cd6d8c02c7feb023683bff85",
+                  "Text": "When this is destroyed, your items become immune to Freeze, Slow and Destroy for 6 seconds"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 200
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Obsidian Ancient Locket Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6894acb5-0ac7-4648-bf11-a11131b10875",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "38689b9e12531ba3bf389ad8e8d98804",
+                  "Text": "When this is destroyed, deal {ability.e1} Damage"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 20
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnBeforeCardDestroyed",
+                "Subject": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                },
+                "Source": null
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy Ancient Locket Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "30daee93-10c0-406c-8bd1-0665cf7698d3",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "ce011465a71c3a6d8b673eb4bee35f0f",
+                  "Text": "When this is destroyed, Regen {ability.e1}"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "d641c57b-ab42-4b2f-b4f4-addd18eb7100",
+      "Version": "5.0.0",
+      "InternalName": "Ancient Locket",
+      "InternalDescription": "",
+      "StartingTier": "Silver",
+      "Size": "Small",
+      "Heroes": [
+        "Karnok"
+      ],
+      "Tags": [
+        "Apparel",
+        "Relic"
+      ],
+      "HiddenTags": [
+        "RageReference"
+      ],
+      "ArtKey": "5fbb1a070a6be1f468096bf836abc819",
+      "TranslationKey": "444d93926c68ee825907642b947c51f1",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "e0ce7a81b35a867cd7a520f95b271b2a",
+          "Text": "Ancient Locket"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "ae18f0a3f46761ec201f7cc2cf9352c2",
+              "Text": "When you become Enraged, destroy this and you take no damage for {aura.9} seconds"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerEnraged",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "Source": null
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardDisable",
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [],
+          "Priority": "Low",
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "86d36fbe7a67a8ed12e75cd9ec8bd03d",
+          "WorksIn": "CombatOnly"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnBeforeCardDestroyed",
+            "Subject": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Source": null
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerModifyAttribute",
+            "AttributeType": "PercentDamageReduction",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 100.0
+            },
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TCombatDuration",
+              "DurationInMs": 2000
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalHasEnchantment",
+                  "Enchantment": "Shiny",
+                  "IsNot": false
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 0
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Invulnerability Potion",
+          "InternalDescription": "You take no Damage for [--/--/0.5/1] second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "444d93926c68ee825907642b947c51f1",
+          "WorksIn": "CombatOnly"
+        },
+        "2": {
+          "Id": "2",
+          "Trigger": {
+            "$type": "TTriggerOnBeforeCardDestroyed",
+            "Subject": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Source": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerModifyAttribute",
+            "AttributeType": "PercentDamageReduction",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 100.0
+            },
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TCombatDuration",
+              "DurationInMs": 3000
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalHasEnchantment",
+                  "Enchantment": "Shiny",
+                  "IsNot": false
+                }
+              },
+              "Comparison": "GreaterThanOrEqual",
+              "Amount": 1
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Invulnerability Potion",
+          "InternalDescription": "You take no Damage for [--/--/0.5/1] second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "444d93926c68ee825907642b947c51f1",
+          "WorksIn": "CombatOnly"
+        },
+        "3": {
+          "Id": "3",
+          "Trigger": {
+            "$type": "TTriggerOnBeforeCardDestroyed",
+            "Subject": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Source": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerModifyAttribute",
+            "AttributeType": "PercentDamageReduction",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 100.0
+            },
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TCombatDuration",
+              "DurationInMs": 3000
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalHasEnchantment",
+                  "Enchantment": "Shiny",
+                  "IsNot": false
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 0
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Invulnerability Potion",
+          "InternalDescription": "You take no Damage for [--/--/0.5/1] second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "444d93926c68ee825907642b947c51f1",
+          "WorksIn": "CombatOnly"
+        },
+        "4": {
+          "Id": "4",
+          "Trigger": {
+            "$type": "TTriggerOnBeforeCardDestroyed",
+            "Subject": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Source": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerModifyAttribute",
+            "AttributeType": "PercentDamageReduction",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 100.0
+            },
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TCombatDuration",
+              "DurationInMs": 4000
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalHasEnchantment",
+                  "Enchantment": "Shiny",
+                  "IsNot": false
+                }
+              },
+              "Comparison": "GreaterThanOrEqual",
+              "Amount": 1
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Invulnerability Potion",
+          "InternalDescription": "You take no Damage for [--/--/0.5/1] second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "444d93926c68ee825907642b947c51f1",
+          "WorksIn": "CombatOnly"
+        },
+        "5": {
+          "Id": "5",
+          "Trigger": {
+            "$type": "TTriggerOnBeforeCardDestroyed",
+            "Subject": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Source": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerModifyAttribute",
+            "AttributeType": "PercentDamageReduction",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 100.0
+            },
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TCombatDuration",
+              "DurationInMs": 4000
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalHasEnchantment",
+                  "Enchantment": "Shiny",
+                  "IsNot": false
+                }
+              },
+              "Comparison": "Equal",
+              "Amount": 0
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Invulnerability Potion",
+          "InternalDescription": "You take no Damage for [--/--/0.5/1] second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "444d93926c68ee825907642b947c51f1",
+          "WorksIn": "CombatOnly"
+        },
+        "6": {
+          "Id": "6",
+          "Trigger": {
+            "$type": "TTriggerOnBeforeCardDestroyed",
+            "Subject": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            },
+            "Source": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerModifyAttribute",
+            "AttributeType": "PercentDamageReduction",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 100.0
+            },
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TCombatDuration",
+              "DurationInMs": 5000
+            },
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisiteCardCount",
+              "Subject": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalHasEnchantment",
+                  "Enchantment": "Shiny",
+                  "IsNot": false
+                }
+              },
+              "Comparison": "GreaterThanOrEqual",
+              "Amount": 1
+            }
+          ],
+          "Priority": "Medium",
+          "InternalName": "Invulnerability Potion",
+          "InternalDescription": "You take no Damage for [--/--/0.5/1] second(s)",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "444d93926c68ee825907642b947c51f1",
+          "WorksIn": "CombatOnly"
+        },
+        "7": {
+          "Id": "7",
+          "Trigger": {
+            "$type": "TTriggerOnFightStarted",
+            "CombatType": null
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 1.0
+            },
+            "AttributeType": "Custom_7",
+            "Operation": "Add",
+            "Duration": null,
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "High",
+          "InternalName": "[Shrouded Figure] Win Data Tracker",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "44b5c12cddef1bfadd5da4fbd0ab70b8",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "9": {
+          "Id": "9",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Custom_3",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_0",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Tooltip Handling",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "a193d872e6cb3a8dc2d05aedb98955c0",
+          "WorksIn": "Anywhere"
+        }
+      }
+    }
+  }
+}

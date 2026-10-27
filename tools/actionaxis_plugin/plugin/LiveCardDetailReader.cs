@@ -13,12 +13,12 @@ namespace BazaarActionAxis.Plugin
         {
             if (result == null) throw new ArgumentNullException("result");
             result.CardReadError = null;
-            foreach (LiveCardEntry entry in result.Cards)
-            {
-                entry.EnchantmentDefinition = null;
-                entry.EnchantmentReadError = null;
-                entry.Template = null;
-            }
+                foreach (LiveCardEntry entry in result.Cards)
+                {
+                    entry.EnchantmentDefinition = null;
+                    entry.EnchantmentReadError = null;
+                    entry.Template = null;
+                }
             try
             {
                 Type data = LiveSkillReader.FindType("TheBazaar.Data");
@@ -32,16 +32,19 @@ namespace BazaarActionAxis.Plugin
                     string key = Text(LiveSkillReader.GetMember(instance, "Value")) ?? Text(instance);
                     if (key != null) entities[key] = native;
                 }
-                foreach (LiveCardEntry entry in result.Cards)
+                for (int index = 0; index < result.Cards.Count; index++)
                 {
+                    LiveCardEntry entry = result.Cards[index];
+                    string cardPath = "Cards[" + index + "]";
+                    string instancePath = cardPath + ".InstanceId=" + (entry.InstanceId ?? "null");
                     try
                     {
                         object native;
                         if (string.IsNullOrEmpty(entry.InstanceId) || !entities.TryGetValue(entry.InstanceId, out native))
-                            throw new InvalidOperationException("未找到对应的卡牌实例");
+                            throw new InvalidOperationException("未找到对应的卡牌实例（路径：" + instancePath + "，Data.Entities 中不存在）");
                         object template = LiveSkillReader.GetMember(native, "Template");
-                        if (template == null) throw new InvalidOperationException("原生卡牌模板不可用");
-                        entry.Template = LiveSkillReader.SerializeTemplate(template);
+                        if (template == null) throw new InvalidOperationException("原生卡牌模板不可用（路径：" + cardPath + ".Template）");
+                        entry.Template = LiveSkillReader.SerializeTemplate(template, cardPath + ".Template");
                         if (string.IsNullOrEmpty(entry.Enchantment) || entry.Enchantment == "None") continue;
                         object selected = null;
                         foreach (object pair in ReflectionUtil.GetEnumerable(LiveSkillReader.GetMember(template, "Enchantments")))
@@ -52,8 +55,9 @@ namespace BazaarActionAxis.Plugin
                                 break;
                             }
                         }
-                        if (selected == null) throw new InvalidOperationException("原生模板中缺少该附魔定义");
-                        entry.EnchantmentDefinition = LiveSkillReader.SerializeTemplate(selected);
+                        string enchantPath = cardPath + ".Template.Enchantments." + entry.Enchantment;
+                        if (selected == null) throw new InvalidOperationException("原生模板中缺少该附魔定义（路径：" + enchantPath + "）");
+                        entry.EnchantmentDefinition = LiveSkillReader.SerializeTemplate(selected, enchantPath);
                     }
                     catch (Exception error)
                     {
@@ -66,7 +70,8 @@ namespace BazaarActionAxis.Plugin
             }
             catch (Exception error)
             {
-                AddError(result, "读取卡牌效果失败：" + error.Message);
+                while (error.InnerException != null) error = error.InnerException;
+                AddError(result, "读取卡牌效果失败（路径：Data.Entities）：" + error.Message);
             }
         }
 

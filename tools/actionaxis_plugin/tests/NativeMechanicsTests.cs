@@ -11,6 +11,7 @@ namespace BazaarActionAxis.Tests
         public static void Run()
         {
             NativeDotsMatchCurrentCadenceAndDecay();
+            NativeFrameZeroDotsTickImmediately();
             NativeFramesRemainTheTimingAndRoundingReference();
             NativeDotsRespectSeparateShieldRules();
             NativeMulticastUsesFrameDelaysAndContinuousCooldown();
@@ -67,7 +68,7 @@ namespace BazaarActionAxis.Tests
                 double opening = sample["burn"][1].AsDouble();
                 BattleResult decay = BattleEngine.Simulate(Config(Start(Amount("burn", opening, "enemyHero")), 1));
                 List<BattleEvent> ticks = decay.Events.Where(delegate(BattleEvent ev) { return ev.Kind == "dotTick" && ev.Note == "burn"; }).ToList();
-                Assert.Equal(2, ticks.Count);
+                Assert.Equal(3, ticks.Count);
                 Assert.Near(sample["burn"][2].AsDouble(), ticks[1].Value.Value);
             }
         }
@@ -89,6 +90,29 @@ namespace BazaarActionAxis.Tests
             return card;
         }
 
+        private static void NativeFrameZeroDotsTickImmediately()
+        {
+            // Native frame-0 health records contain the first Poison/Burn/Regen
+            // tick for statuses applied by at-combat-start effects (85 replay
+            // samples). The attack cadence still uses the 50 ms frame grid.
+            CardDef card = Start(Amount("burn", 100, "enemyHero"),
+                Amount("poison", 7, "enemyHero"), Amount("regen", 3, "enemyHero"));
+            BattleConfig config = Config(card, 0.1);
+            config.EnemyStartHp = 500;
+            BattleResult result = BattleEngine.Simulate(config);
+            List<BattleEvent> zero = result.Events.Where(delegate(BattleEvent ev)
+            {
+                return ev.Kind == "dotTick" && Math.Abs(ev.Time) < 1e-9;
+            }).ToList();
+            Assert.Equal(3, zero.Count);
+            Assert.Equal("poison", zero[0].Note);
+            Assert.Near(7, zero[0].Value.Value);
+            Assert.Equal("burn", zero[1].Note);
+            Assert.Near(100, zero[1].Value.Value);
+            Assert.Equal("regen", zero[2].Note);
+            Assert.Near(3, zero[2].Value.Value);
+        }
+
         private static void NativeDotsMatchCurrentCadenceAndDecay()
         {
             CardDef card = Start(Amount("burn", 100, "enemyHero"), Amount("poison", 7, "enemyHero"), Amount("regen", 3, "enemyHero"));
@@ -96,19 +120,20 @@ namespace BazaarActionAxis.Tests
             config.EnemyStartHp = 500;
             BattleResult result = BattleEngine.Simulate(config);
             List<BattleEvent> burn = result.Events.Where(delegate(BattleEvent ev) { return ev.Kind == "dotTick" && ev.Note == "burn"; }).ToList();
-            Assert.Equal(4, burn.Count);
-            Assert.Near(0.5, burn[0].Time);
+            Assert.Equal(5, burn.Count);
+            Assert.Near(0, burn[0].Time);
             Assert.Near(100, burn[0].Value.Value);
             Assert.Near(97, burn[1].Value.Value);
             Assert.Near(95, burn[2].Value.Value);
             Assert.Near(93, burn[3].Value.Value);
+            Assert.Near(91, burn[4].Value.Value);
             List<BattleEvent> atSecond = result.Events.Where(delegate(BattleEvent ev) { return ev.Kind == "dotTick" && Math.Abs(ev.Time - 1) < 1e-8; }).ToList();
             Assert.Equal("poison", atSecond[0].Note);
             Assert.Equal("burn", atSecond[1].Note);
             Assert.Equal("regen", atSecond[2].Note);
-            Assert.Near(399, result.Totals.Player.Damage);
-            Assert.Near(399, result.Totals.Player.EffectiveDamage);
-            Assert.Near(107, atSecond.Count > 0 ? result.Events.Last(delegate(BattleEvent ev) { return ev.HpAfter.HasValue && ev.TargetSide == Side.Enemy; }).HpAfter.Value : 0);
+            Assert.Near(497, result.Totals.Player.Damage);
+            Assert.Near(497, result.Totals.Player.EffectiveDamage);
+            Assert.Near(12, atSecond.Count > 0 ? result.Events.Last(delegate(BattleEvent ev) { return ev.HpAfter.HasValue && ev.TargetSide == Side.Enemy; }).HpAfter.Value : 0);
             Assert.Near(0.05, Rules.Resolve(new RuleOverrides { Dt = 0.1 }, true).Dt);
         }
 
@@ -120,15 +145,17 @@ namespace BazaarActionAxis.Tests
             Assert.Near(0, poison.Absorbed.Value);
             Assert.Near(996, poison.HpAfter.Value);
             BattleEvent last = result.Events.Last(delegate(BattleEvent ev) { return ev.Kind == "dotTick"; });
-            Assert.Near(996, last.HpAfter.Value);
+            Assert.Near(992, last.HpAfter.Value);
             Assert.Near(8, last.ShieldAfter.Value);
-            Assert.Near(4, result.Totals.Player.EffectiveDamage);
+            Assert.Near(8, result.Totals.Player.EffectiveDamage);
             BattleResult partial = BattleEngine.Simulate(Config(Start(Amount("burn", 14, "enemyHero"), Amount("shield", 5, "enemyHero")), 0.5));
-            BattleEvent hit = partial.Events.Last(delegate(BattleEvent ev) { return ev.Kind == "dotTick"; });
+            BattleEvent hit = partial.Events.First(delegate(BattleEvent ev) { return ev.Kind == "dotTick"; });
+            Assert.Near(0, hit.Time);
             Assert.Near(5, hit.Absorbed.Value);
             Assert.Near(996, hit.HpAfter.Value);
             BattleResult odd = BattleEngine.Simulate(Config(Start(Amount("burn", 9, "enemyHero"), Amount("shield", 4, "enemyHero")), 0.5));
-            BattleEvent oddHit = odd.Events.Last(delegate(BattleEvent ev) { return ev.Kind == "dotTick"; });
+            BattleEvent oddHit = odd.Events.First(delegate(BattleEvent ev) { return ev.Kind == "dotTick"; });
+            Assert.Near(0, oddHit.Time);
             Assert.Near(4, oddHit.Absorbed.Value);
             Assert.Near(1000, oddHit.HpAfter.Value);
             BattleResult unshielded = BattleEngine.Simulate(Config(Start(Amount("burn", 1, "enemyHero")), 0.5));
@@ -234,7 +261,9 @@ namespace BazaarActionAxis.Tests
             card.Cooldown = 10;
             BattleResult result = BattleEngine.Simulate(Config(card, 0.1));
             ItemSnapshot last = result.ItemSnapshots.Last();
-            Assert.Near(9.9, last.CooldownRemaining);
+            // Opening durations have already spent 50ms at frame zero:
+            // one slow tick (25ms) then two normal ticks (50ms each).
+            Assert.Near(9.875, last.CooldownRemaining);
             Assert.Near(1, last.CooldownRate);
         }
 

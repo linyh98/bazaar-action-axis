@@ -1,0 +1,1050 @@
+{
+  "evidence": "G10 replay corpus scan",
+  "replayCount": 200,
+  "g10CardReplayCount": 17,
+  "g10CardReplays": [
+    {
+      "file": "177a6dcf3e1f4325bec5958fb8dc2ed7.payload.mpack.gz",
+      "sha256": "d558cb743de550884787a2a0f554d1e4dba565ebfbda24ebf948316b014e6551",
+      "battleId": "177a6dcf3e1f4325bec5958fb8dc2ed7",
+      "frames": 261,
+      "duration": 13.05,
+      "complete": true,
+      "unknown": 19,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Blow Torch",
+          "templateId": "302d710c-335d-4fd4-af3c-34789e55acd3",
+          "tier": "Bronze",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "PlayerBurnApply": 8,
+        "CardModifyAttribute": 10,
+        "PlayerShieldApply": 1,
+        "PlayerDamage": 8,
+        "CardDisable": 2,
+        "PlayerRageApply": 9,
+        "CardHaste": 2,
+        "FlyingStart": 2,
+        "CardCharge": 2
+      },
+      "sides": {
+        "player": {
+          "changes": 26,
+          "totalDamage": 409,
+          "shieldAbsorbed": 0,
+          "overkill": 9,
+          "healing": 0,
+          "finalHp": -9,
+          "netHpLoss": 409,
+          "damageTypes": {
+            "Burn": 269,
+            "Damage": 140
+          }
+        },
+        "enemy": {
+          "changes": 13,
+          "totalDamage": 204,
+          "shieldAbsorbed": 50,
+          "overkill": 0,
+          "healing": 40,
+          "finalHp": 301,
+          "netHpLoss": 114,
+          "damageTypes": {
+            "Damage": 200,
+            "Burn": 4
+          }
+        }
+      }
+    },
+    {
+      "file": "2708374a76b847a8bf49fa572ea319e5.payload.mpack.gz",
+      "sha256": "98decbd77ac0e63eda0f8f50762e4bd7df52d440f76edec313001b87e826e477",
+      "battleId": "2708374a76b847a8bf49fa572ea319e5",
+      "frames": 201,
+      "duration": 10.05,
+      "complete": true,
+      "unknown": 21,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Soldering Gun",
+          "templateId": "666f4084-48cc-4558-b678-a46ba18c1bf2",
+          "tier": "Silver",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "CardHaste": 30,
+        "CardSlow": 5,
+        "CardCharge": 46,
+        "PlayerBurnApply": 29,
+        "PlayerRegenApply": 2,
+        "CardModifyAttribute": 56,
+        "CardReload": 3
+      },
+      "sides": {
+        "player": {
+          "changes": 26,
+          "totalDamage": 1560,
+          "shieldAbsorbed": 0,
+          "overkill": 0,
+          "healing": 50,
+          "finalHp": 260,
+          "netHpLoss": 1510,
+          "damageTypes": {
+            "Burn": 1560
+          }
+        },
+        "enemy": {
+          "changes": 24,
+          "totalDamage": 1767,
+          "shieldAbsorbed": 0,
+          "overkill": 28,
+          "healing": 30,
+          "finalHp": -23,
+          "netHpLoss": 1737,
+          "damageTypes": {
+            "Burn": 1767
+          }
+        }
+      }
+    },
+    {
+      "file": "28cf1b679da74d63b99ad3c64933f734.payload.mpack.gz",
+      "sha256": "7dcc5518b9a3a8df3b5903b8ad19ec81f7b6bd70d35498e34840c098f70a2cf6",
+      "battleId": "28cf1b679da74d63b99ad3c64933f734",
+      "frames": 441,
+      "duration": 22.05,
+      "complete": true,
+      "unknown": 22,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Soldering Gun",
+          "templateId": "666f4084-48cc-4558-b678-a46ba18c1bf2",
+          "tier": "Silver",
+          "enchantment": "Mossy"
+        }
+      ],
+      "actions": {
+        "PlayerModifyAttribute": 2,
+        "PlayerShieldApply": 29,
+        "PlayerBurnApply": 20,
+        "CardCharge": 43,
+        "CardHaste": 14,
+        "PlayerPoisonApply": 22,
+        "PlayerHeal": 5,
+        "PlayerRegenApply": 41,
+        "CardModifyAttribute": 86,
+        "PlayerDamage": 24,
+        "CardSlow": 18
+      },
+      "sides": {
+        "player": {
+          "changes": 66,
+          "totalDamage": 1919,
+          "shieldAbsorbed": 0,
+          "overkill": 0,
+          "healing": 4883,
+          "finalHp": 1340,
+          "netHpLoss": 0,
+          "damageTypes": {
+            "Burn": 1019,
+            "Damage": 900
+          }
+        },
+        "enemy": {
+          "changes": 71,
+          "totalDamage": 1958,
+          "shieldAbsorbed": 150,
+          "overkill": 199,
+          "healing": 328,
+          "finalHp": -176,
+          "netHpLoss": 1491,
+          "damageTypes": {
+            "Poison": 1808,
+            "Damage": 150
+          }
+        }
+      }
+    },
+    {
+      "file": "31a7492d68f7489ea9a552d7aac6ecc1.payload.mpack.gz",
+      "sha256": "4011d608b6801f5a08e50edc9ad836820a06c555a9871f840a49913d03b51928",
+      "battleId": "31a7492d68f7489ea9a552d7aac6ecc1",
+      "frames": 221,
+      "duration": 11.05,
+      "complete": true,
+      "unknown": 22,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Blow Torch",
+          "templateId": "302d710c-335d-4fd4-af3c-34789e55acd3",
+          "tier": "Silver",
+          "enchantment": "Shielded"
+        }
+      ],
+      "actions": {
+        "PlayerModifyAttribute": 28,
+        "CardEnchant": 2,
+        "CardCharge": 83,
+        "PlayerBurnApply": 45,
+        "PlayerPoisonApply": 48,
+        "CardModifyAttribute": 149,
+        "CardFreeze": 1,
+        "CardSlow": 29,
+        "PlayerShieldApply": 2,
+        "PlayerDamage": 10,
+        "CardHaste": 2,
+        "PlayerBurnRemove": 1,
+        "PlayerHeal": 1,
+        "PlayerPoisonRemove": 1
+      },
+      "sides": {
+        "player": {
+          "changes": 25,
+          "totalDamage": 4400,
+          "shieldAbsorbed": 0,
+          "overkill": 0,
+          "healing": 126,
+          "finalHp": 2656,
+          "netHpLoss": 4274,
+          "damageTypes": {
+            "Damage": 3560,
+            "Burn": 840
+          }
+        },
+        "enemy": {
+          "changes": 81,
+          "totalDamage": 11847,
+          "shieldAbsorbed": 186,
+          "overkill": 2439,
+          "healing": 2598,
+          "finalHp": -2473,
+          "netHpLoss": 8803,
+          "damageTypes": {
+            "Poison": 10483,
+            "Burn": 1364
+          }
+        }
+      }
+    },
+    {
+      "file": "4828e5256a5f4939ad7ca51640c5fd37.payload.mpack.gz",
+      "sha256": "2ef553417f99ac0e49479b5c9d08d93b4ab944703eaeddb734c305b2befb8dde",
+      "battleId": "4828e5256a5f4939ad7ca51640c5fd37",
+      "frames": 241,
+      "duration": 12.05,
+      "complete": true,
+      "unknown": 19,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Soldering Gun",
+          "templateId": "666f4084-48cc-4558-b678-a46ba18c1bf2",
+          "tier": "Silver",
+          "enchantment": "Mossy"
+        }
+      ],
+      "actions": {
+        "PlayerModifyAttribute": 2,
+        "CardCharge": 56,
+        "PlayerDamage": 7,
+        "PlayerShieldApply": 35,
+        "PlayerPoisonApply": 58,
+        "CardModifyAttribute": 146,
+        "FlyingStart": 2,
+        "CardHaste": 28,
+        "CardFreeze": 1,
+        "PlayerRegenApply": 50,
+        "PlayerBurnApply": 6
+      },
+      "sides": {
+        "player": {
+          "changes": 66,
+          "totalDamage": 1215,
+          "shieldAbsorbed": 273,
+          "overkill": 0,
+          "healing": 2519,
+          "finalHp": 3900,
+          "netHpLoss": 0,
+          "damageTypes": {
+            "Damage": 140,
+            "Poison": 922,
+            "Burn": 153
+          }
+        },
+        "enemy": {
+          "changes": 50,
+          "totalDamage": 3488,
+          "shieldAbsorbed": 0,
+          "overkill": 490,
+          "healing": 220,
+          "finalHp": -458,
+          "netHpLoss": 3268,
+          "damageTypes": {
+            "Poison": 3488
+          }
+        }
+      }
+    },
+    {
+      "file": "82fb1bec8e2f48a98a83bc7955a97c5c.payload.mpack.gz",
+      "sha256": "da0b01f15db3f3e23ee6bcfe9a0c1f995d667539b5f11ffa56f763af67928243",
+      "battleId": "82fb1bec8e2f48a98a83bc7955a97c5c",
+      "frames": 541,
+      "duration": 27.05,
+      "complete": true,
+      "unknown": 17,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Soldering Gun",
+          "templateId": "666f4084-48cc-4558-b678-a46ba18c1bf2",
+          "tier": "Silver",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "PlayerShieldApply": 27,
+        "PlayerDamage": 19,
+        "PlayerBurnApply": 23,
+        "CardCharge": 167,
+        "CardModifyAttribute": 87,
+        "FlyingStart": 13,
+        "PlayerRegenApply": 28,
+        "PlayerPoisonApply": 23,
+        "CardFreeze": 13,
+        "CardSlow": 1,
+        "CardTransform": 6
+      },
+      "sides": {
+        "player": {
+          "changes": 110,
+          "totalDamage": 2947,
+          "shieldAbsorbed": 0,
+          "overkill": 0,
+          "healing": 4321,
+          "finalHp": 1359,
+          "netHpLoss": 0,
+          "damageTypes": {
+            "Damage": 2080,
+            "Burn": 801,
+            "Poison": 66
+          }
+        },
+        "enemy": {
+          "changes": 81,
+          "totalDamage": 2002,
+          "shieldAbsorbed": 564,
+          "overkill": 138,
+          "healing": 0,
+          "finalHp": -138,
+          "netHpLoss": 1438,
+          "damageTypes": {
+            "Poison": 1438,
+            "Burn": 564
+          }
+        }
+      }
+    },
+    {
+      "file": "8f0752c8d9ec4c429f61645e93b1c8aa.payload.mpack.gz",
+      "sha256": "612356724d5cc60803720394d609235f92a64e25cbb00c1cd30c7e60eafc6627",
+      "battleId": "8f0752c8d9ec4c429f61645e93b1c8aa",
+      "frames": 341,
+      "duration": 17.05,
+      "complete": true,
+      "unknown": 21,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Blow Torch",
+          "templateId": "302d710c-335d-4fd4-af3c-34789e55acd3",
+          "tier": "Silver",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "FlyingStart": 7,
+        "CardCharge": 24,
+        "PlayerRegenApply": 10,
+        "PlayerBurnApply": 16,
+        "CardSlow": 4,
+        "PlayerDamage": 13,
+        "CardModifyAttribute": 15,
+        "PlayerShieldApply": 3,
+        "CardHaste": 3,
+        "PlayerPoisonApply": 5
+      },
+      "sides": {
+        "player": {
+          "changes": 35,
+          "totalDamage": 1007,
+          "shieldAbsorbed": 0,
+          "overkill": 49,
+          "healing": 187,
+          "finalHp": -28,
+          "netHpLoss": 778,
+          "damageTypes": {
+            "Damage": 105,
+            "Burn": 902
+          }
+        },
+        "enemy": {
+          "changes": 29,
+          "totalDamage": 382,
+          "shieldAbsorbed": 102,
+          "overkill": 0,
+          "healing": 66,
+          "finalHp": 564,
+          "netHpLoss": 214,
+          "damageTypes": {
+            "Damage": 128,
+            "Burn": 74,
+            "Poison": 180
+          }
+        }
+      }
+    },
+    {
+      "file": "a7ad71730f8c4df6a4538028c4335b2e.payload.mpack.gz",
+      "sha256": "89498bb1d2fe2a137b5a7d5906e10aa74cae278636e0d95b325cc8486566ff66",
+      "battleId": "a7ad71730f8c4df6a4538028c4335b2e",
+      "frames": 174,
+      "duration": 8.7,
+      "complete": true,
+      "unknown": 24,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Bandages",
+          "templateId": "09132149-783d-4d5a-900c-31135bffab44",
+          "tier": "Gold",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "PlayerBurnApply": 9,
+        "CardModifyAttribute": 94,
+        "CardCharge": 61,
+        "CardHaste": 34,
+        "FlyingStart": 8,
+        "PlayerShieldApply": 7,
+        "PlayerDamage": 24,
+        "PlayerPoisonApply": 27,
+        "PlayerRegenApply": 14,
+        "CardFreeze": 3,
+        "PlayerModifyAttribute": 3
+      },
+      "sides": {
+        "player": {
+          "changes": 35,
+          "totalDamage": 6022,
+          "shieldAbsorbed": 0,
+          "overkill": 156,
+          "healing": 546,
+          "finalHp": -156,
+          "netHpLoss": 5326,
+          "damageTypes": {
+            "Damage": 5070,
+            "Poison": 952
+          }
+        },
+        "enemy": {
+          "changes": 37,
+          "totalDamage": 3197,
+          "shieldAbsorbed": 1000,
+          "overkill": 0,
+          "healing": 180,
+          "finalHp": 2295,
+          "netHpLoss": 2025,
+          "damageTypes": {
+            "Burn": 1455,
+            "Damage": 1470,
+            "Poison": 272
+          }
+        }
+      }
+    },
+    {
+      "file": "aee9208274bc4b7ca05c4e58706f45da.payload.mpack.gz",
+      "sha256": "a58d3d414c2c1e80a0306f4ea55071116e4aab6b7331bad01f1e37e2a8844f1f",
+      "battleId": "aee9208274bc4b7ca05c4e58706f45da",
+      "frames": 716,
+      "duration": 35.8,
+      "complete": true,
+      "unknown": 20,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Bandages",
+          "templateId": "09132149-783d-4d5a-900c-31135bffab44",
+          "tier": "Bronze",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "PlayerModifyAttribute": 15,
+        "PlayerRegenApply": 29,
+        "PlayerPoisonApply": 33,
+        "PlayerBurnApply": 8,
+        "CardModifyAttribute": 65,
+        "PlayerHeal": 32,
+        "PlayerShieldApply": 7,
+        "CardReload": 8
+      },
+      "sides": {
+        "player": {
+          "changes": 57,
+          "totalDamage": 685,
+          "shieldAbsorbed": 0,
+          "overkill": 40,
+          "healing": 190,
+          "finalHp": -40,
+          "netHpLoss": 590,
+          "damageTypes": {
+            "Sandstorm": 685
+          }
+        },
+        "enemy": {
+          "changes": 84,
+          "totalDamage": 1958,
+          "shieldAbsorbed": 370,
+          "overkill": 0,
+          "healing": 1521,
+          "finalHp": 558,
+          "netHpLoss": -8,
+          "damageTypes": {
+            "Burn": 15,
+            "Poison": 1258,
+            "Sandstorm": 685
+          }
+        }
+      }
+    },
+    {
+      "file": "b554679edd1d4708b7d0916287398b9a.payload.mpack.gz",
+      "sha256": "be55242572b9594c13efc3ba817a73351ec7bf6ce81da31e5a3bd14f54537446",
+      "battleId": "b554679edd1d4708b7d0916287398b9a",
+      "frames": 361,
+      "duration": 18.05,
+      "complete": true,
+      "unknown": 21,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Walter Cooler",
+          "templateId": "1b518cd8-57d3-4747-8afa-3b99aae88e62",
+          "tier": "Silver",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "PlayerShieldApply": 10,
+        "CardFreeze": 6,
+        "CardCharge": 29,
+        "PlayerBurnApply": 13,
+        "CardModifyAttribute": 22,
+        "PlayerPoisonApply": 8,
+        "CardSlow": 9,
+        "PlayerModifyAttribute": 3,
+        "PlayerDamage": 6,
+        "PlayerRegenApply": 4
+      },
+      "sides": {
+        "player": {
+          "changes": 21,
+          "totalDamage": 229,
+          "shieldAbsorbed": 0,
+          "overkill": 0,
+          "healing": 27,
+          "finalHp": 358,
+          "netHpLoss": 192,
+          "damageTypes": {
+            "Damage": 175,
+            "Poison": 54
+          }
+        },
+        "enemy": {
+          "changes": 37,
+          "totalDamage": 1046,
+          "shieldAbsorbed": 425,
+          "overkill": 1,
+          "healing": 0,
+          "finalHp": -11,
+          "netHpLoss": 591,
+          "damageTypes": {
+            "Burn": 937,
+            "Poison": 99,
+            "Damage": 10
+          }
+        }
+      }
+    },
+    {
+      "file": "ccf8bfd9fedb4ae88c294f1627e11999.payload.mpack.gz",
+      "sha256": "c6800754386e4edcf215eb796e966287fa29bee05b8a14b43627fa8ccaac9fd4",
+      "battleId": "ccf8bfd9fedb4ae88c294f1627e11999",
+      "frames": 281,
+      "duration": 14.05,
+      "complete": true,
+      "unknown": 21,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Blow Torch",
+          "templateId": "302d710c-335d-4fd4-af3c-34789e55acd3",
+          "tier": "Silver",
+          "enchantment": null
+        },
+        {
+          "side": "enemy",
+          "name": "Soldering Gun",
+          "templateId": "666f4084-48cc-4558-b678-a46ba18c1bf2",
+          "tier": "Gold",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "PlayerDamage": 5,
+        "PlayerRageApply": 11,
+        "CardHaste": 54,
+        "PlayerBurnApply": 41,
+        "PlayerHeal": 13,
+        "CardCharge": 114,
+        "CardModifyAttribute": 68,
+        "PlayerShieldApply": 19,
+        "PlayerRegenApply": 10,
+        "PlayerPortraitNext": 1,
+        "CardDisable": 1,
+        "PlayerPortraitReset": 1
+      },
+      "sides": {
+        "player": {
+          "changes": 129,
+          "totalDamage": 6196,
+          "shieldAbsorbed": 0,
+          "overkill": 566,
+          "healing": 0,
+          "finalHp": -566,
+          "netHpLoss": 6196,
+          "damageTypes": {
+            "Burn": 6196
+          }
+        },
+        "enemy": {
+          "changes": 60,
+          "totalDamage": 3187,
+          "shieldAbsorbed": 1188,
+          "overkill": 0,
+          "healing": 3936,
+          "finalHp": 4818,
+          "netHpLoss": 0,
+          "damageTypes": {
+            "Damage": 240,
+            "Burn": 2947
+          }
+        }
+      }
+    },
+    {
+      "file": "cf3bdd9af18d44bebfd35d24335cc3b9.payload.mpack.gz",
+      "sha256": "a783184d2356fc55643805db13ba71473b5a3e38f2b116827c657b4dccf8b453",
+      "battleId": "cf3bdd9af18d44bebfd35d24335cc3b9",
+      "frames": 824,
+      "duration": 41.2,
+      "complete": true,
+      "unknown": 22,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Bandages",
+          "templateId": "09132149-783d-4d5a-900c-31135bffab44",
+          "tier": "Silver",
+          "enchantment": "Restorative"
+        }
+      ],
+      "actions": {
+        "PlayerBurnApply": 1,
+        "PlayerDamage": 42,
+        "PlayerShieldApply": 25,
+        "CardModifyAttribute": 668,
+        "CardCharge": 25,
+        "PlayerModifyAttribute": 44,
+        "FlyingStart": 18,
+        "PlayerHeal": 43,
+        "CardHaste": 11,
+        "PlayerRegenApply": 73,
+        "FlyingStop": 10
+      },
+      "sides": {
+        "player": {
+          "changes": 156,
+          "totalDamage": 4248,
+          "shieldAbsorbed": 0,
+          "overkill": 0,
+          "healing": 23439,
+          "finalHp": 796,
+          "netHpLoss": 244,
+          "damageTypes": {
+            "Burn": 3,
+            "Damage": 392,
+            "Sandstorm": 3853
+          }
+        },
+        "enemy": {
+          "changes": 142,
+          "totalDamage": 7865,
+          "shieldAbsorbed": 3017,
+          "overkill": 114,
+          "healing": 5176,
+          "finalHp": -114,
+          "netHpLoss": 1159,
+          "damageTypes": {
+            "Damage": 4012,
+            "Sandstorm": 3853
+          }
+        }
+      }
+    },
+    {
+      "file": "db171a5809624e8c98466b72c67e5cfa.payload.mpack.gz",
+      "sha256": "f6cb98de95f2548dde53d45cede6fe5eee29ef3b079ab8210d24674419b66b83",
+      "battleId": "db171a5809624e8c98466b72c67e5cfa",
+      "frames": 501,
+      "duration": 25.05,
+      "complete": true,
+      "unknown": 21,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Bandages",
+          "templateId": "09132149-783d-4d5a-900c-31135bffab44",
+          "tier": "Bronze",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "CardModifyAttribute": 98,
+        "PlayerDamage": 12,
+        "PlayerShieldApply": 10,
+        "PlayerPoisonApply": 10,
+        "PlayerRegenApply": 22,
+        "CardSlow": 9,
+        "PlayerHeal": 4
+      },
+      "sides": {
+        "player": {
+          "changes": 27,
+          "totalDamage": 510,
+          "shieldAbsorbed": 0,
+          "overkill": 0,
+          "healing": 867,
+          "finalHp": 460,
+          "netHpLoss": 90,
+          "damageTypes": {
+            "Damage": 510
+          }
+        },
+        "enemy": {
+          "changes": 26,
+          "totalDamage": 844,
+          "shieldAbsorbed": 0,
+          "overkill": 37,
+          "healing": 255,
+          "finalHp": -32,
+          "netHpLoss": 614,
+          "damageTypes": {
+            "Poison": 844
+          }
+        }
+      }
+    },
+    {
+      "file": "db56ffc8cc9d45adac3361dc5cdf9020.payload.mpack.gz",
+      "sha256": "b5cfa8e04cfeec0f7121b916f78821fbe7d862e5126a3e5e2c0f9bc49d451540",
+      "battleId": "db56ffc8cc9d45adac3361dc5cdf9020",
+      "frames": 241,
+      "duration": 12.05,
+      "complete": true,
+      "unknown": 19,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Shard of Obsidian",
+          "templateId": "8981892b-ce2a-43dc-a08e-2b5e8f8884fc",
+          "tier": "Bronze",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "PlayerModifyAttribute": 4,
+        "PlayerPoisonApply": 25,
+        "PlayerRegenApply": 10,
+        "CardModifyAttribute": 39,
+        "CardCharge": 8,
+        "PlayerHeal": 3,
+        "PlayerBurnApply": 2,
+        "CardSlow": 7,
+        "PlayerDamage": 3,
+        "CardHaste": 3
+      },
+      "sides": {
+        "player": {
+          "changes": 24,
+          "totalDamage": 508,
+          "shieldAbsorbed": 0,
+          "overkill": 0,
+          "healing": 304,
+          "finalHp": 736,
+          "netHpLoss": 264,
+          "damageTypes": {
+            "Burn": 55,
+            "Poison": 377,
+            "Damage": 76
+          }
+        },
+        "enemy": {
+          "changes": 22,
+          "totalDamage": 1323,
+          "shieldAbsorbed": 0,
+          "overkill": 116,
+          "healing": 96,
+          "finalHp": -104,
+          "netHpLoss": 1181,
+          "damageTypes": {
+            "Poison": 1323
+          }
+        }
+      }
+    },
+    {
+      "file": "de491beb92ff4426a41af7c3b459489e.payload.mpack.gz",
+      "sha256": "430a772eaa23025ffe6524585d17129956093188d5cd4d0a370404771dbc03a5",
+      "battleId": "de491beb92ff4426a41af7c3b459489e",
+      "frames": 401,
+      "duration": 20.05,
+      "complete": true,
+      "unknown": 23,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Rune Axe",
+          "templateId": "cd651487-174f-49dd-9022-c27e1fcd2f7c",
+          "tier": "Silver",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "PlayerPoisonApply": 4,
+        "CardModifyAttribute": 223,
+        "PlayerDamage": 16,
+        "PlayerRageApply": 103,
+        "PlayerBurnApply": 66,
+        "PlayerPortraitNext": 4,
+        "PlayerHeal": 75,
+        "PlayerBurnRemove": 1,
+        "PlayerPoisonRemove": 1,
+        "CardHaste": 62,
+        "FlyingStart": 1,
+        "CardCharge": 55,
+        "PlayerShieldApply": 53,
+        "CardFreeze": 1,
+        "PlayerPortraitReset": 4
+      },
+      "sides": {
+        "player": {
+          "changes": 248,
+          "totalDamage": 12548,
+          "shieldAbsorbed": 0,
+          "overkill": 1131,
+          "healing": 1936,
+          "finalHp": -1131,
+          "netHpLoss": 10612,
+          "damageTypes": {
+            "Poison": 33,
+            "Burn": 11891,
+            "Damage": 624
+          }
+        },
+        "enemy": {
+          "changes": 221,
+          "totalDamage": 16117,
+          "shieldAbsorbed": 4692,
+          "overkill": 0,
+          "healing": 14155,
+          "finalHp": 7667,
+          "netHpLoss": 227,
+          "damageTypes": {
+            "Poison": 5966,
+            "Damage": 4372,
+            "Burn": 5779
+          }
+        }
+      }
+    },
+    {
+      "file": "eca4a4b12af04ee98bddc76fadf235b2.payload.mpack.gz",
+      "sha256": "c1a9296d006723804af035c80de8fc8dc412c0fca6751f87e0d3860264d20c3a",
+      "battleId": "eca4a4b12af04ee98bddc76fadf235b2",
+      "frames": 695,
+      "duration": 34.75,
+      "complete": true,
+      "unknown": 22,
+      "g10Cards": [
+        {
+          "side": "enemy",
+          "name": "Shard of Obsidian",
+          "templateId": "8981892b-ce2a-43dc-a08e-2b5e8f8884fc",
+          "tier": "Silver",
+          "enchantment": null
+        }
+      ],
+      "actions": {
+        "FlyingStart": 8,
+        "CardCharge": 97,
+        "CardReload": 45,
+        "PlayerPoisonApply": 72,
+        "PlayerDamage": 38,
+        "CardFreeze": 20,
+        "PlayerRegenApply": 142,
+        "CardModifyAttribute": 169,
+        "PlayerBurnApply": 15,
+        "CardHaste": 48
+      },
+      "sides": {
+        "player": {
+          "changes": 185,
+          "totalDamage": 7559,
+          "shieldAbsorbed": 0,
+          "overkill": 0,
+          "healing": 13473,
+          "finalHp": 1107,
+          "netHpLoss": 193,
+          "damageTypes": {
+            "Damage": 317,
+            "Burn": 871,
+            "Poison": 6001,
+            "Sandstorm": 370
+          }
+        },
+        "enemy": {
+          "changes": 145,
+          "totalDamage": 5594,
+          "shieldAbsorbed": 0,
+          "overkill": 30,
+          "healing": 4264,
+          "finalHp": -30,
+          "netHpLoss": 1330,
+          "damageTypes": {
+            "Damage": 1840,
+            "Poison": 3384,
+            "Sandstorm": 370
+          }
+        }
+      }
+    },
+    {
+      "file": "084bd840e98c4b81a681cb8d30c7b72f.payload.mpack.gz",
+      "sha256": "a2096bcc1f8eb31cdb274e2948c65271f08542bb989a986ebfe683c23ed06c08",
+      "battleId": "084bd840e98c4b81a681cb8d30c7b72f",
+      "frames": 426,
+      "duration": 21.3,
+      "complete": true,
+      "unknown": 11,
+      "g10Cards": [
+        {
+          "side": "player",
+          "name": "Trained Spider",
+          "templateId": "014d9c98-e823-443c-98a3-6367ab81c956",
+          "tier": "Silver",
+          "enchantment": null
+        },
+        {
+          "side": "player",
+          "name": "Soldering Gun",
+          "templateId": "666f4084-48cc-4558-b678-a46ba18c1bf2",
+          "tier": "Bronze",
+          "enchantment": "Toxic"
+        }
+      ],
+      "actions": {
+        "CardCharge": 12,
+        "CardSlow": 1,
+        "CardTransform": 3,
+        "PlayerBurnApply": 2,
+        "PlayerDamage": 13,
+        "PlayerPoisonApply": 14,
+        "PlayerShieldApply": 6
+      },
+      "sides": {
+        "player": {
+          "changes": 26,
+          "totalDamage": 402,
+          "shieldAbsorbed": 0,
+          "overkill": 2,
+          "healing": 0,
+          "finalHp": -2,
+          "netHpLoss": 402
+        },
+        "enemy": {
+          "changes": 26,
+          "totalDamage": 323,
+          "shieldAbsorbed": 1,
+          "overkill": 0,
+          "healing": 0,
+          "finalHp": 78,
+          "netHpLoss": 322
+        }
+      }
+    }
+  ],
+  "actionCoverageAllReplays": {
+    "FlyingStart": 803,
+    "PlayerDamage": 3583,
+    "CardModifyAttribute": 28444,
+    "CardCharge": 9213,
+    "CardSlow": 1956,
+    "PlayerPoisonApply": 3321,
+    "PlayerRegenApply": 4312,
+    "CardHaste": 5148,
+    "PlayerShieldApply": 2882,
+    "CardFreeze": 595,
+    "PlayerBurnApply": 3319,
+    "PlayerRageApply": 4398,
+    "PlayerModifyAttribute": 403,
+    "PlayerHeal": 1896,
+    "CardReload": 616,
+    "PlayerPortraitNext": 133,
+    "PlayerPortraitReset": 79,
+    "PlayerTempoApply": 140,
+    "CardEnchant": 52,
+    "CardForceUse": 100,
+    "CardDisable": 21,
+    "FlyingStop": 89,
+    "CardRepair": 5,
+    "CardTransformDestroyed": 4,
+    "PlayerBurnRemove": 5,
+    "PlayerPoisonRemove": 4,
+    "CardTransform": 14
+  },
+  "cardCoverageG10Folder": {
+    "Blow Torch": 4,
+    "Soldering Gun": 5,
+    "Bandages": 4,
+    "Walter Cooler": 1,
+    "Shard of Obsidian": 2,
+    "Rune Axe": 1
+  },
+  "notes": [
+    "Only 16 of 200 replays contain a G10 primary card; 084bd840 is from the game CombatReplays folder and contains Trained Spider + Soldering Gun.",
+    "Native health adjustments have no per-tick damage source; DoT shares remain simulator-pool inference.",
+    "Player HealthMax/Shield/Regen are absent in all 200 replay SpawnMessage payloads."
+  ]
+}

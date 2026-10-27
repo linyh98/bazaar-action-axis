@@ -29,3 +29,11 @@ tools/actionaxis_plugin/build/staged-dynamic-auras-*/
 # 只保留构建产物 ActionAxisEngine.dll / ActionAxisPlugin.dll，测试与探针 DLL 不入库
 tools/actionaxis_plugin/build/EngineTests.exe
 tools/actionaxis_plugin/build/*Tests.dll
+# 可重复生成的全量模板与映射矩阵明细
+tools/actionaxis_plugin/build/native_mapping_*
+
+# 本地回放语料与临时工作目录（仅本地验证使用，不入库）
+CombatReplays/
+tmp_*/
+tools/actionaxis_plugin/build/*.pdb
+tools/actionaxis_plugin/build/*.xml

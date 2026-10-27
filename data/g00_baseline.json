@@ -1,0 +1,3399 @@
+{
+  "database": {
+    "duplicate_ids": [],
+    "duplicate_keys": [],
+    "items": 1146,
+    "monsters": 166,
+    "sha256": "FDFD3087E6A23EDA2C9F53BE68B012006CC949D03E8666DD51AD65ABC71B61E5",
+    "skills": 498,
+    "unique_ids": 1810
+  },
+  "fixture": {
+    "mismatches": [],
+    "sha256": "3292A5A766C2D543177261FA78265E4CE383273E6047421C53B6DFC612DA164A",
+    "templates": 11
+  },
+  "index": {
+    "by_table": {
+      "cards": 1644,
+      "monsters": 166
+    },
+    "by_type": {
+      "TCardItem": 1146,
+      "TCardSkill": 498,
+      "TMonster": 166
+    },
+    "duplicates": [],
+    "g00_primary": 166,
+    "mismatches": [],
+    "missing_from_db": [],
+    "missing_from_index": [],
+    "rows": 1810,
+    "sha256": "B72D84F67530AC82FD4C4B1E5B8D4DE9593FDA35D1E9F52004D046E6F7BC23F3",
+    "unique_ids": 1810
+  },
+  "mapping_input": {
+    "mismatches": [],
+    "rows": 1644,
+    "sha256": "ED9EBC2695A4FF242F1DEFAC161FCA145C3E4FEDD8FCC75D8D34236C140E4494"
+  },
+  "matrix": {
+    "blocked_ids": {
+      "item": [],
+      "skill": [
+        "d8bb20e5-4c72-409b-893a-686a8fc43006",
+        "e78b1599-ca80-47b0-b386-04ae403994d5"
+      ]
+    },
+    "blocked_templates": {
+      "item": 0,
+      "skill": 2
+    },
+    "duplicate_count": 0,
+    "duplicates": [],
+    "enchantment_status": {
+      "applied": 344442,
+      "none": 43236
+    },
+    "enchantment_warning_rows": 0,
+    "error_examples": [],
+    "errors": {},
+    "expected_rows": 387678,
+    "extra_row_count": 0,
+    "extra_template_count": 0,
+    "extra_templates": [],
+    "live_attribute_status": {
+      "live": 249888,
+      "template": 129226,
+      "warning": 8564
+    },
+    "live_attribute_warning_rows": 12846,
+    "missing_examples": [],
+    "missing_row_count": 0,
+    "missing_template_count": 0,
+    "missing_templates": [],
+    "rows": 387678,
+    "scenario": {
+      "live": 129226,
+      "mixed": 129226,
+      "template": 129226
+    },
+    "sha256": "8F8BD975002195D1B5A58DBD7AF045566E9F553BA803D10334AD2AB8D3DB93F7",
+    "status": {
+      "item": {
+        "mapped": 359892,
+        "mapped-warning": 12846
+      },
+      "skill": {
+        "inactive": 4522,
+        "live-applied": 755,
+        "out-of-combat": 564,
+        "simulated": 9045,
+        "unsupported": 54
+      }
+    },
+    "status_by_scenario": {
+      "live": {
+        "inactive": 1509,
+        "live-applied": 271,
+        "mapped": 119964,
+        "mapped-warning": 4282,
+        "out-of-combat": 188,
+        "simulated": 2994,
+        "unsupported": 18
+      },
+      "mixed": {
+        "inactive": 1504,
+        "live-applied": 276,
+        "mapped": 119964,
+        "mapped-warning": 4282,
+        "out-of-combat": 188,
+        "simulated": 2994,
+        "unsupported": 18
+      },
+      "template": {
+        "inactive": 1509,
+        "live-applied": 208,
+        "mapped": 119964,
+        "mapped-warning": 4282,
+        "out-of-combat": 188,
+        "simulated": 3057,
+        "unsupported": 18
+      }
+    },
+    "status_by_side": {
+      "Enemy": {
+        "inactive": 2235,
+        "mapped": 179946,
+        "mapped-warning": 6423,
+        "out-of-combat": 282,
+        "simulated": 4926,
+        "unsupported": 27
+      },
+      "Player": {
+        "inactive": 2287,
+        "live-applied": 755,
+        "mapped": 179946,
+        "mapped-warning": 6423,
+        "out-of-combat": 282,
+        "simulated": 4119,
+        "unsupported": 27
+      }
+    },
+    "templates": {
+      "item": 1146,
+      "skill": 498
+    },
+    "tier_source": {
+      "declared": 289488,
+      "inactive-sparse": 4392,
+      "legendary-alias": 93798
+    },
+    "unenchanted_blocked_ids": [],
+    "unenchanted_blocked_items": 0,
+    "warned_ids": {
+      "item": [
+        "0660ace1-2d6a-4f7b-bfc2-05e8582d27b9",
+        "0c501dff-aa3a-4091-9c1e-2df43faef2e1",
+        "18100c8e-24db-4568-bd8c-4c8914557e11",
+        "1a0c645a-8a0b-424b-bff1-124263589749",
+        "1e46dbf7-2fe0-4ec1-a657-c3c623eeca6e",
+        "25545684-3fd5-4adf-abcc-0e2bb6c500c1",
+        "28dac6a8-49d7-45f2-98a4-b2d89ff89029",
+        "3130ec0b-ee54-4bd1-8bf9-706c41066f11",
+        "3132efea-ee79-4b99-b380-d0df3bf1df88",
+        "3e3bda1d-81ba-4719-8772-417d8b834e99",
+        "3f867017-c026-412d-99f7-67ca26092e7a",
+        "41bc6bab-d7a6-42e4-9815-546de8640d4e",
+        "42f78ed2-0141-47f3-9bcd-71b433b1273b",
+        "47f0d440-9fad-4c09-abf6-844c23038b18",
+        "4826832f-f3a5-4c40-b8fa-737f002074fa",
+        "4a30e8b0-f1d1-44c0-b2a7-0a8d12c1e297",
+        "55f11b65-77fa-4d70-9250-8a40d03961ad",
+        "5abf3441-11cb-4dbd-8d69-d4829f8df687",
+        "64303ae9-7517-4489-b3c6-dd8f1a5cda64",
+        "6693a3f1-cc7c-4a3a-942f-d2e308b22338",
+        "6ab1ee94-ce35-46be-9e38-6e1da374de3e",
+        "6c0af8cf-273f-43c5-afb5-ef00c87ffcc8",
+        "6e633f92-81a3-4157-912c-bcdb1b9e28f1",
+        "843ddc82-9d87-4995-b81c-bf31ae45fd30",
+        "84a27aa9-5606-4418-a2dd-d6e4065e81c9",
+        "86769097-271e-46ee-8d42-317c6d8a7a09",
+        "8908d2d1-1a7e-4f97-8ecb-6834e96b1eab",
+        "89573716-4efd-4d90-b8b5-0aeaa9e72ff0",
+        "8981892b-ce2a-43dc-a08e-2b5e8f8884fc",
+        "8ae391d2-4267-4d73-96e5-24951a7a2d95",
+        "953402e4-1430-48ab-8156-6193c9d8a7d4",
+        "95640018-a5d3-4119-8c4f-5509e161c689",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "9c97827a-f6c3-4abd-b7c1-bc1b37cc82f0",
+        "a7910370-4540-4bb7-95cc-5b4b5eeb43ac",
+        "aadb8722-9ff1-46cc-95e1-893f7180e191",
+        "b2681448-9dec-47c7-bb4f-58c51830735d",
+        "bcef1ee3-e3b5-41c9-95bc-402afec5a572",
+        "c45a7c22-ae24-4246-bb6c-a83324a8546c",
+        "cbec1d5f-096e-49d0-b736-60091fd3f9aa",
+        "d208b6ac-fb07-466c-b895-625405bfc3e7",
+        "d6ae8bd6-c9c0-4e80-bcfb-fb60025e6152",
+        "dd789cd1-77d0-422b-968b-7ddb581a700f",
+        "df089fce-2f5a-495f-86ce-11b06e1474d5",
+        "e19e88e3-9296-4bac-b087-346f1b6d906e",
+        "ef20ec33-7990-41b8-8d8e-47514b503612"
+      ],
+      "skill": []
+    },
+    "warned_templates": {
+      "item": 46,
+      "skill": 0
+    }
+  },
+  "missing_definitions": {
+    "by_type": {
+      "TCardItem": 146,
+      "TCardSkill": 18
+    },
+    "entries": [
+      [
+        "cards",
+        "0660ace1-2d6a-4f7b-bfc2-05e8582d27b9",
+        "Outlands Terror",
+        "Diamond",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "0660ace1-2d6a-4f7b-bfc2-05e8582d27b9",
+        "Outlands Terror",
+        "Gold",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "0c501dff-aa3a-4091-9c1e-2df43faef2e1",
+        "Tea Set",
+        "Diamond",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "0c501dff-aa3a-4091-9c1e-2df43faef2e1",
+        "Tea Set",
+        "Gold",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "0c501dff-aa3a-4091-9c1e-2df43faef2e1",
+        "Tea Set",
+        "Silver",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "18100c8e-24db-4568-bd8c-4c8914557e11",
+        "Hydrogen Tank",
+        "Diamond",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "18100c8e-24db-4568-bd8c-4c8914557e11",
+        "Hydrogen Tank",
+        "Gold",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "18100c8e-24db-4568-bd8c-4c8914557e11",
+        "Hydrogen Tank",
+        "Silver",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "1a0c645a-8a0b-424b-bff1-124263589749",
+        "Fortune Cookie",
+        "Diamond",
+        "AbilityIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "1a0c645a-8a0b-424b-bff1-124263589749",
+        "Fortune Cookie",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "1a0c645a-8a0b-424b-bff1-124263589749",
+        "Fortune Cookie",
+        "Gold",
+        "AbilityIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "1a0c645a-8a0b-424b-bff1-124263589749",
+        "Fortune Cookie",
+        "Gold",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "1a0c645a-8a0b-424b-bff1-124263589749",
+        "Fortune Cookie",
+        "Silver",
+        "AbilityIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "1a0c645a-8a0b-424b-bff1-124263589749",
+        "Fortune Cookie",
+        "Silver",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "1e46dbf7-2fe0-4ec1-a657-c3c623eeca6e",
+        "Masterpiece",
+        "Gold",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "25545684-3fd5-4adf-abcc-0e2bb6c500c1",
+        "Pendulum",
+        "Diamond",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "25545684-3fd5-4adf-abcc-0e2bb6c500c1",
+        "Pendulum",
+        "Diamond",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "28dac6a8-49d7-45f2-98a4-b2d89ff89029",
+        "Cloche Hat",
+        "Gold",
+        "AbilityIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "3130ec0b-ee54-4bd1-8bf9-706c41066f11",
+        "[DEBUG] Fortune Cookie",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "3130ec0b-ee54-4bd1-8bf9-706c41066f11",
+        "[DEBUG] Fortune Cookie",
+        "Gold",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "3130ec0b-ee54-4bd1-8bf9-706c41066f11",
+        "[DEBUG] Fortune Cookie",
+        "Silver",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "3132efea-ee79-4b99-b380-d0df3bf1df88",
+        "Cruise Ship",
+        "Diamond",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "3132efea-ee79-4b99-b380-d0df3bf1df88",
+        "Cruise Ship",
+        "Gold",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "3132efea-ee79-4b99-b380-d0df3bf1df88",
+        "Cruise Ship",
+        "Silver",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "3735516a-1517-40fe-b158-9ccee3758fef",
+        "Building Crescendo",
+        "Diamond",
+        "AuraIds",
+        0,
+        "1"
+      ],
+      [
+        "cards",
+        "3735516a-1517-40fe-b158-9ccee3758fef",
+        "Building Crescendo",
+        "Gold",
+        "AuraIds",
+        0,
+        "1"
+      ],
+      [
+        "cards",
+        "38eb79ab-a415-4a8b-ab61-5a7370397b59",
+        "Still Focus",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "38eb79ab-a415-4a8b-ab61-5a7370397b59",
+        "Still Focus",
+        "Gold",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "3e3bda1d-81ba-4719-8772-417d8b834e99",
+        "Calcinator",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "3f867017-c026-412d-99f7-67ca26092e7a",
+        "Marlon",
+        "Bronze",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "3f867017-c026-412d-99f7-67ca26092e7a",
+        "Marlon",
+        "Diamond",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "3f867017-c026-412d-99f7-67ca26092e7a",
+        "Marlon",
+        "Gold",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "3f867017-c026-412d-99f7-67ca26092e7a",
+        "Marlon",
+        "Silver",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "41bc6bab-d7a6-42e4-9815-546de8640d4e",
+        "Dooltron",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "41bc6bab-d7a6-42e4-9815-546de8640d4e",
+        "Dooltron",
+        "Gold",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "42f78ed2-0141-47f3-9bcd-71b433b1273b",
+        "Ambergris",
+        "Diamond",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "42f78ed2-0141-47f3-9bcd-71b433b1273b",
+        "Ambergris",
+        "Gold",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "45e83b0f-26a1-468e-a9ca-0075e58af7a0",
+        "[DEBUG] Stove",
+        "Diamond",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "47f0d440-9fad-4c09-abf6-844c23038b18",
+        "[DEBUG] Time Contraction",
+        "Diamond",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "4826832f-f3a5-4c40-b8fa-737f002074fa",
+        "Insect Wing",
+        "Bronze",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "4826832f-f3a5-4c40-b8fa-737f002074fa",
+        "Insect Wing",
+        "Diamond",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "4826832f-f3a5-4c40-b8fa-737f002074fa",
+        "Insect Wing",
+        "Gold",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "4826832f-f3a5-4c40-b8fa-737f002074fa",
+        "Insect Wing",
+        "Silver",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "4a30e8b0-f1d1-44c0-b2a7-0a8d12c1e297",
+        "Crow's Nest",
+        "Diamond",
+        "AuraIds",
+        2,
+        "3"
+      ],
+      [
+        "cards",
+        "4a30e8b0-f1d1-44c0-b2a7-0a8d12c1e297",
+        "Crow's Nest",
+        "Gold",
+        "AuraIds",
+        2,
+        "3"
+      ],
+      [
+        "cards",
+        "4a30e8b0-f1d1-44c0-b2a7-0a8d12c1e297",
+        "Crow's Nest",
+        "Silver",
+        "AuraIds",
+        2,
+        "3"
+      ],
+      [
+        "cards",
+        "55f11b65-77fa-4d70-9250-8a40d03961ad",
+        "Feather",
+        "Diamond",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "55f11b65-77fa-4d70-9250-8a40d03961ad",
+        "Feather",
+        "Gold",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "5abf3441-11cb-4dbd-8d69-d4829f8df687",
+        "Star Chart",
+        "Bronze",
+        "AuraIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "5abf3441-11cb-4dbd-8d69-d4829f8df687",
+        "Star Chart",
+        "Diamond",
+        "AuraIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "5abf3441-11cb-4dbd-8d69-d4829f8df687",
+        "Star Chart",
+        "Gold",
+        "AuraIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "5abf3441-11cb-4dbd-8d69-d4829f8df687",
+        "Star Chart",
+        "Silver",
+        "AuraIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "64303ae9-7517-4489-b3c6-dd8f1a5cda64",
+        "Resonance Crystal",
+        "Bronze",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "64303ae9-7517-4489-b3c6-dd8f1a5cda64",
+        "Resonance Crystal",
+        "Diamond",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "64303ae9-7517-4489-b3c6-dd8f1a5cda64",
+        "Resonance Crystal",
+        "Gold",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "64303ae9-7517-4489-b3c6-dd8f1a5cda64",
+        "Resonance Crystal",
+        "Silver",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "6693a3f1-cc7c-4a3a-942f-d2e308b22338",
+        "Sulphur",
+        "Bronze",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "6693a3f1-cc7c-4a3a-942f-d2e308b22338",
+        "Sulphur",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "6693a3f1-cc7c-4a3a-942f-d2e308b22338",
+        "Sulphur",
+        "Gold",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "6693a3f1-cc7c-4a3a-942f-d2e308b22338",
+        "Sulphur",
+        "Silver",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "6ab1ee94-ce35-46be-9e38-6e1da374de3e",
+        "Stealth Glider",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "2"
+      ],
+      [
+        "cards",
+        "6ab1ee94-ce35-46be-9e38-6e1da374de3e",
+        "Stealth Glider",
+        "Gold",
+        "AbilityIds",
+        1,
+        "2"
+      ],
+      [
+        "cards",
+        "6ab1ee94-ce35-46be-9e38-6e1da374de3e",
+        "Stealth Glider",
+        "Silver",
+        "AbilityIds",
+        1,
+        "2"
+      ],
+      [
+        "cards",
+        "6c0af8cf-273f-43c5-afb5-ef00c87ffcc8",
+        "Snowmobile",
+        "Diamond",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "6c0af8cf-273f-43c5-afb5-ef00c87ffcc8",
+        "Snowmobile",
+        "Gold",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "6c0af8cf-273f-43c5-afb5-ef00c87ffcc8",
+        "Snowmobile",
+        "Silver",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "6e633f92-81a3-4157-912c-bcdb1b9e28f1",
+        "Hunter's Pack",
+        "Diamond",
+        "AbilityIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "6e7328ed-f925-4ca6-8637-9625626e12d2",
+        "Quick Defenses",
+        "Diamond",
+        "AuraIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "6e7328ed-f925-4ca6-8637-9625626e12d2",
+        "Quick Defenses",
+        "Gold",
+        "AuraIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "843ddc82-9d87-4995-b81c-bf31ae45fd30",
+        "Bushel",
+        "Bronze",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "843ddc82-9d87-4995-b81c-bf31ae45fd30",
+        "Bushel",
+        "Diamond",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "843ddc82-9d87-4995-b81c-bf31ae45fd30",
+        "Bushel",
+        "Gold",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "843ddc82-9d87-4995-b81c-bf31ae45fd30",
+        "Bushel",
+        "Silver",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "84a27aa9-5606-4418-a2dd-d6e4065e81c9",
+        "Hands of Time",
+        "Diamond",
+        "AuraIds",
+        0,
+        "1"
+      ],
+      [
+        "cards",
+        "84a27aa9-5606-4418-a2dd-d6e4065e81c9",
+        "Hands of Time",
+        "Gold",
+        "AuraIds",
+        0,
+        "1"
+      ],
+      [
+        "cards",
+        "84a27aa9-5606-4418-a2dd-d6e4065e81c9",
+        "Hands of Time",
+        "Silver",
+        "AuraIds",
+        0,
+        "1"
+      ],
+      [
+        "cards",
+        "86769097-271e-46ee-8d42-317c6d8a7a09",
+        "Atomic Clock",
+        "Diamond",
+        "AuraIds",
+        0,
+        "1"
+      ],
+      [
+        "cards",
+        "86769097-271e-46ee-8d42-317c6d8a7a09",
+        "Atomic Clock",
+        "Gold",
+        "AuraIds",
+        0,
+        "1"
+      ],
+      [
+        "cards",
+        "86769097-271e-46ee-8d42-317c6d8a7a09",
+        "Atomic Clock",
+        "Silver",
+        "AuraIds",
+        0,
+        "1"
+      ],
+      [
+        "cards",
+        "8908d2d1-1a7e-4f97-8ecb-6834e96b1eab",
+        "Captain's Quarters",
+        "Diamond",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "8908d2d1-1a7e-4f97-8ecb-6834e96b1eab",
+        "Captain's Quarters",
+        "Gold",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "8908d2d1-1a7e-4f97-8ecb-6834e96b1eab",
+        "Captain's Quarters",
+        "Silver",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "89573716-4efd-4d90-b8b5-0aeaa9e72ff0",
+        "Translation Crystal",
+        "Diamond",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "89573716-4efd-4d90-b8b5-0aeaa9e72ff0",
+        "Translation Crystal",
+        "Gold",
+        "AuraIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "8981892b-ce2a-43dc-a08e-2b5e8f8884fc",
+        "Shard of Obsidian",
+        "Bronze",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "8981892b-ce2a-43dc-a08e-2b5e8f8884fc",
+        "Shard of Obsidian",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "8981892b-ce2a-43dc-a08e-2b5e8f8884fc",
+        "Shard of Obsidian",
+        "Gold",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "8981892b-ce2a-43dc-a08e-2b5e8f8884fc",
+        "Shard of Obsidian",
+        "Silver",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "8ae391d2-4267-4d73-96e5-24951a7a2d95",
+        "Trojan",
+        "Diamond",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "8ae391d2-4267-4d73-96e5-24951a7a2d95",
+        "Trojan",
+        "Gold",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "938c9ce6-0f55-4d07-8cf6-1fe045e75122",
+        "Fairy Haze",
+        "Diamond",
+        "AuraIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "938c9ce6-0f55-4d07-8cf6-1fe045e75122",
+        "Fairy Haze",
+        "Gold",
+        "AuraIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "953402e4-1430-48ab-8156-6193c9d8a7d4",
+        "Figurehead",
+        "Diamond",
+        "AuraIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "953402e4-1430-48ab-8156-6193c9d8a7d4",
+        "Figurehead",
+        "Gold",
+        "AuraIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "953402e4-1430-48ab-8156-6193c9d8a7d4",
+        "Figurehead",
+        "Silver",
+        "AuraIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "95640018-a5d3-4119-8c4f-5509e161c689",
+        "Incense",
+        "Bronze",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "95640018-a5d3-4119-8c4f-5509e161c689",
+        "Incense",
+        "Diamond",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "95640018-a5d3-4119-8c4f-5509e161c689",
+        "Incense",
+        "Gold",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "95640018-a5d3-4119-8c4f-5509e161c689",
+        "Incense",
+        "Silver",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Bronze",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Bronze",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Bronze",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Bronze",
+        "AbilityIds",
+        4,
+        "4"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Bronze",
+        "AbilityIds",
+        5,
+        "5"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Diamond",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Diamond",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Diamond",
+        "AbilityIds",
+        4,
+        "4"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Diamond",
+        "AbilityIds",
+        5,
+        "5"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Gold",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Gold",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Gold",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Gold",
+        "AbilityIds",
+        4,
+        "4"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Gold",
+        "AbilityIds",
+        5,
+        "5"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Silver",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Silver",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Silver",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Silver",
+        "AbilityIds",
+        4,
+        "4"
+      ],
+      [
+        "cards",
+        "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+        "Mysterious Gift",
+        "Silver",
+        "AbilityIds",
+        5,
+        "5"
+      ],
+      [
+        "cards",
+        "9c97827a-f6c3-4abd-b7c1-bc1b37cc82f0",
+        "Bootstraps",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "7"
+      ],
+      [
+        "cards",
+        "9c97827a-f6c3-4abd-b7c1-bc1b37cc82f0",
+        "Bootstraps",
+        "Gold",
+        "AbilityIds",
+        1,
+        "7"
+      ],
+      [
+        "cards",
+        "a7910370-4540-4bb7-95cc-5b4b5eeb43ac",
+        "The Big One",
+        "Diamond",
+        "AuraIds",
+        0,
+        "2"
+      ],
+      [
+        "cards",
+        "a7910370-4540-4bb7-95cc-5b4b5eeb43ac",
+        "The Big One",
+        "Diamond",
+        "AuraIds",
+        2,
+        "6"
+      ],
+      [
+        "cards",
+        "a7910370-4540-4bb7-95cc-5b4b5eeb43ac",
+        "The Big One",
+        "Gold",
+        "AuraIds",
+        0,
+        "2"
+      ],
+      [
+        "cards",
+        "a7910370-4540-4bb7-95cc-5b4b5eeb43ac",
+        "The Big One",
+        "Gold",
+        "AuraIds",
+        2,
+        "6"
+      ],
+      [
+        "cards",
+        "aadb8722-9ff1-46cc-95e1-893f7180e191",
+        "Firecrackers",
+        "Diamond",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "b0c2076a-c9f0-4d16-805a-21a23453f7f7",
+        "Island Living",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "b2681448-9dec-47c7-bb4f-58c51830735d",
+        "Atlatl",
+        "Diamond",
+        "AuraIds",
+        1,
+        "2"
+      ],
+      [
+        "cards",
+        "b2681448-9dec-47c7-bb4f-58c51830735d",
+        "Atlatl",
+        "Diamond",
+        "AuraIds",
+        2,
+        "3"
+      ],
+      [
+        "cards",
+        "b2681448-9dec-47c7-bb4f-58c51830735d",
+        "Atlatl",
+        "Gold",
+        "AuraIds",
+        1,
+        "2"
+      ],
+      [
+        "cards",
+        "b2681448-9dec-47c7-bb4f-58c51830735d",
+        "Atlatl",
+        "Gold",
+        "AuraIds",
+        2,
+        "3"
+      ],
+      [
+        "cards",
+        "b2681448-9dec-47c7-bb4f-58c51830735d",
+        "Atlatl",
+        "Silver",
+        "AuraIds",
+        1,
+        "2"
+      ],
+      [
+        "cards",
+        "b2681448-9dec-47c7-bb4f-58c51830735d",
+        "Atlatl",
+        "Silver",
+        "AuraIds",
+        2,
+        "3"
+      ],
+      [
+        "cards",
+        "bcef1ee3-e3b5-41c9-95bc-402afec5a572",
+        "[DEBUG] Firecrackers",
+        "Diamond",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "c45a7c22-ae24-4246-bb6c-a83324a8546c",
+        "Cosmic Plumage",
+        "Diamond",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "c45a7c22-ae24-4246-bb6c-a83324a8546c",
+        "Cosmic Plumage",
+        "Gold",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "c45a7c22-ae24-4246-bb6c-a83324a8546c",
+        "Cosmic Plumage",
+        "Silver",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "c7fa34d4-3e26-4471-a7a4-7919fdc86aab",
+        "Adrenaline Rush",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "c7fa34d4-3e26-4471-a7a4-7919fdc86aab",
+        "Adrenaline Rush",
+        "Gold",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "cbd2810c-4713-4503-a97d-30e73ccaebb7",
+        "Toxic Flame",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "cbec1d5f-096e-49d0-b736-60091fd3f9aa",
+        "Teddy",
+        "Diamond",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "cbec1d5f-096e-49d0-b736-60091fd3f9aa",
+        "Teddy",
+        "Legendary",
+        "AbilityIds",
+        2,
+        "2"
+      ],
+      [
+        "cards",
+        "d208b6ac-fb07-466c-b895-625405bfc3e7",
+        "Seeker Probe",
+        "Diamond",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "d208b6ac-fb07-466c-b895-625405bfc3e7",
+        "Seeker Probe",
+        "Gold",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "d208b6ac-fb07-466c-b895-625405bfc3e7",
+        "Seeker Probe",
+        "Silver",
+        "AuraIds",
+        0,
+        "3"
+      ],
+      [
+        "cards",
+        "d6ae8bd6-c9c0-4e80-bcfb-fb60025e6152",
+        "Bear Trap",
+        "Diamond",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "d6ae8bd6-c9c0-4e80-bcfb-fb60025e6152",
+        "Bear Trap",
+        "Gold",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "d6ae8bd6-c9c0-4e80-bcfb-fb60025e6152",
+        "Bear Trap",
+        "Silver",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "dd789cd1-77d0-422b-968b-7ddb581a700f",
+        "Wild Quillback",
+        "Diamond",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "dd789cd1-77d0-422b-968b-7ddb581a700f",
+        "Wild Quillback",
+        "Gold",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "dd789cd1-77d0-422b-968b-7ddb581a700f",
+        "Wild Quillback",
+        "Silver",
+        "AbilityIds",
+        3,
+        "3"
+      ],
+      [
+        "cards",
+        "df089fce-2f5a-495f-86ce-11b06e1474d5",
+        "Azakan Stew",
+        "Diamond",
+        "AuraIds",
+        4,
+        "7"
+      ],
+      [
+        "cards",
+        "df089fce-2f5a-495f-86ce-11b06e1474d5",
+        "Azakan Stew",
+        "Gold",
+        "AuraIds",
+        4,
+        "7"
+      ],
+      [
+        "cards",
+        "df089fce-2f5a-495f-86ce-11b06e1474d5",
+        "Azakan Stew",
+        "Silver",
+        "AuraIds",
+        4,
+        "7"
+      ],
+      [
+        "cards",
+        "e19e88e3-9296-4bac-b087-346f1b6d906e",
+        "[DEBUG] Repeatable Quest",
+        "Diamond",
+        "AbilityIds",
+        4,
+        "4"
+      ],
+      [
+        "cards",
+        "ef20ec33-7990-41b8-8d8e-47514b503612",
+        "Chunk of Lead",
+        "Bronze",
+        "AbilityIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "ef20ec33-7990-41b8-8d8e-47514b503612",
+        "Chunk of Lead",
+        "Diamond",
+        "AbilityIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "ef20ec33-7990-41b8-8d8e-47514b503612",
+        "Chunk of Lead",
+        "Gold",
+        "AbilityIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "ef20ec33-7990-41b8-8d8e-47514b503612",
+        "Chunk of Lead",
+        "Silver",
+        "AbilityIds",
+        0,
+        "0"
+      ],
+      [
+        "cards",
+        "fa2dfc79-67be-4307-95d9-b4279ab58900",
+        "Buddy System",
+        "Diamond",
+        "AuraIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "fa2dfc79-67be-4307-95d9-b4279ab58900",
+        "Buddy System",
+        "Gold",
+        "AuraIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "fa2dfc79-67be-4307-95d9-b4279ab58900",
+        "Buddy System",
+        "Silver",
+        "AuraIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "feac268f-c3aa-442b-8b14-ba9026156133",
+        "Feral Alliance",
+        "Diamond",
+        "AbilityIds",
+        1,
+        "1"
+      ],
+      [
+        "cards",
+        "feac268f-c3aa-442b-8b14-ba9026156133",
+        "Feral Alliance",
+        "Gold",
+        "AbilityIds",
+        1,
+        "1"
+      ]
+    ],
+    "expanded_references": 164,
+    "kinds": {
+      "AbilityIds": 95,
+      "AuraIds": 69
+    },
+    "template_ids": [
+      "0660ace1-2d6a-4f7b-bfc2-05e8582d27b9",
+      "0c501dff-aa3a-4091-9c1e-2df43faef2e1",
+      "18100c8e-24db-4568-bd8c-4c8914557e11",
+      "1a0c645a-8a0b-424b-bff1-124263589749",
+      "1e46dbf7-2fe0-4ec1-a657-c3c623eeca6e",
+      "25545684-3fd5-4adf-abcc-0e2bb6c500c1",
+      "28dac6a8-49d7-45f2-98a4-b2d89ff89029",
+      "3130ec0b-ee54-4bd1-8bf9-706c41066f11",
+      "3132efea-ee79-4b99-b380-d0df3bf1df88",
+      "3735516a-1517-40fe-b158-9ccee3758fef",
+      "38eb79ab-a415-4a8b-ab61-5a7370397b59",
+      "3e3bda1d-81ba-4719-8772-417d8b834e99",
+      "3f867017-c026-412d-99f7-67ca26092e7a",
+      "41bc6bab-d7a6-42e4-9815-546de8640d4e",
+      "42f78ed2-0141-47f3-9bcd-71b433b1273b",
+      "45e83b0f-26a1-468e-a9ca-0075e58af7a0",
+      "47f0d440-9fad-4c09-abf6-844c23038b18",
+      "4826832f-f3a5-4c40-b8fa-737f002074fa",
+      "4a30e8b0-f1d1-44c0-b2a7-0a8d12c1e297",
+      "55f11b65-77fa-4d70-9250-8a40d03961ad",
+      "5abf3441-11cb-4dbd-8d69-d4829f8df687",
+      "64303ae9-7517-4489-b3c6-dd8f1a5cda64",
+      "6693a3f1-cc7c-4a3a-942f-d2e308b22338",
+      "6ab1ee94-ce35-46be-9e38-6e1da374de3e",
+      "6c0af8cf-273f-43c5-afb5-ef00c87ffcc8",
+      "6e633f92-81a3-4157-912c-bcdb1b9e28f1",
+      "6e7328ed-f925-4ca6-8637-9625626e12d2",
+      "843ddc82-9d87-4995-b81c-bf31ae45fd30",
+      "84a27aa9-5606-4418-a2dd-d6e4065e81c9",
+      "86769097-271e-46ee-8d42-317c6d8a7a09",
+      "8908d2d1-1a7e-4f97-8ecb-6834e96b1eab",
+      "89573716-4efd-4d90-b8b5-0aeaa9e72ff0",
+      "8981892b-ce2a-43dc-a08e-2b5e8f8884fc",
+      "8ae391d2-4267-4d73-96e5-24951a7a2d95",
+      "938c9ce6-0f55-4d07-8cf6-1fe045e75122",
+      "953402e4-1430-48ab-8156-6193c9d8a7d4",
+      "95640018-a5d3-4119-8c4f-5509e161c689",
+      "96b9cc27-b148-4d71-ab5d-21a9c3b64998",
+      "9c97827a-f6c3-4abd-b7c1-bc1b37cc82f0",
+      "a7910370-4540-4bb7-95cc-5b4b5eeb43ac",
+      "aadb8722-9ff1-46cc-95e1-893f7180e191",
+      "b0c2076a-c9f0-4d16-805a-21a23453f7f7",
+      "b2681448-9dec-47c7-bb4f-58c51830735d",
+      "bcef1ee3-e3b5-41c9-95bc-402afec5a572",
+      "c45a7c22-ae24-4246-bb6c-a83324a8546c",
+      "c7fa34d4-3e26-4471-a7a4-7919fdc86aab",
+      "cbd2810c-4713-4503-a97d-30e73ccaebb7",
+      "cbec1d5f-096e-49d0-b736-60091fd3f9aa",
+      "d208b6ac-fb07-466c-b895-625405bfc3e7",
+      "d6ae8bd6-c9c0-4e80-bcfb-fb60025e6152",
+      "dd789cd1-77d0-422b-968b-7ddb581a700f",
+      "df089fce-2f5a-495f-86ce-11b06e1474d5",
+      "e19e88e3-9296-4bac-b087-346f1b6d906e",
+      "ef20ec33-7990-41b8-8d8e-47514b503612",
+      "fa2dfc79-67be-4307-95d9-b4279ab58900",
+      "feac268f-c3aa-442b-8b14-ba9026156133"
+    ],
+    "templates": 56,
+    "unique_missing_ids": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "unique_references": 64
+  },
+  "monsters": {
+    "cards": {
+      "errors": [],
+      "rows": 1655,
+      "sha256": "0A4203FF85FD60F386366485293928D6ABF5C60655C3C5489B7E28FFBA47ABF9"
+    },
+    "input": {
+      "mismatches": [],
+      "rows": 166,
+      "sha256": "59138A23BE6A71DE88CC057A4D3A71C564E834F908611B16EFBC671610A4EE34"
+    },
+    "layout": {
+      "effects": [],
+      "health_missing": [],
+      "item_tier_sources": {
+        "declared": 958,
+        "undeclared-sparse": 4
+      },
+      "item_types": {
+        "TCardItem": 962,
+        "missing": 16
+      },
+      "items": 978,
+      "layout_sha256": "62051466A8676B83EDA7599E044FCF4EB4A6FA1321D9F340C5322309BD0BAA84",
+      "missing_item_enchantments": [],
+      "missing_item_templates": [
+        [
+          "monsters",
+          "0af10a6e-4ea8-4f76-b3f7-c0364ce6d42b",
+          "Monster_Battle_Player_Template_47",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "3a2f9a4b-f573-46d4-a2ed-1ed0088da55b",
+          "Monster_Battle_Player_Template_37",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "479ad0ec-51a9-4d26-ba63-8062d3814619",
+          "Monster_Battle_Player_Template_48",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "55823d26-5fa0-46ca-9d3d-50bbbff5068b",
+          "Monster_Battle_Player_Template_32",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "55902c8f-01af-4234-bc56-852113c85ac9",
+          "Monster_Battle_Player_Template_36",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "70eaf194-d60a-4605-aac2-41f84ea84c46",
+          "Monster_Battle_Player_Template_40",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "80a6cd15-2213-493f-904f-fb6ce7c60270",
+          "Monster_Battle_Player_Template_39",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "867110c7-92f5-49d9-a074-2d687548e47e",
+          "Monster_Battle_Player_Template_35",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "8e823884-a27d-46cd-bddc-9815a224aae4",
+          "Monster_Battle_Player_Template_38",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "8ef44226-7c66-417e-9f31-4cc636a68866",
+          "Monster_Battle_Player_Template_34",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "b236a2b6-3bbb-4f3e-b505-ba67605312de",
+          "Monster_Battle_Player_Template_46",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "b41bd40f-c380-4342-bfa2-3dbf772d956d",
+          "Monster_Battle_Player_Template_33",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "b5409ad0-edb2-49eb-8dee-6d4ec238e10e",
+          "Monster_Battle_Player_Template_43",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "d2fdf346-78ae-4694-8c9d-45285f09d408",
+          "Monster_Battle_Player_Template_45",
+          0,
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "monsters",
+          "e217df23-3730-40d7-9b47-30d62f8a49f6",
+          "Art Test Monster",
+          0,
+          "0a04345c-1319-4640-a4f1-02f88256a82d"
+        ],
+        [
+          "monsters",
+          "e217df23-3730-40d7-9b47-30d62f8a49f6",
+          "Art Test Monster",
+          1,
+          "ed5688bd-99ff-4734-84f4-95fa1210c8bd"
+        ]
+      ],
+      "missing_skill_templates": [],
+      "monster_ids": [
+        "04747408-de0e-4944-b79d-23ca41008619",
+        "05c7cd54-75a3-4eae-9a1a-798c90b0db2d",
+        "0a633def-7135-408c-bcc7-785f5172ee34",
+        "0a70a9ab-4508-4ff4-984e-9a20f0b3d517",
+        "0af10a6e-4ea8-4f76-b3f7-c0364ce6d42b",
+        "0fb054c9-c8e7-4f6e-a5f3-156433577c2d",
+        "0fb23601-c5a2-47a0-94bb-655d93372354",
+        "1177568a-757f-469f-9438-8f3bfeacd93f",
+        "16038f84-3cec-4ccd-b58b-2ce974442142",
+        "1d95020b-e3a7-4210-8a8e-638126b2137b",
+        "1ed6f8c6-13a9-48a2-995f-c61af0602777",
+        "20061be9-0823-41c8-afae-60f49073058f",
+        "21bef21d-d95e-446b-8f89-01893e0d0365",
+        "223c4256-fb15-4f55-be84-d5cef63b938d",
+        "23274e3a-c38d-4aff-92b6-599103256cee",
+        "23820462-925d-4867-bfce-70388594aafb",
+        "2551f0d8-a57c-4670-993d-13b8b7ee2791",
+        "266a6b58-ec93-4d4a-8cea-549caa4224e1",
+        "2952299d-b7f3-45d4-a1ea-ad248b883f90",
+        "29549218-4198-44f1-8ebc-e118dd693ddb",
+        "2a8318be-a86f-45bd-9944-dbad6eee2ab6",
+        "2b157e1b-3340-44b2-934e-4fc84a2b9beb",
+        "2b6ec186-af49-4dff-ab66-93448256f513",
+        "2d7806a6-f674-4d5c-a1fd-655af9ba90e2",
+        "2e9ed78c-6070-4802-9e98-e1090fe5bd78",
+        "334bb95e-ab53-4ac6-9133-4401696f1647",
+        "336e5dad-8ca4-4263-817c-2141136e5e71",
+        "337c2af9-4815-4c14-b537-159f5fc80be3",
+        "340c9717-9ac5-4ce9-b242-cddd8c24581b",
+        "3a2f9a4b-f573-46d4-a2ed-1ed0088da55b",
+        "3ca7de5f-ed87-4343-892b-3623c4be0ce5",
+        "3e334eda-0f62-4852-bf50-dcab11d4e967",
+        "3f3d11c5-b943-45d1-80b3-a567130708f0",
+        "40e83ce1-7c54-4038-baf3-096ea6ddb060",
+        "418f33bf-b721-4e89-a1dd-c375b3174df9",
+        "436bdf36-22ac-4736-a0ad-fa3a4711dcba",
+        "479ad0ec-51a9-4d26-ba63-8062d3814619",
+        "47a96863-a95f-4f79-8869-8b8bb48c51c5",
+        "4985f23f-5054-4477-abbc-a9a52471b46e",
+        "4be43701-6e7d-4e38-84e1-2a01a23fa982",
+        "4c1a67f6-f9b4-4a46-8481-d252a24544e7",
+        "4d3ed706-14c0-4a08-baca-be0b2da4370f",
+        "50a31ea0-ed74-484a-b04b-30f6fe273958",
+        "50c31091-e157-4009-8a9e-121605fb0ac3",
+        "50ebc26b-1c8c-4a6c-8656-442c30018325",
+        "518bd4b2-97f4-44f9-8b74-933962339751",
+        "53b1db70-75b2-4d5e-a98c-b558fe9040af",
+        "53c31151-ad92-4181-9720-d0825eea866b",
+        "54030dd4-8051-4c21-abcd-9205df585ea5",
+        "55823d26-5fa0-46ca-9d3d-50bbbff5068b",
+        "55902c8f-01af-4234-bc56-852113c85ac9",
+        "5625c11a-ad2d-4fcb-b915-644dc776e25a",
+        "58ba1384-5aee-4cb6-b009-6e4c96c14e69",
+        "58ba322d-a76c-4106-b91c-37ea207353a0",
+        "5b3da8f1-5834-4a8d-967f-f98e8989b26f",
+        "5b538be9-1427-4c1b-aebf-0daa7582dbaf",
+        "5c185768-3f09-4b9a-87c8-9b8e95d43b5b",
+        "5d779101-3fa5-44b7-b885-f8bb9b0f7438",
+        "616ce451-b85d-478a-82a8-8a28105994f5",
+        "6217804b-1d4b-4517-a9ee-869d35bf0d59",
+        "622b8e58-b073-4c75-9d57-322d0f16435d",
+        "626224f6-4aea-458f-8947-86a4798de419",
+        "64d84f7d-68b4-481b-ad9a-de1e5e3e3d08",
+        "67f30669-0e12-4d59-82fc-6b033fa064c3",
+        "6a6fffdc-100a-436e-823c-77e712a71d57",
+        "6c87be29-e82d-4ce1-ac79-8a642b8e0c4f",
+        "6d576bad-7b30-499a-9c67-ec5f9a0a96d7",
+        "6d939dd0-fd9b-46b8-8861-cccb818757da",
+        "6d946fe1-13cc-4141-bc89-84981c4ef77f",
+        "709e1dce-7e91-4612-b010-d107a6800158",
+        "70eaf194-d60a-4605-aac2-41f84ea84c46",
+        "73163ebc-46fd-43f0-9693-8666ccc9da09",
+        "7481bc29-8de9-4661-a51c-49dd27ca5044",
+        "75efe2bc-97e2-4b72-b1e2-778ab3bc3645",
+        "7719b6d8-7977-4d49-88a2-da29a19ad235",
+        "77a31f8e-77b1-431f-aab8-22bbe5c3826b",
+        "7a965849-4a02-4635-a3f0-476b4a7ea465",
+        "7b6ab1c8-40ca-454a-a162-d6392e208fe2",
+        "7d995810-111c-44dd-8473-7e5bd2b2fc74",
+        "7e8b7521-af5e-4c81-93c1-694e823bc5de",
+        "7f5894c9-b7ce-4f48-a831-4a33543866b9",
+        "7f6cecb6-3f07-4606-8d62-21c0b5e4e369",
+        "80a6cd15-2213-493f-904f-fb6ce7c60270",
+        "820dd8f1-6721-4c32-88a4-b5071566dcc4",
+        "85fffe21-ab28-4390-80c7-04bd5eebe95c",
+        "867110c7-92f5-49d9-a074-2d687548e47e",
+        "87365f71-1a50-40ac-b4f6-903177ebebab",
+        "8aa0c4b7-fcc9-48db-a0ed-be8aecde1628",
+        "8c211464-5961-449b-b5e9-b222c601e3c1",
+        "8cda08b2-06db-49c1-8a06-80baecee024f",
+        "8cf3c8cc-2d9e-4f10-b133-711e0fec7039",
+        "8e823884-a27d-46cd-bddc-9815a224aae4",
+        "8ef44226-7c66-417e-9f31-4cc636a68866",
+        "8f2c7d19-4a6b-4f3e-9c21-73d5e0a94b68",
+        "924c56d7-1a5e-4e57-a6b2-bb0c2362980e",
+        "96553caa-fac6-484f-8b71-0bff3c06a483",
+        "9af5fe85-c06f-4227-906c-e5f8df83a0fd",
+        "9db29de4-9b68-4a8e-9f21-01ba1340bd8b",
+        "9eb2bbbf-ad2d-4fa6-be5c-8d46f11df55f",
+        "a010a4a0-7dc2-4673-a377-fc0db5ff1410",
+        "a0b78419-e252-4bdc-8861-4325ecbeadd0",
+        "a14373f5-e18f-44df-b988-54151d595af0",
+        "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+        "a859bd39-a384-43e8-9299-08a73c6810a6",
+        "a97fb7f3-f879-4013-bf31-c82ca685c30c",
+        "aa372e93-c5b0-42e9-8b0c-cd4746d0382c",
+        "b04cb7b2-76ec-4e3d-b05a-e8eade30ec03",
+        "b21565c5-71c6-4e4d-bf3d-5fd9d8602aa8",
+        "b224deab-292e-4b0d-b18f-96445517dc42",
+        "b236a2b6-3bbb-4f3e-b505-ba67605312de",
+        "b3f9a83f-772b-4286-bf21-cd2d86a13b58",
+        "b40ae00e-f6df-4920-90a4-a49ea53fbdb5",
+        "b41bd40f-c380-4342-bfa2-3dbf772d956d",
+        "b4b6423e-d0aa-47a2-a9d9-35ea1c291992",
+        "b5409ad0-edb2-49eb-8dee-6d4ec238e10e",
+        "b54dbad3-bc06-481a-ba99-a2421c047665",
+        "b616842e-b4dc-4678-8ca4-337229f6e046",
+        "b6ca5c91-632d-4093-87f9-cbd0d649740e",
+        "b712a602-1843-4fc3-85ad-b8e3b7bca489",
+        "b88974f2-e953-4c66-a231-7337fd409c53",
+        "c084c86f-7908-41d7-9c2b-13ab7dfef4b3",
+        "c2fd54df-9cd2-4f61-ae6e-9b6c8cf87785",
+        "c4488147-71e7-4383-95d7-f96910221060",
+        "c6e87ee0-dfd5-47e1-9723-cca076fce2d1",
+        "ca2455dd-9f11-40d1-82aa-289f808b7da0",
+        "ccdb8409-bef2-4db6-9ad8-d18ad5768eae",
+        "ce7b529c-819f-41c8-8fc6-8c58968ab2fe",
+        "d2fdf346-78ae-4694-8c9d-45285f09d408",
+        "d34242a2-02b0-4361-9402-e216cb12d165",
+        "d5e1eb8e-2cd0-4f56-a980-fe4b4fee58a9",
+        "d64499b5-a27c-4fb8-bc7d-28a2e091b929",
+        "d7391818-e677-4c98-994d-71e25ed2d41c",
+        "d780a822-b6b8-4be6-bce9-5b861cbdcadf",
+        "daf6f97b-8653-4dfa-90d2-e5003bdade21",
+        "db1773e8-40a2-42ac-8ec3-2a9b7777fc17",
+        "db438675-632e-449c-8c65-bd3e8c33d1ee",
+        "dd985314-939f-4388-86dc-50ef8e7c25b7",
+        "e07396b2-a71e-46e7-b32b-d9568585dd93",
+        "e18b8358-920d-48d7-b90c-37e455135991",
+        "e217df23-3730-40d7-9b47-30d62f8a49f6",
+        "e22fee79-eee2-43ad-abce-ad974513745c",
+        "e27b5f5f-2b71-42c5-a839-37e0aca0a8a5",
+        "e3890eb1-031b-496a-933b-8c05df87f114",
+        "e38c6e90-e0b3-495f-9d18-9facf49a336f",
+        "e3b97056-4bbb-4904-a90d-5708b35c05ea",
+        "e6782454-5c72-47f3-ac43-140f0cc7eb8f",
+        "e873dbd7-86aa-4fec-9206-28591346939a",
+        "e98f8212-6dc2-463d-87cc-9d407c60c50d",
+        "e9ea36fe-dfcf-459a-b57f-0cf6e4fe62a5",
+        "ea63dae1-1d9c-4422-8c2a-96260b787dd1",
+        "ea736d32-738c-4cca-902c-1b3a5dc67205",
+        "eac82969-e761-4bf1-983f-de644b9716c2",
+        "ecb2508b-07b1-4712-a82a-fb47c433ed6a",
+        "ee26b888-c50f-43cf-848b-ca572b6e9583",
+        "ee37ea07-e024-447c-b89f-88b9940c19af",
+        "f0d347b0-2e9a-46da-9d82-45b65244b0f4",
+        "f43985fe-7e14-4797-a86d-71ee83195154",
+        "f57b2a63-e4a2-4d9a-88b3-b1c3a3cf36d7",
+        "f73ab4b7-f33d-4d65-bb3f-2fea8d003500",
+        "f820c620-244a-46c4-bace-51eb70ce48e6",
+        "f8cf1723-aa0c-4019-8c59-842cecda1c93",
+        "fba40a98-b149-4ce0-a672-1352c8a0cc84",
+        "fc5aa4c0-8d87-457b-bc3c-2ebf0b07d12d",
+        "fd181d89-0706-4220-bb95-637af574b61b",
+        "fd9ad26c-3360-4df5-bf83-52bd6e1f869a",
+        "fdcb435f-d6c4-4657-81b5-1888e8eefe5a"
+      ],
+      "monsters": 166,
+      "skill_tier_sources": {
+        "declared": 200,
+        "undeclared-sparse": 62
+      },
+      "skill_types": {
+        "TCardSkill": 262
+      },
+      "skills": 262,
+      "socket_effects": [
+        [
+          "monsters",
+          "05c7cd54-75a3-4eae-9a1a-798c90b0db2d",
+          "Chilly Charles",
+          "Player.Socket.Effects[0]",
+          "TCardInstanceSocketEffect"
+        ],
+        [
+          "monsters",
+          "05c7cd54-75a3-4eae-9a1a-798c90b0db2d",
+          "Chilly Charles",
+          "Player.Socket.Effects[1]",
+          "TCardInstanceSocketEffect"
+        ],
+        [
+          "monsters",
+          "b21565c5-71c6-4e4d-bf3d-5fd9d8602aa8",
+          "PVE_Jules_D6_001",
+          "Player.Socket.Effects[0]",
+          "TCardInstanceSocketEffect"
+        ]
+      ],
+      "undeclared_item_tiers": [
+        [
+          "monsters",
+          "9db29de4-9b68-4a8e-9f21-01ba1340bd8b",
+          "PVE_Karnok_D6_001",
+          0,
+          "dd1a8882-4326-4545-88c7-e063d789f4ad",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "9db29de4-9b68-4a8e-9f21-01ba1340bd8b",
+          "PVE_Karnok_D6_001",
+          2,
+          "035fb538-1939-49de-8219-b6557962f054",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "9db29de4-9b68-4a8e-9f21-01ba1340bd8b",
+          "PVE_Karnok_D6_001",
+          4,
+          "6e633f92-81a3-4157-912c-bcdb1b9e28f1",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "9db29de4-9b68-4a8e-9f21-01ba1340bd8b",
+          "PVE_Karnok_D6_001",
+          6,
+          "0df9aa59-6b34-4968-94f0-98af5e22aa7a",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ]
+      ],
+      "undeclared_skill_tiers": [
+        [
+          "monsters",
+          "0af10a6e-4ea8-4f76-b3f7-c0364ce6d42b",
+          "Monster_Battle_Player_Template_47",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "0fb23601-c5a2-47a0-94bb-655d93372354",
+          "Retiree",
+          0,
+          "ed7379d4-38ee-48b0-9ef0-61ed3c57ec22",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "16038f84-3cec-4ccd-b58b-2ce974442142",
+          "Lord of the Wastes",
+          0,
+          "c9c884fd-849e-4541-b770-4658c2e6e609",
+          "Gold",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "20061be9-0823-41c8-afae-60f49073058f",
+          "Gorgon Noble",
+          1,
+          "f08ab88b-c40e-4f4e-9419-e7501f9224ec",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "3a2f9a4b-f573-46d4-a2ed-1ed0088da55b",
+          "Monster_Battle_Player_Template_37",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "3ca7de5f-ed87-4343-892b-3623c4be0ce5",
+          "Outlands Terror (Monster)",
+          0,
+          "8612baa6-4d55-430e-9f40-6db1e5dfe8ff",
+          "Gold",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "479ad0ec-51a9-4d26-ba63-8062d3814619",
+          "Monster_Battle_Player_Template_48",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "4d3ed706-14c0-4a08-baca-be0b2da4370f",
+          "Anaconda",
+          0,
+          "12e6e9ac-040b-4b58-96dd-08a56722fb45",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "55823d26-5fa0-46ca-9d3d-50bbbff5068b",
+          "Monster_Battle_Player_Template_32",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "55902c8f-01af-4234-bc56-852113c85ac9",
+          "Monster_Battle_Player_Template_36",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "6217804b-1d4b-4517-a9ee-869d35bf0d59",
+          "Gibbus",
+          0,
+          "8ccadf9b-11f9-4cf7-9462-b287926abb99",
+          "Gold",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "6d576bad-7b30-499a-9c67-ec5f9a0a96d7",
+          "Kyver Commander",
+          0,
+          "c5bff6ad-5d13-4cf3-9941-98f3cf913949",
+          "Silver",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "6d946fe1-13cc-4141-bc89-84981c4ef77f",
+          "Joyful Jack",
+          0,
+          "dd9d1ad7-8c28-46da-9f98-aaa2cc55cd00",
+          "Silver",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "70eaf194-d60a-4605-aac2-41f84ea84c46",
+          "Monster_Battle_Player_Template_40",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "80a6cd15-2213-493f-904f-fb6ce7c60270",
+          "Monster_Battle_Player_Template_39",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "867110c7-92f5-49d9-a074-2d687548e47e",
+          "Monster_Battle_Player_Template_35",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "8e823884-a27d-46cd-bddc-9815a224aae4",
+          "Monster_Battle_Player_Template_38",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "8ef44226-7c66-417e-9f31-4cc636a68866",
+          "Monster_Battle_Player_Template_34",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "9eb2bbbf-ad2d-4fa6-be5c-8d46f11df55f",
+          "Wolverine",
+          0,
+          "4e5bc2ed-7d12-444a-9547-5b92db6c7618",
+          "Gold",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          2,
+          "b5160cb5-5d92-420b-8883-b67e701b5e5f",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          3,
+          "f0955884-1ea7-4cac-ad73-c30798d3642c",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          4,
+          "32e45628-c864-4f99-a2e8-94efe6f37cdc",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          5,
+          "158c1575-71c6-406c-82c9-f4435d9b37ca",
+          "Bronze",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          6,
+          "f7ae1ab0-16dc-46af-9a77-b23b7f33104f",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          7,
+          "dec273b3-155e-4fbd-9629-5dbd2900e032",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          8,
+          "4225d131-791a-4ea4-ab0e-80a3343a3253",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          9,
+          "82d8a964-4068-44c0-a123-af96e5c350d4",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          10,
+          "304d505a-d914-4264-9142-b6efb7aca1ff",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          11,
+          "fd3f0e7b-27ac-4bde-87f8-5ec61b19c4f7",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          12,
+          "5e4892b5-2be7-4552-9a72-5770785a733d",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          13,
+          "13bcf77b-0ad0-4dd3-85ed-927799691a72",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          14,
+          "9d910b0a-9ef3-447f-ab41-195effb68f21",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          15,
+          "6c3d41e4-1ca7-4be5-b0e2-6cadbbd2bd27",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          16,
+          "cb8e9ed1-764e-4fa5-a2b8-61c2eddcbf7e",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          17,
+          "a1975546-334f-4137-85cc-43a4c8ae49f3",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          18,
+          "d4471fb1-a60b-4f64-9c60-ae0e8c930306",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          19,
+          "f6883b13-0dd2-475f-92e9-760102341bda",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          20,
+          "9ec041be-6f89-4e95-963d-1deb7460e1d0",
+          "Bronze",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          21,
+          "ab4d7a85-3eb2-43e8-aa11-f94581f5690f",
+          "Bronze",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          22,
+          "d56a6e90-f664-4791-8b78-5c8bd3f45f80",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          23,
+          "1fb47cc1-c38f-4240-8f7f-04a78222f5e7",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          24,
+          "529f2133-0d39-4827-9788-2b90c5356b7e",
+          "Bronze",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          25,
+          "b7edb810-2ead-4e1c-965d-d787eacc6fd3",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          27,
+          "c7261fd4-ef40-4091-abb2-dcf5694ae2ac",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          28,
+          "9cd3f8a9-3ca8-482b-8f4c-79f9d1d3400e",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          29,
+          "1d0b3080-14a8-41c5-9449-9b48f46d4726",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          30,
+          "76ac0aa6-ef43-4a5b-9a30-f0ab4186dc83",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          31,
+          "31e244c7-e013-4e6c-a51c-4f0ca8d10472",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          32,
+          "1c40716a-d125-4deb-8ada-8b177c5ff071",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          33,
+          "a3695c78-63e4-45a9-a2b9-9b2827325527",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          34,
+          "4fda14aa-365f-478f-8a27-b9b53c97c56a",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          35,
+          "8a42ef6e-3a7e-41f4-a741-6a33839afe64",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          36,
+          "c3f674a0-4025-45e1-b611-bf70fd6f279c",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "Skill Board Test Monster",
+          38,
+          "3b4c3700-6c77-4954-a3e1-dfeaeab08c4a",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "b236a2b6-3bbb-4f3e-b505-ba67605312de",
+          "Monster_Battle_Player_Template_46",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "b40ae00e-f6df-4920-90a4-a49ea53fbdb5",
+          "Roaming Isle",
+          0,
+          "7b6a982f-7196-4d3e-8674-825fddba80d2",
+          "Silver",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "b41bd40f-c380-4342-bfa2-3dbf772d956d",
+          "Monster_Battle_Player_Template_33",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "b5409ad0-edb2-49eb-8dee-6d4ec238e10e",
+          "Monster_Battle_Player_Template_43",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "d2fdf346-78ae-4694-8c9d-45285f09d408",
+          "Monster_Battle_Player_Template_45",
+          0,
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze",
+          "Diamond;Gold"
+        ],
+        [
+          "monsters",
+          "e22fee79-eee2-43ad-abce-ad974513745c",
+          "Grandfather Klok",
+          0,
+          "b67ef429-b97c-4e43-9332-2aea1d82db10",
+          "Bronze",
+          "Diamond;Gold;Silver"
+        ],
+        [
+          "monsters",
+          "ea63dae1-1d9c-4422-8c2a-96260b787dd1",
+          "Trash Titan",
+          0,
+          "d071e4de-f87f-41b5-b02d-d622e35c0b4d",
+          "Gold",
+          "Diamond"
+        ],
+        [
+          "monsters",
+          "ea736d32-738c-4cca-902c-1b3a5dc67205",
+          "Stew",
+          0,
+          "c1ffec09-0567-47fe-b80e-4f55f62ee7fd",
+          "Silver",
+          "Diamond;Gold"
+        ]
+      ],
+      "warning_entries": 16
+    },
+    "report": {
+      "duplicates": [],
+      "mismatch_count": 0,
+      "mismatches": [],
+      "missing_item_enchantments": [],
+      "missing_item_templates": [
+        [
+          "0af10a6e-4ea8-4f76-b3f7-c0364ce6d42b",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "3a2f9a4b-f573-46d4-a2ed-1ed0088da55b",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "479ad0ec-51a9-4d26-ba63-8062d3814619",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "55823d26-5fa0-46ca-9d3d-50bbbff5068b",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "55902c8f-01af-4234-bc56-852113c85ac9",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "70eaf194-d60a-4605-aac2-41f84ea84c46",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "80a6cd15-2213-493f-904f-fb6ce7c60270",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "867110c7-92f5-49d9-a074-2d687548e47e",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "8e823884-a27d-46cd-bddc-9815a224aae4",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "8ef44226-7c66-417e-9f31-4cc636a68866",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "b236a2b6-3bbb-4f3e-b505-ba67605312de",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "b41bd40f-c380-4342-bfa2-3dbf772d956d",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "b5409ad0-edb2-49eb-8dee-6d4ec238e10e",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "d2fdf346-78ae-4694-8c9d-45285f09d408",
+          "0",
+          "c7b72f4f-3bff-46f4-9c94-55243ad6703b"
+        ],
+        [
+          "e217df23-3730-40d7-9b47-30d62f8a49f6",
+          "0",
+          "0a04345c-1319-4640-a4f1-02f88256a82d"
+        ],
+        [
+          "e217df23-3730-40d7-9b47-30d62f8a49f6",
+          "1",
+          "ed5688bd-99ff-4734-84f4-95fa1210c8bd"
+        ]
+      ],
+      "missing_monsters": [],
+      "missing_skill_templates": [],
+      "rows": {
+        "item": 978,
+        "monster": 166,
+        "skill": 262
+      },
+      "sha256": "76C8D5D92C7454B05C835C80E651392D6E7BF4F1A64A18275AFB7CBCFCA6F240",
+      "status": {
+        "missing": 16,
+        "read": 151,
+        "resolved": 1158,
+        "warning": 81
+      },
+      "undeclared_item_tiers": [
+        [
+          "9db29de4-9b68-4a8e-9f21-01ba1340bd8b",
+          "0",
+          "dd1a8882-4326-4545-88c7-e063d789f4ad",
+          "Bronze"
+        ],
+        [
+          "9db29de4-9b68-4a8e-9f21-01ba1340bd8b",
+          "2",
+          "035fb538-1939-49de-8219-b6557962f054",
+          "Bronze"
+        ],
+        [
+          "9db29de4-9b68-4a8e-9f21-01ba1340bd8b",
+          "4",
+          "6e633f92-81a3-4157-912c-bcdb1b9e28f1",
+          "Bronze"
+        ],
+        [
+          "9db29de4-9b68-4a8e-9f21-01ba1340bd8b",
+          "6",
+          "0df9aa59-6b34-4968-94f0-98af5e22aa7a",
+          "Bronze"
+        ]
+      ],
+      "undeclared_skill_tiers": [
+        [
+          "0af10a6e-4ea8-4f76-b3f7-c0364ce6d42b",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "0fb23601-c5a2-47a0-94bb-655d93372354",
+          "0",
+          "ed7379d4-38ee-48b0-9ef0-61ed3c57ec22",
+          "Bronze"
+        ],
+        [
+          "16038f84-3cec-4ccd-b58b-2ce974442142",
+          "0",
+          "c9c884fd-849e-4541-b770-4658c2e6e609",
+          "Gold"
+        ],
+        [
+          "20061be9-0823-41c8-afae-60f49073058f",
+          "1",
+          "f08ab88b-c40e-4f4e-9419-e7501f9224ec",
+          "Bronze"
+        ],
+        [
+          "3a2f9a4b-f573-46d4-a2ed-1ed0088da55b",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "3ca7de5f-ed87-4343-892b-3623c4be0ce5",
+          "0",
+          "8612baa6-4d55-430e-9f40-6db1e5dfe8ff",
+          "Gold"
+        ],
+        [
+          "479ad0ec-51a9-4d26-ba63-8062d3814619",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "4d3ed706-14c0-4a08-baca-be0b2da4370f",
+          "0",
+          "12e6e9ac-040b-4b58-96dd-08a56722fb45",
+          "Bronze"
+        ],
+        [
+          "55823d26-5fa0-46ca-9d3d-50bbbff5068b",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "55902c8f-01af-4234-bc56-852113c85ac9",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "6217804b-1d4b-4517-a9ee-869d35bf0d59",
+          "0",
+          "8ccadf9b-11f9-4cf7-9462-b287926abb99",
+          "Gold"
+        ],
+        [
+          "6d576bad-7b30-499a-9c67-ec5f9a0a96d7",
+          "0",
+          "c5bff6ad-5d13-4cf3-9941-98f3cf913949",
+          "Silver"
+        ],
+        [
+          "6d946fe1-13cc-4141-bc89-84981c4ef77f",
+          "0",
+          "dd9d1ad7-8c28-46da-9f98-aaa2cc55cd00",
+          "Silver"
+        ],
+        [
+          "70eaf194-d60a-4605-aac2-41f84ea84c46",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "80a6cd15-2213-493f-904f-fb6ce7c60270",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "867110c7-92f5-49d9-a074-2d687548e47e",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "8e823884-a27d-46cd-bddc-9815a224aae4",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "8ef44226-7c66-417e-9f31-4cc636a68866",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "9eb2bbbf-ad2d-4fa6-be5c-8d46f11df55f",
+          "0",
+          "4e5bc2ed-7d12-444a-9547-5b92db6c7618",
+          "Gold"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "10",
+          "304d505a-d914-4264-9142-b6efb7aca1ff",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "11",
+          "fd3f0e7b-27ac-4bde-87f8-5ec61b19c4f7",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "12",
+          "5e4892b5-2be7-4552-9a72-5770785a733d",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "13",
+          "13bcf77b-0ad0-4dd3-85ed-927799691a72",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "14",
+          "9d910b0a-9ef3-447f-ab41-195effb68f21",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "15",
+          "6c3d41e4-1ca7-4be5-b0e2-6cadbbd2bd27",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "16",
+          "cb8e9ed1-764e-4fa5-a2b8-61c2eddcbf7e",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "17",
+          "a1975546-334f-4137-85cc-43a4c8ae49f3",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "18",
+          "d4471fb1-a60b-4f64-9c60-ae0e8c930306",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "19",
+          "f6883b13-0dd2-475f-92e9-760102341bda",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "2",
+          "b5160cb5-5d92-420b-8883-b67e701b5e5f",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "20",
+          "9ec041be-6f89-4e95-963d-1deb7460e1d0",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "21",
+          "ab4d7a85-3eb2-43e8-aa11-f94581f5690f",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "22",
+          "d56a6e90-f664-4791-8b78-5c8bd3f45f80",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "23",
+          "1fb47cc1-c38f-4240-8f7f-04a78222f5e7",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "24",
+          "529f2133-0d39-4827-9788-2b90c5356b7e",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "25",
+          "b7edb810-2ead-4e1c-965d-d787eacc6fd3",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "27",
+          "c7261fd4-ef40-4091-abb2-dcf5694ae2ac",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "28",
+          "9cd3f8a9-3ca8-482b-8f4c-79f9d1d3400e",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "29",
+          "1d0b3080-14a8-41c5-9449-9b48f46d4726",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "3",
+          "f0955884-1ea7-4cac-ad73-c30798d3642c",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "30",
+          "76ac0aa6-ef43-4a5b-9a30-f0ab4186dc83",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "31",
+          "31e244c7-e013-4e6c-a51c-4f0ca8d10472",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "32",
+          "1c40716a-d125-4deb-8ada-8b177c5ff071",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "33",
+          "a3695c78-63e4-45a9-a2b9-9b2827325527",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "34",
+          "4fda14aa-365f-478f-8a27-b9b53c97c56a",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "35",
+          "8a42ef6e-3a7e-41f4-a741-6a33839afe64",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "36",
+          "c3f674a0-4025-45e1-b611-bf70fd6f279c",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "38",
+          "3b4c3700-6c77-4954-a3e1-dfeaeab08c4a",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "4",
+          "32e45628-c864-4f99-a2e8-94efe6f37cdc",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "5",
+          "158c1575-71c6-406c-82c9-f4435d9b37ca",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "6",
+          "f7ae1ab0-16dc-46af-9a77-b23b7f33104f",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "7",
+          "dec273b3-155e-4fbd-9629-5dbd2900e032",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "8",
+          "4225d131-791a-4ea4-ab0e-80a3343a3253",
+          "Bronze"
+        ],
+        [
+          "a6d543e2-e4fc-4e7d-a2b3-998ee6ef1a50",
+          "9",
+          "82d8a964-4068-44c0-a123-af96e5c350d4",
+          "Bronze"
+        ],
+        [
+          "b236a2b6-3bbb-4f3e-b505-ba67605312de",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "b40ae00e-f6df-4920-90a4-a49ea53fbdb5",
+          "0",
+          "7b6a982f-7196-4d3e-8674-825fddba80d2",
+          "Silver"
+        ],
+        [
+          "b41bd40f-c380-4342-bfa2-3dbf772d956d",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "b5409ad0-edb2-49eb-8dee-6d4ec238e10e",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "d2fdf346-78ae-4694-8c9d-45285f09d408",
+          "0",
+          "6e95c90d-e4b4-42c3-b5e9-3c390d762c92",
+          "Bronze"
+        ],
+        [
+          "e22fee79-eee2-43ad-abce-ad974513745c",
+          "0",
+          "b67ef429-b97c-4e43-9332-2aea1d82db10",
+          "Bronze"
+        ],
+        [
+          "ea63dae1-1d9c-4422-8c2a-96260b787dd1",
+          "0",
+          "d071e4de-f87f-41b5-b02d-d622e35c0b4d",
+          "Gold"
+        ],
+        [
+          "ea736d32-738c-4cca-902c-1b3a5dc67205",
+          "0",
+          "c1ffec09-0567-47fe-b80e-4f55f62ee7fd",
+          "Silver"
+        ]
+      ],
+      "unexpected_monsters": [],
+      "unexpected_rows": []
+    }
+  },
+  "out_of_index": {
+    "by_type": {
+      "TCardPlayerEffect": 9,
+      "TCardSocketEffect": 2
+    },
+    "count": 11,
+    "rows": [
+      [
+        "cards",
+        "03fb8b61-3326-4eb4-8704-d7340d4c0385",
+        "[PlayerAttributes] Fights Lost",
+        "TCardPlayerEffect"
+      ],
+      [
+        "cards",
+        "142058d9-40fc-4666-b066-b3ab38c68e8a",
+        "[PlayerAttributes] Reagents Transformed",
+        "TCardPlayerEffect"
+      ],
+      [
+        "cards",
+        "4472da8a-26a3-4e10-bd9a-e93c2e22f19c",
+        "Base Rage Effect",
+        "TCardPlayerEffect"
+      ],
+      [
+        "cards",
+        "5b39876b-c92f-45ad-9972-0919d431fd65",
+        "[PlayerAttributes] Weapons Bought",
+        "TCardPlayerEffect"
+      ],
+      [
+        "cards",
+        "bb290eae-bdb5-43e8-a78b-a0149b0690eb",
+        "[PlayerAttributes] Monster Fights Lost",
+        "TCardPlayerEffect"
+      ],
+      [
+        "cards",
+        "bc6dd20d-4ed9-49f7-a8a4-2b915a4fc323",
+        "[PlayerAttributes] Fights Won",
+        "TCardPlayerEffect"
+      ],
+      [
+        "cards",
+        "c029444b-9e7f-4a61-bcff-607db2fd0c68",
+        "[PlayerAttributes] Player Fights Lost",
+        "TCardPlayerEffect"
+      ],
+      [
+        "cards",
+        "d2ba43c2-0ba9-4299-b737-7594caa507ea",
+        "Enrage portrait update",
+        "TCardPlayerEffect"
+      ],
+      [
+        "cards",
+        "f74011cc-0f8b-462e-bc96-3a314afaa2af",
+        "[PlayerAttributes] Gold Gained",
+        "TCardPlayerEffect"
+      ],
+      [
+        "cards",
+        "c017c0dd-af3c-47e0-b510-3661d9dcd7f2",
+        "[Stove] Socket Effect",
+        "TCardSocketEffect"
+      ],
+      [
+        "cards",
+        "d5515ae3-b98d-4272-8add-82f441969ffe",
+        "[Cooler] Socket Effect",
+        "TCardSocketEffect"
+      ]
+    ]
+  },
+  "schema": 2,
+  "source_sha256": {
+    "tools/actionaxis_plugin/engine/CardMapper.cs": "18C6A8A46EE9566AEB51C2D3538C94ED5C69B9136709D1253EEA22962067C577",
+    "tools/actionaxis_plugin/engine/LiveBoard.cs": "739CF1E617FF8B0A595C6AC17F4E57E8AB2D9100D7DCE778721EEEF8FE41CD5F",
+    "tools/actionaxis_plugin/engine/LiveMonster.cs": "27A90F0D5128C0EFC5AC2ED7F96A181138C375D268B2C21A08276C0828F7E144",
+    "tools/actionaxis_plugin/engine/SkillMapper.cs": "BAEC8B815B669F94FB5FE3888B0AD2B511DF85B39C78DFFEB90297E6695EF674",
+    "tools/actionaxis_plugin/plugin/LiveCardDetailReader.cs": "1C8FF4802A98DBAF958DC3EC20FA5D25A1C115CA296E219C4C2E3580A27C8190",
+    "tools/actionaxis_plugin/plugin/LiveMonsterReader.cs": "14016B114C5634563F0BC52D69A7C1D977B6ED1AF00B8982A7D438288B7F2DD8",
+    "tools/actionaxis_plugin/plugin/LiveSkillReader.cs": "C44B0F76F56A97345113696538A1126F94426444E5621A1ABA34A43450F85D93",
+    "tools/actionaxis_plugin/tests/G00CoverageTests.cs": "C5A35CBFCFF24860434C9A568BFC1910B79F4ECBBCE84452FD345612BF07ED5C",
+    "tools/actionaxis_plugin/tests/G00DataTests.cs": "322F553762C84022015AE48DFFB12821A74C2F243703A63CC6CFE51A9C8306B2",
+    "tools/actionaxis_plugin/tests/MonsterCoverageRunner.cs": "68BF3540FCEDA942A2A5666A5015475D8A5CF6FD07E78A97CF95434545A1E879",
+    "tools/actionaxis_plugin/tests/NativeCoverageRunner.cs": "579D251048193B04763E9DF22C399329A7DCDB64A4D226AF2AC8C270F709DADB",
+    "tools/actionaxis_plugin/tests/Program.cs": "5A7090A6A6A123C874836C5C3F83D43366F87E7A9B6F4816086EEB292C957A74",
+    "tools/actionaxis_plugin/tests/fixtures/native_g00_templates.json": "3292A5A766C2D543177261FA78265E4CE383273E6047421C53B6DFC612DA164A",
+    "tools/g00_audit.py": "4F5A937BFAA20B66AAA7591A43E2C84FBE33B5D0524836DC11DE4BFF94E2CAFD",
+    "tools/rule_inventory.py": "DE98B3D863CBB9B279107D13FC05CED8389A8E076327CCD1C39651564FC29DF8",
+    "tools/test_g00_audit.py": "51D95798009D3493A2A56F870A1EEFB6007194F2BDB12E0814F8AF7E443AD6F3"
+  },
+  "tier_layout": {
+    "all_sha256": "FE50A60671FDA22E7617DC21A5F0132BFD9A8DB2D7E3E1C41F1CAE461F98622E",
+    "items_sha256": "893B35EAA07A6E1DE956872939A0BFBFE4564C1C8FFCE851D693A76B6EA05612",
+    "skills_sha256": "6DE57C580B882694EE7E6549C446CDD769F0E09009042876AAD2A43502531A49"
+  },
+  "tiers": {
+    "enchantments": {
+      "counts": {
+        "Deadly": 1081,
+        "Fiery": 1085,
+        "Golden": 1037,
+        "Heavy": 1085,
+        "Icy": 1084,
+        "Mossy": 1085,
+        "Obsidian": 1084,
+        "Radiant": 1035,
+        "Restorative": 1084,
+        "Shielded": 1085,
+        "Shiny": 1074,
+        "Toxic": 1085,
+        "Turbo": 1085
+      },
+      "items_with_enchantments": 1099,
+      "max_per_item": 13,
+      "names": [
+        "Deadly",
+        "Fiery",
+        "Golden",
+        "Heavy",
+        "Icy",
+        "Mossy",
+        "Obsidian",
+        "Radiant",
+        "Restorative",
+        "Shielded",
+        "Shiny",
+        "Toxic",
+        "Turbo"
+      ]
+    },
+    "items": {
+      "declared_tier_counts": {
+        "Bronze": 465,
+        "Diamond": 1146,
+        "Gold": 1082,
+        "Legendary": 29,
+        "Silver": 877
+      },
+      "explicit_legendary": 29,
+      "gaps": [],
+      "legendary_differs_from_diamond": 6,
+      "legendary_differs_from_diamond_ids": [
+        "0c710f33-d0fd-40c8-aa2d-34fc20f23140",
+        "3373c95c-6910-4414-8134-abf2ff1c90fa",
+        "82d41afc-d1a9-41ee-a03d-fd9305bef8b5",
+        "c600d27d-0df0-4f05-a2ab-4a64a0d9fa32",
+        "cbec1d5f-096e-49d0-b736-60091fd3f9aa",
+        "feb4ef44-7aa1-41fc-8b75-7abcc21b9108"
+      ],
+      "missing_diamond": [],
+      "sparse_lower": 681,
+      "with_diamond": 1146
+    },
+    "skills": {
+      "declared_tier_counts": {
+        "Bronze": 92,
+        "Diamond": 498,
+        "Gold": 406,
+        "Legendary": 3,
+        "Silver": 264
+      },
+      "explicit_legendary": 3,
+      "legendary_differs_from_diamond": 2,
+      "legendary_differs_from_diamond_ids": [
+        "09c59ebf-d2f9-4862-9c30-396b9ddfdd89",
+        "fcb51ffd-6d25-4e74-871a-7dc0de2bae91"
+      ],
+      "missing_all_canonical": [],
+      "sparse": 406,
+      "with_all_canonical": 92
+    }
+  },
+  "wild_boar": {
+    "counterstrike_found": true,
+    "counterstrike_type": "TCardSkill",
+    "distinct": true,
+    "item_found": true,
+    "item_name": "Wild Boar",
+    "monster_found": true,
+    "monster_name": "Wild Boar"
+  }
+}

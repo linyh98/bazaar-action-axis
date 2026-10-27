@@ -38,6 +38,7 @@ namespace BazaarActionAxis.Engine
             config.EnemyIsTrainingDummy = false;
             config.EnemyMaxHp = monster.MaxHp;
             config.EnemyStartHp = Math.Max(0, Math.Min(monster.Health, monster.MaxHp));
+            ApplyHeroAttributes(config, monster.Attributes, Side.Enemy);
             int value;
             config.EnemyStartShield = monster.Attributes.TryGetValue("Shield", out value) ? Math.Max(0, value) : 0;
             config.EnemyStartRegen = monster.Attributes.TryGetValue("HealthRegen", out value) ? Math.Max(0, value) : 0;
@@ -49,6 +50,30 @@ namespace BazaarActionAxis.Engine
             foreach (string name in result.Board.Unknown)
                 result.Warnings.Add("怪物卡牌缺少本地显示定义；尝试使用原生模板：" + name);
             return result;
+        }
+
+        // 只取开场所需的属性上限，不带入回放中的临时怒气、燃烧等状态。
+        public static void ApplyHeroAttributes(BattleConfig config, IDictionary<string, int> attributes, Side side)
+        {
+            if (attributes == null) return;
+            Dictionary<string, int> snapshot = side == Side.Player ? config.PlayerAttributes : config.EnemyAttributes;
+            foreach (KeyValuePair<string, int> pair in attributes) snapshot[pair.Key] = pair.Value;
+            int value;
+            if (attributes.TryGetValue("RageMax", out value))
+            {
+                if (side == Side.Player) config.PlayerRageMax = Math.Max(0, value);
+                else config.EnemyRageMax = Math.Max(0, value);
+            }
+            if (attributes.TryGetValue("EnragedDurationMax", out value))
+            {
+                if (side == Side.Player) config.PlayerEnragedDurationMs = Math.Max(0, value);
+                else config.EnemyEnragedDurationMs = Math.Max(0, value);
+            }
+            if (attributes.TryGetValue("HealthRegen", out value))
+            {
+                if (side == Side.Player) config.PlayerStartRegen = Math.Max(0, value);
+                else config.EnemyStartRegen = Math.Max(0, value);
+            }
         }
 
         private static void RemapTargets(CardDef card, string oldId, string enemyId)
@@ -64,6 +89,8 @@ namespace BazaarActionAxis.Engine
                 trigger.EverySeconds = original.EverySeconds;
                 trigger.Filter = original.Filter;
                 trigger.SkillRule = original.SkillRule;
+                trigger.AttributeFilter = original.AttributeFilter;
+                trigger.ChangeType = original.ChangeType;
                 trigger.Effects = RemapEffects(original.Effects, oldId, enemyId);
                 triggers.Add(trigger);
             }
@@ -83,11 +110,15 @@ namespace BazaarActionAxis.Engine
                 Target target = original.Target;
                 Effect effect = new Effect { Kind = original.Kind, Amount = original.Amount,
                     AmountValue = original.AmountValue, Seconds = original.Seconds, Count = original.Count,
+                    DurationValue = original.DurationValue, CountValue = original.CountValue,
+                    Attribute = original.Attribute, Operation = original.Operation, Tags = original.Tags,
+                    SourceTarget = original.SourceTarget, Effects = original.Effects, Prerequisites = original.Prerequisites,
                     Chance = original.Chance, Percent = original.Percent, Crit = original.Crit,
                     Target = new Target { Kind = target.Kind, ItemId = enemyId,
                         NativeCondition = target.NativeCondition, ExcludeSelf = target.ExcludeSelf,
                         FlyingOnly = target.FlyingOnly, NotFlyingOnly = target.NotFlyingOnly,
-                        HasCooldownOnly = target.HasCooldownOnly, AdjacentOnly = target.AdjacentOnly } };
+                        HasCooldownOnly = target.HasCooldownOnly, AdjacentOnly = target.AdjacentOnly,
+                        PositionMode = target.PositionMode, PositionOrigin = target.PositionOrigin, IncludeOrigin = target.IncludeOrigin } };
                 effects.Add(effect);
             }
             return effects;

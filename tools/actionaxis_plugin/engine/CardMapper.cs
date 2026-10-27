@@ -21,6 +21,17 @@ namespace BazaarActionAxis.Engine
             double enemyMaxHp,
             double maxTime)
         {
+            return Build(entries, catalog, playerMaxHp, enemyMaxHp, maxTime, false);
+        }
+
+        public static MappedBoard Build(
+            IList<LiveCardEntry> entries,
+            CardCatalog catalog,
+            double playerMaxHp,
+            double enemyMaxHp,
+            double maxTime,
+            bool useSnapshotCooldown)
+        {
             MappedBoard mapped = new MappedBoard();
             BattleConfig config = mapped.Config;
             config.PlayerMaxHp = playerMaxHp;
@@ -58,6 +69,14 @@ namespace BazaarActionAxis.Engine
                     entry.Attributes.TryGetValue("CooldownMax", out value))
                     cooldown = value / 1000.0;
 
+                double? startCooldown = null;
+                // A fresh forecast starts from CooldownMax; the board outside
+                // combat commonly reports Cooldown = 0. Only replay imports
+                // should resume the captured remaining cooldown.
+                if (useSnapshotCooldown && entry.Attributes != null &&
+                    entry.Attributes.TryGetValue("Cooldown", out value) && value >= 0)
+                    startCooldown = value / 1000.0;
+
                 int? ammoMax = null;
                 if (entry.Attributes != null &&
                     entry.Attributes.TryGetValue("AmmoMax", out value) && value > 0)
@@ -70,7 +89,10 @@ namespace BazaarActionAxis.Engine
 
                 CardDef live = card.WithLiveOverrides(cooldown, ammoMax, multicastBonus);
                 live = LiveItemOverrides.Apply(live, entry.Attributes, mapped.LiveAttributeWarnings);
-                live = EnchantmentMapper.Apply(live, entry, mapped.EnchantmentWarnings);
+                // 原生模板的附魔由 NativeCardAbilityMapper 按完整定义重建；旧文本
+                // 映射只负责原生层同样拒收的告警（例如未知前置条件），避免重复或假警告。
+                if (NeedsTextEnchantmentWarning(entry))
+                    live = EnchantmentMapper.Apply(live, entry, mapped.EnchantmentWarnings);
                 // Preserve raw combat-state attributes for diagnostics and known
                 // action amounts, but do not copy Flying or its derived 50% Slow/
                 // Freeze resistances into the simulated opening card definition.
@@ -113,13 +135,16 @@ namespace BazaarActionAxis.Engine
                 }
                 if (entry.Size == "Small" || entry.Size == "Medium" || entry.Size == "Large")
                     live.Size = entry.Size;
-                string uniqueId = card.Id + "#" + index;
+                string uniqueId = entry.UseInstanceIdAsId && !string.IsNullOrEmpty(entry.InstanceId)
+                    ? entry.InstanceId
+                    : card.Id + "#" + index;
                 live.Id = uniqueId;
 
                 config.Cards[uniqueId] = live;
                 LoadoutItem item = new LoadoutItem();
                 item.CardId = uniqueId;
                 item.Slot = entry.Socket;
+                item.StartCooldown = startCooldown;
                 config.Player.Items.Add(item);
 
                 mapped.Enchantments[uniqueId] = entry.Enchantment;
@@ -128,6 +153,19 @@ namespace BazaarActionAxis.Engine
             }
 
             return mapped;
+        }
+
+        // 原生模板的附魔能力默认由 NativeCardAbilityMapper 完整映射。只有原生层
+        // 同样会拒收的未知前置条件才需要旧文本映射补一条可见告警。
+        private static bool NeedsTextEnchantmentWarning(LiveCardEntry entry)
+        {
+            if (NativeSkillSupport.Empty(entry.Template)) return true;
+            if (string.IsNullOrEmpty(entry.Enchantment) || entry.Enchantment == "None") return false;
+            JsonValue native = entry.EnchantmentDefinition;
+            if (NativeSkillSupport.Empty(native) || native.Kind != JsonKind.Object) return true;
+            foreach (KeyValuePair<string, JsonValue> ability in native["Abilities"].AsObject())
+                if (!NativeSkillSupport.PrerequisitesSupported(ability.Value["Prerequisites"])) return true;
+            return false;
         }
     }
 }

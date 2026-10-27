@@ -24,6 +24,12 @@ namespace BazaarActionAxis.Tests
     public sealed class NativeSkillRun
     {
         public NativeSkillPlayer Player;
+        public NativeSkillOpponent Opponent;
+    }
+
+    public sealed class NativeSkillOpponent
+    {
+        public object Hero;
     }
 
     public class NativeSkillCard
@@ -68,6 +74,7 @@ namespace BazaarActionAxis.Tests
             run.Player.Attributes[NativePlayerAttribute.Health] = 900;
             run.Player.Attributes[NativePlayerAttribute.HealthMax] = 1075;
             run.Player.Attributes[NativePlayerAttribute.CritChance] = 5;
+            run.Opponent = new NativeSkillOpponent { Hero = "Pygmalien" };
             TheBazaar.Data.Run = run;
             return run;
         }
@@ -121,6 +128,7 @@ namespace BazaarActionAxis.Tests
             Assert.Equal<string>(null, result.SkillReadError);
             Assert.Near(900, result.PlayerHealth.Value);
             Assert.Near(1075, result.PlayerMaxHealth.Value);
+            Assert.Equal("Pygmalien", result.EnemyHero);
             Assert.Equal(5, result.PlayerAttributes["CritChance"]);
             Assert.Equal(1, result.Skills.Count);
             LiveSkillEntry skill = result.Skills[0];
@@ -140,6 +148,7 @@ namespace BazaarActionAxis.Tests
             Assert.Equal(1, dump["skills"].Count);
             Assert.Equal(1, dump["board"].Count);
             Assert.Equal("item", dump["board"][0]["TemplateId"].AsString());
+            Assert.Equal("Pygmalien", dump["enemyHero"].AsString());
             Assert.Near(1075, dump["playerMaxHealth"].AsDouble());
             Assert.Equal(((NativeSkillCard)run.Player.Skills[0]).LocalizedDescription,
                 dump["skills"][0]["rawTooltips"][0].AsString());
@@ -197,6 +206,7 @@ namespace BazaarActionAxis.Tests
             LiveSkillReader.Populate(result);
             Assert.Equal(0, result.Skills.Count);
             Assert.Equal(0, result.PlayerAttributes.Count);
+            Assert.Equal<string>(null, result.EnemyHero);
             Assert.False(result.PlayerHealth.HasValue);
             Assert.False(result.PlayerMaxHealth.HasValue);
             Assert.True(result.SkillReadError.Contains("当前没有玩家状态"));
@@ -210,6 +220,19 @@ namespace TheBazaar
     {
         public static object Run { get; set; }
         public static object Entities { get; set; }
+        public static object CurrentState { get; set; }
+        public static bool IsInCombat { get; set; }
+        public static object StaticManager { get; set; }
+        public static object GetStatic() { return StaticManager; }
+        public static List<BazaarGameClient.Domain.Models.Cards.Card> VerificationPlayerCards = new List<BazaarGameClient.Domain.Models.Cards.Card>();
+        public static List<BazaarGameClient.Domain.Models.Cards.Card> VerificationOpponentCards = new List<BazaarGameClient.Domain.Models.Cards.Card>();
+        public static List<T> GetCards<T>(BazaarActionAxis.Tests.VerificationSide side, object section) where T : class
+        {
+            List<T> result = new List<T>();
+            foreach (object card in side == BazaarActionAxis.Tests.VerificationSide.Player ? VerificationPlayerCards : VerificationOpponentCards)
+                if (card is T) result.Add((T)card);
+            return result;
+        }
     }
 }
 

@@ -13,8 +13,105 @@ namespace BazaarActionAxis.Tests
             DamageSeriesMatchesEngineAndClampsOverkill();
             DummyPreservesTargetsWithoutEnemyActions();
             RandomBoardFitsAndRepeatsWithSeed();
+            InfiniteDummyKeepsThirtySecondsOfOutputAndEnemyUseReactions();
             OutputExcludesHealingSelfDamageMitigationAndOverkill();
             DpsStopsAtBattleEnd();
+            HealthSnapshotsTrackBothSidesAndRewind();
+            HealthSnapshotsKeepExactDeathAndTimeoutDistinct();
+        }
+
+        private static void HealthSnapshotsTrackBothSidesAndRewind()
+        {
+            CardDef player = new CardDef { Id = "health-player", Cooldown = 1 };
+            player.Effects.Add(Amount("damage", 5));
+            player.Effects.Add(Amount("shield", 9));
+            player.Effects.Add(Amount("heal", 6));
+            player.Effects.Add(Amount("burn", 4));
+            player.Effects.Add(Amount("poison", 2));
+            CardDef enemy = new CardDef { Id = "health-enemy", Cooldown = 1 };
+            enemy.Effects.Add(Amount("damage", 13));
+            enemy.Effects.Add(Amount("burn", 3));
+            enemy.Effects.Add(Amount("poison", 2));
+            BattleConfig config = new BattleConfig { NativeMechanics = true, MaxTime = 3,
+                PlayerMaxHp = 200, PlayerStartHp = 80, EnemyMaxHp = 1000, EnemyStartShield = 20,
+                PlayerStartRegen = 3, EnemyStartRegen = 2 };
+            config.Cards[player.Id] = player;
+            config.Cards[enemy.Id] = enemy;
+            config.Player.Items.Add(new LoadoutItem { CardId = player.Id });
+            config.Enemy.Items.Add(new LoadoutItem { CardId = enemy.Id });
+            BattleResult result = BattleEngine.Simulate(config);
+            Assert.Equal(0, result.Warnings.Count);
+            BattleHealthSeries series = new BattleHealthSeries(result);
+            Assert.Near(80, series.At(-1).Player.Hp);
+            Assert.Near(200, series.At(0).Player.MaxHp);
+            Assert.Near(1000, series.At(0).Enemy.MaxHp);
+            Assert.Near(20, series.At(0).Enemy.Shield);
+            Assert.Near(83, series.At(0.999).Player.Hp);
+            Assert.Near(0, series.At(0.999).Player.Burn);
+            Assert.True(series.At(1).Player.Burn > 0);
+            Assert.True(series.At(1).Enemy.Poison > 0);
+            Assert.Near(3, series.At(2).Player.Regen);
+            Assert.Near(2, series.At(2).Enemy.Regen);
+            // 双方血条逐帧对齐结算事件，不用“最大生命减累计伤害”推算。
+            foreach (BattleHealthSnapshot snapshot in result.HealthSnapshots)
+            {
+                foreach (Side side in new[] { Side.Player, Side.Enemy })
+                {
+                    BattleEvent last = result.Events.LastOrDefault(delegate(BattleEvent ev)
+                    { return ev.TargetSide == side && ev.HpAfter.HasValue && ev.Time <= snapshot.Time + 1e-9; });
+                    if (last != null) Assert.Near(last.HpAfter.Value,
+                        side == Side.Player ? snapshot.Player.Hp : snapshot.Enemy.Hp);
+                }
+            }
+            Assert.Near(series.At(3).Player.Hp, series.At(30).Player.Hp);
+            series.At(1).Player.Hp = -1;
+            Assert.True(series.At(1).Player.Hp > 0);
+            result.HealthSnapshots[0].Player.Hp = -1;
+            Assert.Near(80, series.At(-1).Player.Hp);
+            Assert.Near(80, series.At(double.NaN).Player.Hp);
+            Assert.True(new BattleHealthSeries(null).At(0) == null);
+        }
+
+        private static void HealthSnapshotsKeepExactDeathAndTimeoutDistinct()
+        {
+            CardDef enemy = new CardDef { Id = "lethal-enemy", Cooldown = 0.05 };
+            enemy.Effects.Add(Amount("damage", 100));
+            BattleConfig config = new BattleConfig { NativeMechanics = true, PlayerMaxHp = 20, EnemyMaxHp = 100, MaxTime = 1 };
+            config.Cards[enemy.Id] = enemy;
+            config.Enemy.Items.Add(new LoadoutItem { CardId = enemy.Id });
+            BattleResult result = BattleEngine.Simulate(config);
+            Assert.True(result.EndedByDeath);
+            Assert.Equal("enemy", result.Winner);
+            Assert.Near(0.05, result.EndTime);
+            BattleHealthSeries series = new BattleHealthSeries(result);
+            Assert.Near(20, series.At(0.049).Player.Hp);
+            Assert.Near(0, series.At(result.EndTime).Player.Hp);
+            Assert.Near(100, series.At(result.EndTime).Enemy.Hp);
+            Assert.Near(0, series.At(30).Player.Hp);
+            config.PlayerStartHp = 0;
+            result = BattleEngine.Simulate(config);
+            Assert.Near(0, result.EndTime);
+            Assert.True(result.EndedByDeath);
+            Assert.Near(0, new BattleHealthSeries(result).At(0).Player.Hp);
+
+            config = new BattleConfig { NativeMechanics = true, PlayerStartHp = 50, MaxTime = 1 };
+            result = BattleEngine.Simulate(config);
+            Assert.False(result.EndedByDeath);
+            Assert.Equal("enemy", result.Winner);
+            Assert.Equal("已到推演上限 · 尚未分胜负", PanelModel.BattleOutcome(result.EndedByDeath, result.Winner));
+
+            CardDef player = new CardDef { Id = "late-lethal", Cooldown = 20 };
+            player.Effects.Add(Amount("damage", 4));
+            config = new BattleConfig { NativeMechanics = true, EnemyMaxHp = 7, MaxTime = 60 };
+            config.Cards[player.Id] = player;
+            config.Player.Items.Add(new LoadoutItem { CardId = player.Id });
+            result = BattleEngine.Simulate(config);
+            Assert.True(result.EndedByDeath);
+            Assert.True(result.EndTime > 30 && result.EndTime < 60);
+            series = new BattleHealthSeries(result);
+            Assert.True(series.At(30).Enemy.Hp > 0);
+            Assert.Near(0, series.At(result.EndTime).Enemy.Hp);
+            Assert.Equal("player", result.Winner);
         }
 
         private static void DpsStopsAtBattleEnd()
@@ -218,11 +315,12 @@ namespace BazaarActionAxis.Tests
             Assert.Equal(Side.Enemy, result.EnemyItems[0].Side);
             Assert.Near(30, result.Totals.Player.Damage);
             Assert.Near(0, result.Totals.Enemy.Damage);
-            Assert.False(result.Events.Any(delegate(BattleEvent ev) { return ev.Side == Side.Enemy && (ev.Kind == "activate" || ev.Kind == "skillTrigger"); }));
+            Assert.True(result.Events.Any(delegate(BattleEvent ev) { return ev.Side == Side.Enemy && ev.Kind == "activate"; }));
+            Assert.False(result.Events.Any(delegate(BattleEvent ev) { return ev.Side == Side.Enemy && ev.Kind == "skillTrigger"; }));
             Assert.True(result.Events.Any(delegate(BattleEvent ev) { return ev.Kind == "freeze" && ev.TargetItemId == enemy.Id; }));
             Dictionary<string, CardStatsSeries> stats = Aggregator.Build(result, new List<string> { enemy.Id }, 0.1);
-            Assert.False(stats[enemy.Id].HasCooldown);
-            Assert.Equal(0, stats[enemy.Id].At(30).ActivateCount);
+            Assert.True(stats[enemy.Id].HasCooldown);
+            Assert.True(stats[enemy.Id].At(30).ActivateCount > 0);
             Assert.True(result.ItemSnapshots.Any(delegate(ItemSnapshot snapshot) { return snapshot.ItemId == enemy.Id && snapshot.Time == 30; }));
 
             config.EnemyIsTrainingDummy = false;
@@ -233,7 +331,8 @@ namespace BazaarActionAxis.Tests
 
         private static string Signature(BattleConfig config)
         {
-            return string.Join("|", config.Enemy.Items.Select(delegate(LoadoutItem entry) { return entry.Slot + ":" + entry.CardId; }).ToArray());
+            return string.Join("|", config.Enemy.Items.Select(delegate(LoadoutItem entry)
+            { return entry.Slot + ":" + entry.CardId + ":" + config.Cards[entry.CardId].Cooldown; }).ToArray());
         }
 
         private static void RandomBoardFitsAndRepeatsWithSeed()
@@ -247,7 +346,8 @@ namespace BazaarActionAxis.Tests
                 });
             cards.Add(new CardDef { Id = "unsafe-text", ParseStatus = "text" });
             CardCatalog catalog = CardCatalog.FromCards(cards);
-            BattleConfig config = new BattleConfig { MaxTime = 30 };
+            BattleConfig config = new BattleConfig { MaxTime = 4, EnemyStartShield = 500,
+                EnemyStartRegen = 10, EnemyHero = "Vanessa", Rules = new RuleOverrides { MaxTime = 4 } };
             CardDef player = new CardDef { Id = "live:player" };
             config.Cards.Add(player.Id, player);
             config.Player.Items.Add(new LoadoutItem { CardId = player.Id });
@@ -257,19 +357,46 @@ namespace BazaarActionAxis.Tests
             Assert.True(config.EnemyIsTrainingDummy);
             Assert.Near(100000, config.EnemyMaxHp);
             Assert.Near(100000, config.EnemyStartHp.Value);
+            Assert.Near(0, config.EnemyStartShield);
+            Assert.Near(0, config.EnemyStartRegen);
+            Assert.True(config.EnemyHero == null);
+            Assert.Near(30, config.MaxTime);
+            Assert.Near(30, config.Rules.MaxTime.Value);
             Assert.Equal(1, config.Player.Items.Count);
             Assert.True(config.Cards.ContainsKey(player.Id));
             int occupied = 0;
-            HashSet<string> bases = new HashSet<string>();
+            HashSet<string> sizes = new HashSet<string>();
+            bool hasCooldown = false, hasPassive = false;
             foreach (LoadoutItem entry in config.Enemy.Items)
             {
                 Assert.Equal(occupied, entry.Slot);
                 CardDef card = config.Cards[entry.CardId];
                 occupied += PanelModel.CardSpan(card);
-                Assert.True(bases.Add(card.BaseItemId));
-                Assert.False(card.Id == "unsafe-text");
+                sizes.Add(card.Size);
+                Assert.True(card.Id.StartsWith("dummy:"));
+                Assert.Equal(0, card.Effects.Count);
+                Assert.Equal(0, card.Triggers.Count);
+                Assert.Equal(0, card.Tags.Count);
+                Assert.Equal(0, card.LiveAttributes.Count);
+                Assert.True(string.IsNullOrEmpty(card.Image));
+                Assert.True(card.NativeTemplate == null);
+                Assert.True(card.BaseItemId == null);
+                Assert.Equal("空白卡牌", card.DisplayName());
+                if (card.Cooldown > 0)
+                {
+                    hasCooldown = true;
+                    Assert.True(card.Cooldown >= 3 && card.Cooldown <= 8);
+                    Assert.False(card.Passive);
+                }
+                else
+                {
+                    hasPassive = true;
+                    Assert.True(card.Passive);
+                }
             }
             Assert.Equal(10, occupied);
+            Assert.Equal(3, sizes.Count);
+            Assert.True(hasCooldown && hasPassive);
             TrainingDummy.Populate(config, catalog, 123);
             Assert.Equal(first, Signature(config));
             Assert.Equal(definitions, config.Cards.Count); // Rebuilding does not leak definitions.
@@ -279,8 +406,51 @@ namespace BazaarActionAxis.Tests
             TrainingDummy.Populate(config, catalog, 456);
             Assert.False(first == Signature(config));
             TrainingDummy.Populate(config, null, 123);
-            Assert.Equal(0, config.Enemy.Items.Count);
+            Assert.Equal(first, Signature(config)); // Templates do not depend on installed card data.
+            Assert.Equal(definitions, config.Cards.Count);
             Assert.True(config.Cards.ContainsKey(player.Id));
+        }
+
+        private static void InfiniteDummyKeepsThirtySecondsOfOutputAndEnemyUseReactions()
+        {
+            foreach (bool native in new[] { false, true })
+            {
+                CardDef player = new CardDef { Id = "lethal-practice", Cooldown = 1 };
+                player.Effects.Add(Amount("damage", 200000));
+                player.Effects.Add(new Effect { Kind = "damage", Amount = new NumExpr { Value = 1000 },
+                    Target = new Target { Kind = "selfHero" } });
+                player.Effects.Add(Amount("burn", 3));
+                player.Effects.Add(Amount("poison", 2));
+                CardDef skill = new CardDef { Id = "skill:enemy-use-practice" };
+                TriggerDef enemyUse = new TriggerDef { Event = "onUse",
+                    SkillRule = new NativeSkillRule { SourceOwner = "enemy" } };
+                enemyUse.Effects.Add(Amount("shield", 7));
+                skill.Triggers.Add(enemyUse);
+                BattleConfig config = new BattleConfig { NativeMechanics = native, PlayerMaxHp = 1 };
+                config.Cards[player.Id] = player;
+                config.Player.Items.Add(new LoadoutItem { CardId = player.Id });
+                config.PlayerSkills.Add(skill);
+                TrainingDummy.Populate(config, null, 123);
+                BattleResult result = BattleEngine.Simulate(config);
+                Assert.Equal(0, result.Warnings.Count);
+                Assert.Near(30, result.EndTime);
+                Assert.False(result.EndedByDeath);
+                Assert.False(result.Events.Any(delegate(BattleEvent ev) { return ev.Kind == "death"; }));
+                Assert.True(result.Events.Any(delegate(BattleEvent ev)
+                { return ev.Side == Side.Enemy && ev.Kind == "activate" && ev.Time > 20; }));
+                Assert.True(result.Events.Any(delegate(BattleEvent ev)
+                { return ev.Kind == "skillTrigger" && ev.SourceItemId == skill.Id && ev.Time > 20; }));
+                Assert.Near(0, result.Totals.Enemy.Damage);
+                BattleDamageSeries damage = Aggregator.BuildDamage(result, TrainingDummy.MaxHp);
+                Assert.True(damage.At(10).OutputDamage > TrainingDummy.MaxHp);
+                Assert.True(damage.At(30).OutputDamage > damage.At(20).OutputDamage);
+                Assert.Near(0, damage.At(30).OverkillDamage);
+                Assert.True(damage.At(30).OutputBurnDamage > damage.At(20).OutputBurnDamage);
+                Assert.True(damage.At(30).OutputPoisonDamage > damage.At(20).OutputPoisonDamage);
+                Assert.True(new BattleHealthSeries(result).At(30).Enemy.Hp > 0);
+                Assert.True(result.ItemSnapshots.Any(delegate(ItemSnapshot snapshot)
+                { return snapshot.Time == 30 && snapshot.HasCooldown && snapshot.ItemId.StartsWith("dummy:"); }));
+            }
         }
     }
 }

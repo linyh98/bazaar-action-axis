@@ -1,0 +1,18 @@
+{
+ "generatedAt": "2026-10-25",
+ "snapshotDatabase": "D:\\Program Files (x86)\\Steam\\steamapps\\common\\The Bazaar\\BazaarPlusPlusV5\\bazaarplusplus.db",
+ "snapshotAudit": {
+  "battles": 365,
+  "itemsWithCooldown": 4516,
+  "partialOpeningCooldown": 0
+ },
+ "ledgerAudit": {
+  "replays": 521,
+  "combatOpeningItems": 5928,
+  "totalOpeningItemsIncludingStash": 7859,
+  "partialOpeningCooldown": 0,
+  "missingCooldownOnCooldownBearingItem": 0,
+  "missingCooldownOnPassiveOrSpecialItem": 409
+ },
+ "meaning": "Cooldown == CooldownMax for every opening item that has a cooldown; the 3250/3950 values previously seen in fixtures were last-observed battle values, not opening values. Core/Cog differences are not caused by missing opening cooldown."
+}

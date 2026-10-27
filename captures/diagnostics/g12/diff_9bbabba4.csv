@@ -1,0 +1,300 @@
+channel,status,frame,time,kind,source,target,canonical,attribute,note
+effects,missing,80,4.0,playerModifyAttribute,enemy|8|g0|a4b48bb6-180a-49fd-bb1c-c6beb372b6de,enemy|player|g0|player,,,native playerModifyAttribute has no simulated effect
+effects,extra,143,7.15,freeze,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,,,simulated freeze has no native effect
+effects,extra,200,10.0,burnApply,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,enemy|player|g0|player,,,simulated burnApply has no native effect
+effects,extra,200,10.0,poisonApply,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,enemy|player|g0|player,,,simulated poisonApply has no native effect
+effects,extra,205,10.25,burnApply,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,enemy|player|g0|player,,,simulated burnApply has no native effect
+effects,extra,205,10.25,poisonApply,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,enemy|player|g0|player,,,simulated poisonApply has no native effect
+effects,extra,210,10.5,poisonApply,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,enemy|player|g0|player,,,simulated poisonApply has no native effect
+effects,extra,215,10.75,poisonApply,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,enemy|player|g0|player,,,simulated poisonApply has no native effect
+effects,extra,560,28.0,death,,enemy|player|g0|player,,,simulated death has no native effect
+effects,missing,580,29.0,death,enemy|player|g0|player,enemy|player|g0|player,,,native death has no simulated effect
+health,value-mismatch,80,4.0,,,,,,hp 1687.0 vs 1685.0; hpMax 1687.0 vs 1685.0
+health,value-mismatch,100,5.0,,,,,,hp 1687.0 vs 1685.0; hpMax 1687.0 vs 1685.0
+health,missing,102,5.1,,,,,,native health change has no simulated change
+health,missing,110,5.5,,,,,,native health change has no simulated change
+health,value-mismatch,120,6.0,,,,,,hpMax 1687.0 vs 1685.0; shield 5.0 vs 12.0; burn 7.0 vs 9.0
+health,value-mismatch,125,6.25,,,,,,hpMax 1687.0 vs 1685.0; shield 5.0 vs 12.0; burn 8.0 vs 10.0
+health,extra,127,6.35,,,,,,simulated health change has no native change
+health,value-mismatch,130,6.5,,,,,,hpMax 1687.0 vs 1685.0; shield 1.0 vs 7.0; burn 8.0 vs 10.0
+health,missing,132,6.6,,,,,,native health change has no simulated change
+health,value-mismatch,140,7.0,,,,,,hp 1658.0 vs 1664.0; hpMax 1687.0 vs 1685.0; shield 0.0 vs 2.0; burn 7.0 vs 9.0
+health,value-mismatch,150,7.5,,,,,,hp 1651.0 vs 1659.0; hpMax 1687.0 vs 1685.0; burn 6.0 vs 8.0
+health,extra,160,8.0,,,,,,simulated health change has no native change
+health,value-mismatch,160,8.0,,,,,,hp 1628.0 vs 1634.0; hpMax 1687.0 vs 1685.0; shield 0.0 vs 12.0; burn 5.0 vs 7.0
+health,value-mismatch,170,8.5,,,,,,hp 1625.0 vs 1634.0; hpMax 1689.0 vs 1685.0; shield 0.0 vs 9.0; burn 4.0 vs 6.0
+health,missing,180,9.0,,,,,,native health change has no simulated change
+health,value-mismatch,180,9.0,,,,,,hp 1604.0 vs 1617.0; hpMax 1689.0 vs 1685.0; shield 18.0 vs 6.0; burn 3.0 vs 5.0
+health,extra,187,9.35,,,,,,simulated health change has no native change
+health,value-mismatch,190,9.5,,,,,,hp 1604.0 vs 1617.0; hpMax 1689.0 vs 1685.0; shield 17.0 vs 4.0; burn 2.0 vs 4.0
+health,value-mismatch,200,10.0,,,,,,hp 1587.0 vs 1600.0; hpMax 1689.0 vs 1685.0; shield 16.0 vs 2.0; burn 1.0 vs 4.0; poison 17.0 vs 18.0
+health,missing,202,10.1,,,,,,native health change has no simulated change
+health,missing,204,10.2,,,,,,native health change has no simulated change
+health,extra,205,10.25,,,,,,simulated health change has no native change
+health,extra,207,10.35,,,,,,simulated health change has no native change
+health,value-mismatch,210,10.5,,,,,,hp 1587.0 vs 1591.0; hpMax 1689.0 vs 1685.0; shield 12.0 vs 0.0; burn 8.0 vs 13.0; poison 19.0 vs 24.0
+health,extra,215,10.75,,,,,,simulated health change has no native change
+health,value-mismatch,220,11.0,,,,,,hp 1568.0 vs 1550.0; hpMax 1689.0 vs 1685.0; shield 8.0 vs 0.0; burn 8.0 vs 12.0; poison 20.0 vs 30.0
+health,missing,225,11.25,,,,,,native health change has no simulated change
+health,value-mismatch,230,11.5,,,,,,hp 1568.0 vs 1538.0; hpMax 1689.0 vs 1685.0; shield 4.0 vs 0.0; burn 9.0 vs 11.0; poison 22.0 vs 30.0
+health,missing,231,11.55,,,,,,native health change has no simulated change
+health,missing,231,11.55,,,,,,native health change has no simulated change
+health,missing,236,11.8,,,,,,native health change has no simulated change
+health,extra,240,12.0,,,,,,simulated health change has no native change
+health,value-mismatch,240,12.0,,,,,,hp 1538.0 vs 1497.0; hpMax 1689.0 vs 1685.0; shield 0.0 vs 12.0; burn 8.0 vs 10.0
+health,extra,250,12.5,,,,,,simulated health change has no native change
+health,value-mismatch,250,12.5,,,,,,hp 1530.0 vs 1497.0; hpMax 1689.0 vs 1685.0; shield 0.0 vs 7.0; burn 7.0 vs 9.0
+health,extra,252,12.6,,,,,,simulated health change has no native change
+health,missing,253,12.65,,,,,,native health change has no simulated change
+health,missing,260,13.0,,,,,,native health change has no simulated change
+health,value-mismatch,260,13.0,,,,,,hp 1485.0 vs 1464.0; hpMax 1689.0 vs 1685.0; shield 18.0 vs 0.0; burn 14.0 vs 16.0
+health,missing,262,13.1,,,,,,native health change has no simulated change
+health,value-mismatch,270,13.5,,,,,,hp 1487.0 vs 1448.0; hpMax 1691.0 vs 1685.0; shield 11.0 vs 0.0; burn 13.0 vs 15.0; poison 32.0 vs 30.0
+health,missing,271,13.55,,,,,,native health change has no simulated change
+health,value-mismatch,280,14.0,,,,,,hp 1455.0 vs 1403.0; hpMax 1691.0 vs 1685.0; shield 5.0 vs 0.0; burn 13.0 vs 15.0; poison 33.0 vs 31.0
+health,value-mismatch,285,14.25,,,,,,hp 1455.0 vs 1403.0; hpMax 1691.0 vs 1685.0; shield 5.0 vs 0.0; burn 14.0 vs 16.0; poison 34.0 vs 32.0
+health,extra,288,14.4,,,,,,simulated health change has no native change
+health,value-mismatch,290,14.5,,,,,,hp 1451.0 vs 1387.0; hpMax 1691.0 vs 1685.0; burn 14.0 vs 16.0; poison 35.0 vs 37.0
+health,missing,292,14.6,,,,,,native health change has no simulated change
+health,extra,295,14.75,,,,,,simulated health change has no native change
+health,missing,298,14.9,,,,,,native health change has no simulated change
+health,value-mismatch,300,15.0,,,,,,hp 1398.0 vs 1330.0; hpMax 1691.0 vs 1685.0; burn 13.0 vs 15.0; poison 39.0 vs 43.0
+health,missing,303,15.15,,,,,,native health change has no simulated change
+health,value-mismatch,310,15.5,,,,,,hp 1385.0 vs 1315.0; hpMax 1691.0 vs 1685.0; burn 12.0 vs 22.0
+health,extra,320,16.0,,,,,,simulated health change has no native change
+health,value-mismatch,320,16.0,,,,,,hp 1330.0 vs 1250.0; hpMax 1691.0 vs 1685.0; shield 0.0 vs 12.0; burn 11.0 vs 21.0
+health,extra,328,16.4,,,,,,simulated health change has no native change
+health,missing,329,16.45,,,,,,native health change has no simulated change
+health,value-mismatch,330,16.5,,,,,,hp 1311.0 vs 1250.0; hpMax 1691.0 vs 1685.0; shield 0.0 vs 2.0; burn 18.0 vs 20.0; poison 45.0 vs 43.0
+health,missing,332,16.6,,,,,,native health change has no simulated change
+health,missing,340,17.0,,,,,,native health change has no simulated change
+health,value-mismatch,340,17.0,,,,,,hp 1248.0 vs 1191.0; hpMax 1691.0 vs 1685.0; shield 21.0 vs 0.0; burn 17.0 vs 19.0; poison 45.0 vs 43.0
+health,value-mismatch,350,17.5,,,,,,hp 1248.0 vs 1172.0; hpMax 1691.0 vs 1685.0; shield 13.0 vs 0.0; burn 16.0 vs 18.0; poison 45.0 vs 43.0
+health,value-mismatch,360,18.0,,,,,,hp 1203.0 vs 1111.0; hpMax 1691.0 vs 1685.0; shield 5.0 vs 0.0; burn 16.0 vs 18.0; poison 46.0 vs 44.0
+health,value-mismatch,365,18.25,,,,,,hp 1203.0 vs 1111.0; hpMax 1691.0 vs 1685.0; shield 5.0 vs 0.0; burn 17.0 vs 19.0; poison 47.0 vs 45.0
+health,extra,368,18.4,,,,,,simulated health change has no native change
+health,value-mismatch,370,18.5,,,,,,hp 1198.0 vs 1092.0; hpMax 1693.0 vs 1685.0; burn 17.0 vs 19.0; poison 48.0 vs 50.0
+health,extra,371,18.55,,,,,,simulated health change has no native change
+health,missing,372,18.6,,,,,,native health change has no simulated change
+health,extra,374,18.7,,,,,,simulated health change has no native change
+health,extra,375,18.75,,,,,,simulated health change has no native change
+health,missing,378,18.9,,,,,,native health change has no simulated change
+health,value-mismatch,380,19.0,,,,,,hp 1129.0 vs 1009.0; hpMax 1693.0 vs 1685.0; burn 16.0 vs 26.0; poison 52.0 vs 56.0
+health,missing,383,19.15,,,,,,native health change has no simulated change
+health,value-mismatch,390,19.5,,,,,,hp 1113.0 vs 983.0; hpMax 1693.0 vs 1685.0; burn 15.0 vs 25.0
+health,value-mismatch,400,20.0,,,,,,hp 1042.0 vs 902.0; hpMax 1693.0 vs 1685.0; burn 22.0 vs 24.0
+health,missing,406,20.3,,,,,,native health change has no simulated change
+health,missing,406,20.3,,,,,,native health change has no simulated change
+health,extra,408,20.4,,,,,,simulated health change has no native change
+health,extra,409,20.45,,,,,,simulated health change has no native change
+health,extra,409,20.45,,,,,,simulated health change has no native change
+health,value-mismatch,410,20.5,,,,,,hp 1020.0 vs 902.0; hpMax 1693.0 vs 1685.0; burn 21.0 vs 23.0; poison 58.0 vs 56.0
+health,missing,420,21.0,,,,,,native health change has no simulated change
+health,value-mismatch,420,21.0,,,,,,hp 941.0 vs 823.0; hpMax 1693.0 vs 1685.0; shield 24.0 vs 0.0; burn 21.0 vs 22.0; poison 59.0 vs 56.0
+health,missing,425,21.25,,,,,,native health change has no simulated change
+health,value-mismatch,430,21.5,,,,,,hp 941.0 vs 801.0; hpMax 1693.0 vs 1685.0; shield 13.0 vs 0.0; burn 22.0 vs 21.0; poison 61.0 vs 56.0
+health,extra,431,21.55,,,,,,simulated health change has no native change
+health,missing,433,21.65,,,,,,native health change has no simulated change
+health,extra,436,21.8,,,,,,simulated health change has no native change
+health,extra,438,21.9,,,,,,simulated health change has no native change
+health,missing,438,21.9,,,,,,native health change has no simulated change
+health,value-mismatch,440,22.0,,,,,,hp 876.0 vs 712.0; hpMax 1693.0 vs 1685.0; shield 2.0 vs 0.0; burn 21.0 vs 30.0; poison 65.0 vs 58.0
+health,extra,441,22.05,,,,,,simulated health change has no native change
+health,missing,442,22.1,,,,,,native health change has no simulated change
+health,missing,443,22.15,,,,,,native health change has no simulated change
+health,value-mismatch,450,22.5,,,,,,hp 851.0 vs 681.0; hpMax 1693.0 vs 1685.0; burn 28.0 vs 30.0; poison 69.0 vs 63.0
+health,extra,454,22.7,,,,,,simulated health change has no native change
+health,extra,455,22.75,,,,,,simulated health change has no native change
+health,value-mismatch,460,23.0,,,,,,hp 754.0 vs 582.0; hpMax 1693.0 vs 1685.0; burn 27.0 vs 29.0
+health,value-mismatch,470,23.5,,,,,,hp 729.0 vs 553.0; hpMax 1695.0 vs 1685.0; burn 26.0 vs 28.0
+health,value-mismatch,480,24.0,,,,,,hp 634.0 vs 456.0; hpMax 1695.0 vs 1685.0; burn 25.0 vs 27.0
+health,extra,482,24.1,,,,,,simulated health change has no native change
+health,extra,484,24.2,,,,,,simulated health change has no native change
+health,missing,486,24.3,,,,,,native health change has no simulated change
+health,extra,489,24.45,,,,,,simulated health change has no native change
+health,extra,489,24.45,,,,,,simulated health change has no native change
+health,value-mismatch,490,24.5,,,,,,hp 609.0 vs 445.0; hpMax 1695.0 vs 1685.0; burn 24.0 vs 34.0; poison 71.0 vs 69.0
+health,missing,493,24.65,,,,,,native health change has no simulated change
+health,missing,496,24.8,,,,,,native health change has no simulated change
+health,value-mismatch,500,25.0,,,,,,hp 512.0 vs 342.0; hpMax 1695.0 vs 1685.0; burn 24.0 vs 33.0; poison 72.0 vs 69.0
+health,missing,501,25.05,,,,,,native health change has no simulated change
+health,missing,506,25.3,,,,,,native health change has no simulated change
+health,missing,510,25.5,,,,,,native health change has no simulated change
+health,value-mismatch,510,25.5,,,,,,hp 486.0 vs 309.0; hpMax 1695.0 vs 1685.0; shield 27.0 vs 0.0; burn 25.0 vs 32.0; poison 74.0 vs 69.0
+health,extra,511,25.55,,,,,,simulated health change has no native change
+health,missing,513,25.65,,,,,,native health change has no simulated change
+health,extra,516,25.8,,,,,,simulated health change has no native change
+health,missing,517,25.85,,,,,,native health change has no simulated change
+health,value-mismatch,520,26.0,,,,,,hp 408.0 vs 204.0; hpMax 1695.0 vs 1685.0; shield 11.0 vs 0.0; burn 32.0 vs 33.0; poison 78.0 vs 71.0
+health,extra,521,26.05,,,,,,simulated health change has no native change
+health,missing,522,26.1,,,,,,native health change has no simulated change
+health,extra,523,26.15,,,,,,simulated health change has no native change
+health,extra,525,26.25,,,,,,simulated health change has no native change
+health,value-mismatch,530,26.5,,,,,,hp 398.0 vs 170.0; hpMax 1695.0 vs 1685.0; burn 31.0 vs 33.0; poison 82.0 vs 80.0
+health,extra,534,26.7,,,,,,simulated health change has no native change
+health,extra,536,26.8,,,,,,simulated health change has no native change
+health,value-mismatch,540,27.0,,,,,,hp 285.0 vs 47.0; hpMax 1695.0 vs 1685.0; burn 30.0 vs 40.0
+health,missing,546,27.3,,,,,,native health change has no simulated change
+health,value-mismatch,550,27.5,,,,,,hp 257.0 vs 7.0; hpMax 1697.0 vs 1685.0; burn 29.0 vs 39.0; poison 84.0 vs 82.0
+health,missing,553,27.65,,,,,,native health change has no simulated change
+health,value-mismatch,560,28.0,,,,,,hp 144.0 vs 0.0; hpMax 1697.0 vs 1685.0; burn 28.0 vs 39.0; poison 84.0 vs 82.0; dead False vs True
+health,missing,570,28.5,,,,,,native health change has no simulated change
+health,missing,576,28.8,,,,,,native health change has no simulated change
+health,missing,578,28.9,,,,,,native health change has no simulated change
+health,missing,580,29.0,,,,,,native health change has no simulated change
+cards,extra,0,0.0,,,,player|8|g0|a655fb50-b9e1-41ec-b658-07459014f96c,Ammo,simulated card update has no native update
+cards,missing,99,4.95,,,,player|8|g0|a655fb50-b9e1-41ec-b658-07459014f96c,Ammo,native card update has no simulated update
+cards,extra,100,5.0,,,,player|8|g0|a655fb50-b9e1-41ec-b658-07459014f96c,Ammo,simulated card update has no native update
+cards,extra,142,7.1,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Flying,simulated card update has no native update
+cards,extra,142,7.1,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Flying,simulated card update has no native update
+cards,value-mismatch,142,7.1,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,current 850 vs 4000
+cards,value-mismatch,142,7.1,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,current 4850 vs 3850
+cards,extra,143,7.15,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,143,7.15,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 850 vs 4000; current 800 vs 3950
+cards,value-mismatch,143,7.15,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4850 vs 3850; current 4800 vs 3800
+cards,extra,144,7.2,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,144,7.2,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 800 vs 3950; current 750 vs 3900
+cards,value-mismatch,144,7.2,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4800 vs 3800; current 4750 vs 3750
+cards,extra,145,7.25,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,145,7.25,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 750 vs 3900; current 700 vs 3850
+cards,value-mismatch,145,7.25,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4750 vs 3750; current 4700 vs 3700
+cards,extra,146,7.3,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,146,7.3,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 700 vs 3850; current 650 vs 3800
+cards,value-mismatch,146,7.3,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4700 vs 3700; current 4650 vs 3650
+cards,extra,147,7.35,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,147,7.35,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 650 vs 3800; current 600 vs 3750
+cards,value-mismatch,147,7.35,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4650 vs 3650; current 4600 vs 3600
+cards,extra,148,7.4,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,148,7.4,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 600 vs 3750; current 550 vs 3700
+cards,value-mismatch,148,7.4,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4600 vs 3600; current 4550 vs 3550
+cards,extra,149,7.45,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,149,7.45,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 550 vs 3700; current 500 vs 3650
+cards,value-mismatch,149,7.45,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4550 vs 3550; current 4500 vs 3500
+cards,extra,150,7.5,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,150,7.5,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 500 vs 3650; current 450 vs 3600
+cards,value-mismatch,150,7.5,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4500 vs 3500; current 4450 vs 3450
+cards,extra,151,7.55,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,151,7.55,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 450 vs 3600; current 400 vs 3550
+cards,value-mismatch,151,7.55,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4450 vs 3450; current 4400 vs 3400
+cards,extra,152,7.6,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,152,7.6,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 400 vs 3550; current 350 vs 3500
+cards,value-mismatch,152,7.6,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4400 vs 3400; current 4350 vs 3350
+cards,extra,153,7.65,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,value-mismatch,153,7.65,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 350 vs 3500; current 300 vs 3450
+cards,value-mismatch,153,7.65,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4350 vs 3350; current 4300 vs 3300
+cards,value-mismatch,154,7.7,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 300 vs 3450; current 250 vs 3400
+cards,value-mismatch,154,7.7,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4300 vs 3300; current 4250 vs 3250
+cards,value-mismatch,155,7.75,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 250 vs 3400; current 200 vs 3350
+cards,value-mismatch,155,7.75,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4250 vs 3250; current 4200 vs 3200
+cards,value-mismatch,156,7.8,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 200 vs 3350; current 150 vs 3300
+cards,value-mismatch,156,7.8,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4200 vs 3200; current 4150 vs 3150
+cards,value-mismatch,157,7.85,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 150 vs 3300; current 100 vs 3250
+cards,value-mismatch,157,7.85,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4150 vs 3150; current 4100 vs 3100
+cards,value-mismatch,158,7.9,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 100 vs 3250; current 50 vs 3200
+cards,value-mismatch,158,7.9,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4100 vs 3100; current 4050 vs 3050
+cards,value-mismatch,159,7.95,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 50 vs 3200; current 4000 vs 3150
+cards,value-mismatch,159,7.95,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4050 vs 3050; current 4000 vs 3000
+cards,value-mismatch,160,8.0,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 4000 vs 3150; current 3950 vs 3100
+cards,value-mismatch,160,8.0,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 4000 vs 3000; current 3950 vs 2950
+cards,value-mismatch,161,8.05,,,,player|1|g0|ca77281c-f912-4db3-86ce-64842a4ccdaa,Cooldown,previous 3950 vs 3100; current 3900 vs 3050
+cards,value-mismatch,161,8.05,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3950 vs 2950; current 3900 vs 2900
+cards,value-mismatch,162,8.1,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3900 vs 2900; current 3850 vs 2850
+cards,value-mismatch,163,8.15,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3850 vs 2850; current 3800 vs 2800
+cards,value-mismatch,164,8.2,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3800 vs 2800; current 3750 vs 2750
+cards,value-mismatch,165,8.25,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3750 vs 2750; current 3700 vs 2700
+cards,value-mismatch,166,8.3,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3700 vs 2700; current 3650 vs 2650
+cards,value-mismatch,167,8.35,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3650 vs 2650; current 3600 vs 2600
+cards,value-mismatch,168,8.4,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3600 vs 2600; current 3550 vs 2550
+cards,value-mismatch,169,8.45,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3550 vs 2550; current 3500 vs 2500
+cards,value-mismatch,170,8.5,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3500 vs 2500; current 3450 vs 2450
+cards,value-mismatch,171,8.55,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3450 vs 2450; current 3400 vs 2400
+cards,value-mismatch,172,8.6,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3400 vs 2400; current 3350 vs 2350
+cards,value-mismatch,173,8.65,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3350 vs 2350; current 3300 vs 2300
+cards,value-mismatch,174,8.7,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3300 vs 2300; current 3250 vs 2250
+cards,value-mismatch,175,8.75,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3250 vs 2250; current 3200 vs 2200
+cards,value-mismatch,176,8.8,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3200 vs 2200; current 3150 vs 2150
+cards,value-mismatch,177,8.85,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3150 vs 2150; current 3100 vs 2100
+cards,value-mismatch,178,8.9,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3100 vs 2100; current 3050 vs 2050
+cards,value-mismatch,179,8.95,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3050 vs 2050; current 3000 vs 2000
+cards,value-mismatch,180,9.0,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 3000 vs 2000; current 2950 vs 1950
+cards,value-mismatch,181,9.05,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2950 vs 1950; current 2900 vs 1900
+cards,value-mismatch,182,9.1,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2900 vs 1900; current 2850 vs 1850
+cards,value-mismatch,183,9.15,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2850 vs 1850; current 2800 vs 1800
+cards,value-mismatch,184,9.2,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2800 vs 1800; current 2750 vs 1750
+cards,value-mismatch,185,9.25,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2750 vs 1750; current 2700 vs 1700
+cards,value-mismatch,186,9.3,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2700 vs 1700; current 2650 vs 1650
+cards,value-mismatch,187,9.35,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2650 vs 1650; current 2600 vs 1600
+cards,value-mismatch,188,9.4,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2600 vs 1600; current 2550 vs 1550
+cards,extra,189,9.45,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Flying,simulated card update has no native update
+cards,value-mismatch,189,9.45,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2550 vs 1550; current 2500 vs 500
+cards,value-mismatch,189,9.45,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,current 2500 vs 1500
+cards,value-mismatch,190,9.5,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2500 vs 500; current 2450 vs 450
+cards,value-mismatch,190,9.5,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2500 vs 1500; current 2450 vs 1450
+cards,value-mismatch,191,9.55,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2450 vs 450; current 2400 vs 400
+cards,value-mismatch,191,9.55,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2450 vs 1450; current 2400 vs 1400
+cards,value-mismatch,192,9.6,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2400 vs 400; current 2350 vs 350
+cards,value-mismatch,192,9.6,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2400 vs 1400; current 2350 vs 1350
+cards,value-mismatch,193,9.65,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2350 vs 350; current 2300 vs 300
+cards,value-mismatch,193,9.65,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2350 vs 1350; current 2300 vs 1300
+cards,value-mismatch,194,9.7,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2300 vs 300; current 2250 vs 250
+cards,value-mismatch,194,9.7,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2300 vs 1300; current 2250 vs 1250
+cards,value-mismatch,195,9.75,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2250 vs 250; current 2200 vs 200
+cards,value-mismatch,195,9.75,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2250 vs 1250; current 2200 vs 1200
+cards,value-mismatch,196,9.8,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2200 vs 200; current 2150 vs 150
+cards,value-mismatch,196,9.8,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2200 vs 1200; current 2150 vs 1150
+cards,value-mismatch,197,9.85,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2150 vs 150; current 2100 vs 100
+cards,value-mismatch,197,9.85,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2150 vs 1150; current 2100 vs 1100
+cards,value-mismatch,198,9.9,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2100 vs 100; current 2050 vs 50
+cards,value-mismatch,198,9.9,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2100 vs 1100; current 2050 vs 1050
+cards,value-mismatch,199,9.95,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2050 vs 50; current 2000 vs 6000
+cards,value-mismatch,199,9.95,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2050 vs 1050; current 2000 vs 1000
+cards,value-mismatch,200,10.0,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 2000 vs 6000; current 1950 vs 5950
+cards,value-mismatch,200,10.0,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 2000 vs 1000; current 1950 vs 950
+cards,value-mismatch,201,10.05,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 1950 vs 5950; current 1900 vs 5900
+cards,value-mismatch,201,10.05,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1950 vs 950; current 1900 vs 900
+cards,value-mismatch,202,10.1,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 1900 vs 5900; current 1850 vs 5850
+cards,value-mismatch,202,10.1,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1900 vs 900; current 1850 vs 850
+cards,value-mismatch,203,10.15,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 1850 vs 5850; current 1800 vs 5800
+cards,value-mismatch,203,10.15,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1850 vs 850; current 1800 vs 800
+cards,value-mismatch,204,10.2,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 1800 vs 5800; current 1750 vs 5750
+cards,value-mismatch,204,10.2,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1800 vs 800; current 1750 vs 750
+cards,value-mismatch,205,10.25,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 1750 vs 5750; current 1700 vs 5700
+cards,value-mismatch,205,10.25,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1750 vs 750; current 1700 vs 700
+cards,value-mismatch,206,10.3,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 1700 vs 5700; current 1650 vs 5650
+cards,value-mismatch,206,10.3,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1700 vs 700; current 1650 vs 650
+cards,value-mismatch,207,10.35,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 1650 vs 5650; current 1600 vs 5600
+cards,value-mismatch,207,10.35,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1650 vs 650; current 1600 vs 600
+cards,value-mismatch,208,10.4,,,,player|5|g0|666f4084-48cc-4558-b678-a46ba18c1bf2,Cooldown,previous 1600 vs 5600; current 1550 vs 5550
+cards,value-mismatch,208,10.4,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1600 vs 600; current 1550 vs 550
+cards,value-mismatch,209,10.45,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1550 vs 550; current 1500 vs 6000
+cards,value-mismatch,210,10.5,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1500 vs 6000; current 1450 vs 5950
+cards,value-mismatch,211,10.55,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1450 vs 5950; current 1400 vs 5900
+cards,value-mismatch,212,10.6,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1400 vs 5900; current 1350 vs 5850
+cards,value-mismatch,213,10.65,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1350 vs 5850; current 1300 vs 5800
+cards,value-mismatch,214,10.7,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1300 vs 5800; current 1250 vs 5750
+cards,value-mismatch,215,10.75,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1250 vs 5750; current 1200 vs 5700
+cards,value-mismatch,216,10.8,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1200 vs 5700; current 1150 vs 5650
+cards,value-mismatch,217,10.85,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1150 vs 5650; current 1100 vs 5600
+cards,value-mismatch,218,10.9,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1100 vs 5600; current 1050 vs 5550
+cards,value-mismatch,219,10.95,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1050 vs 5550; current 1000 vs 5500
+cards,value-mismatch,220,11.0,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 1000 vs 5500; current 950 vs 5450
+cards,value-mismatch,221,11.05,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 950 vs 5450; current 900 vs 5400
+cards,value-mismatch,222,11.1,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 900 vs 5400; current 850 vs 5350
+cards,value-mismatch,223,11.15,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 850 vs 5350; current 800 vs 5300
+cards,value-mismatch,224,11.2,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 800 vs 5300; current 750 vs 5250
+cards,value-mismatch,225,11.25,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 750 vs 5250; current 700 vs 5200
+cards,value-mismatch,226,11.3,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 700 vs 5200; current 650 vs 5150
+cards,value-mismatch,227,11.35,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 650 vs 5150; current 600 vs 5100
+cards,value-mismatch,228,11.4,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 600 vs 5100; current 550 vs 5050
+cards,value-mismatch,229,11.45,,,,player|6|g0|d5a56d21-6892-4a08-b57a-1af53687ff37,Cooldown,previous 550 vs 5050; current 500 vs 5000
+cards,extra,468,23.4,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,extra,469,23.45,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,extra,470,23.5,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,extra,471,23.55,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,extra,472,23.6,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,extra,473,23.65,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,extra,474,23.7,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,extra,475,23.75,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,extra,476,23.8,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,extra,477,23.85,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update
+cards,extra,478,23.9,,,,enemy|6|g0|45defd20-6c4e-40a7-b2eb-4c4d2284eabd,Freeze,simulated card update has no native update

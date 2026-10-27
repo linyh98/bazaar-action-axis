@@ -1,0 +1,38 @@
+{
+ "version": 1,
+ "source": "BPP local CombatReplays, contract v1",
+ "forceField": {
+  "battleId": "ea043fb8292c4faaa76262aebeb60c39",
+  "replaySha256": "3813cd2e7902ea96c937fa67b0ec07fee721b38721ce549b9f0e971f07cf7b22",
+  "templateId": "85f59c88-c391-4a03-8c3b-f312518e81de",
+  "tier": "Gold",
+  "baseDamageAmount": 11,
+  "samples": [
+   {"time": 6.45, "shield": 542, "damageAmount": 553},
+   {"time": 6.5, "shield": 414, "damageAmount": 425}
+  ],
+  "note": "DamageAmount = base 11 + current Shield; 6.4 is excluded because a second shield event landed after the aura refresh."
+ },
+ "spikyShield": {
+  "battleId": "bb30d9e9d76c426b89d28e4fc9ea35d3",
+  "replaySha256": "698fba023f6973967a31ef894ade108e5c2b50836cc48674aacdcdae64fb5ac7",
+  "templateId": "8ec1c3f9-6220-431b-b3b0-52b3be2e20f5",
+  "tier": "Silver",
+  "opening": {"cooldownMax": 5699, "percentCooldownReduction": 5, "cooldown": 5599, "haste": 1100},
+  "cooldownSwitch": {"time": 4.0, "beforeMax": 6000, "afterMax": 5699, "percent": 5, "cooldownBefore": 2000, "cooldownAfter": 1649},
+  "cast": {"time": 4.9, "shield": 922, "damageAmount": 922},
+  "note": "The 4.0 frame also received a separate 50 ms direct cooldown effect; 4.85 became ready and 4.9 cast. The effective maximum is the calibrating value for G05."
+ },
+ "passivePower": {
+  "battleId": "bce53fafda924b60b6ade61877e37255",
+  "replaySha256": "35f483e6c3dce2c9d7949968019049c97741592ee0b345326f9c439f66bf5653",
+  "templateId": "22e88b23-7497-4cb9-92a9-6d5e6bde6373",
+  "tier": "Gold",
+  "note": "The replay spawns Passive Power in the stash with no observable aura events; it does not calibrate the multiplier. Template tests are the only evidence for this seed."
+ },
+ "rateLimiter": {
+  "templateId": "b607f75b-e245-4e4a-809e-899fcdd1e6e5",
+  "tier": "Diamond",
+  "note": "No local replay contains this template; only native template semantics are available."
+ }
+}

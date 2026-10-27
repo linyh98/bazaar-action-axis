@@ -20,22 +20,24 @@ namespace BazaarActionAxis.Plugin.Ui
         public static GUIStyle EnchantStyle;
         public static GUIStyle TriggerStyle;
         public static GUIStyle CenterSmallStyle;
+        public static GUIStyle SkillScrollbarStyle;
 
-        // BPP history panel: brown surfaces, parchment text and muted gold frames.
-        public static readonly Color Panel = new Color(0.055f, 0.038f, 0.026f, 0.99f);
-        public static readonly Color Tile = new Color(0.13f, 0.09f, 0.055f, 1f);
-        public static readonly Color TileHover = new Color(0.25f, 0.20f, 0.10f, 1f);
-        public static readonly Color Border = new Color(0.72f, 0.62f, 0.45f, 1f);
-        public static readonly Color FrameDim = new Color(0.33f, 0.26f, 0.17f, 1f);
-        public static readonly Color Track = new Color(0.035f, 0.024f, 0.016f, 1f);
-        public static readonly Color Text = new Color(0.96f, 0.89f, 0.73f, 1f);
-        public static readonly Color Dim = new Color(0.69f, 0.63f, 0.53f, 1f);
+        // BPP's black glass and restrained gold, shared by the dock and combat board.
+        public static readonly Color Panel = new Color(0.01f, 0.01f, 0.01f, 0.88f);
+        public static readonly Color Tile = new Color(0.055f, 0.053f, 0.047f, 0.96f);
+        public static readonly Color TileHover = new Color(0.13f, 0.115f, 0.078f, 1f);
+        public static readonly Color Border = new Color(0.84f, 0.71f, 0.44f, 1f);
+        public static readonly Color FrameDim = new Color(0.30f, 0.265f, 0.185f, 1f);
+        public static readonly Color Track = new Color(0.008f, 0.009f, 0.010f, 0.88f);
+        public static readonly Color Text = new Color(0.95f, 0.92f, 0.84f, 1f);
+        public static readonly Color Dim = new Color(0.64f, 0.62f, 0.56f, 1f);
         public static readonly Color Water = new Color(0.19f, 0.64f, 0.62f, 0.36f);
         public static readonly Color WaterLine = new Color(0.52f, 0.91f, 0.82f, 0.90f);
 
         private static float _builtScale = -1f;
         private static Texture2D _buttonNormal;
         private static Texture2D _buttonHover;
+        private static Texture2D _skillFrame;
 
         public static void EnsureInit()
         {
@@ -72,6 +74,7 @@ namespace BazaarActionAxis.Plugin.Ui
             TriggerStyle.alignment = TextAnchor.MiddleCenter;
             CenterSmallStyle = NewLabel(11, FontStyle.Normal, Dim, false);
             CenterSmallStyle.alignment = TextAnchor.MiddleCenter;
+            SkillScrollbarStyle = new GUIStyle(GUI.skin.horizontalScrollbar) { fixedHeight = 6f * Scale };
 
             ButtonStyle = new GUIStyle(GUI.skin.button);
             ButtonStyle.font = UiFont;
@@ -97,6 +100,34 @@ namespace BazaarActionAxis.Plugin.Ui
             return clicked;
         }
 
+        public static void SkillFrame(Rect rect, Color border, Texture2D nativeFrame = null)
+        {
+            if (nativeFrame != null)
+            {
+                GUI.DrawTexture(rect, nativeFrame, ScaleMode.ScaleToFit);
+                return;
+            }
+            if (_skillFrame == null)
+            {
+                const int size = 64;
+                _skillFrame = new Texture2D(size, size, TextureFormat.RGBA32, false);
+                for (int y = 0; y < size; y++)
+                    for (int x = 0; x < size; x++)
+                    {
+                        double dx = x + 0.5 - size * 0.5, dy = y + 0.5 - size * 0.5;
+                        double radius = Math.Sqrt(dx * dx + dy * dy);
+                        float edge = (float)Math.Max(0, Math.Min(1, size * 0.5 - radius));
+                        float ring = (float)Math.Max(0, Math.Min(1, radius - 28.5));
+                        _skillFrame.SetPixel(x, y, new Color(ring, ring, ring, edge * ring));
+                    }
+                _skillFrame.Apply();
+            }
+            Color old = GUI.color;
+            GUI.color = border;
+            GUI.DrawTexture(rect, _skillFrame);
+            GUI.color = old;
+        }
+
         public static void Frame(Rect rect)
         {
             Fill(new Rect(rect.x + 5f * Scale, rect.y + 7f * Scale, rect.width, rect.height),
@@ -119,9 +150,11 @@ namespace BazaarActionAxis.Plugin.Ui
         {
             if (_buttonNormal != null) UnityEngine.Object.Destroy(_buttonNormal);
             if (_buttonHover != null) UnityEngine.Object.Destroy(_buttonHover);
+            if (_skillFrame != null) UnityEngine.Object.Destroy(_skillFrame);
             if (UiFont != null) UnityEngine.Object.Destroy(UiFont);
             _buttonNormal = null;
             _buttonHover = null;
+            _skillFrame = null;
             UiFont = null;
             _builtScale = -1f;
         }

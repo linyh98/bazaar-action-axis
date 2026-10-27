@@ -1,0 +1,1097 @@
+{
+  "Shard of Obsidian": {
+    "table": "cards",
+    "id": "8981892b-ce2a-43dc-a08e-2b5e8f8884fc",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Bronze": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Multicast": 1,
+            "DamageAmount": 5,
+            "Lifesteal": 100
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Silver": {
+          "Attributes": {
+            "DamageAmount": 10
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "DamageAmount": 20
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "DamageAmount": 40
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Shard of Obsidian Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {
+            "SlowTargets": 1,
+            "SlowAmount": 2000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Heavy Shard of Obsidian Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "f4ccde0c-1f9f-48e2-be52-f00843529257",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "1d5db875afe5e3b17b4bafe1d6209ccd",
+                  "Text": "Slow an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 1,
+            "FreezeAmount": 500
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy Shard of Obsidian Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "fdd57797-69be-4ee7-ac9f-67d935edc936",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "a820ee7c836aa0744217cbf8a8931641",
+                  "Text": "Freeze an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteTargets": 1,
+            "HasteAmount": 2000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Turbo Shard of Obsidian Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "48ae273b-0287-454e-b341-ff750f619827",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "0af165fdd879b2da2146a0f6cd25b63f",
+                  "Text": "Haste an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Shielded Shard of Obsidian Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "0e247427-2270-4438-b8f3-bfcfd617de65",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "ShieldApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "DamageAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shielded Shard of Obsidian Aura",
+              "InternalDescription": "Sets the value of Shield",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "d9d8dc540c1c1f8dd656af20eff05bef",
+                  "Text": "Shield equal to this item's Damage"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Restorative": {
+          "Attributes": {
+            "HealAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerHeal",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Restorative Shard of Obsidian Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "19236ecf-d2f0-4381-a478-abac76bfb92c",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "HealAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "DamageAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Restorative Shard of Obsidian Aura",
+              "InternalDescription": "Sets the value of Heal",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Heal"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "259a09c08ddca093becfe9bc02fc06b5",
+                  "Text": "Heal equal to this item's Damage"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Toxic Shard of Obsidian Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "f9288df5-cece-4db9-946b-cb6c050d84c8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PoisonApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "DamageAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Toxic Shard of Obsidian Aura",
+              "InternalDescription": "Sets the value of Poison",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "c4d66e9ab0a88fc37a3d5a7dafbc0886",
+                  "Text": "Poison equal to 10% of this item's Damage"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Fiery Shard of Obsidian Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "c088e6f2-dd09-4417-895a-cc9d14f61fb1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "BurnApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "DamageAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Fiery Shard of Obsidian Aura",
+              "InternalDescription": "Sets the value of Burn",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "7fc86a7e3ece66cf5e4a1c71aac0baf0",
+                  "Text": "Burn equal to 10% of this item's Damage"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Multicast",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Shard of Obsidian Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "25712d70-763c-49bd-b953-ce412e81b509",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "dc1a96bffac3ce0cba3e40cfa57a3836",
+                  "Text": "This has +{aura.e1} Multicast"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Deadly Shard of Obsidian Aura",
+              "InternalDescription": "Deadly 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "a8c20622-0d69-4547-ac1d-a8aa50462d9f",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "fb0d333c350d41af9d9d617a0e7d57ba",
+                  "Text": "This has +{aura.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {
+            "PercentSlowReduction": 100,
+            "PercentFreezeReduction": 100,
+            "DestroyImmunity": 1
+          },
+          "Abilities": {},
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "128752298544554061d35691fb9222c8",
+                  "Text": "This is immune to Freeze, Slow and Destroy"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": false
+        },
+        "Obsidian": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "DamageAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Obsidian Shard of Obsidian Damage Double",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "775b29fa61ec76e3e0214b7a0aa0f580",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "DamageReference"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "635387b1a38679bb5797be1c2ea88ba6",
+                  "Text": "This has double Damage"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy Shard of Obsidian Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "f9288df5-cece-4db9-946b-cb6c050d84c8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "RegenApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "DamageAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Mossy Shard of Obsidian Aura",
+              "InternalDescription": "Sets the value of Regen",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "9299c4fd5c56c19ad1967f213d92188f",
+                  "Text": "Regen equal to 10% of this item's Damage"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        }
+      },
+      "Transform": {
+        "SpawnContext": null,
+        "Abilities": {
+          "t1": {
+            "Id": "t1",
+            "Trigger": {
+              "$type": "TTriggerOnCardFired"
+            },
+            "ActiveIn": "HandOnly",
+            "Action": {
+              "$type": "TActionCardEnchant",
+              "Enchantment": "Obsidian",
+              "Duration": null,
+              "PreventOverride": false,
+              "TargetCount": null,
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": {
+                  "$type": "TCardConditionalEnchantmentEligible",
+                  "Enchantment": "Obsidian"
+                }
+              }
+            },
+            "Prerequisites": null,
+            "Priority": "Medium",
+            "InternalName": "Transform with Obsidian if able",
+            "InternalDescription": "",
+            "MigrationData": "",
+            "VFXConfig": null,
+            "TranslationKey": "",
+            "WorksIn": "Anywhere"
+          }
+        }
+      },
+      "Quests": null,
+      "Type": "Item",
+      "Id": "8981892b-ce2a-43dc-a08e-2b5e8f8884fc",
+      "Version": "5.0.0",
+      "InternalName": "Shard of Obsidian",
+      "InternalDescription": "",
+      "StartingTier": "Bronze",
+      "Size": "Small",
+      "Heroes": [
+        "Mak"
+      ],
+      "Tags": [
+        "Weapon",
+        "Reagent"
+      ],
+      "HiddenTags": [
+        "Damage"
+      ],
+      "ArtKey": "d28f4998895ffa8449ec225d2326bf04",
+      "TranslationKey": "def6402b3a6f30cb2eb363cd5cefb20d",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "886d6a3a4c6f267023f99e6440e11bd8",
+          "Text": "Shard of Obsidian"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "fb7589d26e5b92206a673082abb89581",
+              "Text": "Deal {ability.0} Damage"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "6bc6d204bcd198ac184d7792a46e04b9",
+              "Text": "When this is transformed, Enchant it with Obsidian if able"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerDamage",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Shard of Obsidian 1",
+          "InternalDescription": "Damage [5/10/15/20]",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/Pierce/Projectile_Pierce_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "ff44f64da1fd6f262c7838275ce99f39",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {}
+    }
+  }
+}

@@ -1,0 +1,1775 @@
+{
+  "CombatId": "fixture-084bd840-player",
+  "FixtureNote": "?? BPP ?? 084bd840 ??????????? Dooley ?? Trained Spider(Silver)?Soldering Gun(Bronze,Toxic)??? Health 400?SpawnMessage/????? HealthMax/Shield/Regen/Rage???????????????? Heal/Regen ??????????/???/???",
+  "SourceReplay": {
+    "battleId": "084bd840e98c4b81a681cb8d30c7b72f",
+    "sha256": "a2096bcc1f8eb31cdb274e2948c65271f08542bb989a986ebfe683c23ed06c08",
+    "frames": 426,
+    "duration": 21.3,
+    "observedSide": "player",
+    "openingHero": "Dooley",
+    "openingItems": [
+      {
+        "instanceId": "itm_hg9MRKT",
+        "templateId": "014d9c98-e823-443c-98a3-6367ab81c956",
+        "name": "Trained Spider",
+        "tier": "Silver",
+        "enchantment": null,
+        "socket": 4
+      },
+      {
+        "instanceId": "itm_djpLX-4",
+        "templateId": "d5a56d21-6892-4a08-b57a-1af53687ff37",
+        "name": "Aludel",
+        "tier": "Bronze",
+        "enchantment": null,
+        "socket": 5
+      },
+      {
+        "instanceId": "itm_St6EfRS",
+        "templateId": "020a0ec0-21e6-41af-899f-063573ba9ca5",
+        "name": "Virus",
+        "tier": "Silver",
+        "enchantment": null,
+        "socket": 3
+      },
+      {
+        "instanceId": "itm_FSYXkmf",
+        "templateId": "a655fb50-b9e1-41ec-b658-07459014f96c",
+        "name": "Drowsdrop",
+        "tier": "Bronze",
+        "enchantment": null,
+        "socket": 7
+      },
+      {
+        "instanceId": "itm_dz4JQQf",
+        "templateId": "666f4084-48cc-4558-b678-a46ba18c1bf2",
+        "name": "Soldering Gun",
+        "tier": "Bronze",
+        "enchantment": "Toxic",
+        "socket": 2
+      }
+    ]
+  },
+  "NativeSequence": {
+    "SpawnMessage": {
+      "Data": {
+        "Opponent": {
+          "Attributes": {
+            "Health": 400
+          }
+        }
+      }
+    },
+    "CombatMessage": {
+      "Data": {
+        "Frames": [
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 400,
+                  "CurrentValue": 370
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -30,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 370,
+                  "CurrentValue": 355
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -15,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 355,
+                  "CurrentValue": 340
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -15,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 340,
+                  "CurrentValue": 325
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -15,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Poison": {
+                  "PreviousValue": 0,
+                  "CurrentValue": 2
+                }
+              },
+              "HealthAdjustments": []
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 325,
+                  "CurrentValue": 295
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -30,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 295,
+                  "CurrentValue": 293
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -2,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 293,
+                  "CurrentValue": 291
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -2,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 291,
+                  "CurrentValue": 289
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -2,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 289,
+                  "CurrentValue": 287
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -2,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 287,
+                  "CurrentValue": 257
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -30,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 257,
+                  "CurrentValue": 255
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -2,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 255,
+                  "CurrentValue": 238
+                },
+                "Poison": {
+                  "PreviousValue": 2,
+                  "CurrentValue": 6
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -2,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                },
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -15,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 238,
+                  "CurrentValue": 223
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -15,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 223,
+                  "CurrentValue": 208
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -15,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 208,
+                  "CurrentValue": 202
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -6,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 202,
+                  "CurrentValue": 196
+                },
+                "Poison": {
+                  "PreviousValue": 6,
+                  "CurrentValue": 12
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -6,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 196,
+                  "CurrentValue": 166
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -30,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 166,
+                  "CurrentValue": 154
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -12,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Poison": {
+                  "PreviousValue": 12,
+                  "CurrentValue": 20
+                }
+              },
+              "HealthAdjustments": []
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 154,
+                  "CurrentValue": 134
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -20,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 134,
+                  "CurrentValue": 114
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -20,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 114,
+                  "CurrentValue": 94
+                },
+                "Poison": {
+                  "PreviousValue": 20,
+                  "CurrentValue": 36
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -20,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 94,
+                  "CurrentValue": 64
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -30,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 64,
+                  "CurrentValue": 13
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Poison",
+                  "AttributeChanged": "Health",
+                  "Amount": -36,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                },
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -15,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": null
+          },
+          {
+            "OpponentUpdates": {
+              "Attributes": {
+                "Health": {
+                  "PreviousValue": 13,
+                  "CurrentValue": -2
+                }
+              },
+              "HealthAdjustments": [
+                {
+                  "DamageType": "Damage",
+                  "AttributeChanged": "Health",
+                  "Amount": -15,
+                  "IsCrit": false,
+                  "IsDamageReduced": false
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

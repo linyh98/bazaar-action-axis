@@ -1,0 +1,4622 @@
+{
+  "Streaming Setup": {
+    "table": "cards",
+    "id": "2a0624d0-8257-42f9-8e9d-bbe0a5218b44",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "Custom_0": 2
+          },
+          "AbilityIds": [
+            "3"
+          ],
+          "AuraIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "Custom_0": 4
+          },
+          "AbilityIds": [
+            "3"
+          ],
+          "AuraIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "Custom_0": 6
+          },
+          "AbilityIds": [
+            "3"
+          ],
+          "AuraIds": [
+            "0",
+            "1",
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Enchantments": {
+        "Heavy": {
+          "Attributes": {
+            "SlowTargets": 1,
+            "SlowAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Heavy Streaming Setup Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1576562b-0511-4b36-a3a0-8accf5763cb7",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "5096964e437d72cb12c9b3d8eb7bcc39",
+                  "Text": "When you use a Toy or Friend, Slow an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 1,
+            "FreezeAmount": 500
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy Streaming Setup Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "ad0ec2bd-ade8-4738-aee8-0d35b1b0293b",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "52f528f1e57264e582d00a5ead8db835",
+                  "Text": "When you use a Toy or Friend, Freeze an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteTargets": 1,
+            "HasteAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Turbo Streaming Setup Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1576562b-0511-4b36-a3a0-8accf5763cb7",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "9e6abffadfc4767bb83d9ba5711a40d9",
+                  "Text": "When you use a Toy or Friend, Haste an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 20
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Shielded Streaming Setup Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "acf566e3-eabe-48cb-8083-2268721a04f0",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "cae9de8dddb50900a08e0ff8d0417821",
+                  "Text": "When you use a Toy or Friend, Shield {ability.e1}"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Restorative": {
+          "Attributes": {
+            "HealAmount": 20
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerHeal",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Restorative Streaming Setup Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "214a255a-658d-488f-90a8-d4f8e192ae86",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Heal"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "af64550ce10e859e909d695fdbedd235",
+                  "Text": "When you use a Toy or Friend, Heal {ability.e1}"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 2
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Toxic Streaming Setup Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "eacdcd74-66bb-41d7-8d29-60a128a882e8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "4be522b7e7355b4940152055fdd5919d",
+                  "Text": "When you use a Toy or Friend, Poison {ability.e1}"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 2
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Fiery Streaming Setup Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "26569335-a12e-46e7-8721-4bd09461d5be",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "db4ceb6903791dfa591067a29fa7ca62",
+                  "Text": "When you use a Toy or Friend, Burn {ability.e1}"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 40.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAnd",
+                    "Conditions": [
+                      {
+                        "$type": "TCardConditionalCanCrit",
+                        "IsNot": false
+                      },
+                      {
+                        "$type": "TCardConditionalTag",
+                        "Tags": [
+                          "Toy",
+                          "Friend"
+                        ],
+                        "Operator": "Any"
+                      }
+                    ]
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Deadly Streaming Setup Aura",
+              "InternalDescription": "Deadly 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "c5a1a207-36aa-4b28-8de9-2b6ee868dcc3",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Crit"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "4839f4b1d5a47aa24ccb5a5148beb9ad",
+                  "Text": "Your Toys and Friends have +{aura.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Multicast",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "Neighbor",
+                  "IncludeOrigin": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalAnd",
+                    "Conditions": [
+                      {
+                        "$type": "TCardConditionalAttribute",
+                        "Attribute": "CooldownMax",
+                        "ComparisonOperator": "GreaterThan",
+                        "ComparisonValue": {
+                          "$type": "TFixedValue",
+                          "Value": 0.0
+                        }
+                      },
+                      {
+                        "$type": "TCardConditionalTag",
+                        "Tags": [
+                          "Toy",
+                          "Friend"
+                        ],
+                        "Operator": "Any"
+                      }
+                    ]
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Streaming Setup Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "afb30492-557e-420d-8cb4-fdb59126f7d9",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "8272d3d2629cd593b0711429d794f126",
+                  "Text": "Adjacent Friends and Toys have +{aura.e1} Multicast"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PercentFreezeReduction",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "Neighbor",
+                  "IncludeOrigin": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Radiant Adjacent Aura",
+              "InternalDescription": "Radiant 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "11e83ca5-77c1-4b08-bd6e-5fc66ad8c7a8",
+              "WorksIn": "Anywhere"
+            },
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PercentSlowReduction",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardPositional",
+                  "Origin": "Self",
+                  "TargetMode": "Neighbor",
+                  "IncludeOrigin": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Radiant Adjacent Aura",
+              "InternalDescription": "Radiant 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "11e83ca5-77c1-4b08-bd6e-5fc66ad8c7a8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "94b3cb8cea0b0dde8b7bc1305a9ee7bf",
+                  "Text": "Adjacent Toys are affected by Freeze and Slow for half as long"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 20
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Obsidian Streaming Setup Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6894acb5-0ac7-4648-bf11-a11131b10875",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "32a474ba687a2493437613fdd50aaf76",
+                  "Text": "When you use a Toy or Friend, deal {ability.e1} Damage"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 2
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnItemUsed",
+                "Subject": {
+                  "$type": "TTargetCardSection",
+                  "TargetSection": "SelfHand",
+                  "ExcludeSelf": false,
+                  "Conditions": {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  }
+                }
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy Streaming Setup Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "eacdcd74-66bb-41d7-8d29-60a128a882e8",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "e56ccb5d8c427d0a31e73ee6d10ce46b",
+                  "Text": "When you use a Toy or Friend, Regen {ability.e1}"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "2a0624d0-8257-42f9-8e9d-bbe0a5218b44",
+      "Version": "5.0.0",
+      "InternalName": "Streaming Setup",
+      "InternalDescription": "",
+      "StartingTier": "Silver",
+      "Size": "Medium",
+      "Heroes": [
+        "Pygmalien"
+      ],
+      "Tags": [
+        "Tool",
+        "Tech",
+        "Toy"
+      ],
+      "HiddenTags": [
+        "EconomyReference",
+        "DamageReference",
+        "ShieldReference",
+        "HealReference"
+      ],
+      "ArtKey": "68b2bdda3f50753419606978e8808909",
+      "TranslationKey": "74178f71b1d6612922138bbe09cc0981",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "20ecbbcc4653b5d2cc2ad0bcadc9d5e0",
+          "Text": "Streaming Setup"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "7845b9437bb7449d06d91636c659dbde",
+              "Text": "Your Toys and Friends have +Damage, Heal and Shield equal to their Value"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "471ce471d86bcc684b420f792c488aae",
+              "Text": "When you use a Toy or Friend, it gains {ability.3} Value"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "3": {
+          "Id": "3",
+          "Trigger": {
+            "$type": "TTriggerOnItemUsed",
+            "Subject": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalTag",
+                "Tags": [
+                  "Toy",
+                  "Friend"
+                ],
+                "Operator": "Any"
+              }
+            }
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_0",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": null
+            },
+            "AttributeType": "SellPrice",
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardTriggerSource",
+              "ExcludeSelf": false,
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Highest",
+          "InternalName": "Streaming Setup Value add",
+          "InternalDescription": "when you use a Toy or Friend it gets + value",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "92cbf2b82167b5e7a211ac5ffc31579a",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "0": {
+          "Id": "0",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "DamageAmount",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "SellPrice",
+              "Target": null,
+              "DefaultValue": 0.0,
+              "Modifier": null
+            },
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalAnd",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  },
+                  {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Weapon"
+                    ],
+                    "Operator": "Any"
+                  }
+                ]
+              }
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Steaming Setup Damage",
+          "InternalDescription": "Your Toy Weapons have +Damage",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "8ff1e0c0-ec81-4b71-bba1-c358cc79b643",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "SellPrice",
+              "Target": null,
+              "DefaultValue": 0.0,
+              "Modifier": null
+            },
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalAnd",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  },
+                  {
+                    "$type": "TCardConditionalHiddenTag",
+                    "Tags": [
+                      "Shield"
+                    ],
+                    "Operator": "Any"
+                  }
+                ]
+              }
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Steaming Setup Shield",
+          "InternalDescription": "Your Toy Weapons have +Shield",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "8ff1e0c0-ec81-4b71-bba1-c358cc79b643",
+          "WorksIn": "Anywhere"
+        },
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "HealAmount",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "SellPrice",
+              "Target": null,
+              "DefaultValue": 0.0,
+              "Modifier": null
+            },
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalAnd",
+                "Conditions": [
+                  {
+                    "$type": "TCardConditionalTag",
+                    "Tags": [
+                      "Toy",
+                      "Friend"
+                    ],
+                    "Operator": "Any"
+                  },
+                  {
+                    "$type": "TCardConditionalHiddenTag",
+                    "Tags": [
+                      "Heal"
+                    ],
+                    "Operator": "Any"
+                  }
+                ]
+              }
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Steaming Setup Shield",
+          "InternalDescription": "Your Toy Weapons have +Heal",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "8ff1e0c0-ec81-4b71-bba1-c358cc79b643",
+          "WorksIn": "Anywhere"
+        }
+      }
+    }
+  },
+  "Spacescraper": {
+    "table": "cards",
+    "id": "40d8b44a-8e2f-4081-8163-043d76ddbafa",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 6000,
+            "Multicast": 1,
+            "ShieldApplyAmount": 0,
+            "Custom_0": 2,
+            "Custom_1": 0
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "2",
+            "4"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Custom_0": 3
+          },
+          "AbilityIds": [
+            "0"
+          ],
+          "AuraIds": [
+            "3",
+            "4"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Enchantments": {
+        "Heavy": {
+          "Attributes": {
+            "SlowTargets": 3,
+            "SlowAmount": 2000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Heavy Spacescraper Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "5fd1b913-a6c8-4b30-9808-020b842dbd7a",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "da86d3a1ce7dcd6dbd9b7836013f252f",
+                  "Text": "Slow {ability.e1.targets} items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 2,
+            "FreezeAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy Spacescraper Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "a47e18a8-312b-404c-b6be-d9a338649eeb",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "6b69b94aa3b3929f6fd0407790692025",
+                  "Text": "Freeze {ability.e1.targets} items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteTargets": 3,
+            "HasteAmount": 2000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Turbo Spacescraper Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "bb40fee6-cdf4-4f3d-9deb-ff97a12d52f1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "e0273d30fb00533957c10a054657e3de",
+                  "Text": "Haste {ability.e1.targets} items for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "ShieldApplyAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shielded Spacescraper Aura",
+              "InternalDescription": "Shielded 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "ShieldReference"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "0371783769b3a52f39c8fa791290e67c",
+                  "Text": "This has double Shield"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Restorative": {
+          "Attributes": {
+            "HealAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerHeal",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Restorative Spacescraper Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "18d56da7-fa7b-40d7-8acf-1c65c5f29199",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "HealAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "ShieldApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Restorative Spacescraper Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "93826b7b7a154c7823629388e16a3823",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Heal"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "07bbee788b4bdde97ebbb62268810c9a",
+                  "Text": "Heal equal to this item's Shield"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Toxic Spacescraper Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "2cf5b5a6-d08d-4e29-a58d-c11f6cd4aff5",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PoisonApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "ShieldApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Toxic Spacescraper Aura",
+              "InternalDescription": "Sets the value of Poison",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "642e01b13a649760189fb153207bf609",
+                  "Text": "Poison equal to 10% of this item's Shield"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Fiery Spacescraper Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1efe71b7-7b4a-496d-a630-38274c04fc46",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "BurnApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "ShieldApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Fiery Spacescraper Aura",
+              "InternalDescription": "Sets the value of Burn",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "d5bacf0eb4ccda527bbe72b0239af35a",
+                  "Text": "Burn equal to 10% of this item's Shield"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Multicast",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Spacescraper Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "1093b600-443b-48f2-8aef-98347e594462",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "dc1a96bffac3ce0cba3e40cfa57a3836",
+                  "Text": "This has +{aura.e1} Multicast"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Deadly Spacescraper Aura",
+              "InternalDescription": "Deadly 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "bb87b8f5-a015-485b-940b-693b37fefb5b",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "fb0d333c350d41af9d9d617a0e7d57ba",
+                  "Text": "This has +{aura.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {
+            "PercentSlowReduction": 100,
+            "PercentFreezeReduction": 100,
+            "DestroyImmunity": 1
+          },
+          "Abilities": {},
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "128752298544554061d35691fb9222c8",
+                  "Text": "This is immune to Freeze, Slow and Destroy"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": false
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Obsidian Spacescraper Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6894acb5-0ac7-4648-bf11-a11131b10875",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "DamageAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "ShieldApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Obsidian Spacescraper Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "7c989fbc7ff1b439cdc8cb2cea845151",
+                  "Text": "Deal Damage equal to this item's Shield"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy Spacescraper Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "2cf5b5a6-d08d-4e29-a58d-c11f6cd4aff5",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "RegenApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "ShieldApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Mossy Spacescraper Aura",
+              "InternalDescription": "Sets the value of Regen",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "eddb4334fab4e1a0e6de32a42e3c0a52",
+                  "Text": "Regen equal to 10% of this item's Shield"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "40d8b44a-8e2f-4081-8163-043d76ddbafa",
+      "Version": "5.0.0",
+      "InternalName": "Spacescraper",
+      "InternalDescription": "",
+      "StartingTier": "Gold",
+      "Size": "Large",
+      "Heroes": [
+        "Pygmalien"
+      ],
+      "Tags": [
+        "Property"
+      ],
+      "HiddenTags": [
+        "Shield",
+        "EconomyReference",
+        "Value"
+      ],
+      "ArtKey": "9c5f97eacd5827948a4ab9ecde7df1d1",
+      "TranslationKey": "4791fd35110ad804ed85b99d8d972f2b",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "4791fd35110ad804ed85b99d8d972f2b",
+          "Text": "Spacescraper"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "c4cf140c69724bcad0bc7ce539176d35",
+              "Text": "Shield equal to {aura.9} times the value of your items"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "a46fa0cdd1ecd078f3d1927a72160ff0",
+              "Text": "This has triple value during combat"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerShieldApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Spacescraper 1",
+          "InternalDescription": "Shield equal to {ability.0.mod|%} of the value of your items",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/Spacescraper/Projectile_Spacescraper_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "0c56bf61b4e0c02ea1313e5c7092a7f7",
+          "WorksIn": "Anywhere"
+        }
+      },
+      "Auras": {
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttributeAggregate",
+              "AttributeType": "SellPrice",
+              "Target": {
+                "$type": "TTargetCardSection",
+                "TargetSection": "SelfHand",
+                "ExcludeSelf": false,
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Spacescraper 3x",
+          "InternalDescription": "sets Shield",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "93826b7b7a154c7823629388e16a3823",
+          "WorksIn": "Anywhere"
+        },
+        "3": {
+          "Id": "3",
+          "ActiveIn": "HandAndStash",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttributeAggregate",
+              "AttributeType": "SellPrice",
+              "Target": {
+                "$type": "TTargetCardSection",
+                "TargetSection": "SelfHand",
+                "ExcludeSelf": false,
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 3.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Spacescraper 5x",
+          "InternalDescription": "sets Shield",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "93826b7b7a154c7823629388e16a3823",
+          "WorksIn": "Anywhere"
+        },
+        "4": {
+          "Id": "4",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "SellPrice",
+            "Operation": "Multiply",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 3.0
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Value Increase",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "1a0b3b54e6c5714f1587b7d16240fb1c",
+          "WorksIn": "CombatOnly"
+        },
+        "9": {
+          "Id": "9",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Custom_1",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_0",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "Tooltip Handling",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "9ed8516049000a0e1a90054e0aab06ce",
+          "WorksIn": "Anywhere"
+        }
+      }
+    }
+  },
+  "Geyser": {
+    "table": "cards",
+    "id": "77df36bf-a1d0-4815-9f07-5c330542e76a",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 9000,
+            "BurnApplyAmount": 0
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 8000
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "CooldownMax": 7000
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [],
+          "TooltipIds": [
+            0
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Geyser Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {
+            "SlowTargets": 2,
+            "SlowAmount": 2000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Heavy Geyser Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "f283bc89-8d99-475d-a4e6-35ddf277c0d5",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "1905f923776056e16deb79db3c69759d",
+                  "Text": "Slow {ability.e1.targets} items for {ability.e1} seconds"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 1,
+            "FreezeAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy Geyser Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "8e27ff26-169d-4410-931a-8b79be17ca08",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "a820ee7c836aa0744217cbf8a8931641",
+                  "Text": "Freeze an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteTargets": 2,
+            "HasteAmount": 2000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Turbo Geyser Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "bed5e4eb-59c1-4a31-a8e7-8eaeb8229fb2",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "574999c827648aa32a89b888a47319f3",
+                  "Text": "Haste {ability.e1.targets} items for {ability.e1} seconds"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {
+            "ShieldApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerShieldApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Shielded Geyser Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "e24940d3-c859-4444-abb1-68e4292563b0",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "ShieldApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "BurnApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 5.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shielded Geyser Aura",
+              "InternalDescription": "Sets the value of Shield",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Shield"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "1b4dd4a4b7d282b5bc9074f0f0c34e7b",
+                  "Text": "Shield equal to {aura.e2.mod} times this item's Burn"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Restorative": {
+          "Attributes": {
+            "HealAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerHeal",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Restorative Geyser Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "2df9e583-cddc-406e-95bb-ba82aaf89993",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "HealAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "BurnApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 5.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Restorative Geyser Aura",
+              "InternalDescription": "Sets the value of Heal",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Heal"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "b638c067a848f15399d739783d516810",
+                  "Text": "Heal equal to {aura.e2.mod} times this item's Burn"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Toxic Geyser Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "2b57c80b-2331-4dee-b3b1-a3ac09869698",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PoisonApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "BurnApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Toxic Geyser Aura",
+              "InternalDescription": "Sets the value of Poison",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "0b8e08e8da2b05a0ce270b2781e1e59f",
+                  "Text": "Poison equal to this item's Burn"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Fiery": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "BurnApplyAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Fiery Geyser Aura",
+              "InternalDescription": "Fiery 2",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "359cf6be-8d92-4a8f-b7c7-a87b374724ae",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "BurnReference"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "715c19e87bab968eeec57303e86c8aa2",
+                  "Text": "This has double Burn"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Multicast",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Geyser Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "fe4ecc7f-78e5-46d5-95b6-bf98beef93f7",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "dc1a96bffac3ce0cba3e40cfa57a3836",
+                  "Text": "This has +{aura.e1} Multicast"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Deadly Geyser Aura",
+              "InternalDescription": "Deadly 50",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "24f83182-4f01-4edf-9882-8c679a78e4bf",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "fb0d333c350d41af9d9d617a0e7d57ba",
+                  "Text": "This has +{aura.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {
+            "PercentSlowReduction": 100,
+            "PercentFreezeReduction": 100,
+            "DestroyImmunity": 1
+          },
+          "Abilities": {},
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "128752298544554061d35691fb9222c8",
+                  "Text": "This is immune to Freeze, Slow and Destroy"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": false
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Obsidian Geyser Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6894acb5-0ac7-4648-bf11-a11131b10875",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "DamageAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "BurnApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 5.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Obsidian Geyser Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "273ba3c3a1e90935fb0308f03817dc4d",
+                  "Text": "Deal Damage equal to {aura.e2.mod} times this item's Burn"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy Geyser Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "2b57c80b-2331-4dee-b3b1-a3ac09869698",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "RegenApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "BurnApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Mossy Geyser Aura",
+              "InternalDescription": "Sets the value of Regen",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "0ceb1310d7b524ce9bf5e52ae4983c68",
+                  "Text": "Regen equal to this item's Burn"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "77df36bf-a1d0-4815-9f07-5c330542e76a",
+      "Version": "5.0.0",
+      "InternalName": "Geyser",
+      "InternalDescription": "",
+      "StartingTier": "Silver",
+      "Size": "Medium",
+      "Heroes": [
+        "Karnok"
+      ],
+      "Tags": [
+        "Property"
+      ],
+      "HiddenTags": [
+        "Burn",
+        "RageReference"
+      ],
+      "ArtKey": "5fb0acfb97b49344a880b026abe55fa1",
+      "TranslationKey": "1983cafa82de1da6cf96d46211fe3827",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "53f5278fa0a0ec30eb20185f268f0560",
+          "Text": "Geyser"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "b8811b0ec3c93f8d9b98c388e4ac3bc5",
+              "Text": "Burn equal to the Rage you have gained this fight"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerBurnApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Opponent",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Medium",
+          "InternalName": "Geyser Burn",
+          "InternalDescription": "Burn {ability.0}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": "Assets/TheBazaar/Projectiles/PrivateHotSprings/Variants/Projectile_PrivateHotSrpings_Fiery_PV.prefab",
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "d0c1df27cbe6392b17c0666761164964",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerAttributeChanged",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "AttributeType": "Rage",
+            "ChangeType": "Gain",
+            "Source": null
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TReferenceValueAttributeChange",
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "AttributeType": "BurnApplyAmount",
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "d149d6ad387a086f529598c243a01248",
+          "WorksIn": "CombatOnly"
+        }
+      },
+      "Auras": {}
+    }
+  },
+  "Pauldrons": {
+    "table": "cards",
+    "id": "8666a1de-066f-47c4-9d9b-87eea7d9f25a",
+    "template": {
+      "$type": "TCardItem",
+      "Tiers": {
+        "Silver": {
+          "Attributes": {
+            "CooldownMax": 5000,
+            "Multicast": 1,
+            "ShieldApplyAmount": 0
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Gold": {
+          "Attributes": {
+            "CooldownMax": 4000
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        },
+        "Diamond": {
+          "Attributes": {
+            "CooldownMax": 3000
+          },
+          "AbilityIds": [
+            "0",
+            "1"
+          ],
+          "AuraIds": [
+            "2"
+          ],
+          "TooltipIds": [
+            0,
+            1
+          ]
+        }
+      },
+      "Enchantments": {
+        "Golden": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "SellPrice",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Golden Pauldrons Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "faae1df98a4af405d1da506b10f6b853",
+                  "Text": "This has double value"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Heavy": {
+          "Attributes": {
+            "SlowTargets": 1,
+            "SlowAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardSlow",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Heavy Pauldrons Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "2805c77c-07aa-4c2d-8457-23016c3fc8ed",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Slow"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "1d5db875afe5e3b17b4bafe1d6209ccd",
+                  "Text": "Slow an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Icy": {
+          "Attributes": {
+            "FreezeTargets": 1,
+            "FreezeAmount": 500
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardFreeze",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "OpponentHand",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Icy Pauldrons Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "e33d7a5c-9634-46bd-ac5a-e918b80cb666",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Freeze"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "a820ee7c836aa0744217cbf8a8931641",
+                  "Text": "Freeze an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Turbo": {
+          "Attributes": {
+            "HasteTargets": 1,
+            "HasteAmount": 1000
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionCardHaste",
+                "Value": null,
+                "TargetCount": null,
+                "Target": {
+                  "$type": "TTargetCardRandom",
+                  "ExcludeSelf": false,
+                  "TargetSection": "SelfHand",
+                  "Conditions": {
+                    "$type": "TCardConditionalAttribute",
+                    "Attribute": "CooldownMax",
+                    "ComparisonOperator": "GreaterThan",
+                    "ComparisonValue": {
+                      "$type": "TFixedValue",
+                      "Value": 0.0
+                    }
+                  }
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Turbo Pauldrons Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adfb8241-2711-4643-bd22-5d367baf63b4",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [
+            "Haste"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "0af165fdd879b2da2146a0f6cd25b63f",
+                  "Text": "Haste an item for {ability.e1} second(s)"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": false
+        },
+        "Shielded": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "ShieldApplyAmount",
+                "Operation": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shielded Pauldrons Aura",
+              "InternalDescription": "Shielded 15",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "adb239b2-d071-4ee6-b83a-24b5b7634161",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "ShieldReference"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "0371783769b3a52f39c8fa791290e67c",
+                  "Text": "This has double Shield"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Restorative": {
+          "Attributes": {
+            "HealAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerHeal",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Restorative Pauldrons Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "417b1ace-87ce-426a-9f28-76bd8ef3160d",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "HealAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "ShieldApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Restorative Pauldrons Aura",
+              "InternalDescription": "Sets the value of Heal",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Heal"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "07bbee788b4bdde97ebbb62268810c9a",
+                  "Text": "Heal equal to this item's Shield"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Toxic": {
+          "Attributes": {
+            "PoisonApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerPoisonApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Toxic Pauldrons Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "299d7ba7-a488-497c-a762-7bcb64ac505d",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "PoisonApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "ShieldApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Toxic Pauldrons Aura",
+              "InternalDescription": "Sets the value of Poison",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Poison"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "642e01b13a649760189fb153207bf609",
+                  "Text": "Poison equal to 10% of this item's Shield"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Fiery": {
+          "Attributes": {
+            "BurnApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerBurnApply",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Fiery Pauldrons Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "2465863c-dcec-49d3-81bd-37e4ba4561c7",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "BurnApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "ShieldApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Fiery Pauldrons Aura",
+              "InternalDescription": "Sets the value of Burn",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Burn"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "d5bacf0eb4ccda527bbe72b0239af35a",
+                  "Text": "Burn equal to 10% of this item's Shield"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Shiny": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "Multicast",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 1.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Shiny Pauldrons Aura",
+              "InternalDescription": "Shiny 1",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "e21e2549-66ab-41ef-a774-71397510e45a",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "dc1a96bffac3ce0cba3e40cfa57a3836",
+                  "Text": "This has +{aura.e1} Multicast"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Deadly": {
+          "Attributes": {},
+          "Abilities": {},
+          "Auras": {
+            "e1": {
+              "Id": "e1",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "CritChance",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 50.0
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Deadly Pauldrons Aura",
+              "InternalDescription": "Deadly",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "56c4a33c-abe5-4d5d-9e66-8ddace04ff66",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "fb0d333c350d41af9d9d617a0e7d57ba",
+                  "Text": "This has +{aura.e1}% Crit Chance"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": true
+        },
+        "Radiant": {
+          "Attributes": {
+            "PercentSlowReduction": 100,
+            "PercentFreezeReduction": 100,
+            "DestroyImmunity": 1
+          },
+          "Abilities": {},
+          "Auras": {},
+          "Tags": [],
+          "HiddenTags": [],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "128752298544554061d35691fb9222c8",
+                  "Text": "This is immune to Freeze, Slow and Destroy"
+                },
+                "TooltipType": "Passive",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": false,
+          "HasAuras": false
+        },
+        "Obsidian": {
+          "Attributes": {
+            "DamageAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerDamage",
+                "ReferenceValue": null,
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Opponent",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Obsidian Pauldrons Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "6894acb5-0ac7-4648-bf11-a11131b10875",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "DamageAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "ShieldApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 1.0
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Obsidian Pauldrons Aura",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [
+            "Weapon"
+          ],
+          "HiddenTags": [
+            "Damage"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "7c989fbc7ff1b439cdc8cb2cea845151",
+                  "Text": "Deal Damage equal to this item's Shield"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        },
+        "Mossy": {
+          "Attributes": {
+            "RegenApplyAmount": 0
+          },
+          "Abilities": {
+            "e1": {
+              "Id": "e1",
+              "Trigger": {
+                "$type": "TTriggerOnCardFired"
+              },
+              "ActiveIn": "HandOnly",
+              "Action": {
+                "$type": "TActionPlayerRegenApply",
+                "ReferenceValue": null,
+                "Duration": {
+                  "$type": "TDeterminantDuration",
+                  "DurationType": "UntilEndOfCombat"
+                },
+                "Target": {
+                  "$type": "TTargetPlayerRelative",
+                  "TargetMode": "Self",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "Priority": "Medium",
+              "InternalName": "Mossy Pauldrons Ability",
+              "InternalDescription": "",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "299d7ba7-a488-497c-a762-7bcb64ac505d",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Auras": {
+            "e2": {
+              "Id": "e2",
+              "ActiveIn": "HandAndStash",
+              "Action": {
+                "$type": "TAuraActionCardModifyAttribute",
+                "AttributeType": "RegenApplyAmount",
+                "Operation": "Add",
+                "Value": {
+                  "$type": "TReferenceValueCardAttribute",
+                  "AttributeType": "ShieldApplyAmount",
+                  "Target": {
+                    "$type": "TTargetCardSelf",
+                    "Conditions": null
+                  },
+                  "DefaultValue": 0.0,
+                  "Modifier": {
+                    "ModifyMode": "Multiply",
+                    "Value": {
+                      "$type": "TFixedValue",
+                      "Value": 0.1
+                    },
+                    "ShouldRound": true
+                  }
+                },
+                "Target": {
+                  "$type": "TTargetCardSelf",
+                  "Conditions": null
+                }
+              },
+              "Prerequisites": null,
+              "InternalName": "Mossy Pauldrons Aura",
+              "InternalDescription": "Sets the value of Regen",
+              "MigrationData": "",
+              "VFXConfig": {
+                "VFXOverrideKey": null,
+                "VFXShouldPlay": true,
+                "VFXIsTakeover": false
+              },
+              "TranslationKey": "b7b4b93275c7490d6e2b0997872ba2e1",
+              "WorksIn": "Anywhere"
+            }
+          },
+          "Tags": [],
+          "HiddenTags": [
+            "Regen"
+          ],
+          "Localization": {
+            "Tooltips": [
+              {
+                "Content": {
+                  "Key": "eddb4334fab4e1a0e6de32a42e3c0a52",
+                  "Text": "Regen equal to 10% of this item's Shield"
+                },
+                "TooltipType": "Active",
+                "TooltipCondition": null,
+                "Prerequisites": null
+              }
+            ]
+          },
+          "HasAbilities": true,
+          "HasAuras": true
+        }
+      },
+      "Transform": null,
+      "Quests": null,
+      "Type": "Item",
+      "Id": "8666a1de-066f-47c4-9d9b-87eea7d9f25a",
+      "Version": "5.0.0",
+      "InternalName": "Pauldrons",
+      "InternalDescription": "",
+      "StartingTier": "Silver",
+      "Size": "Medium",
+      "Heroes": [
+        "Karnok"
+      ],
+      "Tags": [
+        "Apparel"
+      ],
+      "HiddenTags": [
+        "Shield",
+        "RageReference"
+      ],
+      "ArtKey": "550b3dba11ec20a4091c2ca0f7587867",
+      "TranslationKey": "64768070d76f2b23748558bf9def29b3",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "0ea42fd2d70268cb222604020a8ad00a",
+          "Text": "Pauldrons"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "42ede41edab065b2e50fa85412b4eba7",
+              "Text": "Shield equal to double the Rage you have gained this fight"
+            },
+            "TooltipType": "Active",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          },
+          {
+            "Content": {
+              "Key": "befd6707569fc4b50dce3b6d2548f075",
+              "Text": "While you are Enraged, your Shield items have double Shield"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {
+        "0": {
+          "Id": "0",
+          "Trigger": {
+            "$type": "TTriggerOnCardFired"
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionPlayerShieldApply",
+            "ReferenceValue": null,
+            "Target": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "Pauldrons 1",
+          "InternalDescription": "Shield {ability.0}",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "7ef5f856e2b8b553f2ef48cfd84087ec",
+          "WorksIn": "Anywhere"
+        },
+        "1": {
+          "Id": "1",
+          "Trigger": {
+            "$type": "TTriggerOnPlayerAttributeChanged",
+            "Subject": {
+              "$type": "TTargetPlayerRelative",
+              "TargetMode": "Self",
+              "Conditions": null
+            },
+            "AttributeType": "Rage",
+            "ChangeType": "Gain",
+            "Source": null
+          },
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TActionCardModifyAttribute",
+            "Value": {
+              "$type": "TReferenceValueAttributeChange",
+              "DefaultValue": 0.0,
+              "Modifier": {
+                "ModifyMode": "Multiply",
+                "Value": {
+                  "$type": "TFixedValue",
+                  "Value": 2.0
+                },
+                "ShouldRound": true
+              }
+            },
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Add",
+            "Duration": {
+              "$type": "TDeterminantDuration",
+              "DurationType": "UntilEndOfCombat"
+            },
+            "TargetCount": null,
+            "Target": {
+              "$type": "TTargetCardSelf",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "Priority": "Low",
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "d149d6ad387a086f529598c243a01248",
+          "WorksIn": "CombatOnly"
+        }
+      },
+      "Auras": {
+        "2": {
+          "Id": "2",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "ShieldApplyAmount",
+            "Operation": "Multiply",
+            "Value": {
+              "$type": "TFixedValue",
+              "Value": 2.0
+            },
+            "Target": {
+              "$type": "TTargetCardSection",
+              "TargetSection": "SelfHand",
+              "ExcludeSelf": false,
+              "Conditions": {
+                "$type": "TCardConditionalHiddenTag",
+                "Tags": [
+                  "Shield"
+                ],
+                "Operator": "Any"
+              }
+            }
+          },
+          "Prerequisites": [
+            {
+              "$type": "TPrerequisitePlayer",
+              "Subject": {
+                "$type": "TTargetPlayerRelative",
+                "TargetMode": "Self",
+                "Conditions": {
+                  "$type": "TPlayerConditionalAttribute",
+                  "Attribute": "Enraged",
+                  "ComparisonOperator": "GreaterThan",
+                  "ComparisonValue": {
+                    "$type": "TFixedValue",
+                    "Value": 0.0
+                  }
+                }
+              }
+            }
+          ],
+          "InternalName": "Pauldrons 3",
+          "InternalDescription": "Your shield items have double shield while enraged",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "6c2934b996c6098dfa6eea9556a1e1a1",
+          "WorksIn": "Anywhere"
+        }
+      }
+    }
+  }
+}

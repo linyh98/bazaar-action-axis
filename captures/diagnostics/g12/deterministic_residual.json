@@ -1,0 +1,232 @@
+{
+ "generatedBy": "tools/native_replay_batch.py + tools/native_replay_coverage.py",
+ "comparedReplays": 145,
+ "deterministicReplays": 2,
+ "randomTargetReplays": 143,
+ "deterministic": [
+  {
+   "battleId": "101f6357963e420fb81e17c62e934b9c",
+   "counts": {
+    "matched": 2759,
+    "unverified": 31,
+    "postEnd": 0,
+    "missing": 10,
+    "extra": 1,
+    "valueMismatch": 13,
+    "timeMismatch": 0,
+    "unknown": 17
+   },
+   "topDiffGroups": [
+    {
+     "channel": "health",
+     "status": "value-mismatch",
+     "kind": null,
+     "canonical": null,
+     "attribute": null,
+     "count": 11,
+     "firstFrame": 100,
+     "lastFrame": 240,
+     "example": "poison 24.0 vs 14.0"
+    },
+    {
+     "channel": "effects",
+     "status": "missing",
+     "kind": "poisonApply",
+     "canonical": null,
+     "attribute": null,
+     "count": 3,
+     "firstFrame": 240,
+     "lastFrame": 240,
+     "example": "native poisonApply has no simulated effect"
+    },
+    {
+     "channel": "cards",
+     "status": "value-mismatch",
+     "kind": null,
+     "canonical": "enemy|0|g0|8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d",
+     "attribute": "PoisonApplyAmount",
+     "count": 2,
+     "firstFrame": 100,
+     "lastFrame": 200,
+     "example": "previous 15 vs 7; current 17 vs 9"
+    },
+    {
+     "channel": "effects",
+     "status": "missing",
+     "kind": "regenApply",
+     "canonical": null,
+     "attribute": null,
+     "count": 2,
+     "firstFrame": 240,
+     "lastFrame": 240,
+     "example": "native regenApply has no simulated effect"
+    },
+    {
+     "channel": "cards",
+     "status": "missing",
+     "kind": null,
+     "canonical": "enemy|0|g0|8a9b0c1d-2e3f-4a5b-6c7d-8e9f0a1b2c3d",
+     "attribute": "PoisonApplyAmount",
+     "count": 1,
+     "firstFrame": 240,
+     "lastFrame": 240,
+     "example": "native card update has no simulated update"
+    },
+    {
+     "channel": "cards",
+     "status": "missing",
+     "kind": null,
+     "canonical": "player|?|g0|skl_RzRxr6N",
+     "attribute": "Custom_0",
+     "count": 1,
+     "firstFrame": 240,
+     "lastFrame": 240,
+     "example": "native card update has no simulated update"
+    },
+    {
+     "channel": "effects",
+     "status": "extra",
+     "kind": "death",
+     "canonical": null,
+     "attribute": null,
+     "count": 1,
+     "firstFrame": 240,
+     "lastFrame": 240,
+     "example": "simulated death has no native effect"
+    },
+    {
+     "channel": "effects",
+     "status": "missing",
+     "kind": "damage",
+     "canonical": null,
+     "attribute": null,
+     "count": 1,
+     "firstFrame": 240,
+     "lastFrame": 240,
+     "example": "native damage has no simulated effect"
+    }
+   ],
+   "rootCauses": [
+    "Native frame-0 DoT tick is now implemented; remaining poison/health drift is downstream of runtime/old-template effect q1 on Idol (PoisonApplyAmount +4 per refresh).",
+    "The runtime effect id q1 is absent from the current template, so its card updates are classified runtimeAbility/unverified instead of missing."
+   ]
+  },
+  {
+   "battleId": "170666bfe21949d5a94d1e3776200518",
+   "counts": {
+    "matched": 2813,
+    "unverified": 21,
+    "postEnd": 842,
+    "missing": 20,
+    "extra": 8,
+    "valueMismatch": 337,
+    "timeMismatch": 0,
+    "unknown": 21
+   },
+   "topDiffGroups": [
+    {
+     "channel": "cards",
+     "status": "value-mismatch",
+     "kind": null,
+     "canonical": "enemy|2|g0|64c62815-9c8a-40fa-a963-3fc09a46bbae",
+     "attribute": "Cooldown",
+     "count": 285,
+     "firstFrame": 86,
+     "lastFrame": 370,
+     "example": "current 3750 vs 4750"
+    },
+    {
+     "channel": "health",
+     "status": "value-mismatch",
+     "kind": null,
+     "canonical": null,
+     "attribute": null,
+     "count": 51,
+     "firstFrame": 82,
+     "lastFrame": 370,
+     "example": "burn 14.0 vs 9.0"
+    },
+    {
+     "channel": "health",
+     "status": "missing",
+     "kind": null,
+     "canonical": null,
+     "attribute": null,
+     "count": 7,
+     "firstFrame": 120,
+     "lastFrame": 342,
+     "example": "native health change has no simulated change"
+    },
+    {
+     "channel": "effects",
+     "status": "extra",
+     "kind": "charge",
+     "canonical": null,
+     "attribute": null,
+     "count": 4,
+     "firstFrame": 81,
+     "lastFrame": 321,
+     "example": "simulated charge has no native effect"
+    },
+    {
+     "channel": "effects",
+     "status": "missing",
+     "kind": "charge",
+     "canonical": null,
+     "attribute": null,
+     "count": 4,
+     "firstFrame": 86,
+     "lastFrame": 326,
+     "example": "native charge has no simulated effect"
+    },
+    {
+     "channel": "effects",
+     "status": "missing",
+     "kind": "burnApply",
+     "canonical": null,
+     "attribute": null,
+     "count": 3,
+     "firstFrame": 222,
+     "lastFrame": 342,
+     "example": "native burnApply has no simulated effect"
+    },
+    {
+     "channel": "cards",
+     "status": "missing",
+     "kind": null,
+     "canonical": "player|5|g0|bbf63b5c-57c3-4412-beb5-18bfec2372e6",
+     "attribute": "PercentFreezeReduction",
+     "count": 2,
+     "firstFrame": 160,
+     "lastFrame": 370,
+     "example": "native card update has no simulated update"
+    },
+    {
+     "channel": "cards",
+     "status": "missing",
+     "kind": null,
+     "canonical": "player|5|g0|bbf63b5c-57c3-4412-beb5-18bfec2372e6",
+     "attribute": "PercentSlowReduction",
+     "count": 2,
+     "firstFrame": 160,
+     "lastFrame": 370,
+     "example": "native card update has no simulated update"
+    }
+   ],
+   "rootCauses": [
+    "Matchbox TTriggerOnItemUsed scheduling: sim charges from an extra same-frame item use (5fM1k0Q) and loses the delayed native charge at frame 86; coalescing globally was rejected because native also emits multiple same-frame on-use charges (1252 samples).",
+    "Heirlooms effect ids 1/2 are existing aura ids but the replay applies them as per-activation +10 ShieldApplyAmount/+5 SellPrice; current static aura refresh cannot reproduce the per-activation delta, so those card updates are auraRefresh/unverified."
+   ]
+  }
+ ],
+ "randomReplayAggregate": {
+  "matched": 297594,
+  "unverified": 402213,
+  "postEnd": 65795,
+  "missing": 27161,
+  "extra": 15046,
+  "valueMismatch": 40945,
+  "unknown": 4217,
+  "timeMismatch": 3
+ }
+}

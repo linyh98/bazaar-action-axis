@@ -1,0 +1,190 @@
+{
+  "cards:[Stove] Socket Effect": {
+    "table": "cards",
+    "id": "c017c0dd-af3c-47e0-b510-3661d9dcd7f2",
+    "template": {
+      "$type": "TCardSocketEffect",
+      "Transform": null,
+      "Type": "SocketEffect",
+      "Tiers": {
+        "Diamond": {
+          "Attributes": {
+            "BuyPrice": 40,
+            "Custom_0": 1
+          },
+          "AbilityIds": [],
+          "AuraIds": [
+            "0"
+          ],
+          "TooltipIds": [
+            0
+          ]
+        }
+      },
+      "Id": "c017c0dd-af3c-47e0-b510-3661d9dcd7f2",
+      "Version": "5.0.0",
+      "InternalName": "[Stove] Socket Effect",
+      "InternalDescription": "",
+      "StartingTier": "Diamond",
+      "Size": "Small",
+      "Heroes": [
+        "Common"
+      ],
+      "Tags": [],
+      "HiddenTags": [],
+      "ArtKey": "Icon_Skill_Placeholder.png",
+      "TranslationKey": "c4ce8c66a942a07853b628dcf46f319a",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "3aaafdbdb8b9b24e4fc0cf6ec7031830",
+          "Text": "Stove"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "dbd79623fef440afd83baf5be908100e",
+              "Text": "The item here is Heated"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {},
+      "Auras": {
+        "0": {
+          "Id": "0",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Heated",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_0",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": null
+            },
+            "Target": {
+              "$type": "TTargetCardOccupying",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "c4ce8c66a942a07853b628dcf46f319a",
+          "WorksIn": "Anywhere"
+        }
+      }
+    }
+  },
+  "cards:[Cooler] Socket Effect": {
+    "table": "cards",
+    "id": "d5515ae3-b98d-4272-8add-82f441969ffe",
+    "template": {
+      "$type": "TCardSocketEffect",
+      "Transform": null,
+      "Type": "SocketEffect",
+      "Tiers": {
+        "Diamond": {
+          "Attributes": {
+            "BuyPrice": 40,
+            "Custom_0": 1
+          },
+          "AbilityIds": [],
+          "AuraIds": [
+            "0"
+          ],
+          "TooltipIds": [
+            0
+          ]
+        }
+      },
+      "Id": "d5515ae3-b98d-4272-8add-82f441969ffe",
+      "Version": "5.0.0",
+      "InternalName": "[Cooler] Socket Effect",
+      "InternalDescription": "",
+      "StartingTier": "Diamond",
+      "Size": "Small",
+      "Heroes": [
+        "Common"
+      ],
+      "Tags": [],
+      "HiddenTags": [],
+      "ArtKey": "Icon_Skill_Placeholder.png",
+      "TranslationKey": "c4ce8c66a942a07853b628dcf46f319a",
+      "AudioKey": "",
+      "Localization": {
+        "Title": {
+          "Key": "19dfae8b059ee13da8388413830c5bde",
+          "Text": "Cooler"
+        },
+        "Description": null,
+        "FlavorText": null,
+        "Tooltips": [
+          {
+            "Content": {
+              "Key": "19155459c145e125ade054568c8b981b",
+              "Text": "The item here is Chilled"
+            },
+            "TooltipType": "Passive",
+            "TooltipCondition": null,
+            "Prerequisites": null
+          }
+        ]
+      },
+      "Abilities": {},
+      "Auras": {
+        "0": {
+          "Id": "0",
+          "ActiveIn": "HandOnly",
+          "Action": {
+            "$type": "TAuraActionCardModifyAttribute",
+            "AttributeType": "Chilled",
+            "Operation": "Add",
+            "Value": {
+              "$type": "TReferenceValueCardAttribute",
+              "AttributeType": "Custom_0",
+              "Target": {
+                "$type": "TTargetCardSelf",
+                "Conditions": null
+              },
+              "DefaultValue": 0.0,
+              "Modifier": null
+            },
+            "Target": {
+              "$type": "TTargetCardOccupying",
+              "Conditions": null
+            }
+          },
+          "Prerequisites": null,
+          "InternalName": "",
+          "InternalDescription": "",
+          "MigrationData": "",
+          "VFXConfig": {
+            "VFXOverrideKey": null,
+            "VFXShouldPlay": true,
+            "VFXIsTakeover": false
+          },
+          "TranslationKey": "c4ce8c66a942a07853b628dcf46f319a",
+          "WorksIn": "Anywhere"
+        }
+      }
+    }
+  }
+}

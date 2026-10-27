@@ -21,6 +21,7 @@ namespace BazaarActionAxis.Tests
             ToxicSolderingGunUsesLiveValuesAndMulticast();
             IcyCogFreezesAndPreservesBaseAbility();
             UnknownRulesDoNotInventEffects();
+            WarpDriveHeavyUsesSharedAllHandsTarget();
             ReaderSelectsTheCurrentEnchantmentByInstance();
         }
 
@@ -95,6 +96,35 @@ namespace BazaarActionAxis.Tests
             Assert.Equal(1, stats.FreezeCount);
             Assert.Near(.5, stats.FreezeSeconds);
             Assert.Equal(1, cog.Effects.Count);
+        }
+
+        private static void WarpDriveHeavyUsesSharedAllHandsTarget()
+        {
+            JsonValue template = FindTemplate("Warp Drive");
+            LiveCardEntry entry = new LiveCardEntry {
+                TemplateId = template["Id"].AsString(), Tier = "Gold", Enchantment = "Heavy",
+                EnchantmentDefinition = template["Enchantments"]["Heavy"]
+            };
+            entry.Attributes["SlowAmount"] = 2000;
+            CardDef baseCard = new CardDef { Id = "warp", BaseItemId = entry.TemplateId, Cooldown = 6 };
+            List<string> warnings = new List<string>();
+            CardDef mapped = EnchantmentMapper.Apply(baseCard, entry, warnings);
+            Assert.Equal("", string.Join(" | ", warnings.ToArray()));
+            Assert.Equal(1, mapped.Triggers.Count);
+            Effect slow = mapped.Triggers[0].Effects[0];
+            Assert.Equal("slow", slow.Kind);
+            Assert.Equal("allHandsItems", slow.Target.Kind);
+            Assert.Equal(int.MaxValue, slow.Count);
+        }
+
+        private static JsonValue FindTemplate(string name)
+        {
+            foreach (string line in File.ReadLines("tools/actionaxis_plugin/build/native_mapping_templates.jsonl"))
+            {
+                JsonValue row = Json.Parse(line);
+                if (NativeSkillSupport.Text(row["template"], "InternalName") == name) return row["template"];
+            }
+            throw new ArgumentException("missing template " + name);
         }
 
         private static void UnknownRulesDoNotInventEffects()

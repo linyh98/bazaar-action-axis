@@ -32,6 +32,7 @@ compile_plugin() {
     -r:System.dll -r:System.Core.dll \
     -r:"$(win "$BUILD/ActionAxisEngine.dll")" \
     -r:"$(win "$GAME/BepInEx/core/BepInEx.dll")" \
+    -r:"$(win "$GAME/BepInEx/core/0Harmony.dll")" \
     -r:"$(win "$GAME/TheBazaar_Data/Managed/UnityEngine.dll")" \
     -r:"$(win "$GAME/TheBazaar_Data/Managed/UnityEngine.CoreModule.dll")" \
     -r:"$(win "$GAME/TheBazaar_Data/Managed/UnityEngine.IMGUIModule.dll")" \

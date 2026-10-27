@@ -67,6 +67,7 @@ namespace BazaarActionAxis.Tests
 
             MatchBppSize();
             VisibilityRules();
+            RunLifecycleVisibility();
         }
 
         private static void MatchBppSize()
@@ -118,14 +119,15 @@ namespace BazaarActionAxis.Tests
 
         private static void VisibilityRules()
         {
-            var types = new Dictionary<string, Type>();
-            types.Add("TheBazaar.AppState", typeof(NativeState));
+            var types = NativeTypes();
+            SetActiveRun("Choice");
             var visibility = new DockButtonVisibility(delegate(string name) {
                 Type type;
                 return types.TryGetValue(name, out type) ? type : null;
             });
             NativeState.BlockInput = false;
-            Assert.True(visibility.CanOpen()); // 未安装 BPP 仍允许原生主界面入口。
+            // 状态许可只限真实对局；入口还须由 ActionAxisDockButton 验证可见 BPP 锚点。
+            Assert.True(visibility.CanOpen());
             NativeState.BlockInput = true;
             Assert.False(visibility.CanOpen());
             NativeState.BlockInput = false;
@@ -154,6 +156,83 @@ namespace BazaarActionAxis.Tests
             Assert.False(new DockButtonVisibility(delegate(string name) { return types[name]; }).CanOpen());
         }
 
+        private static void RunLifecycleVisibility()
+        {
+            var types = NativeTypes();
+            var visibility = new DockButtonVisibility(delegate(string name) {
+                Type type;
+                return types.TryGetValue(name, out type) ? type : null;
+            });
+            foreach (string state in new[] { "Choice", "Encounter", "Combat", "PVPCombat", "LevelUp", "Loot", "Pedestal" })
+            {
+                SetActiveRun(state);
+                Assert.True(visibility.CanOpen());
+            }
+
+            // Even a stale populated Run and an old combat flag cannot authorize
+            // login/loading/lobby/hero-selection/start-run or replay screens.
+            foreach (object screen in new object[] { null, new LoginState(), new LoadingState(),
+                new MainMenuState(), new HeroSelectionState(), new StartRunAppState(), new ReplayState() })
+            {
+                SetActiveRun("Encounter");
+                NativeState.CurrentState = screen;
+                NativeData.IsInCombat = true;
+                Assert.False(visibility.CanOpen());
+            }
+            foreach (string state in new[] { "NewRun", "Shutdown", "EndRunVictory", "EndRunDefeat", "Unknown" })
+            {
+                SetActiveRun(state);
+                Assert.False(visibility.CanOpen());
+            }
+
+            SetActiveRun("Choice");
+            NativeData.Run = null;
+            Assert.False(visibility.CanOpen());
+            SetActiveRun("Choice");
+            ((NativeRun)NativeData.Run).Player = null;
+            Assert.False(visibility.CanOpen());
+            SetActiveRun("Choice");
+            NativeData.CurrentState = null;
+            Assert.False(visibility.CanOpen());
+
+            // No cached true may survive any state transition, even on the same
+            // visibility adapter without a frame or elapsed-time change.
+            SetActiveRun("Choice");
+            Assert.True(visibility.CanOpen());
+            ((NativeRunState)NativeData.CurrentState).StateName = "Encounter";
+            Assert.False(visibility.CanOpen());
+            NativeState.CurrentState = new InRunState { StateName = "Encounter" };
+            Assert.True(visibility.CanOpen());
+            NativeState.CurrentState = new LoadingState();
+            Assert.False(visibility.CanOpen());
+            SetActiveRun("Choice");
+            Assert.True(visibility.CanOpen());
+            types.Remove("TheBazaar.RunAppState");
+            Assert.False(visibility.CanOpen());
+            types["TheBazaar.RunAppState"] = typeof(RunAppState);
+            Assert.True(visibility.CanOpen());
+        }
+
+        private static Dictionary<string, Type> NativeTypes()
+        {
+            return new Dictionary<string, Type> {
+                { "TheBazaar.AppState", typeof(NativeState) },
+                { "TheBazaar.Data", typeof(NativeData) },
+                { "TheBazaar.RunAppState", typeof(RunAppState) }
+            };
+        }
+
+        private static void SetActiveRun(string state)
+        {
+            NativeState.BlockInput = false;
+            NativeState.CurrentState = new InRunState { StateName = state };
+            NativeData.Run = new NativeRun { Player = new object() };
+            NativeData.CurrentState = new NativeRunState { StateName = state };
+            NativeData.IsInCombat = false;
+            _openPanel = -1;
+            _throwOnRead = false;
+        }
+
         private static int _openPanel = -1;
         private static bool _throwOnRead;
         private static bool PanelOpen(int index)
@@ -161,7 +240,27 @@ namespace BazaarActionAxis.Tests
             if (_throwOnRead) throw new InvalidOperationException("模拟 BPP 状态读取失败");
             return _openPanel == index;
         }
-        private static class NativeState { public static bool BlockInput { get; set; } }
+        private static class NativeState
+        {
+            public static bool BlockInput { get; set; }
+            public static object CurrentState { get; set; }
+        }
+        private static class NativeData
+        {
+            public static object Run;
+            public static object CurrentState;
+            public static bool IsInCombat;
+        }
+        private sealed class NativeRun { public object Player; }
+        private sealed class NativeRunState { public string StateName; }
+        private class RunAppState { public string StateName { get; set; } }
+        private sealed class InRunState : RunAppState { }
+        private sealed class LoginState { }
+        private sealed class LoadingState { }
+        private sealed class MainMenuState { }
+        private sealed class HeroSelectionState { }
+        private sealed class StartRunAppState { }
+        private sealed class ReplayState { }
         private static class CollectionState { public static bool IsVisible { get { return PanelOpen(0); } } }
         private static class HistoryState { public static bool IsVisible { get { return PanelOpen(1); } } }
         private static class BuildState { public static bool IsVisible { get { return PanelOpen(2); } } }

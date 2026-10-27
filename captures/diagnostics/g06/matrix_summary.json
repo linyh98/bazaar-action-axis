@@ -1,0 +1,1003 @@
+{
+  "g06_primary": 136,
+  "templates_in_report": 136,
+  "rows": 35334,
+  "status": {
+    "out-of-combat": 168,
+    "inactive": 288,
+    "simulated": 460,
+    "live-applied": 14,
+    "mapped": 33228,
+    "mapped-warning": 1176
+  },
+  "unsupported_templates": [],
+  "mapped_warning_templates": [
+    "Bushel",
+    "Calcinator",
+    "Outlands Terror",
+    "Tea Set"
+  ],
+  "by_template": [
+    {
+      "id": "5011e013-4a76-47ad-9482-d7fc9eb14d36",
+      "name": "[DEBUG] Legendary Fight Win Trigger",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "e4b32ed8-b70c-48de-818f-e8201fc64a6e",
+      "name": "[DEBUG] Nested Reference Modifier",
+      "status": {
+        "mapped": 312
+      }
+    },
+    {
+      "id": "e830607b-0047-437e-9643-6f553e01f89e",
+      "name": "[DEBUG] Quest item",
+      "status": {
+        "mapped": 30
+      }
+    },
+    {
+      "id": "cc822ee3-0c6c-4ff9-9883-d451a27d433a",
+      "name": "[DEBUG] Rage Extender",
+      "status": {
+        "inactive": 12,
+        "simulated": 12,
+        "live-applied": 6
+      }
+    },
+    {
+      "id": "f3d410a9-0c04-41f4-a650-271277d07fa3",
+      "name": "[DEBUG] Replacement Effect",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "587b9f7a-b8e3-481d-b572-c2a8b4d56330",
+      "name": "[DEBUG] Self Flying",
+      "status": {
+        "mapped": 24
+      }
+    },
+    {
+      "id": "fb331548-c91f-47a8-a39f-e817ed8c1802",
+      "name": "[DEBUG] Super Fast Rage Gainer",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "c7fa34d4-3e26-4471-a7a4-7919fdc86aab",
+      "name": "Adrenaline Rush",
+      "status": {
+        "inactive": 12,
+        "simulated": 18
+      }
+    },
+    {
+      "id": "ff5c6ad0-9b05-48af-9e90-6ebd0e73ffa7",
+      "name": "Adrenaline Shot",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "c39c18f9-fe1b-4329-af69-ede09a5da58b",
+      "name": "Anaconda",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "c9a88c39-28e0-4618-907d-aec77f44d817",
+      "name": "Arken's Ring",
+      "status": {
+        "mapped": 144
+      }
+    },
+    {
+      "id": "560a532c-73f4-4edd-b197-0127e2ca4cc9",
+      "name": "Arms Dealer",
+      "status": {
+        "out-of-combat": 30
+      }
+    },
+    {
+      "id": "b3b0f6a4-bad5-49dc-a6f7-128be2565869",
+      "name": "Assault Sigil",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "c926fac8-f9ba-4430-a01a-a71a32c501c7",
+      "name": "ATM",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "0045d15e-ac74-436f-a200-eeedab7baf90",
+      "name": "Backroom Dealings",
+      "status": {
+        "out-of-combat": 30
+      }
+    },
+    {
+      "id": "2705353a-b8ec-47f0-acd9-d641dd13d6d0",
+      "name": "Bagpipes",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "37c65de1-3027-43b1-923b-e9b675222123",
+      "name": "Bandoleer",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "b86d7698-70b2-4caa-b373-2f377125d6d2",
+      "name": "Battle Axe",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "d36f0ce1-98c4-4b00-8342-a6b89f142ae4",
+      "name": "Bear Claws",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "6209e47a-d5c6-4ecb-b6e3-e41787b13345",
+      "name": "Bear Mask",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "55040479-7f35-4751-9f10-1403d09af1dd",
+      "name": "Beast Tooth",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "8612baa6-4d55-430e-9f40-6db1e5dfe8ff",
+      "name": "Beast Unleashed",
+      "status": {
+        "inactive": 18,
+        "simulated": 12
+      }
+    },
+    {
+      "id": "179f4d08-9001-4216-a46d-6600e2d0b2fc",
+      "name": "Black Mamba",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "3890374d-4952-471d-b550-e230d0ce5343",
+      "name": "Bluenanas",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "7a504eff-6d75-40fd-b048-70a6d69dd6d4",
+      "name": "Boa Constrictor",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "50039402-e84e-4698-90fa-7cbaffca9ce8",
+      "name": "Boar Mask",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "b2ddd57a-8a79-45ed-a7f9-b2b78ea95d21",
+      "name": "Boar Roast",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "3b924a0a-f423-4286-8d08-9ade57b2ebae",
+      "name": "Brass Knuckles",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "2d37bcc5-f9af-4eb4-b5cd-5bc89ededab1",
+      "name": "Burn Scar",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "7931571a-3d32-41e8-bf7b-ca6b4d1b7a3d",
+      "name": "Burning Shield",
+      "status": {
+        "inactive": 6,
+        "simulated": 24
+      }
+    },
+    {
+      "id": "56cf21ff-db2c-4f49-af5f-cf9a01508e6f",
+      "name": "Burst of Rage",
+      "status": {
+        "inactive": 18,
+        "simulated": 12
+      }
+    },
+    {
+      "id": "843ddc82-9d87-4995-b81c-bf31ae45fd30",
+      "name": "Bushel",
+      "status": {
+        "mapped-warning": 420
+      }
+    },
+    {
+      "id": "3e3bda1d-81ba-4719-8772-417d8b834e99",
+      "name": "Calcinator",
+      "status": {
+        "mapped": 252,
+        "mapped-warning": 168
+      }
+    },
+    {
+      "id": "4c6d6a91-cc1b-4d40-8ff6-d2c8bbe40c81",
+      "name": "Calming Vitality",
+      "status": {
+        "inactive": 12,
+        "simulated": 18
+      }
+    },
+    {
+      "id": "f95df8c9-c04c-4872-ba99-006f1096db64",
+      "name": "Campfire",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "c751b1b8-7128-4e06-8974-de5abca47634",
+      "name": "Castle Doctrine",
+      "status": {
+        "inactive": 12,
+        "simulated": 18
+      }
+    },
+    {
+      "id": "1a3d4cde-333c-4936-b147-263d73f6d200",
+      "name": "Chocolate Bar",
+      "status": {
+        "mapped": 360
+      }
+    },
+    {
+      "id": "deaad0b0-27bc-4800-928f-0fdf443d2c2d",
+      "name": "Citrus",
+      "status": {
+        "mapped": 360
+      }
+    },
+    {
+      "id": "a21b1e80-c633-487b-9292-7552519198c8",
+      "name": "Closed Sign",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "9ad15f24-4def-4d82-8545-d73794cfbaf2",
+      "name": "Coconut",
+      "status": {
+        "mapped": 360
+      }
+    },
+    {
+      "id": "5e17cfc3-25c0-4a74-8a33-07ee972e6f6e",
+      "name": "Concealed Dagger",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "ee9a5e52-4fe9-4999-9329-6aafe24a129e",
+      "name": "Death from Above",
+      "status": {
+        "inactive": 6,
+        "simulated": 24
+      }
+    },
+    {
+      "id": "3b32361e-2ddc-47b6-bcce-0ac560cb407b",
+      "name": "Dragon Tooth",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "5b4b3685-aa1d-477e-aed5-805813faa2b2",
+      "name": "Eagle Sigil",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "1e9649ce-e350-4c0b-b763-5e4c7e038010",
+      "name": "Earrings",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "ef4e5045-91c6-4973-8aed-1f29300e1db4",
+      "name": "Everlasting Life",
+      "status": {
+        "inactive": 6,
+        "simulated": 24
+      }
+    },
+    {
+      "id": "eda078df-abe9-47d5-91e1-5fdb31190a5a",
+      "name": "Executioner's Cleaver",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "8b583fac-46a1-4531-8026-efd57232571a",
+      "name": "Extended Rage",
+      "status": {
+        "inactive": 18,
+        "simulated": 8,
+        "live-applied": 4
+      }
+    },
+    {
+      "id": "90acad0b-2154-4af1-a448-5f8dc304612e",
+      "name": "Farmer's Market",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "bf0d7a30-b5e0-4d55-841d-76c113eae2b2",
+      "name": "Feeding Frenzy",
+      "status": {
+        "inactive": 6,
+        "simulated": 24
+      }
+    },
+    {
+      "id": "feac268f-c3aa-442b-8b14-ba9026156133",
+      "name": "Feral Alliance",
+      "status": {
+        "inactive": 12,
+        "simulated": 18
+      }
+    },
+    {
+      "id": "904ffad8-86e3-4e3b-8a26-723604cc4f0e",
+      "name": "Flame Sigil",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "90341289-583b-431b-a044-36cad1047ff1",
+      "name": "Frenzy Cache",
+      "status": {
+        "simulated": 30
+      }
+    },
+    {
+      "id": "0df9aa59-6b34-4968-94f0-98af5e22aa7a",
+      "name": "Frog Hollow",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "8bbfd341-660f-4b9f-9c95-2e40c7d05c1f",
+      "name": "Gearnola Bar",
+      "status": {
+        "mapped": 390
+      }
+    },
+    {
+      "id": "d25ccf21-f789-4e06-8c38-b7f5f47e66af",
+      "name": "Ghillie Suit",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "638a6b50-7803-4da5-9514-ca0627fd7b5f",
+      "name": "Gland",
+      "status": {
+        "mapped": 390
+      }
+    },
+    {
+      "id": "07df297d-e116-42a4-9596-4af674764d1b",
+      "name": "Globe",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "e69fe274-6cdf-484e-887c-cc431ad999d8",
+      "name": "Great Eagle",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "d0a15bf6-fc3a-47c5-84c5-7c34c6996598",
+      "name": "Green Gumball",
+      "status": {
+        "mapped": 360
+      }
+    },
+    {
+      "id": "c53eff8b-0407-4e8c-adaf-70b2a66b3528",
+      "name": "Gumball Machine",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "bd3d7760-478f-4bc0-893f-1398cc29490e",
+      "name": "Hallucination",
+      "status": {
+        "inactive": 12,
+        "simulated": 18
+      }
+    },
+    {
+      "id": "a4b48bb6-180a-49fd-bb1c-c6beb372b6de",
+      "name": "Hammock",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "aa62a20d-f33e-4389-a359-fd590ea5cef5",
+      "name": "Healing Draught",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "c6a57594-4358-44de-b888-64216df4aa05",
+      "name": "Healthy Tip",
+      "status": {
+        "inactive": 6,
+        "out-of-combat": 24
+      }
+    },
+    {
+      "id": "c2a74791-1d79-45bd-841d-2e3f2a61da8f",
+      "name": "Hogwash",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "b9a59fba-b266-478d-8bef-ae183e4f79d5",
+      "name": "Honey Badger",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "cdea14ac-23d0-43c2-95b3-12cedab1795a",
+      "name": "Hot Stones",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "369a6704-2727-4cea-be27-01b76c82df45",
+      "name": "Hunker Down",
+      "status": {
+        "inactive": 6,
+        "simulated": 24
+      }
+    },
+    {
+      "id": "38e105eb-c5c7-484f-b7ec-f9912701d3ef",
+      "name": "Hunter's Axe",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "58e1ccc3-a59f-42dc-917d-6e846c71615e",
+      "name": "Hunting Rifle",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "e93df1d5-112d-41ef-9336-e784053d09be",
+      "name": "In-Flight Meal",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "0beccea0-bb9b-444b-b063-bf6aeadaddc8",
+      "name": "Inspired Rage",
+      "status": {
+        "inactive": 18,
+        "simulated": 12
+      }
+    },
+    {
+      "id": "4fdc947b-3646-429e-ba4e-bb693fe44bc2",
+      "name": "Invulnerability Potion",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "1ac7830c-8506-4e7f-a1b6-8ba302f6a8fe",
+      "name": "Karnok's Rage",
+      "status": {
+        "inactive": 18,
+        "simulated": 12
+      }
+    },
+    {
+      "id": "1bfdb3c5-dece-4a67-a9ed-255fbc060f4e",
+      "name": "Karst",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "d5e2cff2-31b5-48eb-86ff-9543ea0c6d40",
+      "name": "Knee Brace",
+      "status": {
+        "mapped": 90
+      }
+    },
+    {
+      "id": "832afbee-fdb4-47e2-b4ac-0206b8955816",
+      "name": "Lemonade Stand",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "7bd0e16f-71bd-4747-be77-3e7b4afa203a",
+      "name": "Lichen",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "9046606f-3f26-4fe4-b2b3-5666839e549b",
+      "name": "Lifting Stones",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "9a7d5711-930a-4815-86cc-4e357680730c",
+      "name": "Lion Cane",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "8aaaa5fa-0145-4861-afa3-43cae80b0a3c",
+      "name": "Log Trap",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "522e0f7e-67f6-4646-ba1d-f51c3b40d8e1",
+      "name": "Lone Charge",
+      "status": {
+        "inactive": 12,
+        "simulated": 18
+      }
+    },
+    {
+      "id": "a01cd513-8d2b-45c7-b5ba-6d4dcdd23065",
+      "name": "Lunch Box",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "05a83727-cfd8-4f9b-a109-e720714de70b",
+      "name": "Machete",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "7153afb9-c4c6-4449-8d70-d1b88fc86c1a",
+      "name": "Money Furnace",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "0585aba6-aee3-47f6-bd83-a29c56dc1fb1",
+      "name": "Old Barrel",
+      "status": {
+        "mapped": 30
+      }
+    },
+    {
+      "id": "0660ace1-2d6a-4f7b-bfc2-05e8582d27b9",
+      "name": "Outlands Terror",
+      "status": {
+        "mapped-warning": 252
+      }
+    },
+    {
+      "id": "f105f32c-d601-4624-9971-5cb16ff0b091",
+      "name": "Pasta",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "fb41fdef-d83b-4674-8cb3-9a224aa8f84a",
+      "name": "Pelt",
+      "status": {
+        "mapped": 30
+      }
+    },
+    {
+      "id": "c5936035-d32a-4d82-8dfc-44deb993b5ea",
+      "name": "Pickpocket",
+      "status": {
+        "simulated": 30
+      }
+    },
+    {
+      "id": "855cf2a5-930b-43db-b388-9f814f80a4fb",
+      "name": "Piggy Bank",
+      "status": {
+        "mapped": 90
+      }
+    },
+    {
+      "id": "61ffd0e3-a0fe-43d2-8112-85fc90580d71",
+      "name": "Property Mogul",
+      "status": {
+        "inactive": 6,
+        "out-of-combat": 24
+      }
+    },
+    {
+      "id": "5f63004e-26dd-460d-b359-38a84ffa66c1",
+      "name": "Protein Powder",
+      "status": {
+        "out-of-combat": 30
+      }
+    },
+    {
+      "id": "3174b74a-9e67-4db7-ba98-0d4935b2586d",
+      "name": "Raffle Ticket",
+      "status": {
+        "mapped": 360
+      }
+    },
+    {
+      "id": "5ff845f5-6cb5-40b8-957f-8a6ae47c3962",
+      "name": "Red Envelope",
+      "status": {
+        "out-of-combat": 30
+      }
+    },
+    {
+      "id": "b456e981-db43-4791-b364-7973221e6f03",
+      "name": "Resistance Bands",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "c2cc691a-8f35-43be-8951-c65911b08865",
+      "name": "Retort",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "459dd1f7-285e-4172-b065-1fabf65476fb",
+      "name": "Runed Amulet",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "94a184be-98f2-4a65-8334-e15deff2c082",
+      "name": "Runic Claymore",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "aa258418-04c1-4fc2-b597-6897fb7544f0",
+      "name": "Sawpike",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "00e1526a-0eb6-49af-93fd-e5e4aea5f05a",
+      "name": "Shortened Rage",
+      "status": {
+        "inactive": 18,
+        "simulated": 8,
+        "live-applied": 4
+      }
+    },
+    {
+      "id": "8d0795b4-92f2-4191-978a-b8989046b12f",
+      "name": "Shrinking Potion",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "c9beb35d-e6c6-4e3a-ad2c-1d64db11be07",
+      "name": "Signet Ring",
+      "status": {
+        "mapped": 90
+      }
+    },
+    {
+      "id": "fb56565d-1635-4199-84b1-8ccb4d97bb85",
+      "name": "Snow Wisp",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "24d7f9f3-a1a4-456d-a877-5a8f7f4d58b8",
+      "name": "Snowshoes",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "9e1173c2-c44d-4aa5-9aa3-10271be80943",
+      "name": "Spiked Wraps",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "c135f23d-b8b4-4aa8-9a11-b288ae05908c",
+      "name": "Staff of the Moose",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "dfbeb777-974b-4a66-bd35-683b859cafa7",
+      "name": "Steel Bramble",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "38eb79ab-a415-4a8b-ab61-5a7370397b59",
+      "name": "Still Focus",
+      "status": {
+        "inactive": 12,
+        "simulated": 18
+      }
+    },
+    {
+      "id": "cb16b205-785f-4ebe-80ae-c69f95942023",
+      "name": "Stretch Pants",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "96e51b95-eaab-40ea-9a89-381727ce2434",
+      "name": "Succulents",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "8816d65b-eb4e-41e7-830e-42a0e35a1e2d",
+      "name": "Swift Temper",
+      "status": {
+        "inactive": 12,
+        "simulated": 18
+      }
+    },
+    {
+      "id": "0c501dff-aa3a-4091-9c1e-2df43faef2e1",
+      "name": "Tea Set",
+      "status": {
+        "mapped-warning": 336
+      }
+    },
+    {
+      "id": "24433bda-f934-4fab-b0a7-1842e2ca195f",
+      "name": "Tent",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "7206e518-ec85-4524-aa55-ce98fa2f3fad",
+      "name": "Torch",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "a9b441e1-5824-4855-9359-2ab4643d9ff5",
+      "name": "Toxic Shield",
+      "status": {
+        "inactive": 6,
+        "simulated": 24
+      }
+    },
+    {
+      "id": "a6e2c525-9247-42d1-b28c-abf868f4ecdc",
+      "name": "Tranquil Purge",
+      "status": {
+        "inactive": 18,
+        "simulated": 12
+      }
+    },
+    {
+      "id": "90b3cc1a-2251-4af7-a7c7-496aac457784",
+      "name": "Tranquil Sigil",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "b57734a7-642e-4c57-861c-b8a488596047",
+      "name": "Tree Club",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "7317d6a2-adea-442c-9e97-7f7bbf64ae99",
+      "name": "Unibou",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "7434203a-9b5c-472e-8208-c1e17e5d7bb3",
+      "name": "Utility Belt",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "05a32402-598c-4bb5-a280-1a84f0ab84fa",
+      "name": "Vengeful Sigil",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "08bb5055-bd8d-4f86-bff6-24f8cb47f509",
+      "name": "Vial of Blood",
+      "status": {
+        "mapped": 72
+      }
+    },
+    {
+      "id": "1b518cd8-57d3-4747-8afa-3b99aae88e62",
+      "name": "Walter Cooler",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "8b994da7-7aa3-40cd-aafd-c84f0913d0c9",
+      "name": "Wanted Poster",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "02859d88-e334-45a9-8483-597d744cb7c7",
+      "name": "Warding Glyphs",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "153dfd6d-7dc8-4386-9703-ea6c99f92d4a",
+      "name": "Warpaint",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "9d2a2c9e-19b2-48e7-b891-53d570ed171e",
+      "name": "Wild Bear",
+      "status": {
+        "mapped": 252
+      }
+    },
+    {
+      "id": "e01ac7ab-1ad5-4235-81b4-44d057878953",
+      "name": "Wild Boar",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "4d31a8ff-2706-43c9-91f4-ae72d2340efc",
+      "name": "Wildroot Amulet",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "9d6b3763-fd74-4d02-b9c0-56931974bfe3",
+      "name": "Wing Sigil",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "58b1a5a2-9c9e-4e05-b5e5-ca7c7ddad508",
+      "name": "Wolf",
+      "status": {
+        "mapped": 336
+      }
+    },
+    {
+      "id": "fc46bfd9-e946-44e5-b097-f740b58f1808",
+      "name": "Workout Routine",
+      "status": {
+        "inactive": 6,
+        "simulated": 24
+      }
+    },
+    {
+      "id": "59bdb325-a2b0-4932-a683-f7f906a1c2a4",
+      "name": "Wrist Blade",
+      "status": {
+        "mapped": 420
+      }
+    },
+    {
+      "id": "2b66528b-f129-4593-99a7-27146a857e12",
+      "name": "Yarrow Paste",
+      "status": {
+        "mapped": 420
+      }
+    }
+  ]
+}

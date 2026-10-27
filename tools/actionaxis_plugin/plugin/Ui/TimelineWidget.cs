@@ -13,13 +13,20 @@ namespace BazaarActionAxis.Plugin.Ui
             _dragging = false;
         }
 
-        public static void Draw(Rect rect, double endTime, ref double playhead)
+        public static void Draw(Rect rect, double endTime, ref double playhead, double? combatEnd = null)
         {
             Theme.Fill(rect, Theme.Track);
             Theme.Outline(rect, Theme.FrameDim, Theme.Scale);
             float ratio = endTime > 0 ? (float)(playhead / endTime) : 0f;
             Theme.Fill(new Rect(rect.x, rect.y, rect.width * ratio, rect.height),
                 new Color(Theme.Border.r, Theme.Border.g, Theme.Border.b, 0.30f));
+            if (combatEnd.HasValue && combatEnd.Value >= 0 && combatEnd.Value < endTime)
+            {
+                float endedX = rect.x + (float)(combatEnd.Value / endTime) * rect.width;
+                Theme.Fill(new Rect(endedX, rect.y, rect.xMax - endedX, rect.height), new Color(0f, 0f, 0f, 0.6f));
+                Theme.Fill(new Rect(endedX - Theme.Scale, rect.y - 3f * Theme.Scale, 2f * Theme.Scale,
+                    rect.height + 6f * Theme.Scale), Theme.BadgeColor("damage"));
+            }
 
             int maxSecond = (int)Math.Floor(endTime);
             for (int second = 0; second <= maxSecond; second += 5)
@@ -43,7 +50,7 @@ namespace BazaarActionAxis.Plugin.Ui
 
             GUI.Label(
                 new Rect(rect.x, rect.y - 27f * Theme.Scale, 220f * Theme.Scale, 22f * Theme.Scale),
-                playhead.ToString("0.0") + "s / " + endTime.ToString("0.0") + "s",
+                playhead.ToString("0.00") + "s / " + endTime.ToString("0.00") + "s",
                 Theme.TimeStyle);
 
             Event current = Event.current;

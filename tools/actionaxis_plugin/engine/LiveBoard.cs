@@ -8,6 +8,9 @@ namespace BazaarActionAxis.Engine
     public sealed class LiveCardEntry
     {
         public string InstanceId;
+        // Replay ledgers must keep the native instance identity instead of the
+        // catalog's template#index fallback.
+        public bool UseInstanceIdAsId;
         public string TemplateId;
         public string Tier;
         public string Size;
@@ -32,6 +35,8 @@ namespace BazaarActionAxis.Engine
         public Dictionary<string, int> PlayerAttributes = new Dictionary<string, int>();
         // 玩家英雄身份（BPP snapshot 的 Hero），用于 TCardConditionalPlayerHero。
         public string PlayerHero;
+        // 对手英雄身份（Run.Opponent.Hero）；怪物战为 null，不能拿玩家身份顶替。
+        public string EnemyHero;
         public double? PlayerHealth;
         public double? PlayerMaxHealth;
         public string SkillReadError;
@@ -53,6 +58,10 @@ namespace BazaarActionAxis.Engine
         public string Tier;
         public string Name;
         public int Order;
+        public bool AttributesAreLive;
+        // 纯模板矩阵/测试棋盘：允许把静态人物光环在现场结算；
+        // 实时棋盘只沿用快照，避免重复叠加。
+        public bool TemplateBoard;
         public Dictionary<string, int> Attributes = new Dictionary<string, int>();
         public JsonValue Template;
         public List<string> RawTooltips = new List<string>();

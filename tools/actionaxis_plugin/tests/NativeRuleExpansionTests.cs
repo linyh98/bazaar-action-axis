@@ -90,7 +90,8 @@ namespace BazaarActionAxis.Tests
             Assert.Near(7, result.Totals.Player.Damage);
             BattleEvent damage = result.Events.Find(delegate(BattleEvent ev) { return ev.Kind == "damage"; });
             Assert.Equal(card.Id, damage.SourceItemId);
-            Assert.Near(0, damage.Time);
+            // A reaction to an opening action lands on the following frame.
+            Assert.Near(0.05, damage.Time);
         }
 
         private static void ReloadAndFlyingStop()
@@ -203,7 +204,7 @@ namespace BazaarActionAxis.Tests
                 NativeSkillSupport.MapTrigger(Json.Parse("{\"$type\":\"TTriggerOnPlayerEnraged\",\"Subject\":{\"$type\":\"TTargetCardSelf\",\"Conditions\":null},\"Source\":null}"));
             });
             Assert.Throws<FormatException>(delegate {
-                NativeSkillSupport.MapTrigger(Json.Parse("{\"$type\":\"TTriggerOnCardStartedFlying\",\"Subject\":{\"$type\":\"TTargetCardSection\",\"TargetSection\":\"AbsolutePlayerHand\",\"Conditions\":null},\"Source\":null}"));
+                NativeSkillSupport.MapTrigger(Json.Parse("{\"$type\":\"TTriggerOnCardStartedFlying\",\"Subject\":{\"$type\":\"TTargetCardSection\",\"TargetSection\":\"SelectionSet\",\"Conditions\":null},\"Source\":null}"));
             });
             Assert.Throws<FormatException>(delegate {
                 NativeSkillSupport.MapSubject(Json.Parse("{\"$type\":\"TTargetCardXMost\",\"TargetSection\":\"SelfHand\"}"));
