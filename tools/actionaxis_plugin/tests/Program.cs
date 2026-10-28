@@ -99,6 +99,10 @@ namespace BazaarActionAxis.Tests
             TestHarness.Run("ReplayPeriodicFrameSettlement", ReplayPeriodicFrameSettlementTests.Run);
             TestHarness.Run("ReplayRegenCritical", ReplayRegenCriticalTests.Run);
             TestHarness.Run("ReplayTerminalQueuedAttribute", ReplayTerminalQueuedAttributeTests.Run);
+            TestHarness.Run("ReplayLethalCriticalCounter", ReplayLethalCriticalCounterTests.Run);
+            TestHarness.Run("ReplayLethalLowPhase", ReplayLethalLowPhaseTests.Run);
+            TestHarness.Run("ReplayNativeWarningResolution", ReplayNativeWarningResolutionTests.Run);
+            TestHarness.Run("ReplayHasteObserverOrder", ReplayHasteObserverOrderTests.Run);
             TestHarness.Run("ReplayCr2VirusTransform", ReplayCr2VirusTransformTests.Run);
             TestHarness.Run("ReplayRandom", ReplayRandomTests.Run);
             TestHarness.Run("ValidationReplay", ValidationReplayTests.Run);

@@ -108,21 +108,33 @@ def _activation_order(pairs):
 def ordered_damage_critical_flags(events, records):
     """Pair explicit bits only when contiguous hit boundaries are unique.
 
-    One damage action has one Health adjustment and optionally one adjacent
-    Shield adjustment, with the same bit on both. Native can serialize HP
-    before Shield or Shield before HP. Hits absorbed entirely by Shield have
-    one Shield adjustment each. Amounts never identify a boundary.
+    One damage action has one Health or Shield adjustment, or one adjacent
+    pair with the same bit. Native can serialize HP before Shield or Shield
+    before HP. Require enough unavoidable hit boundaries to cover every
+    execution: a split hit plus an unobserved/capped hit stays ambiguous.
+    Amounts never identify a boundary.
     """
     sequence = [event.get('sequence') for event in events]
     if (not all(isinstance(value, int) for value in sequence)
             or not all(left < right for left, right in zip(sequence, sequence[1:]))):
         return None
-    if (len(records) == len(events)
-            and all(attribute == 'Shield' and isinstance(bit, bool)
-                    for bit, attribute in records)):
-        return [bit for bit, _ in records]
-    if (sum(attribute == 'Health' for _, attribute in records) != len(events)
-            or any(attribute not in ('Health', 'Shield') for _, attribute in records)):
+    if (not len(events) <= len(records) <= 2 * len(events)
+            or any(attribute not in ('Health', 'Shield') or not isinstance(bit, bool)
+                   for bit, attribute in records)):
+        return None
+
+    def split_at(position):
+        group = records[position:position + 2]
+        return (len(group) == 2
+                and {group[0][1], group[1][1]} == {'Health', 'Shield'}
+                and group[0][0] == group[1][0])
+
+    minimum_hits = [0] * (len(records) + 1)
+    for position in range(len(records) - 1, -1, -1):
+        minimum_hits[position] = 1 + minimum_hits[position + 1]
+        if split_at(position):
+            minimum_hits[position] = min(minimum_hits[position], 1 + minimum_hits[position + 2])
+    if minimum_hits[0] != len(events):
         return None
 
     @lru_cache(maxsize=None)
@@ -134,11 +146,7 @@ def ordered_damage_critical_flags(events, records):
             group = records[position:position + size]
             if len(group) != size:
                 continue
-            if size == 1:
-                valid = group[0][1] == 'Health'
-            else:
-                valid = ({group[0][1], group[1][1]} == {'Health', 'Shield'}
-                         and group[0][0] == group[1][0])
+            valid = size == 1 or split_at(position)
             if not valid:
                 continue
             for suffix in partitions(position + size, hits + 1):
@@ -543,7 +551,7 @@ def build_decisions(native):
     for key, events in effects.items():
         records = adjustments.get(key, [])
         flags = [row[0] for row in records]
-        if key[2] == 'shield' and key in unknown_adjustments:
+        if key[2] in ('damage', 'shield') and key in unknown_adjustments:
             excluded.append({'frame': key[0], 'reason': 'ambiguous critical sources', 'targetSide': key[1]})
             continue
         if not flags:

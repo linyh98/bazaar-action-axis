@@ -48,9 +48,11 @@ namespace BazaarActionAxis.Plugin
                     foreach (object selected in ReflectionUtil.GetEnumerable(LiveSkillReader.GetMember(state, "SelectionSet")))
                     {
                         string id = Identity(selected);
-                        if (!string.IsNullOrEmpty(id)) selectedIds.Add(id);
+                        // PvP 准备阶段的 ChoiceState 仍会带着 "pvp_" 实例；它不是
+                        // 玩家可选择的野怪（见 IsPvpInstanceId）。
+                        if (!string.IsNullOrEmpty(id) && !IsPvpInstanceId(id)) selectedIds.Add(id);
                     }
-                else if (!string.IsNullOrEmpty(currentId)) selectedIds.Add(currentId);
+                else if (!string.IsNullOrEmpty(currentId) && !IsPvpInstanceId(currentId)) selectedIds.Add(currentId);
                 if (selectedIds.Count == 0) return result;
 
                 object manager = ReadyManager(dataType);
@@ -77,6 +79,13 @@ namespace BazaarActionAxis.Plugin
                 {
                     object currentCard;
                     object currentTemplate = EncounterTemplate(manager, entities, currentId, out currentCard);
+                    // 静态 PvP 占位遭遇（"PvP Encounter - End of Day" 等）也用
+                    // TCombatantMonster 指向占位怪物，不能投影成野怪对战。
+                    if (IsPvpEncounterTemplate(currentTemplate))
+                    {
+                        selectedIds.Clear();
+                        return result;
+                    }
                     // Events such as Mountain Pass keep the parent event as
                     // CurrentEncounterId; their generated combat option lives
                     // in SelectionSet. Direct combats (including PvP) must not
@@ -85,7 +94,7 @@ namespace BazaarActionAxis.Plugin
                         foreach (object selected in ReflectionUtil.GetEnumerable(LiveSkillReader.GetMember(state, "SelectionSet")))
                         {
                             string id = Identity(selected);
-                            if (!string.IsNullOrEmpty(id)) selectedIds.Add(id);
+                            if (!string.IsNullOrEmpty(id) && !IsPvpInstanceId(id)) selectedIds.Add(id);
                         }
                 }
                 HashSet<string> seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -117,6 +126,33 @@ namespace BazaarActionAxis.Plugin
             return result;
         }
 
+        // PvP 对局由服务器分配对手（玩家对决）。准备阶段仍可能是 ChoiceState，
+        // SelectionSet / 当前遭遇里是 "pvp_" 前缀的实例；它可能套用某个怪物
+        // 遭遇模板作为占位，但不属于玩家可选择的野怪。README 约定玩家对决
+        // 使用无限生命木桩，因此这类实例一律不参与怪物选择。
+        private static bool IsPvpInstanceId(string id)
+        {
+            return !string.IsNullOrEmpty(id) &&
+                id.StartsWith("pvp_", StringComparison.OrdinalIgnoreCase);
+        }
+
+        // 静态 PvP 占位遭遇（"PvP Encounter - End of Day"、"Hour 6 PvP" 等）
+        // 用 TCombatantMonster 指向占位怪物；内部名/标题带 PvP，按玩家对决处理。
+        private static bool IsPvpEncounterTemplate(object template)
+        {
+            if (template == null) return false;
+            if (ContainsPvp(Text(LiveSkillReader.GetMember(template, "InternalName")))) return true;
+            object title = LiveSkillReader.GetMember(
+                LiveSkillReader.GetMember(LiveSkillReader.GetMember(template, "Localization"), "Title"), "Text");
+            return ContainsPvp(Text(title));
+        }
+
+        private static bool ContainsPvp(string value)
+        {
+            return !string.IsNullOrEmpty(value) &&
+                value.IndexOf("pvp", StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
         private static object EncounterTemplate(object manager, Dictionary<string, object> entities, string id, out object card)
         {
             card = null;
@@ -128,6 +164,8 @@ namespace BazaarActionAxis.Plugin
 
         private static LiveMonsterEntry ReadEncounter(object manager, object card, object template, string encounterId, Func<string, JsonValue> getTemplate)
         {
+            // PvP 实例/占位遭遇不是野怪：玩家对决按 README 约定使用木桩。
+            if (IsPvpInstanceId(encounterId) || IsPvpEncounterTemplate(template)) return null;
             object combatant = LiveSkillReader.GetMember(template, "CombatantType");
             string monsterId = Text(LiveSkillReader.GetMember(combatant, "MonsterTemplateId"));
             if (string.IsNullOrEmpty(monsterId)) return null;

@@ -165,11 +165,11 @@ namespace BazaarActionAxis.Tests
             List<string> warnings = new List<string>();
             warnings.AddRange(playerMap.EnchantmentWarnings);
             warnings.AddRange(enemyMap.EnchantmentWarnings);
-            warnings.AddRange(playerMap.LiveAttributeWarnings);
-            warnings.AddRange(enemyMap.LiveAttributeWarnings);
             warnings.AddRange(skillWarnings);
             warnings.AddRange(NativeCardAbilityMapper.Apply(config));
             warnings.AddRange(NativeItemMapper.Apply(config));
+            warnings.AddRange(playerMap.UnresolvedLiveAttributeWarnings(config));
+            warnings.AddRange(enemyMap.UnresolvedLiveAttributeWarnings(config));
             AppendUnmappedCatalogWarnings(warnings, playerMap, config, config.Player);
             AppendUnmappedCatalogWarnings(warnings, enemyMap, config, config.Enemy);
 

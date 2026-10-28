@@ -95,6 +95,61 @@ class ReplayRandomDecisionsTests(unittest.TestCase):
             'damageType': 'Damage', 'amount': -1, 'attributeChanged': 'Shield', 'isCrit': False})
         self.assertEqual(result['criticals'], build_decisions(changed)['criticals'])
 
+    def mixed_damage_attributes_native(self, records):
+        native = self.native()
+        damage = native['combat']['events'][1]
+        native['combat']['events'] = [dict(damage, source='gun-a', sequence=10),
+                                      dict(damage, source='gun-b', sequence=12)]
+        native['combat']['healthChanges'][0]['healthAdjustments'] = [
+            {'damageType': 'Damage', 'amount': -100, 'attributeChanged': attribute, 'isCrit': bit}
+            for bit, attribute in records]
+        return native
+
+    def test_health_only_and_shield_only_hits_retain_ordered_explicit_bits(self):
+        # 103b9e frame120: the first hit crits into HP; a shield action then
+        # absorbs the second, noncritical hit. Different bits prove two hits.
+        for records in ([(True, 'Health'), (False, 'Shield')],
+                        [(False, 'Shield'), (True, 'Health')],
+                        [(True, 'Health'), (False, 'Health'), (False, 'Shield')]):
+            with self.subTest(records=records):
+                native = self.mixed_damage_attributes_native(records)
+                result = build_decisions(native)
+                self.assertEqual([('gun-a', records[0][0]), ('gun-b', records[-1][0])],
+                                 [(row['source'], row['critical']) for row in result['criticals']])
+                self.assertEqual([], result['excluded'])
+                changed = copy.deepcopy(native)
+                for adjustment in changed['combat']['healthChanges'][0]['healthAdjustments']:
+                    adjustment['amount'] = 987654321
+                self.assertEqual(result, build_decisions(changed))
+
+    def test_mixed_damage_attributes_keep_split_plus_missing_hit_ambiguous(self):
+        for bit in (False, True):
+            for attributes in (('Health', 'Shield'), ('Shield', 'Health')):
+                native = self.mixed_damage_attributes_native([(bit, attribute) for attribute in attributes])
+                result = build_decisions(native)
+                self.assertEqual([], result['criticals'])
+                self.assertEqual('ambiguous critical sources', result['excluded'][0]['reason'])
+
+    def test_mixed_damage_attributes_require_complete_order_and_explicit_bits(self):
+        for case in ('missing-sequence', 'same-sequence', 'reversed-sequence', 'unknown-bit', 'invalid-bit',
+                     'extra-unknown-bit', 'invalid-attribute'):
+            with self.subTest(case=case):
+                native = self.mixed_damage_attributes_native([(True, 'Health'), (False, 'Shield')])
+                if case.endswith('sequence'):
+                    native['combat']['events'][-1]['sequence'] = {
+                        'missing-sequence': None, 'same-sequence': 10, 'reversed-sequence': 9}[case]
+                else:
+                    rows = native['combat']['healthChanges'][0]['healthAdjustments']
+                    if case == 'extra-unknown-bit':
+                        rows.append(dict(rows[0], isCrit=None))
+                    elif case == 'invalid-attribute':
+                        rows[0]['attributeChanged'] = 'Unknown'
+                    else:
+                        rows[0]['isCrit'] = None if case == 'unknown-bit' else 0
+                result = build_decisions(native)
+                self.assertEqual([], result['criticals'])
+                self.assertTrue(result['excluded'])
+
     def split_critical_native(self):
         native = self.native()
         first = copy.deepcopy(native['combat']['events'][1])

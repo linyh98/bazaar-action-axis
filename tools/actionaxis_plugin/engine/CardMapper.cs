@@ -10,6 +10,25 @@ namespace BazaarActionAxis.Engine
         public List<string> Unknown = new List<string>();
         public List<string> EnchantmentWarnings = new List<string>();
         public List<string> LiveAttributeWarnings = new List<string>();
+        internal Dictionary<string, List<string>> LiveAttributeWarningsByCard = new Dictionary<string, List<string>>();
+
+        // Text-catalog override ambiguity belongs to that imported graph. Once
+        // native mapping replaces a particular card's graph completely, its
+        // native attribute references resolve that ambiguity. Fallback cards
+        // retain their warnings; native mapping warnings are handled separately.
+        public List<string> UnresolvedLiveAttributeWarnings(BattleConfig finalConfig)
+        {
+            if (finalConfig == null) return new List<string>(LiveAttributeWarnings);
+            List<string> unresolved = new List<string>();
+            foreach (KeyValuePair<string, List<string>> entry in LiveAttributeWarningsByCard)
+            {
+                CardDef card;
+                if (finalConfig.Cards.TryGetValue(entry.Key, out card) &&
+                    card.DataSource == "native-template" && card.ParseStatus == "structured") continue;
+                unresolved.AddRange(entry.Value);
+            }
+            return unresolved;
+        }
     }
 
     public static class CardMapper
@@ -88,7 +107,9 @@ namespace BazaarActionAxis.Engine
                     multicastBonus = value - 1;
 
                 CardDef live = card.WithLiveOverrides(cooldown, ammoMax, multicastBonus);
-                live = LiveItemOverrides.Apply(live, entry.Attributes, mapped.LiveAttributeWarnings);
+                List<string> liveWarnings = new List<string>();
+                live = LiveItemOverrides.Apply(live, entry.Attributes, liveWarnings);
+                mapped.LiveAttributeWarnings.AddRange(liveWarnings);
                 // 原生模板的附魔由 NativeCardAbilityMapper 按完整定义重建；旧文本
                 // 映射只负责原生层同样拒收的告警（例如未知前置条件），避免重复或假警告。
                 if (NeedsTextEnchantmentWarning(entry))
@@ -139,6 +160,7 @@ namespace BazaarActionAxis.Engine
                     ? entry.InstanceId
                     : card.Id + "#" + index;
                 live.Id = uniqueId;
+                if (liveWarnings.Count > 0) mapped.LiveAttributeWarningsByCard[uniqueId] = liveWarnings;
 
                 config.Cards[uniqueId] = live;
                 LoadoutItem item = new LoadoutItem();

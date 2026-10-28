@@ -1186,8 +1186,13 @@ namespace BazaarActionAxis.Engine
                 NativeDynamicAuras.Refresh(ctx);
                 // Immediate observers of performed actions run on this frame;
                 // their non-Immediate matches retain next-frame execution.
-                if (ctx.Config.NativeMechanics && !ctx.Ended && ctx.Player.Hp > 0 && ctx.Enemy.Hp > 0)
-                    Triggers.DrainImmediateActions(ctx, time);
+                if (ctx.Config.NativeMechanics && !ctx.Ended && !ctx.TerminalAttributesOnly)
+                {
+                    if (ctx.Player.Hp > 0 && ctx.Enemy.Hp > 0)
+                        Triggers.DrainImmediateActions(ctx, time);
+                    else
+                        Triggers.DrainImmediateCriticals(ctx, time);
+                }
             }
         }
 

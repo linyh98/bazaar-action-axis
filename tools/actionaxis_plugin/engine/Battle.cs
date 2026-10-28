@@ -672,7 +672,9 @@ namespace BazaarActionAxis.Engine
                 // to publish ItemUsed (07f044ee).
                 if (lifecycle) lateCompletions.Add(index);
                 else CompleteNativeCast(ctx, cast, beforeUses[index], t, !hasLow && !deferredDeath);
-                if (!deferredDeath && !ctx.Config.EnemyIsTrainingDummy &&
+                // A Low phase postpones death for the whole accepted batch,
+                // not only the cast preceding it (101f635 frame 240).
+                if (!hasLow && !deferredDeath && !ctx.Config.EnemyIsTrainingDummy &&
                     (ctx.Player.Hp <= 0 || ctx.Enemy.Hp <= 0)) break;
             }
             // Low/Lowest actions share the frame's priority phase. In

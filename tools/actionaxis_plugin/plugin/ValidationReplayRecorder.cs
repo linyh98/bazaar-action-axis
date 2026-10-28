@@ -134,7 +134,7 @@ namespace BazaarActionAxis.Plugin
             if (shared != null) using (SHA256 sha = SHA256.Create()) using (FileStream file = File.OpenRead(shared.Assembly.Location))
                 hash = BitConverter.ToString(sha.ComputeHash(file)).Replace("-", "").ToLowerInvariant();
             return LiveSkillReader.SerializeTemplate(new Dictionary<string, object> {
-                { "PluginVersion", "1.6.10" }, { "GameVersion", Application.version },
+                { "PluginVersion", "1.6.11" }, { "GameVersion", Application.version },
                 { "EngineMvid", typeof(BattleEngine).Assembly.ManifestModule.ModuleVersionId.ToString() },
                 { "SharedAssemblySha256", hash },
                 { "GameMvid", game == null ? null : game.Assembly.ManifestModule.ModuleVersionId.ToString() },

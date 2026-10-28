@@ -13,6 +13,7 @@ namespace BazaarActionAxis.Tests
         private static readonly Guid PvpEncounterId = new Guid("00000000-0000-0000-0000-000000000004");
         private static readonly Guid EventEncounterId = new Guid("00000000-0000-0000-0000-000000000005");
         private static readonly Guid RewardEncounterId = new Guid("00000000-0000-0000-0000-000000000006");
+        private static readonly Guid StaticPvpEncounterId = new Guid("00000000-0000-0000-0000-000000000007");
 
         public static void Run()
         {
@@ -20,6 +21,7 @@ namespace BazaarActionAxis.Tests
             {
                 CurrentChoicesExcludeLoadedHistoricalMonsters();
                 PvpEncounterIgnoresPreviousSelectionAndClearsSelection();
+                PvpPreparationChoiceIsNotAMonsterChoice();
                 CurrentMonsterEncounterUsesItsTemplate();
                 CurrentInstanceEncounterResolvesEntity();
                 NonEncounterStatesAndStateTransitionsRejectOldChoices();
@@ -103,8 +105,7 @@ namespace BazaarActionAxis.Tests
             Assert.False(read.ChoiceKey.Contains("old_viper"));
         }
 
-        private static void PvpEncounterIgnoresPreviousSelectionAndClearsSelection()
-        {
+        private static void PvpEncounterIgnoresPreviousSelectionAndClearsSelection()        {
             NativeMonsterRunState state = Setup();
             state.SelectionSet.Add("old_viper");
             MonsterSelection selection = new MonsterSelection();
@@ -118,6 +119,66 @@ namespace BazaarActionAxis.Tests
             Assert.Equal(0, read.Choices.Count);
             Assert.True(selection.Resolve(read) == null);
             Assert.Equal(0, selection.Index);
+        }
+
+        // 2026-10-28 live evidence (Player.log 12:10): before a PvP battle the game
+        // keeps a ChoiceState whose only SelectionSet entry is "pvp_qopwiSR",
+        // hydrated from a monster encounter template (Viper). It is the server
+        // assigned PvP opponent slot, not a monster choice; the panel must fall
+        // back to the training dummy instead of showing the placeholder monster.
+        private static void PvpPreparationChoiceIsNotAMonsterChoice()
+        {
+            NativeMonsterRunState state = Setup();
+            Dictionary<NativeMonsterInstanceId, object> entities =
+                (Dictionary<NativeMonsterInstanceId, object>)TheBazaar.Data.Entities;
+            entities[new NativeMonsterInstanceId("pvp_qopwiSR")] = new NativeMonsterCard {
+                Template = new NativeMonsterEncounterTemplate {
+                    CombatantType = new NativeMonsterCombatant { MonsterTemplateId = ViperId } } };
+            state.SelectionSet.Add("pvp_qopwiSR");
+            MonsterSelection selection = new MonsterSelection();
+            MonsterReadResult read = LiveMonsterReader.ReadChoices();
+            Assert.Equal<string>(null, read.Error);
+            Assert.Equal(0, read.Choices.Count);
+            Assert.True(selection.Resolve(read) == null);
+            Assert.Equal(0, selection.Index);
+        }
+
+        private static void PvpEncounterInstanceWithMonsterTemplateIsIgnored()
+        {
+            NativeMonsterRunState state = Setup();
+            Dictionary<NativeMonsterInstanceId, object> entities =
+                (Dictionary<NativeMonsterInstanceId, object>)TheBazaar.Data.Entities;
+            entities[new NativeMonsterInstanceId("pvp_qopwiSR")] = new NativeMonsterCard {
+                Template = new NativeMonsterEncounterTemplate {
+                    CombatantType = new NativeMonsterCombatant { MonsterTemplateId = ViperId } } };
+            // A previous monster option can survive in SelectionSet; it must not
+            // be projected while the current encounter is the PvP instance.
+            state.SelectionSet.Add("old_viper");
+            state.StateName = "Encounter";
+            state.CurrentEncounterId = "pvp_qopwiSR";
+            TheBazaar.AppState.CurrentState = new TheBazaar.EncounterState();
+            MonsterReadResult read = LiveMonsterReader.ReadChoices();
+            Assert.Equal<string>(null, read.Error);
+            Assert.Equal(0, read.Choices.Count);
+        }
+
+        private static void StaticPvpEncounterTemplateIsIgnored()
+        {
+            NativeMonsterRunState state = Setup();
+            NativeMonsterManager manager = (NativeMonsterManager)TheBazaar.Data.StaticManager;
+            NativeMonsterEncounterTemplate pvp = new NativeMonsterEncounterTemplate {
+                CombatantType = new NativeMonsterCombatant { MonsterTemplateId = ViperId },
+                InternalName = "Hour 6 PvP" };
+            manager.Cards[StaticPvpEncounterId] = pvp;
+            state.SelectionSet.Add(StaticPvpEncounterId.ToString());
+            Assert.Equal(0, LiveMonsterReader.ReadChoices().Choices.Count);
+            // The same placeholder monster in an ordinary encounter still reads
+            // as a monster, so real monster battles keep their preview.
+            pvp.InternalName = "Viper";
+            MonsterReadResult normal = LiveMonsterReader.ReadChoices();
+            Assert.Equal<string>(null, normal.Error);
+            Assert.Equal(1, normal.Choices.Count);
+            Assert.Equal(ViperId.ToString(), normal.Choices[0].Id);
         }
 
         private static void CurrentMonsterEncounterUsesItsTemplate()
@@ -313,7 +374,13 @@ namespace BazaarActionAxis.Tests
         public Guid TemplateId;
         public object Template;
     }
-    public sealed class NativeMonsterEncounterTemplate { public string Type; public object CombatantType; }
+    public sealed class NativeMonsterEncounterTemplate
+    {
+        public string Type;
+        public object CombatantType;
+        public string InternalName;
+        public object Localization;
+    }
     public sealed class NativeMonsterCombatant { public Guid MonsterTemplateId; }
     public sealed class NativeMonsterManager
     {

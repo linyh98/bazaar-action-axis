@@ -219,7 +219,10 @@ namespace BazaarActionAxis.Engine
             // 直接入队，没有 NativeQueueOrder）在本帧有施放时须排到这些施放之后：07ae8be8
             // 帧121 的 Yeti Crab 冰冻反应（Medium）晚于同帧 Jellyfish 施放，读到施放前的
             // PoisonApplyAmount=3；若先加 +2 会读到 5，玩家毒 9+5=14 而非 9+3=12。
-            bool performedActionObserver = payload.Event == "onFreeze";
+            // 0c811484 frame 245: Medium onHaste growth follows already
+            // queued card actions too; the regen cast still reads 20, then
+            // its RegenApplyAmount grows to 24 on this same frame.
+            bool performedActionObserver = payload.Event == "onFreeze" || payload.Event == "onHaste";
             if (ctx.Config.NativeMechanics && nativeFrame && match.Trigger.Priority == "Medium" &&
                 (ctx.NativePeriodicBeforeObservers ||
                 ctx.NativeEarliestDueCastOrder > 0 &&
@@ -296,6 +299,17 @@ namespace BazaarActionAxis.Engine
             // Snapshot their non-Immediate matches before Immediate counters
             // mutate prerequisites (Trollosaur: count now, disable next frame).
             DrainImmediateEvent(ctx, time, null, true);
+        }
+
+        // A lethal critical still publishes its Immediate counters before
+        // CombatantDied (0a81ce frame 268, Alacrity). Other performed actions
+        // and next-frame observers retain the terminal settlement path.
+        public static void DrainImmediateCriticals(BattleContext ctx, double time)
+        {
+            bool previousTerminalMode = ctx.TerminalAttributesOnly;
+            ctx.TerminalAttributesOnly = true;
+            try { DrainImmediateEvent(ctx, time, "onCrit"); }
+            finally { ctx.TerminalAttributesOnly = previousTerminalMode; }
         }
 
         public static void DrainImmediatePlayerAttributes(BattleContext ctx, double time)
