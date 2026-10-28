@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace BazaarActionAxis.Plugin
 {
-    [BepInPlugin("com.bazaarsim.actionaxis", "Bazaar Action Axis", "1.6.11")]
+    [BepInPlugin("com.bazaarsim.actionaxis", "Bazaar Action Axis", "1.6.12")]
     public sealed class ActionAxisPlugin : BaseUnityPlugin
     {
         internal static ActionAxisPlugin Instance;

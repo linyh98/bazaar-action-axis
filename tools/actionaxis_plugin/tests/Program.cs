@@ -35,6 +35,7 @@ namespace BazaarActionAxis.Tests
             TestHarness.Run("MonsterOpponent", MonsterOpponentTests.Run);
             TestHarness.Run("NativeRuleExpansion", NativeRuleExpansionTests.Run);
             TestHarness.Run("NativeConditionTarget", NativeConditionTargetTests.Run);
+            TestHarness.Run("NativeChargeTargetPriority", NativeChargeTargetPriorityTests.Run);
             TestHarness.Run("NativeSkillTier", NativeSkillTierTests.Run);
             TestHarness.Run("NativeLegendaryTier", NativeLegendaryTierTests.Run);
             TestHarness.Run("NativeCanCrit", NativeCanCritTests.Run);

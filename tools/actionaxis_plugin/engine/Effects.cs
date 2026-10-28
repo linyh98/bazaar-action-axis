@@ -687,10 +687,11 @@ namespace BazaarActionAxis.Engine
             int count,
             string triggerSourceItemId,
             string triggerTargetItemId = null,
-            bool includeDisabled = false)
+            bool includeDisabled = false,
+            string priorityKind = null)
         {
             List<InternalItem> picked = ItemsForTargetCore(ctx, source, target, count, triggerSourceItemId,
-                triggerTargetItemId, includeDisabled);
+                triggerTargetItemId, includeDisabled, priorityKind);
             if (!ctx.Config.NativeMechanics || includeDisabled || target == null) return picked;
             // 原生禁用的卡等同离场，不再作为常规动作目标（光环层 CanReceiveAura 同规则）：
             // 07f044ee 帧 141 Oblivion Vortex 的充能跳过刚被禁用的 The Big One。
@@ -714,13 +715,14 @@ namespace BazaarActionAxis.Engine
             int count,
             string triggerSourceItemId,
             string triggerTargetItemId = null,
-            bool includeDisabled = false)
+            bool includeDisabled = false,
+            string priorityKind = null)
         {
             if (count <= 0) return new List<InternalItem>();
             if (target != null && target.PositionMode != null)
                 return PositionalTargets(ctx, source, target, count, triggerSourceItemId);
             if (ctx.Config.NativeMechanics)
-                return NativeItemsForTarget(ctx, source, target, count, triggerSourceItemId, triggerTargetItemId);
+                return NativeItemsForTarget(ctx, source, target, count, triggerSourceItemId, triggerTargetItemId, priorityKind);
             List<InternalItem> selfItems = new List<InternalItem>();
             List<InternalItem> enemyItems = new List<InternalItem>();
             foreach (InternalItem item in ctx.Items)
@@ -872,7 +874,7 @@ namespace BazaarActionAxis.Engine
             return list.Count > take ? list.GetRange(0, take) : list;
         }
 
-        internal static List<InternalItem> NativeItemsForTarget(BattleContext ctx, InternalItem source, Target target, int count, string triggerSourceItemId, string triggerTargetItemId = null)
+        internal static List<InternalItem> NativeItemsForTarget(BattleContext ctx, InternalItem source, Target target, int count, string triggerSourceItemId, string triggerTargetItemId = null, string priorityKind = null)
         {
             if (count <= 0) return new List<InternalItem>();
             if (target != null && target.PositionMode != null)
@@ -934,28 +936,28 @@ namespace BazaarActionAxis.Engine
                         kind == "randomTriggerSourceAdjacent" ? "triggerSourceAdjacent" : kind, selected);
                     break;
                 case "leftMostSelf":
-                    selected = TakeMost(ctx, own, false, count, target, source.Id);
+                    selected = TakeMost(ctx, own, false, count, target, source.Id, priorityKind, triggerSourceItemId);
                     break;
                 case "rightMostSelf":
-                    selected = TakeMost(ctx, own, true, count, target, source.Id);
+                    selected = TakeMost(ctx, own, true, count, target, source.Id, priorityKind, triggerSourceItemId);
                     break;
                 case "leftMostEnemy":
-                    selected = TakeMost(ctx, opponents, false, count, target, source.Id);
+                    selected = TakeMost(ctx, opponents, false, count, target, source.Id, priorityKind, triggerSourceItemId);
                     break;
                 case "rightMostEnemy":
-                    selected = TakeMost(ctx, opponents, true, count, target, source.Id);
+                    selected = TakeMost(ctx, opponents, true, count, target, source.Id, priorityKind, triggerSourceItemId);
                     break;
                 case "leftMostPlayer":
-                    selected = TakeMost(ctx, players, false, count, target, source.Id);
+                    selected = TakeMost(ctx, players, false, count, target, source.Id, priorityKind, triggerSourceItemId);
                     break;
                 case "rightMostPlayer":
-                    selected = TakeMost(ctx, players, true, count, target, source.Id);
+                    selected = TakeMost(ctx, players, true, count, target, source.Id, priorityKind, triggerSourceItemId);
                     break;
                 case "leftMostOpponent":
-                    selected = TakeMost(ctx, absoluteOpponents, false, count, target, source.Id);
+                    selected = TakeMost(ctx, absoluteOpponents, false, count, target, source.Id, priorityKind, triggerSourceItemId);
                     break;
                 case "rightMostOpponent":
-                    selected = TakeMost(ctx, absoluteOpponents, true, count, target, source.Id);
+                    selected = TakeMost(ctx, absoluteOpponents, true, count, target, source.Id, priorityKind, triggerSourceItemId);
                     break;
                 case "leftSelf": if (index > 0) selected.Add(own[index - 1]); break;
                 case "rightSelf": if (index >= 0 && index + 1 < own.Count) selected.Add(own[index + 1]); break;
@@ -970,6 +972,10 @@ namespace BazaarActionAxis.Engine
                         (target.AdjacentOnly && !adjacent.Contains(item)) ||
                         !NativeSkillSupport.CardMatches(item, target.NativeCondition, ctx, triggerSourceItemId);
                 });
+            bool prioritizedByMost = kind != null &&
+                (kind.StartsWith("leftMost", StringComparison.Ordinal) || kind.StartsWith("rightMost", StringComparison.Ordinal));
+            if (!prioritizedByMost)
+                selected = SelectByTargetingPriorities(ctx, selected, priorityKind, count);
             if (kind == "randomSelfItem" || kind == "randomEnemyItem" || kind == "randomHandsItem" ||
                 kind == "randomPlayerItem" || kind == "randomOpponentItem" ||
                 kind == "randomAdjacentSelf" || kind == "randomTriggerSourceAdjacent")
@@ -1016,16 +1022,62 @@ namespace BazaarActionAxis.Engine
                 if (index + 1 < pool.Count) target.Add(pool[index + 1]);
         }
 
+        // 原生 TTargetCardBase.SelectByTargetingPriorities：目标数量受限时，先按动作的
+        // TargetingPriorities 分层过滤候选集，任一层命中就只在该层里选，全部落空才回落。
+        // BazaarGameShared 的 Conditionals::ChargePriorities 为：
+        //   [HasCooldown && (NotAnAmmoItem || UsesAndHasAmmo), HasCooldown]
+        // 光纤（“当你使用己方最左侧物品，充能己方最右侧物品”）因此跳过被动物品：
+        // 充能没有冷却的卡不会推进任何冷却。数量不受限的“充能所有物品”不套用优先级过滤
+        // （原生 2026-10-28 16:19 回放在“充能所有飞行物品”里同样充能了被动推进器）。
+        // Haste/Slow/Freeze 的 Conditionals::Priorities 列表已确认存在，但其数量语义
+        // 尚未在回放语料上验证，暂不启用，避免用猜测改写既有零差异回放。
+        internal static List<InternalItem> SelectByTargetingPriorities(BattleContext ctx, List<InternalItem> pool,
+            string priorityKind, int count)
+        {
+            if (string.IsNullOrEmpty(priorityKind) || pool.Count == 0 || count == int.MaxValue) return pool;
+            List<Func<InternalItem, bool>> tiers = TargetingPriorityTiers(priorityKind);
+            if (tiers == null) return pool;
+            foreach (Func<InternalItem, bool> tier in tiers)
+            {
+                List<InternalItem> matched = pool.FindAll(delegate(InternalItem item) { return tier(item); });
+                if (matched.Count > 0) return matched;
+            }
+            return pool;
+        }
+
+        private static List<Func<InternalItem, bool>> TargetingPriorityTiers(string kind)
+        {
+            switch (kind)
+            {
+                case "charge":
+                    return new List<Func<InternalItem, bool>> { HasCooldownAndAmmo, HasCooldown };
+                default:
+                    return null;
+            }
+        }
+
+        private static bool HasCooldown(InternalItem item) { return item.CooldownMax > 0; }
+
+        // HasCooldown AND (NotAnAmmoItem OR UsesAndHasAmmo)：耗弹卡没弹药时不能充能。
+        private static bool HasCooldownAndAmmo(InternalItem item)
+        {
+            return item.CooldownMax > 0 && (item.AmmoMax.GetValueOrDefault() <= 0 || item.Ammo > 0);
+        }
+
         private static List<InternalItem> TakeMost(BattleContext ctx, List<InternalItem> candidates, bool right,
-            int count, Target target, string sourceId)
+            int count, Target target, string sourceId, string priorityKind = null, string triggerSourceItemId = null)
         {
             List<InternalItem> pool = new List<InternalItem>();
             foreach (InternalItem item in candidates)
             {
                 if (target != null && target.ExcludeSelf && item.Id == sourceId) continue;
-                if (target != null && !NativeSkillSupport.CardMatches(item, target.NativeCondition, ctx)) continue;
+                // 触发来源条件（TCardConditionalTriggerSource）必须在优先级过滤之前生效，
+                // 否则被使用的那张卡会占住充能优先级名额、随后又被“非触发来源”剔除，
+                // 造成光纤在最右目标是被动卡时充能落空。
+                if (target != null && !NativeSkillSupport.CardMatches(item, target.NativeCondition, ctx, triggerSourceItemId)) continue;
                 pool.Add(item);
             }
+            pool = SelectByTargetingPriorities(ctx, pool, priorityKind, count);
             pool.Sort(delegate(InternalItem a, InternalItem b) { return a.Slot.CompareTo(b.Slot); });
             int take = Math.Min(Math.Max(1, count), pool.Count);
             if (take <= 0) return new List<InternalItem>();
@@ -1357,7 +1409,9 @@ namespace BazaarActionAxis.Engine
                     }
 
                     int count = targetCount;
-                    List<InternalItem> targets = ItemsForTarget(ctx, source, target, count, triggerSourceItemId, triggerTargetItemId);
+                    // 原生充能动作自带 ChargePriorities，目标数量受限时先过滤候选集：
+                    // 充能跳过无法缩短冷却的被动卡。
+                    List<InternalItem> targets = ItemsForTarget(ctx, source, target, count, triggerSourceItemId, triggerTargetItemId, false, effect.Kind);
                     double duration = effect.DurationValue == null ? effect.Seconds :
                         EvaluateNum(effect.DurationValue, ctx, source, ctx.Hero(source.Side), triggerSourceItemId, triggerTargetItemId) / 1000.0;
                     duration = Math.Max(0, duration);
